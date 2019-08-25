@@ -7,6 +7,7 @@ namespace ATV_Advertisment.Common
     {
         private static string FULLNAME = "";
         private static string CODE = "";
+        private static int ID = -1;
         private static string ROLE = "";
         private static bool ISLOGIN = false;
 
@@ -26,6 +27,7 @@ namespace ATV_Advertisment.Common
                         user = userService.GetLogin(username, password);
                         if (user != null)
                         {
+                            ID = user.Id;
                             FULLNAME = user.Name;
                             //CODE = user.Code;
                             ROLE = user.Role.Name;
@@ -100,6 +102,11 @@ namespace ATV_Advertisment.Common
             return ROLE;
         }
 
+        public static int GetId()
+        {
+            return ID;
+        }
+
         public static bool IsLogin()
         {
             ISLOGIN = false;
@@ -108,7 +115,13 @@ namespace ATV_Advertisment.Common
             {
                 if (!string.IsNullOrWhiteSpace(ROLE))
                 {
-                    ISLOGIN = true;
+                    if (!string.IsNullOrWhiteSpace(ROLE))
+                    {
+                        if (ID > 0)
+                        {
+                            ISLOGIN = true;
+                        }
+                    }
                 }
             }
 

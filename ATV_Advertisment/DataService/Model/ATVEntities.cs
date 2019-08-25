@@ -16,6 +16,7 @@ namespace DataService.Model
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<ContractDetail> ContractDetails { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerType> CustomerTypes { get; set; }
         public virtual DbSet<Duration> Durations { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<PriceTag> PriceTags { get; set; }
@@ -31,6 +32,11 @@ namespace DataService.Model
             modelBuilder.Entity<ContractDetail>()
                 .Property(e => e.ProductName)
                 .IsFixedLength();
+
+            modelBuilder.Entity<CustomerType>()
+                .HasMany(e => e.Customers)
+                .WithRequired(e => e.CustomerType)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MenuItem>()
                 .HasMany(e => e.RoleHasMenuItems)

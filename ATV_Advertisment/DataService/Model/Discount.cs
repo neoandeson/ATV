@@ -21,10 +21,8 @@ namespace DataService.Model
 
         public DateTime? CreateDate { get; set; }
 
+        public DateTime? LastUpdateDate { get; set; }
+
         public int? LastUpdateBy { get; set; }
-
-        public DateTime? DeleteDate { get; set; }
-
-        public int? DeleteBy { get; set; }
     }
 }

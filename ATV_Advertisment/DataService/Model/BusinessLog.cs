@@ -14,8 +14,6 @@ namespace DataService.Model
         [Required]
         public string Content { get; set; }
 
-        public DateTime Date { get; set; }
-
         public int ActorId { get; set; }
 
         public int TypeId { get; set; }

@@ -1,8 +1,11 @@
 ﻿using ATV_Advertisment.Forms.CommonForms;
 using ATV_Advertisment.Forms.ListForms;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace ATV_Advertisment.Common
 {
@@ -27,6 +30,19 @@ namespace ATV_Advertisment.Common
         {
             bool isNumeric = int.TryParse(strNum, out number);
             return isNumeric;
+        }
+
+        public static DateTime GetServerDateTimeNow()
+        {
+            DateTime dt;
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            {
+                var cmd = new SqlCommand("SELECT GETDATE()", conn);
+                conn.Open();
+
+                dt = (DateTime)cmd.ExecuteScalar();
+            };
+            return dt;
         }
 
         public static void LoadComboBoxOptions(ComboBox comboBox, Dictionary<int, string> pairs)

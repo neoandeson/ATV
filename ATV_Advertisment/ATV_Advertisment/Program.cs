@@ -17,9 +17,9 @@ namespace ATV_Advertisment
         {
             try
             {
-                using (SingleInstanceMutex sim = new SingleInstanceMutex())
+                using (SingleInstanceMutex mutex = new SingleInstanceMutex())
                 {
-                    if (sim.IsOtherInstanceRunning)
+                    if (mutex.IsOtherInstanceRunning)
                     {
                         MessageBox.Show(CommonMessage.APPLICATION_IS_RUNNING,
                             "Running...",
@@ -35,7 +35,7 @@ namespace ATV_Advertisment
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
