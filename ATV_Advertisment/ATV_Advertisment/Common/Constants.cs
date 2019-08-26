@@ -23,6 +23,7 @@ namespace ATV_Advertisment.Common
 
             public static string APPLICATION_IS_RUNNING = "Ứng dụng đang chạy";
             public static string ADD_SUCESSFULLY = "Thêm mới thành công";
+            public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
             public static string DELETE_SUCESSFULLY = "Xóa thành công";
             public static string UPDATE_SUCESSFULLY = "Cập nhật thành công";
         }
@@ -33,7 +34,7 @@ namespace ATV_Advertisment.Common
             public static string Name = "Tên";
             public static string Code = "Mã";
             public static string Address = "Địa chỉ";
-            public static string Phone = "SĐT";
+            public static string TaxCode = "Mã số thuế";
         }
 
         public static class BusinessLogType
@@ -52,6 +53,8 @@ namespace ATV_Advertisment.Common
             public static int TEXTBOX_WIDTH_SMALL = 100;
             public static int TEXTBOX_WIDTH_NORMAL = 140;
             public static int TEXTBOX_HEIGHT = 26;
+
+            public static int GV_WIDTH_NORMAL = 120;
         }
         #endregion
     }

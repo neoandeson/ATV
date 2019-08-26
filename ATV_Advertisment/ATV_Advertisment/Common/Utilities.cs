@@ -35,7 +35,7 @@ namespace ATV_Advertisment.Common
         public static DateTime GetServerDateTimeNow()
         {
             DateTime dt;
-            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
             {
                 var cmd = new SqlCommand("SELECT GETDATE()", conn);
                 conn.Open();

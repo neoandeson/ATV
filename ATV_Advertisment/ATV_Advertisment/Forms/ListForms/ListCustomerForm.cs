@@ -1,6 +1,7 @@
 ﻿using ATV_Advertisement.Common;
 using ATV_Advertisment.Common;
 using ATV_Advertisment.Forms.CommonForms;
+using ATV_Advertisment.Forms.DetailForms;
 using ATV_Advertisment.Services;
 using DataService.Model;
 using System;
@@ -14,44 +15,12 @@ namespace ATV_Advertisment.Forms.ListForms
 {
     public partial class ListCustomerForm : CommonForm
     {
+        private Customer customer = null;
+
         public ListCustomerForm()
         {
             InitializeComponent();
-            LoadAllCustomerTypes();
             LoadDGV();
-        }
-
-        public void LoadAllCustomerTypes()
-        {
-            CustomerTypeService customerTypeService = null;
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                customerTypeService = new CustomerTypeService();
-
-                Utilities.LoadComboBoxOptions(cboCustomerType, customerTypeService.Getoptions());
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                customerTypeService = null;
-                Cursor.Current = Cursors.Default;
-            }
-        }
-
-        private void ClearForm()
-        {
-            this.txtAddress.Text = "";
-            this.txtCode.Text = "";
-            this.txtFax.Text = "";
-            this.txtName.Text = "";
-            this.txtPhone1.Text = "";
-            this.txtPhone2.Text = "";
-            this.txtTaxCode.Text = "";
-            this.cboCustomerType.SelectedIndex = 0;
         }
 
         #region AdvanceDataGridView
@@ -77,18 +46,17 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["StatusId"].Visible = false;
                 adgv.Columns["CreateDate"].Visible = false;
                 adgv.Columns["LastUpdateBy"].Visible = false;
-                adgv.Columns["DeleteDate"].Visible = false;
-                adgv.Columns["DeleteBy"].Visible = false;
+                adgv.Columns["LastUpdateDate"].Visible = false;
                 adgv.Columns["CustomerType"].Visible = false;
 
+                adgv.Columns["Code"].HeaderText = ADGVText.Code;
+                adgv.Columns["Code"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["Name"].HeaderText = ADGVText.Name;
                 adgv.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                adgv.Columns["Code"].HeaderText = ADGVText.Code;
-                adgv.Columns["Code"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["Address"].HeaderText = ADGVText.Address;
                 adgv.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                adgv.Columns["TaxCode"].HeaderText = ADGVText.Phone;
-                adgv.Columns["TaxCode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["TaxCode"].HeaderText = ADGVText.TaxCode;
+                adgv.Columns["TaxCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
             }
             catch (Exception ex)
             {
@@ -124,16 +92,68 @@ namespace ATV_Advertisment.Forms.ListForms
         {
             var selectedRow = adgv.SelectedRows[0];
 
-            //Binding data to groupbox information
-            txtCode.Text = selectedRow.Cells[1].Value.ToString();
-            txtName.Text = (selectedRow.Cells[2].Value == null) ? "" : selectedRow.Cells[2].Value.ToString();
-            txtAddress.Text = (selectedRow.Cells[3].Value == null) ? "" : selectedRow.Cells[3].Value.ToString();
-            txtPhone1.Text = (selectedRow.Cells[4].Value == null) ? "" : selectedRow.Cells[4].Value.ToString();
-            txtPhone2.Text = (selectedRow.Cells[5].Value == null) ? "" : selectedRow.Cells[5].Value.ToString();
-            txtFax.Text = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString();
-            txtTaxCode.Text = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString();
-            cboCustomerType.SelectedValue = int.Parse(selectedRow.Cells[8].Value.ToString());
+            //Prepare model
+            this.customer = new Customer()
+            {
+                Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
+                Code = selectedRow.Cells[1].Value.ToString(),
+                Name = (selectedRow.Cells[2].Value == null) ? "" : selectedRow.Cells[2].Value.ToString(),
+                Address = (selectedRow.Cells[3].Value == null) ? "" : selectedRow.Cells[3].Value.ToString(),
+                Phone1 = (selectedRow.Cells[4].Value == null) ? "" : selectedRow.Cells[4].Value.ToString(),
+                Phone2 = (selectedRow.Cells[5].Value == null) ? "" : selectedRow.Cells[5].Value.ToString(),
+                Fax = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString(),
+                TaxCode = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString(),
+                CustomerTypeId = int.Parse(selectedRow.Cells[8].Value.ToString()),
+                StatusId = int.Parse(selectedRow.Cells[9].Value.ToString()),
+            };
         }
         #endregion
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            customer = null;
+            CustomerDetailForm detailForm = new CustomerDetailForm(customer);
+            detailForm.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            CustomerService customerService = null;
+
+            try
+            {
+                if (customer != null)
+                {
+                    bool result = customerService.DeleteCustomer(customer.Id);
+                    if (result)
+                    {
+                        Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                customerService = null;
+            }
+        }
+
+        private void btnViewDetail_Click(object sender, EventArgs e)
+        {
+            if(customer != null)
+            {
+                CustomerDetailForm detailForm = new CustomerDetailForm(customer);
+                detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
+                detailForm.ShowDialog();
+            }
+        }
+
+        private void DetailForm_Closed(object sender, FormClosedEventArgs e)
+        {
+            LoadDGV();
+        }
     }
 }

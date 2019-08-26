@@ -13,7 +13,7 @@ namespace ATV_Advertisment.Services
     {
         List<Customer> GetAll();
         bool DeleteCustomer(int customerId);
-        bool SaveCustomer(Customer input);
+        bool AddCustomer(Customer input);
         bool EditCustomer(Customer input);
     }
 
@@ -35,7 +35,7 @@ namespace ATV_Advertisment.Services
                 customer.StatusId = CommonStatus.DELETE;
                 customer.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 customer.LastUpdateBy = Common.Session.GetId();
-                _customerRepository.Delete(customer);
+                _customerRepository.Update(customer);
                 result = true;
             }
 
@@ -48,9 +48,18 @@ namespace ATV_Advertisment.Services
             var customer = _customerRepository.GetById(input.Id);
             if (customer != null)
             {
+                customer.Code = input.Code;
+                customer.Name = input.Name;
+                customer.Address = input.Address;
+                customer.Phone1 = input.Phone1;
+                customer.Phone2 = input.Phone2;
+                customer.Fax = input.Fax;
+                customer.TaxCode = input.TaxCode;
+                customer.CustomerTypeId = input.CustomerTypeId;
+
                 customer.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 customer.LastUpdateBy = Common.Session.GetId();
-                _customerRepository.Delete(customer);
+                _customerRepository.Update(customer);
                 result = true;
             }
 
@@ -62,9 +71,23 @@ namespace ATV_Advertisment.Services
             return _customerRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
         }
 
-        public bool SaveCustomer(Customer customer)
+        public bool AddCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            if(customer != null)
+            {
+                var customers = _customerRepository.Get(c => c.Name == customer.Name && c.TaxCode == customer.TaxCode).ToList();
+                if(customers.Count == 0)
+                {
+                    customer.StatusId = CommonStatus.ACTIVE;
+                    customer.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                    customer.LastUpdateBy = Common.Session.GetId();
+                    _customerRepository.Add(customer);
+                    result = true;
+                }
+            }
+             
+            return result;
         }
     }
 }
