@@ -35,6 +35,14 @@ namespace ATV_Advertisment.Common
             public static string Code = "Mã";
             public static string Address = "Địa chỉ";
             public static string TaxCode = "Mã số thuế";
+            //CustomerTypes
+            public static string Description = "Mô tả";
+            public static string CustomerType = "Loại hình";
+            //Discounts
+            public static string PriceRate = "Mức giá";
+            public static string Discount = "Tỷ lệ (%)";
+            //Durations
+            public static string Duration = "Thời lượng";
         }
 
         public static class BusinessLogType
@@ -45,6 +53,13 @@ namespace ATV_Advertisment.Common
         public static class SystemLogType
         {
 
+        }
+
+        public static class CRUDStatusCode
+        {
+            public static int ERROR = 0;
+            public static int SUCCESS = 1;
+            public static int EXISTED = 2;
         }
 
         #region Controls

@@ -17,6 +17,7 @@ namespace DataService.Model
         public virtual DbSet<ContractDetail> ContractDetails { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerType> CustomerTypes { get; set; }
+        public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<Duration> Durations { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<PriceTag> PriceTags { get; set; }
@@ -25,7 +26,6 @@ namespace DataService.Model
         public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<SystemLog> SystemLogs { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Discount> Discounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

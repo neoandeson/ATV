@@ -9,14 +9,12 @@ namespace DataService.Model
     [Table("Discount")]
     public partial class Discount
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         public double? PriceRate { get; set; }
 
         public double? Dicount { get; set; }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StatusId { get; set; }
 
         public DateTime? CreateDate { get; set; }

@@ -91,11 +91,47 @@
     <Compile Include="Forms\DetailForms\CustomerDetailForm.Designer.cs">
       <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DetailForms\CustomerTypeDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\CustomerTypeDetailForm.Designer.cs">
+      <DependentUpon>CustomerTypeDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\DiscountDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\DiscountDetailForm.Designer.cs">
+      <DependentUpon>DiscountDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\DurationDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\DurationDetailForm.Designer.cs">
+      <DependentUpon>DurationDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ListForms\ListCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ListForms\ListCustomerForm.Designer.cs">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListCustomerTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListCustomerTypeForm.Designer.cs">
+      <DependentUpon>ListCustomerTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListDiscountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListDiscountForm.Designer.cs">
+      <DependentUpon>ListDiscountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListDurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListDurationForm.Designer.cs">
+      <DependentUpon>ListDurationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,8 +170,26 @@
     <EmbeddedResource Include="Forms\DetailForms\CustomerDetailForm.resx">
       <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\CustomerTypeDetailForm.resx">
+      <DependentUpon>CustomerTypeDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\DiscountDetailForm.resx">
+      <DependentUpon>DiscountDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\DurationDetailForm.resx">
+      <DependentUpon>DurationDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListCustomerForm.resx">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListCustomerTypeForm.resx">
+      <DependentUpon>ListCustomerTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListDiscountForm.resx">
+      <DependentUpon>ListDiscountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListDurationForm.resx">
+      <DependentUpon>ListDurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

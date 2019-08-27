@@ -113,6 +113,7 @@ namespace ATV_Advertisment.Forms.ListForms
         {
             customer = null;
             CustomerDetailForm detailForm = new CustomerDetailForm(customer);
+            detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             detailForm.ShowDialog();
         }
 

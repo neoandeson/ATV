@@ -28,6 +28,7 @@ namespace DataService.Infrastructure
         IEnumerable<T> GetAll();
         //Gets entities using delegate
         IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
+        bool Exist(Expression<Func<T, bool>> predicate);
     }
 
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
@@ -117,6 +118,12 @@ namespace DataService.Infrastructure
         public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> where)
         {
             return dbSet.Where(where).ToList();
+        }
+
+        public bool Exist(Expression<Func<TEntity, bool>> predicate)
+        {
+            var exist = dbSet.Where(predicate);
+            return exist.Any() ? true : false;
         }
     }
 }

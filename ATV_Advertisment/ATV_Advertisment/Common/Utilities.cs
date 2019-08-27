@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
+using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Common
 {
@@ -78,10 +79,21 @@ namespace ATV_Advertisment.Common
                         ListCustomerForm listCustomerForm = new ListCustomerForm();
                         form = (Form)listCustomerForm;
                         break;
-                    //case "Advertisement":
-                    //    AdvertisementForm advertisementForm = new AdvertisementForm();
-                    //    form = (Form)advertisementForm;
-                    //    break;
+                    case "Danh mục loại hình khách hàng":
+                        ListCustomerTypeForm listCustomerTypeForm = new ListCustomerTypeForm();
+                        form = (Form)listCustomerTypeForm;
+                        break;
+
+
+
+                    case "Danh mục thời lượng":
+                        ListDurationForm listDurationForm = new ListDurationForm();
+                        form = (Form)listDurationForm;
+                        break;
+                    case "Danh mục giảm giá":
+                        ListDiscountForm listDiscountForm = new ListDiscountForm();
+                        form = (Form)listDiscountForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();
