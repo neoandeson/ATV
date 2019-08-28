@@ -31,9 +31,9 @@
             this.gbList = new System.Windows.Forms.GroupBox();
             this.adgv = new ADGV.AdvancedDataGridView();
             this.gbControl = new System.Windows.Forms.GroupBox();
-            this.btnViewDetail = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnViewDetail = new System.Windows.Forms.Button();
             this.gbList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).BeginInit();
             this.gbControl.SuspendLayout();
@@ -44,7 +44,7 @@
             this.gbList.Controls.Add(this.adgv);
             this.gbList.Location = new System.Drawing.Point(12, 11);
             this.gbList.Name = "gbList";
-            this.gbList.Size = new System.Drawing.Size(1042, 470);
+            this.gbList.Size = new System.Drawing.Size(398, 470);
             this.gbList.TabIndex = 0;
             this.gbList.TabStop = false;
             this.gbList.Text = "Danh sách";
@@ -56,7 +56,8 @@
             this.adgv.DateWithTime = false;
             this.adgv.Location = new System.Drawing.Point(7, 24);
             this.adgv.Name = "adgv";
-            this.adgv.Size = new System.Drawing.Size(1029, 438);
+            this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.adgv.Size = new System.Drawing.Size(383, 438);
             this.adgv.TabIndex = 0;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
@@ -70,10 +71,30 @@
             this.gbControl.Controls.Add(this.btnViewDetail);
             this.gbControl.Location = new System.Drawing.Point(12, 487);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(1041, 68);
+            this.gbControl.Size = new System.Drawing.Size(398, 68);
             this.gbControl.TabIndex = 1;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(280, 25);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(110, 30);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(151, 25);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(110, 30);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnViewDetail
             // 
@@ -85,31 +106,11 @@
             this.btnViewDetail.UseVisualStyleBackColor = true;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(178, 25);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(110, 30);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(344, 25);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 30);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // ListSessionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 562);
+            this.ClientSize = new System.Drawing.Size(416, 562);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbList);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);

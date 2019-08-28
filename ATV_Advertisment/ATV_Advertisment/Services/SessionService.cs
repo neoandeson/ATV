@@ -30,7 +30,7 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _SessionRepository.Exist(t => t.Clock == input.Clock);
+                bool isExisted = _SessionRepository.Exist(t => t.Name == input.Name);
                 if (!isExisted)
                 {
                     input.StatusId = CommonStatus.ACTIVE;
@@ -71,9 +71,7 @@ namespace ATV_Advertisment.Services
             var Session = _SessionRepository.GetById(input.Id);
             if (Session != null)
             {
-                Session.Clock = input.Clock;
                 Session.Name = input.Name;
-                Session.PriceTagId = input.PriceTagId;
 
                 Session.LastUpdateDate = Common.Utilities.GetServerDateTimeNow();
                 Session.LastUpdateBy = Common.Session.GetId();

@@ -30,7 +30,7 @@ namespace ATV_Advertisment.Common
 
         public static class ADGVText
         {
-            //Customers
+            //Customers, Sessions(Name, Code)
             public static string Name = "Tên";
             public static string Code = "Mã";
             public static string Address = "Địa chỉ";

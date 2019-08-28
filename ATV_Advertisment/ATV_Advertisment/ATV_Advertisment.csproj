@@ -109,6 +109,18 @@
     <Compile Include="Forms\DetailForms\DurationDetailForm.Designer.cs">
       <DependentUpon>DurationDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DetailForms\SessionDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\SessionDetailForm.Designer.cs">
+      <DependentUpon>SessionDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\TimeSlotDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\TimeSlotDetailForm.Designer.cs">
+      <DependentUpon>TimeSlotDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ListForms\ListCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +145,18 @@
     <Compile Include="Forms\ListForms\ListDurationForm.Designer.cs">
       <DependentUpon>ListDurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ListForms\ListSessionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListSessionForm.Designer.cs">
+      <DependentUpon>ListSessionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListTimeSlotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListTimeSlotForm.Designer.cs">
+      <DependentUpon>ListTimeSlotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -141,6 +165,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\CustomerTypeService.cs" />
+    <Compile Include="Services\TimeSlotService.cs" />
     <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ContractDetailService.cs" />
@@ -148,7 +173,6 @@
     <Compile Include="Services\BusinessLogService.cs" />
     <Compile Include="Services\DurationService.cs" />
     <Compile Include="Services\SessionService.cs" />
-    <Compile Include="Services\PriceTagService.cs" />
     <Compile Include="Services\SystemLogService.cs" />
     <Compile Include="Services\RoleHasMenuItemService.cs" />
     <Compile Include="Services\RoleService.cs" />
@@ -179,6 +203,12 @@
     <EmbeddedResource Include="Forms\DetailForms\DurationDetailForm.resx">
       <DependentUpon>DurationDetailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\SessionDetailForm.resx">
+      <DependentUpon>SessionDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\TimeSlotDetailForm.resx">
+      <DependentUpon>TimeSlotDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListCustomerForm.resx">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListDurationForm.resx">
       <DependentUpon>ListDurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListSessionForm.resx">
+      <DependentUpon>ListSessionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListTimeSlotForm.resx">
+      <DependentUpon>ListTimeSlotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

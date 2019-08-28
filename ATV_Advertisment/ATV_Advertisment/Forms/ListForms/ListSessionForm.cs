@@ -50,10 +50,10 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["LastUpdateBy"].Visible = false;
                 adgv.Columns["LastUpdateDate"].Visible = false;
 
-                adgv.Columns["PriceRate"].HeaderText = ADGVText.PriceRate;
-                adgv.Columns["PriceRate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                adgv.Columns["Dicount"].HeaderText = ADGVText.Discount;
-                adgv.Columns["Dicount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["Code"].HeaderText = ADGVText.Code;
+                adgv.Columns["Code"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["Name"].HeaderText = ADGVText.Name;
+                adgv.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             catch (Exception ex)
             {

@@ -37,8 +37,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model = _timeSlotService.GetById(model.Id);
                     if (model != null)
                     {
-                        txtPriceRate.Text = model.PriceRate.ToString();
-                        txtDiscount.Text = model.Dicount.ToString();
+                        txtCode.Text = model.Code;
+                        txtName.Text = model.Name;
+                        txtPrice.Text = model.Price.ToString();
+                        //TODO hour from to
                     }
                 }
             }
@@ -66,8 +68,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //Add
                     model = new TimeSlot()
                     {
-                        PriceRate = int.Parse(txtPriceRate.Text),
-                        Dicount = int.Parse(txtDiscount.Text)
+                        Code = txtCode.Text,
+                        Name = txtName.Text,
+                        Price = double.Parse(txtPrice.Text)
                     };
                     result = _timeSlotService.AddTimeSlot(model);
                     if (result == CRUDStatusCode.SUCCESS)
@@ -78,8 +81,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                 else
                 {
                     //Edit
-                    model.PriceRate = int.Parse(txtPriceRate.Text);
-                    model.Dicount = int.Parse(txtDiscount.Text);
+                    model.Code = txtCode.Text;
+                    model.Name = txtName.Text;
+                    model.Price = double.Parse(txtPrice.Text);
 
                     result = _timeSlotService.EditTimeSlot(model);
                     if (result == CRUDStatusCode.SUCCESS)

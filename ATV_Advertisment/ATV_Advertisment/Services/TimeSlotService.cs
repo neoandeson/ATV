@@ -78,7 +78,7 @@ namespace ATV_Advertisment.Services
                 TimeSlot.Code = input.Code;
                 TimeSlot.FromHour = input.FromHour;
                 TimeSlot.ToHour = input.ToHour;
-                TimeSlot.SessionId = input.SessionId;
+                TimeSlot.SessionCode = input.SessionCode;
 
                 TimeSlot.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 TimeSlot.LastUpdateBy = Common.Session.GetId();
