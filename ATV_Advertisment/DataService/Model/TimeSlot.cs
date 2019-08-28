@@ -6,12 +6,28 @@ namespace DataService.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("PriceTag")]
-    public partial class PriceTag
+    [Table("TimeSlot")]
+    public partial class TimeSlot
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(10)]
+        public string Code { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
+
+        public int FromHour { get; set; }
+
+        public int ToHour { get; set; }
+
         public double Price { get; set; }
+
+        [Required]
+        [StringLength(1)]
+        public string SessionCode { get; set; }
 
         public int StatusId { get; set; }
 

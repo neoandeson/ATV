@@ -1,7 +1,7 @@
-﻿using DataService.Infrastructure;
+﻿using ATV_Advertisment;
 using DataService.Model;
 using DataService.Repositories;
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using static ATV_Advertisment.Common.Constants;
 
@@ -9,11 +9,89 @@ namespace ATV_Advertisment.Services
 {
     public interface ISessionService
     {
-        
+        Session GetById(int id);
+        List<Session> GetAll();
+        int DeleteSession(int id);
+        int AddSession(Session input);
+        int EditSession(Session input);
     }
 
     public class SessionService : ISessionService
     {
-        
+        private readonly SessionRepository _SessionRepository;
+
+        public SessionService()
+        {
+            _SessionRepository = new SessionRepository();
+        }
+
+        public int AddSession(Session input)
+        {
+            int result = CRUDStatusCode.ERROR;
+            if (input != null)
+            {
+                bool isExisted = _SessionRepository.Exist(t => t.Clock == input.Clock);
+                if (!isExisted)
+                {
+                    input.StatusId = CommonStatus.ACTIVE;
+                    input.CreateDate = Common.Utilities.GetServerDateTimeNow();
+                    input.LastUpdateDate = Common.Utilities.GetServerDateTimeNow();
+                    input.LastUpdateBy = Common.Session.GetId();
+                    _SessionRepository.Add(input);
+                    result = CRUDStatusCode.SUCCESS;
+                }
+                else
+                {
+                    result = CRUDStatusCode.EXISTED;
+                }
+            }
+
+            return result;
+        }
+
+        public int DeleteSession(int id)
+        {
+            int result = CRUDStatusCode.ERROR;
+            var Session = _SessionRepository.GetById(id);
+            if (Session != null)
+            {
+                Session.StatusId = CommonStatus.DELETE;
+                Session.LastUpdateDate = Common.Utilities.GetServerDateTimeNow();
+                Session.LastUpdateBy = Common.Session.GetId();
+                _SessionRepository.Update(Session);
+                result = CRUDStatusCode.SUCCESS;
+            }
+
+            return result;
+        }
+
+        public int EditSession(Session input)
+        {
+            int result = CRUDStatusCode.ERROR;
+            var Session = _SessionRepository.GetById(input.Id);
+            if (Session != null)
+            {
+                Session.Clock = input.Clock;
+                Session.Name = input.Name;
+                Session.PriceTagId = input.PriceTagId;
+
+                Session.LastUpdateDate = Common.Utilities.GetServerDateTimeNow();
+                Session.LastUpdateBy = Common.Session.GetId();
+                _SessionRepository.Update(Session);
+                result = CRUDStatusCode.SUCCESS;
+            }
+
+            return result;
+        }
+
+        public List<Session> GetAll()
+        {
+            return _SessionRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
+        }
+
+        public Session GetById(int id)
+        {
+            return _SessionRepository.GetById(id);
+        }
     }
 }

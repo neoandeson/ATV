@@ -83,8 +83,14 @@ namespace ATV_Advertisment.Common
                         ListCustomerTypeForm listCustomerTypeForm = new ListCustomerTypeForm();
                         form = (Form)listCustomerTypeForm;
                         break;
-
-
+                    case "Danh mục buổi phát":
+                        ListSessionForm listSessionForm = new ListSessionForm();
+                        form = (Form)listSessionForm;
+                        break;
+                    case "Danh mục thời điểm":
+                        ListTimeSlotForm listTimeSlotForm = new ListTimeSlotForm();
+                        form = (Form)listTimeSlotForm;
+                        break;
 
                     case "Danh mục thời lượng":
                         ListDurationForm listDurationForm = new ListDurationForm();

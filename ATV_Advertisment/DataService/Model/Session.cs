@@ -12,12 +12,12 @@ namespace DataService.Model
         public int Id { get; set; }
 
         [Required]
+        [StringLength(1)]
+        public string Code { get; set; }
+
+        [Required]
         [StringLength(50)]
         public string Name { get; set; }
-
-        public int Clock { get; set; }
-
-        public int? PriceTagId { get; set; }
 
         public int StatusId { get; set; }
 
