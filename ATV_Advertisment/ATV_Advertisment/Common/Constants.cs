@@ -22,6 +22,7 @@ namespace ATV_Advertisment.Common
             public static string ALREADY_LOGIN = "Tài khoản hiện đang được đăng nhập";
 
             public static string APPLICATION_IS_RUNNING = "Ứng dụng đang chạy";
+            public static string UsED_CODE = "Mã đã được sử dụng";
             public static string ADD_SUCESSFULLY = "Thêm mới thành công";
             public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
             public static string DELETE_SUCESSFULLY = "Xóa thành công";
@@ -43,6 +44,8 @@ namespace ATV_Advertisment.Common
             public static string Discount = "Tỷ lệ (%)";
             //Durations
             public static string Duration = "Thời lượng";
+            //TimSlots
+            public static string Session = "Buổi";
         }
 
         public static class BusinessLogType

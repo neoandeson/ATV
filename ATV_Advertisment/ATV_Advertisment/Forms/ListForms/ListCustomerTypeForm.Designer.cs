@@ -45,7 +45,7 @@
             this.gbList.Location = new System.Drawing.Point(12, 12);
             this.gbList.Name = "gbList";
             this.gbList.Size = new System.Drawing.Size(776, 281);
-            this.gbList.TabIndex = 1;
+            this.gbList.TabIndex = 0;
             this.gbList.TabStop = false;
             this.gbList.Text = "Danh sách";
             // 
@@ -54,11 +54,12 @@
             this.adgv.AutoGenerateContextFilters = true;
             this.adgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgv.DateWithTime = false;
+            this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(7, 26);
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.adgv.Size = new System.Drawing.Size(763, 239);
-            this.adgv.TabIndex = 0;
+            this.adgv.TabIndex = 1;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
@@ -72,7 +73,7 @@
             this.gbControl.Location = new System.Drawing.Point(12, 300);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(776, 63);
-            this.gbControl.TabIndex = 2;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -91,7 +92,7 @@
             this.btnDelete.Location = new System.Drawing.Point(336, 23);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
-            this.btnDelete.TabIndex = 1;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -101,7 +102,7 @@
             this.btnAdd.Location = new System.Drawing.Point(180, 23);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
-            this.btnAdd.TabIndex = 0;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

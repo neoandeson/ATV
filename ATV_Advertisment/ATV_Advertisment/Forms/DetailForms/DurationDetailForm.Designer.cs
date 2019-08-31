@@ -1,4 +1,6 @@
-﻿namespace ATV_Advertisment.Forms.DetailForms
+﻿using TControls;
+
+namespace ATV_Advertisment.Forms.DetailForms
 {
     partial class DurationDetailForm
     {
@@ -29,7 +31,6 @@
         private void InitializeComponent()
         {
             this.lblDuration = new System.Windows.Forms.Label();
-            this.txtLength = new System.Windows.Forms.TextBox();
             this.gbDetail = new System.Windows.Forms.GroupBox();
             this.lblUnit = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,9 @@
             // txtLength
             // 
             this.txtLength.Location = new System.Drawing.Point(115, 28);
+            this.txtLength.MaxLength = 3;
             this.txtLength.Name = "txtLength";
+            this.txtLength.NumberValue = 0;
             this.txtLength.Size = new System.Drawing.Size(118, 26);
             this.txtLength.TabIndex = 1;
             // 
@@ -62,7 +65,7 @@
             this.gbDetail.Location = new System.Drawing.Point(12, 12);
             this.gbDetail.Name = "gbDetail";
             this.gbDetail.Size = new System.Drawing.Size(347, 67);
-            this.gbDetail.TabIndex = 2;
+            this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin";
             // 
@@ -72,7 +75,7 @@
             this.lblUnit.Location = new System.Drawing.Point(240, 31);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(37, 20);
-            this.lblUnit.TabIndex = 2;
+            this.lblUnit.TabIndex = 0;
             this.lblUnit.Text = "giây";
             // 
             // gbControl
@@ -81,7 +84,7 @@
             this.gbControl.Location = new System.Drawing.Point(12, 85);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(347, 56);
-            this.gbControl.TabIndex = 3;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -90,7 +93,7 @@
             this.btnSave.Location = new System.Drawing.Point(21, 20);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -104,6 +107,7 @@
             this.Controls.Add(this.gbDetail);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "DurationDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin thời lượng";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
@@ -115,7 +119,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblDuration;
-        private System.Windows.Forms.TextBox txtLength;
+        private NumberTextBox txtLength;
         private System.Windows.Forms.GroupBox gbDetail;
         private System.Windows.Forms.Label lblUnit;
         private System.Windows.Forms.GroupBox gbControl;

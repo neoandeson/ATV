@@ -60,6 +60,9 @@
             this.adgv.Size = new System.Drawing.Size(925, 379);
             this.adgv.TabIndex = 0;
             this.adgv.TimeFilter = false;
+            this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
+            this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
+            this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
             // 
             // gbControl
             // 
@@ -81,6 +84,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -90,6 +94,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // button1
             // 
@@ -99,6 +104,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Xem";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // ListTimeSlotForm
             // 

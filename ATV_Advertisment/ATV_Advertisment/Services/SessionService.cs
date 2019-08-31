@@ -10,6 +10,8 @@ namespace ATV_Advertisment.Services
     {
         Session GetById(int id);
         List<Session> GetAll();
+        Dictionary<string, string> Getoptions();
+        List<string> GetSessionCodeAndName();
         int DeleteSession(int id);
         int AddSession(Session input);
         int EditSession(Session input);
@@ -89,6 +91,17 @@ namespace ATV_Advertisment.Services
         public Session GetById(int id)
         {
             return _SessionRepository.GetById(id);
+        }
+
+        public Dictionary<string, string> Getoptions()
+        {
+            var options = _SessionRepository.GetAll().ToDictionary(x => x.Code, x => string.Format("{0} | {1}", x.Code, x.Name));
+            return options;
+        }
+
+        public List<string> GetSessionCodeAndName()
+        {
+            return _SessionRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).Select(q => q.Code + " | " + q.Name).ToList();
         }
     }
 }

@@ -19,12 +19,34 @@ namespace ATV_Advertisment.Forms.DetailForms
     {
         public TimeSlot model { get; set; }
         private TimeSlotService _timeSlotService = null;
+        private SessionService _sessionService = null;
 
         public TimeSlotDetailForm(TimeSlot inputModel)
         {
             this.model = inputModel;
             InitializeComponent();
+            LoadCboSession();
             LoadData();
+        }
+
+        public void LoadCboSession()
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                _sessionService = new SessionService();
+
+                Utilities.LoadComboBoxOptions(cboSession, _sessionService.Getoptions());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _sessionService = null;
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         public void LoadData()
@@ -37,10 +59,14 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model = _timeSlotService.GetById(model.Id);
                     if (model != null)
                     {
+                        cboSession.SelectedValue = model.SessionCode;
                         txtCode.Text = model.Code;
                         txtName.Text = model.Name;
                         txtPrice.Text = model.Price.ToString();
-                        //TODO hour from to
+                        txtFromHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
+                        txtFromMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
+                        txtToHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
+                        txtToMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
                     }
                 }
             }
@@ -70,7 +96,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         Code = txtCode.Text,
                         Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text)
+                        Price = double.Parse(txtPrice.Text),
+                        FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
+                        ToHour = Utilities.GetHourFromHourString(txtToHour.Text, txtToHour.Text),
+                        SessionCode = cboSession.SelectedValue.ToString()
                     };
                     result = _timeSlotService.AddTimeSlot(model);
                     if (result == CRUDStatusCode.SUCCESS)
@@ -94,6 +123,28 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             catch (Exception ex)
             {
+                throw;
+            }
+            finally
+            {
+                _timeSlotService = null;
+            }
+        }
+
+        private void txtCode_Validated(object sender, EventArgs e)
+        {
+            try
+            {
+                _timeSlotService = new TimeSlotService();
+                bool result = _timeSlotService.IsExistCode(txtCode.Text);
+                if (result)
+                {
+                    Utilities.ShowMessage(CommonMessage.UsED_CODE);
+                }
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
             finally

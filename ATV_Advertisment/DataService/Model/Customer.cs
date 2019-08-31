@@ -33,7 +33,7 @@ namespace DataService.Model
         [StringLength(14)]
         public string Fax { get; set; }
 
-        [StringLength(11)]
+        [StringLength(10)]
         public string TaxCode { get; set; }
 
         public int CustomerTypeId { get; set; }

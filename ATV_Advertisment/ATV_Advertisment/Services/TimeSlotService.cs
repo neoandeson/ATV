@@ -11,6 +11,8 @@ namespace ATV_Advertisment.Services
     {
         TimeSlot GetById(int id);
         List<TimeSlot> GetAll();
+        List<TimeSlot> GetAllForList();
+        bool IsExistCode(string code);
         int DeleteTimeSlot(int id);
         int AddTimeSlot(TimeSlot input);
         int EditTimeSlot(TimeSlot input);
@@ -19,10 +21,12 @@ namespace ATV_Advertisment.Services
     public class TimeSlotService : ITimeSlotService
     {
         private readonly TimeSlotRepository _TimeSlotRepository;
+        private readonly SessionRepository _sessionRepository;
 
         public TimeSlotService()
         {
             _TimeSlotRepository = new TimeSlotRepository();
+            _sessionRepository = new SessionRepository();
         }
 
         public int AddTimeSlot(TimeSlot input)
@@ -47,6 +51,18 @@ namespace ATV_Advertisment.Services
                 {
                     result = CRUDStatusCode.EXISTED;
                 }
+            }
+
+            return result;
+        }
+
+        public bool IsExistCode(string code)
+        {
+            bool result = false;
+            TimeSlot timeSlot = _TimeSlotRepository.Get(q => q.Code == code).FirstOrDefault();
+            if( timeSlot != null )
+            {
+                result = true;
             }
 
             return result;
@@ -97,6 +113,28 @@ namespace ATV_Advertisment.Services
         public TimeSlot GetById(int id)
         {
             return _TimeSlotRepository.GetById(id);
+        }
+
+        public List<TimeSlot> GetAllForList()
+        {
+            Dictionary<string, string> sessionCodeName = _sessionRepository
+                .Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .ToDictionary(q => q.Code, q => string.Format("{0} {1}", q.Code, q.Name));
+            return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .Select(ts => new TimeSlot() {
+                    Id = ts.Id,
+                    Code = ts.Code,
+                    StatusId = ts.StatusId,
+                    CreateDate = ts.CreateDate,
+                    FromHour = ts.FromHour,
+                    LastUpdateBy = ts.LastUpdateBy,
+                    LastUpdateDate = ts.LastUpdateDate,
+                    Name = ts.Name,
+                    Price = ts.Price,
+                    SessionCode = sessionCodeName.Where(s => s.Key == ts.SessionCode).FirstOrDefault().Value,
+                    ToHour = ts.ToHour
+                })
+                .ToList();
         }
     }
 }

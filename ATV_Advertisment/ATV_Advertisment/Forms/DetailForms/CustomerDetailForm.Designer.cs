@@ -74,7 +74,7 @@
             this.gbCustomerInfo.Name = "gbCustomerInfo";
             this.gbCustomerInfo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbCustomerInfo.Size = new System.Drawing.Size(744, 289);
-            this.gbCustomerInfo.TabIndex = 1;
+            this.gbCustomerInfo.TabIndex = 0;
             this.gbCustomerInfo.TabStop = false;
             this.gbCustomerInfo.Text = "Thông tin";
             // 
@@ -85,63 +85,70 @@
             this.cboCustomerType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboCustomerType.Name = "cboCustomerType";
             this.cboCustomerType.Size = new System.Drawing.Size(200, 28);
-            this.cboCustomerType.TabIndex = 15;
+            this.cboCustomerType.TabIndex = 2;
             // 
             // txtFax
             // 
             this.txtFax.Location = new System.Drawing.Point(116, 239);
             this.txtFax.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFax.MaxLength = 14;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(200, 26);
-            this.txtFax.TabIndex = 14;
+            this.txtFax.TabIndex = 7;
             // 
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(116, 39);
             this.txtCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCode.MaxLength = 20;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(200, 26);
-            this.txtCode.TabIndex = 13;
+            this.txtCode.TabIndex = 1;
             // 
             // txtPhone2
             // 
             this.txtPhone2.Location = new System.Drawing.Point(510, 191);
             this.txtPhone2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhone2.MaxLength = 14;
             this.txtPhone2.Name = "txtPhone2";
             this.txtPhone2.Size = new System.Drawing.Size(200, 26);
-            this.txtPhone2.TabIndex = 12;
+            this.txtPhone2.TabIndex = 6;
             // 
             // txtTaxCode
             // 
             this.txtTaxCode.Location = new System.Drawing.Point(510, 242);
             this.txtTaxCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTaxCode.MaxLength = 10;
             this.txtTaxCode.Name = "txtTaxCode";
             this.txtTaxCode.Size = new System.Drawing.Size(163, 26);
-            this.txtTaxCode.TabIndex = 11;
+            this.txtTaxCode.TabIndex = 8;
             // 
             // txtPhone1
             // 
             this.txtPhone1.Location = new System.Drawing.Point(116, 194);
             this.txtPhone1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhone1.MaxLength = 14;
             this.txtPhone1.Name = "txtPhone1";
             this.txtPhone1.Size = new System.Drawing.Size(200, 26);
-            this.txtPhone1.TabIndex = 10;
+            this.txtPhone1.TabIndex = 5;
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(116, 147);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddress.MaxLength = 200;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(594, 26);
-            this.txtAddress.TabIndex = 9;
+            this.txtAddress.TabIndex = 4;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(116, 104);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.MaxLength = 10;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(594, 26);
-            this.txtName.TabIndex = 8;
+            this.txtName.TabIndex = 3;
             // 
             // lblCode
             // 
@@ -150,7 +157,7 @@
             this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(31, 20);
-            this.lblCode.TabIndex = 7;
+            this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Mã";
             // 
             // lblType
@@ -160,7 +167,7 @@
             this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(73, 20);
-            this.lblType.TabIndex = 6;
+            this.lblType.TabIndex = 0;
             this.lblType.Text = "Loại hình";
             // 
             // lblTaxCode
@@ -170,7 +177,7 @@
             this.lblTaxCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTaxCode.Name = "lblTaxCode";
             this.lblTaxCode.Size = new System.Drawing.Size(88, 20);
-            this.lblTaxCode.TabIndex = 5;
+            this.lblTaxCode.TabIndex = 0;
             this.lblTaxCode.Text = "Mã số thuế";
             // 
             // lblFax
@@ -180,7 +187,7 @@
             this.lblFax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(35, 20);
-            this.lblFax.TabIndex = 4;
+            this.lblFax.TabIndex = 0;
             this.lblFax.Text = "Fax";
             // 
             // lblPhone2
@@ -190,7 +197,7 @@
             this.lblPhone2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone2.Name = "lblPhone2";
             this.lblPhone2.Size = new System.Drawing.Size(54, 20);
-            this.lblPhone2.TabIndex = 3;
+            this.lblPhone2.TabIndex = 0;
             this.lblPhone2.Text = "SĐT 2";
             // 
             // lblPhone1
@@ -200,7 +207,7 @@
             this.lblPhone1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone1.Name = "lblPhone1";
             this.lblPhone1.Size = new System.Drawing.Size(54, 20);
-            this.lblPhone1.TabIndex = 2;
+            this.lblPhone1.TabIndex = 0;
             this.lblPhone1.Text = "SĐT 1";
             // 
             // lblAddress
@@ -210,7 +217,7 @@
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(57, 20);
-            this.lblAddress.TabIndex = 1;
+            this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Địa chỉ";
             // 
             // lblName
@@ -230,7 +237,7 @@
             this.gbControl.Location = new System.Drawing.Point(13, 311);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(750, 63);
-            this.gbControl.TabIndex = 2;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -240,7 +247,7 @@
             this.btnSave.Location = new System.Drawing.Point(24, 23);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

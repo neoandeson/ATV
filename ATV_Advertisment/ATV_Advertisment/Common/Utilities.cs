@@ -27,6 +27,13 @@ namespace ATV_Advertisment.Common
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void ShowReturnMessage(int type, string message)
+        {
+            //TODO show message by type
+            var cursor = Cursor.Current;
+            MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         public static bool IsNumberic(string strNum, out int number)
         {
             bool isNumeric = int.TryParse(strNum, out number);
@@ -51,6 +58,28 @@ namespace ATV_Advertisment.Common
             comboBox.DataSource = new BindingSource(pairs, null);
             comboBox.DisplayMember = "Value";
             comboBox.ValueMember = "Key";
+        }
+
+        public static void LoadComboBoxOptions(ComboBox comboBox, Dictionary<string, string> pairs)
+        {
+            comboBox.DataSource = new BindingSource(pairs, null);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+        }
+
+        public static int GetHourFromHourInt(int hourInt)
+        {
+            return hourInt / 100;
+        }
+
+        public static int GetMinuteFromHourInt(int hourInt)
+        {
+            return hourInt % 100;
+        }
+
+        public static int GetHourFromHourString(string hour, string minute)
+        {
+            return int.Parse(hour) * 100 + int.Parse(minute); 
         }
 
         public static Form OpenFormByName(string formName, out bool isLogout)

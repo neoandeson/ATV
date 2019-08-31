@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
-            this.gbControl = new System.Windows.Forms.GroupBox();
-            this.lblCode = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
+            this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
@@ -52,15 +52,30 @@
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin";
             // 
-            // gbControl
+            // txtName
             // 
-            this.gbControl.Controls.Add(this.btnSave);
-            this.gbControl.Location = new System.Drawing.Point(13, 146);
-            this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(557, 66);
-            this.gbControl.TabIndex = 1;
-            this.gbControl.TabStop = false;
-            this.gbControl.Text = "Thao tác";
+            this.txtName.Location = new System.Drawing.Point(103, 81);
+            this.txtName.MaxLength = 50;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(410, 26);
+            this.txtName.TabIndex = 2;
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(103, 35);
+            this.txtCode.MaxLength = 1;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(33, 26);
+            this.txtCode.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(33, 82);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(36, 20);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Tên";
             // 
             // lblCode
             // 
@@ -71,37 +86,22 @@
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Mã";
             // 
-            // lblName
+            // gbControl
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(33, 82);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(36, 20);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Tên";
-            // 
-            // txtCode
-            // 
-            this.txtCode.Location = new System.Drawing.Point(103, 35);
-            this.txtCode.MaxLength = 1;
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(33, 26);
-            this.txtCode.TabIndex = 2;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(103, 81);
-            this.txtName.MaxLength = 50;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(410, 26);
-            this.txtName.TabIndex = 3;
+            this.gbControl.Controls.Add(this.btnSave);
+            this.gbControl.Location = new System.Drawing.Point(13, 146);
+            this.gbControl.Name = "gbControl";
+            this.gbControl.Size = new System.Drawing.Size(557, 66);
+            this.gbControl.TabIndex = 0;
+            this.gbControl.TabStop = false;
+            this.gbControl.Text = "Thao tác";
             // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(27, 26);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -115,6 +115,7 @@
             this.Controls.Add(this.gbDetail);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "SessionDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin buổi phát";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();

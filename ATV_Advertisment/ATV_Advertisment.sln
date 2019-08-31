@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATV_Advertisment", "ATV_Adv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{F4B75E27-3BFF-4F6F-851C-2C9994B7C0CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TControls", "TControls\TControls.csproj", "{F6B6B2B6-5061-4389-B74D-01C5109067E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F4B75E27-3BFF-4F6F-851C-2C9994B7C0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4B75E27-3BFF-4F6F-851C-2C9994B7C0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4B75E27-3BFF-4F6F-851C-2C9994B7C0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B6B2B6-5061-4389-B74D-01C5109067E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B6B2B6-5061-4389-B74D-01C5109067E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B6B2B6-5061-4389-B74D-01C5109067E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B6B2B6-5061-4389-B74D-01C5109067E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

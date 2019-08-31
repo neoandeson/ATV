@@ -251,6 +251,10 @@
       <Project>{F4B75E27-3BFF-4F6F-851C-2C9994B7C0CF}</Project>
       <Name>DataService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TControls\TControls.csproj">
+      <Project>{f6b6b2b6-5061-4389-b74d-01c5109067e7}</Project>
+      <Name>TControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\background1.jpg" />
@@ -259,6 +263,9 @@
     <Content Include="Assets\LogoATVSM.ico" />
     <Content Include="Assets\LogoATVSM.jpg" />
     <None Include="Resources\background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\Windows\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

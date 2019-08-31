@@ -55,16 +55,18 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(98, 73);
+            this.txtDescription.MaxLength = 50;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(657, 26);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabIndex = 2;
             // 
             // txtType
             // 
             this.txtType.Location = new System.Drawing.Point(98, 26);
+            this.txtType.MaxLength = 20;
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(425, 26);
-            this.txtType.TabIndex = 2;
+            this.txtType.TabIndex = 1;
             // 
             // lblDescription
             // 
@@ -72,7 +74,7 @@
             this.lblDescription.Location = new System.Drawing.Point(18, 75);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(49, 20);
-            this.lblDescription.TabIndex = 1;
+            this.lblDescription.TabIndex = 0;
             this.lblDescription.Text = "Mô tả";
             // 
             // lblType
@@ -90,7 +92,7 @@
             this.gbControl.Location = new System.Drawing.Point(13, 130);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(775, 68);
-            this.gbControl.TabIndex = 1;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -99,7 +101,7 @@
             this.btnSave.Location = new System.Drawing.Point(22, 26);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -112,6 +114,7 @@
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbDetail);
             this.Name = "CustomerTypeDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerTypeDetailForm";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();

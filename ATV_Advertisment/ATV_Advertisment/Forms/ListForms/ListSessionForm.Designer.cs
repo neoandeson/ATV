@@ -58,7 +58,7 @@
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.adgv.Size = new System.Drawing.Size(383, 438);
-            this.adgv.TabIndex = 0;
+            this.adgv.TabIndex = 1;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
@@ -72,7 +72,7 @@
             this.gbControl.Location = new System.Drawing.Point(12, 487);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(398, 68);
-            this.gbControl.TabIndex = 1;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -81,7 +81,7 @@
             this.btnDelete.Location = new System.Drawing.Point(280, 25);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -91,7 +91,7 @@
             this.btnAdd.Location = new System.Drawing.Point(151, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -101,7 +101,7 @@
             this.btnViewDetail.Location = new System.Drawing.Point(19, 25);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
-            this.btnViewDetail.TabIndex = 0;
+            this.btnViewDetail.TabIndex = 2;
             this.btnViewDetail.Text = "Xem";
             this.btnViewDetail.UseVisualStyleBackColor = true;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
