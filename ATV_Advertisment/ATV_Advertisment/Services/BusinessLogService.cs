@@ -1,19 +1,25 @@
-﻿using DataService.Infrastructure;
-using DataService.Model;
+﻿using DataService.Model;
 using DataService.Repositories;
-using System;
-using System.Linq;
-using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Services
 {
     public interface IBusinessLogService
     {
-        
+        void Log(BusinessLog input);
     }
 
     public class BusinessLogService : IBusinessLogService
     {
-        
+        private readonly BusinessLogRepository _businessLogRepository;
+
+        public BusinessLogService()
+        {
+            _businessLogRepository = new BusinessLogRepository();
+        }
+
+        public void Log(BusinessLog input)
+        {
+            _businessLogRepository.Add(input);
+        }
     }
 }

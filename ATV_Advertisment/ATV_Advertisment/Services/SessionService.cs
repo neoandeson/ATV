@@ -1,5 +1,4 @@
-﻿using ATV_Advertisment;
-using DataService.Model;
+﻿using DataService.Model;
 using DataService.Repositories;
 using System.Collections.Generic;
 using System.Linq;
