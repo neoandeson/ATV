@@ -34,6 +34,10 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblCurrency = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblColon1 = new System.Windows.Forms.Label();
+            this.txtToHour = new NumberTextBox(2);
+            this.txtToMinute = new NumberTextBox(2);
+            this.txtFromHour = new NumberTextBox(2);
+            this.txtFromMinute = new NumberTextBox(2);
             this.txtCode = new System.Windows.Forms.TextBox();
             this.txtPrice = new TControls.MoneyTextBox();
             this.txtName = new System.Windows.Forms.TextBox();

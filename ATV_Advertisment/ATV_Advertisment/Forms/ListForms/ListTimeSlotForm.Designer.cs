@@ -54,6 +54,7 @@
             this.adgv.AutoGenerateContextFilters = true;
             this.adgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgv.DateWithTime = false;
+            this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(7, 26);
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -66,6 +67,7 @@
             // 
             // gbControl
             // 
+            this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnDelete);
             this.gbControl.Controls.Add(this.btnAdd);
             this.gbControl.Controls.Add(this.button1);
@@ -78,32 +80,35 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
             this.btnDelete.Location = new System.Drawing.Point(337, 25);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btnAdd.Location = new System.Drawing.Point(179, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(20, 25);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "Xem";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // ListTimeSlotForm
@@ -114,6 +119,7 @@
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbDetail);
             this.Name = "ListTimeSlotForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách thời điểm phát";
             this.gbDetail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).EndInit();

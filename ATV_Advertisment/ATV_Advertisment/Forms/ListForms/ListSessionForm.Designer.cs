@@ -54,6 +54,7 @@
             this.adgv.AutoGenerateContextFilters = true;
             this.adgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgv.DateWithTime = false;
+            this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(7, 24);
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -66,6 +67,7 @@
             // 
             // gbControl
             // 
+            this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnDelete);
             this.gbControl.Controls.Add(this.btnAdd);
             this.gbControl.Controls.Add(this.btnViewDetail);
@@ -78,32 +80,35 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
             this.btnDelete.Location = new System.Drawing.Point(280, 25);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btnAdd.Location = new System.Drawing.Point(151, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnViewDetail
             // 
+            this.btnViewDetail.BackColor = System.Drawing.SystemColors.Control;
             this.btnViewDetail.Location = new System.Drawing.Point(19, 25);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
             this.btnViewDetail.TabIndex = 2;
             this.btnViewDetail.Text = "Xem";
-            this.btnViewDetail.UseVisualStyleBackColor = true;
+            this.btnViewDetail.UseVisualStyleBackColor = false;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // ListSessionForm
@@ -115,6 +120,7 @@
             this.Controls.Add(this.gbList);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "ListSessionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách buổi phát";
             this.gbList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).EndInit();

@@ -106,6 +106,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // gbControl
             // 
+            this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnSave);
             this.gbControl.Location = new System.Drawing.Point(13, 99);
             this.gbControl.Name = "gbControl";
@@ -116,12 +117,13 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.Location = new System.Drawing.Point(23, 25);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // DiscountDetailForm

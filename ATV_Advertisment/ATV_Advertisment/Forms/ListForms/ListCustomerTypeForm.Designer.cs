@@ -67,6 +67,7 @@
             // 
             // gbControl
             // 
+            this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnViewDetail);
             this.gbControl.Controls.Add(this.btnDelete);
             this.gbControl.Controls.Add(this.btnAdd);
@@ -79,32 +80,35 @@
             // 
             // btnViewDetail
             // 
+            this.btnViewDetail.BackColor = System.Drawing.SystemColors.Control;
             this.btnViewDetail.Location = new System.Drawing.Point(19, 23);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
             this.btnViewDetail.TabIndex = 2;
             this.btnViewDetail.Text = "Xem";
-            this.btnViewDetail.UseVisualStyleBackColor = true;
+            this.btnViewDetail.UseVisualStyleBackColor = false;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
             this.btnDelete.Location = new System.Drawing.Point(336, 23);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btnAdd.Location = new System.Drawing.Point(180, 23);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // ListCustomerTypeForm
@@ -115,6 +119,7 @@
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbList);
             this.Name = "ListCustomerTypeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListCustomerTypeForm";
             this.gbList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).EndInit();

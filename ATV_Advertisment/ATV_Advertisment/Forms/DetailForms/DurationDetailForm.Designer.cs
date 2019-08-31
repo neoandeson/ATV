@@ -48,15 +48,6 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblDuration.TabIndex = 0;
             this.lblDuration.Text = "Thời lượng";
             // 
-            // txtLength
-            // 
-            this.txtLength.Location = new System.Drawing.Point(115, 28);
-            this.txtLength.MaxLength = 3;
-            this.txtLength.Name = "txtLength";
-            this.txtLength.NumberValue = 0;
-            this.txtLength.Size = new System.Drawing.Size(118, 26);
-            this.txtLength.TabIndex = 1;
-            // 
             // gbDetail
             // 
             this.gbDetail.Controls.Add(this.lblUnit);
@@ -78,8 +69,18 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblUnit.TabIndex = 0;
             this.lblUnit.Text = "giây";
             // 
+            // txtLength
+            // 
+            this.txtLength.Location = new System.Drawing.Point(115, 28);
+            this.txtLength.MaxLength = 3;
+            this.txtLength.Name = "txtLength";
+            this.txtLength.NumberValue = 0;
+            this.txtLength.Size = new System.Drawing.Size(118, 26);
+            this.txtLength.TabIndex = 1;
+            // 
             // gbControl
             // 
+            this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnSave);
             this.gbControl.Location = new System.Drawing.Point(12, 85);
             this.gbControl.Name = "gbControl";
@@ -90,12 +91,13 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.Location = new System.Drawing.Point(21, 20);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // DurationDetailForm
