@@ -42,6 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -85,6 +88,18 @@
     <Compile Include="Forms\CommonForms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DetailForms\ContractDetailDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractDetailDetailForm.Designer.cs">
+      <DependentUpon>ContractDetailDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractDetailForm.Designer.cs">
+      <DependentUpon>ContractDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DetailForms\CustomerDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +124,12 @@
     <Compile Include="Forms\DetailForms\DurationDetailForm.Designer.cs">
       <DependentUpon>DurationDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DetailForms\ProductScheduleDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ProductScheduleDetailForm.Designer.cs">
+      <DependentUpon>ProductScheduleDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DetailForms\SessionDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +141,12 @@
     </Compile>
     <Compile Include="Forms\DetailForms\TimeSlotDetailForm.Designer.cs">
       <DependentUpon>TimeSlotDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InputForms\ListContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputForms\ListContractForm.Designer.cs">
+      <DependentUpon>ListContractForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ListForms\ListCustomerForm.cs">
       <SubType>Form</SubType>
@@ -164,6 +191,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ContractTypeService.cs" />
     <Compile Include="Services\CustomerTypeService.cs" />
     <Compile Include="Services\TimeSlotService.cs" />
     <Compile Include="Services\DiscountService.cs" />
@@ -178,6 +206,8 @@
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\MenuItemService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModel\ContractViewModel.cs" />
+    <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
     <EmbeddedResource Include="Assets\FormResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormResource.Designer.cs</LastGenOutput>
@@ -191,6 +221,12 @@
     <EmbeddedResource Include="Forms\CommonForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ContractDetailDetailForm.resx">
+      <DependentUpon>ContractDetailDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ContractDetailForm.resx">
+      <DependentUpon>ContractDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DetailForms\CustomerDetailForm.resx">
       <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,11 +239,17 @@
     <EmbeddedResource Include="Forms\DetailForms\DurationDetailForm.resx">
       <DependentUpon>DurationDetailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ProductScheduleDetailForm.resx">
+      <DependentUpon>ProductScheduleDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DetailForms\SessionDetailForm.resx">
       <DependentUpon>SessionDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DetailForms\TimeSlotDetailForm.resx">
       <DependentUpon>TimeSlotDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputForms\ListContractForm.resx">
+      <DependentUpon>ListContractForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListCustomerForm.resx">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>
@@ -264,8 +306,6 @@
     <Content Include="Assets\LogoATVSM.jpg" />
     <None Include="Resources\background.bmp" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="System\Windows\Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

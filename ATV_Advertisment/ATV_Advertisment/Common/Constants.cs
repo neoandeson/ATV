@@ -13,6 +13,8 @@ namespace ATV_Advertisment.Common
             public static int ACTIVE = 1;
             public static int DISABLE = 0;
             public static int DELETE = -1;
+            //Contract
+            public static int CANCEL = -2;
         }
 
         public static class CommonMessage
@@ -22,7 +24,8 @@ namespace ATV_Advertisment.Common
             public static string ALREADY_LOGIN = "Tài khoản hiện đang được đăng nhập";
 
             public static string APPLICATION_IS_RUNNING = "Ứng dụng đang chạy";
-            public static string UsED_CODE = "Mã đã được sử dụng";
+            public static string USED_CODE = "Mã đã được sử dụng";
+            public static string CUSTOMER_NOTFOUND = "Không tìm thấy thông tin khách hàng";
             public static string ADD_SUCESSFULLY = "Thêm mới thành công";
             public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
             public static string DELETE_SUCESSFULLY = "Xóa thành công";
@@ -46,6 +49,11 @@ namespace ATV_Advertisment.Common
             public static string Duration = "Thời lượng";
             //TimSlots
             public static string Session = "Buổi";
+            //contracts
+            public static string CustomerCode = "Mã KH";
+            public static string StartDate = "Bắt đầu";
+            public static string EndDate = "Kết thúc";
+            public static string ContractType = "Loại HĐ";
         }
 
         public static class BusinessLogType

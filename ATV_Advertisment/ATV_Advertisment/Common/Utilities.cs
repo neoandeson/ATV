@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
-using static ATV_Advertisment.Common.Constants;
+using ATV_Advertisment.Forms.InputForms;
 
 namespace ATV_Advertisment.Common
 {
@@ -54,6 +54,13 @@ namespace ATV_Advertisment.Common
         }
 
         public static void LoadComboBoxOptions(ComboBox comboBox, Dictionary<int, string> pairs)
+        {
+            comboBox.DataSource = new BindingSource(pairs, null);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+        }
+
+        public static void LoadComboBoxOptions(ComboBox comboBox, Dictionary<int, int> pairs)
         {
             comboBox.DataSource = new BindingSource(pairs, null);
             comboBox.DisplayMember = "Value";
@@ -128,6 +135,10 @@ namespace ATV_Advertisment.Common
                     case "Danh mục giảm giá":
                         ListDiscountForm listDiscountForm = new ListDiscountForm();
                         form = (Form)listDiscountForm;
+                        break;
+                    case "Hợp đồng quảng cáo":
+                        ListContractForm listContractForm = new ListContractForm();
+                        form = (Form)listContractForm;
                         break;
 
                     case "Logout":

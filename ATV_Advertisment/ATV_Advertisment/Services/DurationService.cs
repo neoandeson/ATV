@@ -13,6 +13,7 @@ namespace ATV_Advertisment.Services
     {
         Duration GetById(int id);
         List<Duration> GetAll();
+        Dictionary<int, int> Getoptions();
         int DeleteDuration(int id);
         int AddDuration(Duration input);
         int EditDuration(Duration input);
@@ -97,6 +98,12 @@ namespace ATV_Advertisment.Services
         public Duration GetById(int id)
         {
             return _DurationRepository.GetById(id);
+        }
+
+        public Dictionary<int, int> Getoptions()
+        {
+            var options = _DurationRepository.GetAll().ToDictionary(x => x.Id, x => x.Length);
+            return options;
         }
     }
 }

@@ -12,6 +12,8 @@ namespace ATV_Advertisment.Services
     public interface ICustomerService
     {
         List<Customer> GetAll();
+        List<string> GetAllCustomerCode();
+        Customer GetByCode(string code);
         bool DeleteCustomer(int customerId);
         bool AddCustomer(Customer input);
         bool EditCustomer(Customer input);
@@ -88,6 +90,16 @@ namespace ATV_Advertisment.Services
             }
              
             return result;
+        }
+
+        public List<string> GetAllCustomerCode()
+        {
+            return _customerRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).Select(c => c.Code).ToList();
+        }
+
+        public Customer GetByCode(string code)
+        {
+            return _customerRepository.Get(c => c.Code == code).FirstOrDefault();
         }
     }
 }

@@ -6,25 +6,17 @@ namespace DataService.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Contract")]
-    public partial class Contract
+    [Table("ContractType")]
+    public partial class ContractType
     {
         public int Id { get; set; }
 
-        [StringLength(8)]
-        public string Code { get; set; }
-
         [Required]
-        [StringLength(20)]
-        public string CustomerCode { get; set; }
+        [StringLength(30)]
+        public string Type { get; set; }
 
-        public int ContractTypeId { get; set; }
-
-        public double Cost { get; set; }
-
-        public DateTime? StartDate { get; set; }
-
-        public DateTime? EndDate { get; set; }
+        [StringLength(100)]
+        public string Description { get; set; }
 
         public int StatusId { get; set; }
 

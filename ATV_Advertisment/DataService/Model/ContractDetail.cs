@@ -11,11 +11,22 @@ namespace DataService.Model
     {
         public int Id { get; set; }
 
+        public int ContractId { get; set; }
+
         [Required]
-        [StringLength(10)]
+        [StringLength(80)]
         public string ProductName { get; set; }
 
         public int DurationSecond { get; set; }
+
+        public double Discount { get; set; }
+
+        public bool IsApplyDiscount { get; set; }
+
+        [StringLength(10)]
+        public string Cost { get; set; }
+
+        public double TotalCost { get; set; }
 
         public string JSONSchedule { get; set; }
 

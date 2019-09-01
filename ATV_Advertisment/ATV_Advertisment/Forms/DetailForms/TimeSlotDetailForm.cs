@@ -62,11 +62,11 @@ namespace ATV_Advertisment.Forms.DetailForms
                         cboSession.SelectedValue = model.SessionCode;
                         txtCode.Text = model.Code;
                         txtName.Text = model.Name;
-                        txtPrice.Text = model.Price.ToString();
+                        txtPrice.Text = String.Format("{0:0,0}", model.Price);
                         txtFromHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
                         txtFromMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
-                        txtToHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
-                        txtToMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
+                        txtToHour.Text = Utilities.GetHourFromHourInt(model.ToHour).ToString();
+                        txtToMinute.Text = Utilities.GetMinuteFromHourInt(model.ToHour).ToString();
                     }
                 }
             }
@@ -113,6 +113,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model.Code = txtCode.Text;
                     model.Name = txtName.Text;
                     model.Price = double.Parse(txtPrice.Text);
+                    model.FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text);
+                    model.ToHour = Utilities.GetHourFromHourString(txtToHour.Text, txtToMinute.Text);
+                    model.SessionCode = cboSession.SelectedValue.ToString();
 
                     result = _timeSlotService.EditTimeSlot(model);
                     if (result == CRUDStatusCode.SUCCESS)
@@ -139,7 +142,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 bool result = _timeSlotService.IsExistCode(txtCode.Text);
                 if (result)
                 {
-                    Utilities.ShowMessage(CommonMessage.UsED_CODE);
+                    Utilities.ShowMessage(CommonMessage.USED_CODE);
                 }
             }
             catch (Exception)

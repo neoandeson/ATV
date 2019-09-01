@@ -15,6 +15,7 @@ namespace DataService.Model
         public virtual DbSet<BusinessLog> BusinessLogs { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<ContractDetail> ContractDetails { get; set; }
+        public virtual DbSet<ContractType> ContractTypes { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerType> CustomerTypes { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
@@ -23,13 +24,18 @@ namespace DataService.Model
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RoleHasMenuItem> RoleHasMenuItems { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<SystemLog> SystemLogs { get; set; }
         public virtual DbSet<TimeSlot> TimeSlots { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Contract>()
+                .Property(e => e.Code)
+                .IsFixedLength();
+
             modelBuilder.Entity<ContractDetail>()
-                .Property(e => e.ProductName)
+                .Property(e => e.Cost)
                 .IsFixedLength();
 
             modelBuilder.Entity<CustomerType>()
