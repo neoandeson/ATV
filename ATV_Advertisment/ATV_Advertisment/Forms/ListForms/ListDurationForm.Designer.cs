@@ -56,6 +56,7 @@
             this.adgv.DateWithTime = false;
             this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(6, 26);
+            this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.adgv.Size = new System.Drawing.Size(410, 405);

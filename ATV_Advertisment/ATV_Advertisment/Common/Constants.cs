@@ -30,6 +30,12 @@ namespace ATV_Advertisment.Common
             public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
             public static string DELETE_SUCESSFULLY = "Xóa thành công";
             public static string UPDATE_SUCESSFULLY = "Cập nhật thành công";
+            public static string CANCEL_SUCESSFULLY = "Cập nhật thành công";
+
+            public static string CONFIRM_DELETE = "Có phải bạn muốn xóa thông tin này ?";
+
+            public static string EXISTED_PRODUCT_IN_CONTRACT = "Sản phẩm đã được tạo trong hợp đồng";
+            public static string EXISTED_PRODUCT_SCHEDULE = "Sản phẩm đã được tạo lịch vào (Thời điểm phát, Ngày chiếu) này";
         }
 
         public static class ADGVText
@@ -44,16 +50,24 @@ namespace ATV_Advertisment.Common
             public static string CustomerType = "Loại hình";
             //Discounts
             public static string PriceRate = "Mức giá";
-            public static string Discount = "Tỷ lệ (%)";
+            public static string Discount = "Giảm giá (%)";
             //Durations
             public static string Duration = "Thời lượng";
             //TimSlots
             public static string Session = "Buổi";
-            //contracts
+            //Contracts
             public static string CustomerCode = "Mã KH";
+            public static string ContractCode = "Mã HĐ";
             public static string StartDate = "Bắt đầu";
             public static string EndDate = "Kết thúc";
             public static string ContractType = "Loại HĐ";
+            public static string Cost = "Giá tiền (VNĐ)";
+            //ContractDetail
+            public static string BelongToContractCode = "Mã hợp đồng";
+            public static string ShowDate = "Ngày chiếu";
+            public static string TimeSlot = "Khung giờ";
+            public static string Quantity = "Số lượng";
+            public static string TotalCost = "Thành tiền (VNĐ)";
         }
 
         public static class BusinessLogType
@@ -80,7 +94,7 @@ namespace ATV_Advertisment.Common
             public static int TEXTBOX_WIDTH_NORMAL = 140;
             public static int TEXTBOX_HEIGHT = 26;
 
-            public static int GV_WIDTH_NORMAL = 120;
+            public static int GV_WIDTH_NORMAL = 150;
         }
         #endregion
     }

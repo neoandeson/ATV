@@ -11,7 +11,9 @@ namespace DataService.Model
     {
         public int Id { get; set; }
 
-        public int ContractId { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string ContractCode { get; set; }
 
         [Required]
         [StringLength(80)]
@@ -19,16 +21,7 @@ namespace DataService.Model
 
         public int DurationSecond { get; set; }
 
-        public double Discount { get; set; }
-
-        public bool IsApplyDiscount { get; set; }
-
-        [StringLength(10)]
-        public string Cost { get; set; }
-
         public double TotalCost { get; set; }
-
-        public string JSONSchedule { get; set; }
 
         public int StatusId { get; set; }
 

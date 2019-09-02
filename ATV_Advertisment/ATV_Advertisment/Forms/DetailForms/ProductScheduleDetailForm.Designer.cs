@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.txtDuration = new System.Windows.Forms.TextBox();
+            this.cboTimeSlot = new System.Windows.Forms.ComboBox();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtTotalCost = new TControls.MoneyTextBox();
             this.txtCost = new TControls.MoneyTextBox();
             this.dtpShowDate = new System.Windows.Forms.DateTimePicker();
@@ -40,10 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblShowDate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.cboTimeSlot = new System.Windows.Forms.ComboBox();
-            this.txtDuration = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
@@ -71,6 +71,40 @@
             this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin lịch";
+            // 
+            // txtDuration
+            // 
+            this.txtDuration.Location = new System.Drawing.Point(140, 129);
+            this.txtDuration.Name = "txtDuration";
+            this.txtDuration.ReadOnly = true;
+            this.txtDuration.Size = new System.Drawing.Size(72, 26);
+            this.txtDuration.TabIndex = 13;
+            // 
+            // cboTimeSlot
+            // 
+            this.cboTimeSlot.FormattingEnabled = true;
+            this.cboTimeSlot.Location = new System.Drawing.Point(140, 36);
+            this.cboTimeSlot.Name = "cboTimeSlot";
+            this.cboTimeSlot.Size = new System.Drawing.Size(200, 28);
+            this.cboTimeSlot.TabIndex = 12;
+            this.cboTimeSlot.SelectedIndexChanged += new System.EventHandler(this.cboTimeSlot_SelectedIndexChanged);
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(525, 129);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.ReadOnly = true;
+            this.txtDiscount.Size = new System.Drawing.Size(74, 26);
+            this.txtDiscount.TabIndex = 11;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(140, 81);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(72, 26);
+            this.txtQuantity.TabIndex = 10;
+            this.txtQuantity.Text = "1";
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             // 
             // txtTotalCost
             // 
@@ -179,37 +213,6 @@
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(140, 81);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(72, 26);
-            this.txtQuantity.TabIndex = 10;
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(525, 129);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.ReadOnly = true;
-            this.txtDiscount.Size = new System.Drawing.Size(74, 26);
-            this.txtDiscount.TabIndex = 11;
-            // 
-            // cboTimeSlot
-            // 
-            this.cboTimeSlot.FormattingEnabled = true;
-            this.cboTimeSlot.Location = new System.Drawing.Point(140, 36);
-            this.cboTimeSlot.Name = "cboTimeSlot";
-            this.cboTimeSlot.Size = new System.Drawing.Size(200, 28);
-            this.cboTimeSlot.TabIndex = 12;
-            // 
-            // txtDuration
-            // 
-            this.txtDuration.Location = new System.Drawing.Point(140, 129);
-            this.txtDuration.Name = "txtDuration";
-            this.txtDuration.ReadOnly = true;
-            this.txtDuration.Size = new System.Drawing.Size(72, 26);
-            this.txtDuration.TabIndex = 13;
-            // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(24, 22);
@@ -218,8 +221,9 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // ProductScheduleForm
+            // ProductScheduleDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,7 +231,8 @@
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbDetail);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.Name = "ProductScheduleForm";
+            this.Name = "ProductScheduleDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chi tiết lịch";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();

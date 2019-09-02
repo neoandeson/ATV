@@ -12,6 +12,7 @@ namespace ATV_Advertisment.Services
         TimeSlot GetById(int id);
         List<TimeSlot> GetAll();
         List<TimeSlot> GetAllForList();
+        List<KeyValuePair<double, string>> Getoptions();
         bool IsExistCode(string code);
         int DeleteTimeSlot(int id);
         int AddTimeSlot(TimeSlot input);
@@ -135,6 +136,19 @@ namespace ATV_Advertisment.Services
                     ToHour = ts.ToHour
                 })
                 .ToList();
+        }
+
+        public List<KeyValuePair<double, string>> Getoptions()
+        {
+            List<KeyValuePair<double, string>> result = new List<KeyValuePair<double, string>>();
+            KeyValuePair<double, string> op = new KeyValuePair<double, string>();
+            var options = _TimeSlotRepository.Get(t => t.StatusId == CommonStatus.ACTIVE);
+            foreach (var option in options)
+            {
+                op = new KeyValuePair<double, string>(option.Price, option.Name);
+                result.Add(op);
+            }
+            return result;
         }
     }
 }

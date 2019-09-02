@@ -21,9 +21,11 @@ namespace DataService.Model
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<Duration> Durations { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }
+        public virtual DbSet<ProductScheduleShow> ProductScheduleShows { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RoleHasMenuItem> RoleHasMenuItems { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<SystemLog> SystemLogs { get; set; }
         public virtual DbSet<TimeSlot> TimeSlots { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -32,10 +34,6 @@ namespace DataService.Model
         {
             modelBuilder.Entity<Contract>()
                 .Property(e => e.Code)
-                .IsFixedLength();
-
-            modelBuilder.Entity<ContractDetail>()
-                .Property(e => e.Cost)
                 .IsFixedLength();
 
             modelBuilder.Entity<CustomerType>()

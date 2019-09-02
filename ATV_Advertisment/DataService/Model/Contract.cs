@@ -11,7 +11,8 @@ namespace DataService.Model
     {
         public int Id { get; set; }
 
-        [StringLength(8)]
+        [Required]
+        [StringLength(10)]
         public string Code { get; set; }
 
         [Required]

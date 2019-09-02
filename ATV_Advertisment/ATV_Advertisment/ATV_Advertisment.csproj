@@ -193,6 +193,8 @@
     </Compile>
     <Compile Include="Services\ContractTypeService.cs" />
     <Compile Include="Services\CustomerTypeService.cs" />
+    <Compile Include="Services\ProductScheduleShowService.cs" />
+    <Compile Include="Services\SystemConfigService.cs" />
     <Compile Include="Services\TimeSlotService.cs" />
     <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\CustomerService.cs" />

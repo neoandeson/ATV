@@ -6,6 +6,8 @@ namespace ATV_Advertisment.ViewModel
     {
         public int Id { get; set; }
 
+        public string ContractCode { get; set; }
+
         public string CustomerCode { get; set; }
 
         public string ContractType { get; set; }

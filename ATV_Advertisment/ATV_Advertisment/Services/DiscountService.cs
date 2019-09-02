@@ -11,6 +11,7 @@ namespace ATV_Advertisment.Services
     {
         Discount GetById(int id);
         List<Discount> GetAll();
+        double GetDiscountByCost(double cost);
         int DeleteDiscount(int id);
         int AddDiscount(Discount input);
         int EditDiscount(Discount input);
@@ -91,6 +92,17 @@ namespace ATV_Advertisment.Services
         public Discount GetById(int id)
         {
             return _DiscountRepository.GetById(id);
+        }
+
+        public double GetDiscountByCost(double cost)
+        {
+            double result = 0;
+            var discount = _DiscountRepository.Get(d => d.PriceRate <= cost).OrderByDescending(d => d.PriceRate).First();
+            if(discount != null)
+            {
+                result = discount.Dicount.Value;
+            }
+            return result;
         }
     }
 }

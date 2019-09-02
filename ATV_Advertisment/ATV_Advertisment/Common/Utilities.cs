@@ -18,7 +18,7 @@ namespace ATV_Advertisment.Common
         public static void ShowMessage(string message)
         {
             var cursor = Cursor.Current;
-            MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static void ShowError(string message)
@@ -32,6 +32,21 @@ namespace ATV_Advertisment.Common
             //TODO show message by type
             var cursor = Cursor.Current;
             MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static bool ShowConfirmMessage(string message)
+        {
+            bool result = false;
+            var cursor = Cursor.Current;
+
+            if (MessageBox.Show(message, "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                result = true;
+            }
+
+            return result;
         }
 
         public static bool IsNumberic(string strNum, out int number)
@@ -74,6 +89,13 @@ namespace ATV_Advertisment.Common
             comboBox.ValueMember = "Key";
         }
 
+        public static void LoadComboBoxOptions(ComboBox comboBox, List<KeyValuePair<double, string>> pairs)
+        {
+            comboBox.DataSource = new BindingSource(pairs, null);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+        }
+
         public static int GetHourFromHourInt(int hourInt)
         {
             return hourInt / 100;
@@ -86,7 +108,41 @@ namespace ATV_Advertisment.Common
 
         public static int GetHourFromHourString(string hour, string minute)
         {
-            return int.Parse(hour) * 100 + int.Parse(minute); 
+            return int.Parse(hour) * 100 + int.Parse(minute);
+        }
+
+        public static int GetIntFromTextBox(TextBox textBox)
+        {
+            int result = 0;
+            if (!string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                int.TryParse(textBox.Text, out result);
+            }
+
+            return result;
+        }
+
+        public static double GetDoubleFromTextBox(TextBox textBox)
+        {
+            double result = 0;
+            if (!string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                double.TryParse(textBox.Text, out result);
+            }
+
+            return result;
+        }
+
+        public static string DoubleMoneyToText(double money)
+        {
+            string result = "0";
+
+            if (money != 0)
+            {
+                result = String.Format("{0:0,0}", money);
+            }
+
+            return result;
         }
 
         public static Form OpenFormByName(string formName, out bool isLogout)

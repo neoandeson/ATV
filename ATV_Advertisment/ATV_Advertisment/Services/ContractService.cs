@@ -11,27 +11,32 @@ namespace ATV_Advertisment.Services
     public interface IContractService
     {
         Contract GetById(int id);
+        Contract GetByCode(string code);
         List<Contract> GetAll();
         List<ContractViewModel> GetForList();
         int DeleteContract(int id);
-        int AddContract(Contract input);
+        Contract AddContract(Contract input);
         int EditContract(Contract input);
+        int CancelContract(int id);
+        double UpdateContractCost(string contractCode);
     }
 
     public class ContractService : IContractService
     {
         private readonly ContractRepository _ContractRepository;
+        private readonly ContractDetailService _contractDetailService;
         private readonly ContractTypeRepository _contractTypeRepository;
 
         public ContractService()
         {
             _ContractRepository = new ContractRepository();
+            _contractDetailService = new ContractDetailService();
             _contractTypeRepository = new ContractTypeRepository();
         }
 
-        public int AddContract(Contract input)
+        public Contract AddContract(Contract input)
         {
-            int result = CRUDStatusCode.ERROR;
+            Contract result = null;
             if (input != null)
             {
                 //TODO: Define if seperative contract
@@ -41,7 +46,23 @@ namespace ATV_Advertisment.Services
                 input.CreateDate = Utilities.GetServerDateTimeNow();
                 input.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 input.LastUpdateBy = Common.Session.GetId();
-                _ContractRepository.Add(input);
+                result = _ContractRepository.Create(input);
+            }
+
+            return result;
+        }
+
+        public int CancelContract(int id)
+        {
+            int result = CRUDStatusCode.ERROR;
+            var Contract = _ContractRepository.GetById(id);
+            if (Contract != null)
+            {
+                Contract.StatusId = CommonStatus.CANCEL;
+
+                Contract.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                Contract.LastUpdateBy = Common.Session.GetId();
+                _ContractRepository.Update(Contract);
                 result = CRUDStatusCode.SUCCESS;
             }
 
@@ -100,6 +121,11 @@ namespace ATV_Advertisment.Services
             return _ContractRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
         }
 
+        public Contract GetByCode(string code)
+        {
+            return _ContractRepository.Get(c => c.Code == code).FirstOrDefault();
+        }
+
         public Contract GetById(int id)
         {
             return _ContractRepository.GetById(id);
@@ -110,15 +136,38 @@ namespace ATV_Advertisment.Services
             Dictionary<int, string> contractTypes = _contractTypeRepository
                 .Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .ToDictionary(q => q.Id, q => q.Type);
+
             return _ContractRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .Select(c => new ContractViewModel()
                 {
+                    Id = c.Id,
+                    ContractCode = c.Code,
                     CustomerCode = c.CustomerCode,
                     ContractType = contractTypes.Where(s => s.Key == c.ContractTypeId).FirstOrDefault().Value,
-                    StartDate = c.StartDate.Value.ToString("dd/mm/yyyy"),
-                    EndDate = c.EndDate.Value.ToString("dd/mm/yyyy")
+                    StartDate = c.StartDate.Value.ToString("dd/MM/yyyy"),
+                    EndDate = c.EndDate.Value.ToString("dd/MM/yyyy")
                 })
                 .ToList();
+        }
+
+        public double UpdateContractCost(string contractCode)
+        {
+            double result = 0;
+
+            Contract contract = GetByCode(contractCode);
+            if(contract != null)
+            {
+                List<ContractDetail> contractDetails = _contractDetailService.GetAllByContractCode(contractCode);
+                foreach (var cd in contractDetails)
+                {
+                    result += cd.TotalCost;
+                }
+
+                contract.Cost = result;
+                EditContract(contract);
+            }
+
+            return result;
         }
     }
 }

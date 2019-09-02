@@ -44,7 +44,7 @@
             this.gbList.Controls.Add(this.adgv);
             this.gbList.Location = new System.Drawing.Point(13, 13);
             this.gbList.Name = "gbList";
-            this.gbList.Size = new System.Drawing.Size(775, 352);
+            this.gbList.Size = new System.Drawing.Size(508, 352);
             this.gbList.TabIndex = 0;
             this.gbList.TabStop = false;
             this.gbList.Text = "Danh sách";
@@ -56,9 +56,10 @@
             this.adgv.DateWithTime = false;
             this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(7, 26);
+            this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.adgv.Size = new System.Drawing.Size(762, 320);
+            this.adgv.Size = new System.Drawing.Size(493, 320);
             this.adgv.TabIndex = 1;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
@@ -73,7 +74,7 @@
             this.gbControl.Controls.Add(this.btnViewDetail);
             this.gbControl.Location = new System.Drawing.Point(13, 371);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(775, 67);
+            this.gbControl.Size = new System.Drawing.Size(508, 67);
             this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
@@ -115,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(535, 450);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbList);
             this.Name = "ListDiscountForm";

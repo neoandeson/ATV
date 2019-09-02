@@ -34,6 +34,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblCurrency = new System.Windows.Forms.Label();
             this.txtPriceRate = new TControls.MoneyTextBox();
             this.lblDiscount = new System.Windows.Forms.Label();
+            this.txtDiscount = new NumberTextBox(100);
             this.lblPriceRate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();

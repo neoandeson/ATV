@@ -102,7 +102,7 @@ namespace ATV_Advertisment.Services
 
         public Dictionary<int, int> Getoptions()
         {
-            var options = _DurationRepository.GetAll().ToDictionary(x => x.Id, x => x.Length);
+            var options = _DurationRepository.GetAll().ToDictionary(x => x.Length, x => x.Length);
             return options;
         }
     }

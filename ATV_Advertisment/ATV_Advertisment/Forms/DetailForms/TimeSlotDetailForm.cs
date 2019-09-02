@@ -62,7 +62,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         cboSession.SelectedValue = model.SessionCode;
                         txtCode.Text = model.Code;
                         txtName.Text = model.Name;
-                        txtPrice.Text = String.Format("{0:0,0}", model.Price);
+                        txtPrice.Text = Utilities.DoubleMoneyToText(model.Price);
                         txtFromHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
                         txtFromMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
                         txtToHour.Text = Utilities.GetHourFromHourInt(model.ToHour).ToString();

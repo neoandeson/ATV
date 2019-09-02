@@ -31,6 +31,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private void InitializeComponent()
         {
             this.lblDuration = new System.Windows.Forms.Label();
+            this.txtLength = new NumberTextBox(300);
             this.gbDetail = new System.Windows.Forms.GroupBox();
             this.lblUnit = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();

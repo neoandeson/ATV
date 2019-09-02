@@ -11,6 +11,7 @@ namespace DataService.Infrastructure
     {
         //Add new entity
         void Add(T entity);
+        T Create(T entity);
         //Modified entity
         void Update(T entity);
         //Remove entity
@@ -124,6 +125,13 @@ namespace DataService.Infrastructure
         {
             var exist = dbSet.Where(predicate);
             return exist.Any() ? true : false;
+        }
+
+        public TEntity Create(TEntity entity)
+        {
+            dbSet.Add(entity);
+            context.SaveChanges();
+            return entity;
         }
     }
 }

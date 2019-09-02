@@ -13,22 +13,26 @@ namespace ATV_Advertisment.Services
     {
         ContractDetail GetById(int id);
         List<ContractDetail> GetAll();
-        List<ContractDetail> GetAllByContractId(int contractId);
+        List<ContractDetail> GetAllByContractCode(string contractCode);
         //List<ContractDetail> GetAllForList();
         int DeleteContractDetail(int id);
         int AddContractDetail(ContractDetail input);
+        ContractDetail CreateContractDetail(ContractDetail input);
         int EditContractDetail(ContractDetail input);
+        double UpdateContractDetailCost(int id);
     }
 
     public class ContractDetailService : IContractDetailService
     {
         private readonly ContractDetailRepository _ContractDetailRepository;
         private readonly SessionRepository _sessionRepository;
+        private readonly ProductScheduleShowService _productScheduleShowService;
 
         public ContractDetailService()
         {
             _ContractDetailRepository = new ContractDetailRepository();
             _sessionRepository = new SessionRepository();
+            _productScheduleShowService = new ProductScheduleShowService();
         }
 
         public int AddContractDetail(ContractDetail input)
@@ -36,7 +40,7 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _ContractDetailRepository.Exist(t => t.ContractId == input.ContractId &&
+                bool isExisted = _ContractDetailRepository.Exist(t => t.ContractCode == input.ContractCode &&
                                                                 t.ProductName == input.ProductName);
                 if (!isExisted)
                 {
@@ -50,6 +54,35 @@ namespace ATV_Advertisment.Services
                 else
                 {
                     result = CRUDStatusCode.EXISTED;
+                }
+            }
+
+            return result;
+        }
+
+        public ContractDetail CreateContractDetail(ContractDetail input)
+        {
+            ContractDetail result = null;
+            if (input != null)
+            {
+                bool isExisted = _ContractDetailRepository.Exist(t => t.ContractCode == input.ContractCode &&
+                                                                t.ProductName == input.ProductName);
+                if (!isExisted)
+                {
+                    input.StatusId = CommonStatus.ACTIVE;
+                    input.CreateDate = Utilities.GetServerDateTimeNow();
+                    input.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                    input.LastUpdateBy = Common.Session.GetId();
+
+                    result = _ContractDetailRepository.Create(input);
+                }
+                else
+                {
+                    //In case existed check result id = 0;
+                    result = new ContractDetail()
+                    {
+                        Id = 0
+                    };
                 }
             }
 
@@ -76,13 +109,13 @@ namespace ATV_Advertisment.Services
         {
             int result = CRUDStatusCode.ERROR;
             var ContractDetail = _ContractDetailRepository.GetById(input.Id);
-            bool isExisted = _ContractDetailRepository.Exist(t => t.ContractId == input.ContractId &&
+            bool isExisted = _ContractDetailRepository.Exist(t => t.ContractCode == input.ContractCode &&
                                                                     t.ProductName == input.ProductName &&
                                                                     t.Id != input.Id);
             if (ContractDetail != null)
             {
                 ContractDetail.ProductName = input.ProductName;
-                ContractDetail.JSONSchedule = input.JSONSchedule;
+                ContractDetail.TotalCost = input.TotalCost;
 
                 ContractDetail.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 ContractDetail.LastUpdateBy = Common.Session.GetId();
@@ -98,14 +131,34 @@ namespace ATV_Advertisment.Services
             return _ContractDetailRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
         }
 
-        public List<ContractDetail> GetAllByContractId(int contractId)
+        public List<ContractDetail> GetAllByContractCode(string contractCode)
         {
-            return _ContractDetailRepository.Get(c => c.StatusId == CommonStatus.ACTIVE && c.ContractId == contractId).ToList();
+            return _ContractDetailRepository.Get(c => c.StatusId == CommonStatus.ACTIVE && c.ContractCode == contractCode).ToList();
         }
 
         public ContractDetail GetById(int id)
         {
             return _ContractDetailRepository.GetById(id);
+        }
+
+        public double UpdateContractDetailCost(int id)
+        {
+            double result = 0;
+
+            ContractDetail contractDetail = GetById(id);
+            if (contractDetail != null)
+            {
+                List<ProductScheduleShow> productScheduleShows = _productScheduleShowService.GetAllByContractDetailId(id);
+                foreach (var pss in productScheduleShows)
+                {
+                    result += pss.TotalCost;
+                }
+
+                contractDetail.TotalCost = result;
+                EditContractDetail(contractDetail);
+            }
+
+            return result;
         }
 
         //public List<ContractDetail> GetAllForList()

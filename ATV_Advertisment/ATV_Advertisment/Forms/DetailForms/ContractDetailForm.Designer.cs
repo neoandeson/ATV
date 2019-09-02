@@ -49,6 +49,8 @@
             this.lblCost = new System.Windows.Forms.Label();
             this.txtCost = new TControls.MoneyTextBox();
             this.gbContractInfo = new System.Windows.Forms.GroupBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.lblContractCode = new System.Windows.Forms.Label();
             this.lblCurrency2 = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -139,7 +141,7 @@
             // cboContractType
             // 
             this.cboContractType.FormattingEnabled = true;
-            this.cboContractType.Location = new System.Drawing.Point(134, 35);
+            this.cboContractType.Location = new System.Drawing.Point(404, 33);
             this.cboContractType.Name = "cboContractType";
             this.cboContractType.Size = new System.Drawing.Size(146, 28);
             this.cboContractType.TabIndex = 6;
@@ -147,7 +149,7 @@
             // lblContractType
             // 
             this.lblContractType.AutoSize = true;
-            this.lblContractType.Location = new System.Drawing.Point(22, 38);
+            this.lblContractType.Location = new System.Drawing.Point(319, 38);
             this.lblContractType.Name = "lblContractType";
             this.lblContractType.Size = new System.Drawing.Size(67, 20);
             this.lblContractType.TabIndex = 3;
@@ -229,11 +231,17 @@
             this.adgv.AutoGenerateContextFilters = true;
             this.adgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgv.DateWithTime = false;
+            this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(6, 45);
+            this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
+            this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.adgv.Size = new System.Drawing.Size(873, 177);
             this.adgv.TabIndex = 0;
             this.adgv.TimeFilter = false;
+            this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
+            this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
+            this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
             // 
             // lblCost
             // 
@@ -256,9 +264,12 @@
             this.txtCost.ReadOnly = true;
             this.txtCost.Size = new System.Drawing.Size(179, 26);
             this.txtCost.TabIndex = 17;
+            this.txtCost.Text = "0";
             // 
             // gbContractInfo
             // 
+            this.gbContractInfo.Controls.Add(this.txtCode);
+            this.gbContractInfo.Controls.Add(this.lblContractCode);
             this.gbContractInfo.Controls.Add(this.lblCurrency2);
             this.gbContractInfo.Controls.Add(this.txtCost);
             this.gbContractInfo.Controls.Add(this.cboContractType);
@@ -274,6 +285,24 @@
             this.gbContractInfo.TabIndex = 2;
             this.gbContractInfo.TabStop = false;
             this.gbContractInfo.Text = "Hợp đồng";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(134, 35);
+            this.txtCode.MaxLength = 8;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.ReadOnly = true;
+            this.txtCode.Size = new System.Drawing.Size(108, 26);
+            this.txtCode.TabIndex = 20;
+            // 
+            // lblContractCode
+            // 
+            this.lblContractCode.AutoSize = true;
+            this.lblContractCode.Location = new System.Drawing.Point(19, 38);
+            this.lblContractCode.Name = "lblContractCode";
+            this.lblContractCode.Size = new System.Drawing.Size(59, 20);
+            this.lblContractCode.TabIndex = 19;
+            this.lblContractCode.Text = "Mã HĐ";
             // 
             // lblCurrency2
             // 
@@ -316,6 +345,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ContractDetailForm
             // 
@@ -367,5 +397,7 @@
         private System.Windows.Forms.Button btnAddDetail;
         private System.Windows.Forms.Button btnViewDtail;
         private System.Windows.Forms.Button btnDeleteDetail;
+        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Label lblContractCode;
     }
 }

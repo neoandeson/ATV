@@ -43,15 +43,18 @@ namespace ATV_Advertisment.Forms.InputForms
                 bs = new BindingSource();
                 bs.DataSource = sbl;
                 adgv.DataSource = bs;
+                adgv.Columns["Id"].Visible = false;
 
+                adgv.Columns["ContractCode"].HeaderText = ADGVText.ContractCode;
+                adgv.Columns["ContractCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["CustomerCode"].HeaderText = ADGVText.CustomerCode;
-                adgv.Columns["CustomerCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["CustomerCode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["ContractType"].HeaderText = ADGVText.ContractType;
-                adgv.Columns["ContractType"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["ContractType"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["StartDate"].HeaderText = ADGVText.StartDate;
-                adgv.Columns["StartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["StartDate"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["EndDate"].HeaderText = ADGVText.EndDate;
-                adgv.Columns["EndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["EndDate"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
             }
             catch (Exception ex)
             {
@@ -88,10 +91,14 @@ namespace ATV_Advertisment.Forms.InputForms
             var selectedRow = adgv.SelectedRows[0];
 
             //Prepare model
-            contract = new Contract()
+            if(selectedRow.Cells[0].Value.ToString() != "0")
             {
-                Id = int.Parse(selectedRow.Cells[0].Value.ToString())
-            };
+                contract = new Contract()
+                {
+                    Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
+                    Code = selectedRow.Cells[1].Value.ToString()
+                };
+            }
         }
         #endregion
 
