@@ -43,7 +43,6 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["LastUpdateBy"].Visible = false;
                 adgv.Columns["LastUpdateDate"].Visible = false;
                 adgv.Columns["FromHour"].Visible = false;
-                adgv.Columns["ToHour"].Visible = false;
                 adgv.Columns["Price"].Visible = false;
 
                 adgv.Columns["Code"].HeaderText = ADGVText.Code;
@@ -52,6 +51,8 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["SessionCode"].HeaderText = ADGVText.Session;
                 adgv.Columns["SessionCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["Length"].HeaderText = ADGVText.Duration;
+                adgv.Columns["Length"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
             }
             catch (Exception ex)
             {

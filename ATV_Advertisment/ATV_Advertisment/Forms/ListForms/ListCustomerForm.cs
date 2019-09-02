@@ -93,19 +93,22 @@ namespace ATV_Advertisment.Forms.ListForms
             var selectedRow = adgv.SelectedRows[0];
 
             //Prepare model
-            this.customer = new Customer()
+            if (selectedRow.Cells[0].Value.ToString() != "0")
             {
-                Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
-                Code = selectedRow.Cells[1].Value.ToString(),
-                Name = (selectedRow.Cells[2].Value == null) ? "" : selectedRow.Cells[2].Value.ToString(),
-                Address = (selectedRow.Cells[3].Value == null) ? "" : selectedRow.Cells[3].Value.ToString(),
-                Phone1 = (selectedRow.Cells[4].Value == null) ? "" : selectedRow.Cells[4].Value.ToString(),
-                Phone2 = (selectedRow.Cells[5].Value == null) ? "" : selectedRow.Cells[5].Value.ToString(),
-                Fax = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString(),
-                TaxCode = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString(),
-                CustomerTypeId = int.Parse(selectedRow.Cells[8].Value.ToString()),
-                StatusId = int.Parse(selectedRow.Cells[9].Value.ToString()),
-            };
+                this.customer = new Customer()
+                {
+                    Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
+                    Code = selectedRow.Cells[1].Value.ToString(),
+                    Name = (selectedRow.Cells[2].Value == null) ? "" : selectedRow.Cells[2].Value.ToString(),
+                    Address = (selectedRow.Cells[3].Value == null) ? "" : selectedRow.Cells[3].Value.ToString(),
+                    Phone1 = (selectedRow.Cells[4].Value == null) ? "" : selectedRow.Cells[4].Value.ToString(),
+                    Phone2 = (selectedRow.Cells[5].Value == null) ? "" : selectedRow.Cells[5].Value.ToString(),
+                    Fax = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString(),
+                    TaxCode = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString(),
+                    CustomerTypeId = int.Parse(selectedRow.Cells[8].Value.ToString()),
+                    StatusId = int.Parse(selectedRow.Cells[9].Value.ToString()),
+                };
+            }
         }
         #endregion
 

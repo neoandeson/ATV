@@ -324,6 +324,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     int result = _contractService.DeleteContract(contractDetail.Id);
                     if (result == CRUDStatusCode.SUCCESS)
                     {
+                        UpdateContractCost();
                         LoadDGV();
                         Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
                     }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbContractDetail = new System.Windows.Forms.GroupBox();
+            this.txtNumberOfShow = new System.Windows.Forms.TextBox();
+            this.lblQuantity = new System.Windows.Forms.Label();
             this.lblSecond = new System.Windows.Forms.Label();
             this.txtTotalCost = new TControls.MoneyTextBox();
             this.lblTotalCost = new System.Windows.Forms.Label();
@@ -42,6 +44,7 @@
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.adgv = new ADGV.AdvancedDataGridView();
+            this.btnViewDetail = new System.Windows.Forms.Button();
             this.gbContractDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.gbRegisterSchedule.SuspendLayout();
@@ -50,6 +53,8 @@
             // 
             // gbContractDetail
             // 
+            this.gbContractDetail.Controls.Add(this.txtNumberOfShow);
+            this.gbContractDetail.Controls.Add(this.lblQuantity);
             this.gbContractDetail.Controls.Add(this.lblSecond);
             this.gbContractDetail.Controls.Add(this.txtTotalCost);
             this.gbContractDetail.Controls.Add(this.lblTotalCost);
@@ -63,6 +68,23 @@
             this.gbContractDetail.TabIndex = 0;
             this.gbContractDetail.TabStop = false;
             this.gbContractDetail.Text = "Thông tin sản phẩm";
+            // 
+            // txtNumberOfShow
+            // 
+            this.txtNumberOfShow.Location = new System.Drawing.Point(445, 75);
+            this.txtNumberOfShow.Name = "txtNumberOfShow";
+            this.txtNumberOfShow.Size = new System.Drawing.Size(46, 26);
+            this.txtNumberOfShow.TabIndex = 11;
+            this.txtNumberOfShow.Text = "0";
+            // 
+            // lblQuantity
+            // 
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Location = new System.Drawing.Point(307, 78);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(108, 20);
+            this.lblQuantity.TabIndex = 10;
+            this.lblQuantity.Text = "Số lượng phát";
             // 
             // lblSecond
             // 
@@ -85,6 +107,7 @@
             this.txtTotalCost.ReadOnly = true;
             this.txtTotalCost.Size = new System.Drawing.Size(200, 26);
             this.txtTotalCost.TabIndex = 8;
+            this.txtTotalCost.Text = "0";
             // 
             // lblTotalCost
             // 
@@ -125,7 +148,7 @@
             // 
             this.txtProductName.Location = new System.Drawing.Point(146, 31);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(300, 26);
+            this.txtProductName.Size = new System.Drawing.Size(345, 26);
             this.txtProductName.TabIndex = 1;
             // 
             // gbControl
@@ -152,6 +175,7 @@
             // 
             // gbRegisterSchedule
             // 
+            this.gbRegisterSchedule.Controls.Add(this.btnViewDetail);
             this.gbRegisterSchedule.Controls.Add(this.btnDeleteSchedule);
             this.gbRegisterSchedule.Controls.Add(this.btnAddSchedule);
             this.gbRegisterSchedule.Controls.Add(this.adgv);
@@ -174,7 +198,7 @@
             // 
             // btnAddSchedule
             // 
-            this.btnAddSchedule.Location = new System.Drawing.Point(993, 25);
+            this.btnAddSchedule.Location = new System.Drawing.Point(1008, 25);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(110, 30);
             this.btnAddSchedule.TabIndex = 1;
@@ -198,6 +222,16 @@
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
+            // 
+            // btnViewDetail
+            // 
+            this.btnViewDetail.Location = new System.Drawing.Point(869, 25);
+            this.btnViewDetail.Name = "btnViewDetail";
+            this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
+            this.btnViewDetail.TabIndex = 12;
+            this.btnViewDetail.Text = "Xem";
+            this.btnViewDetail.UseVisualStyleBackColor = true;
+            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // ContractDetailDetailForm
             // 
@@ -236,5 +270,8 @@
         private TControls.MoneyTextBox txtTotalCost;
         private System.Windows.Forms.Label lblTotalCost;
         private System.Windows.Forms.Label lblSecond;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.TextBox txtNumberOfShow;
+        private System.Windows.Forms.Button btnViewDetail;
     }
 }

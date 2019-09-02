@@ -23,7 +23,7 @@ namespace DataService.Model
         [StringLength(50)]
         public string TimeSlot { get; set; }
 
-        public int Duration { get; set; }
+        public int TimeSlotLength { get; set; }
 
         public double Cost { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using ATV_Advertisment.Common;
+using ATV_Advertisment.ViewModel;
 using DataService.Infrastructure;
 using DataService.Model;
 using DataService.Repositories;
@@ -19,7 +20,7 @@ namespace ATV_Advertisment.Services
         int AddContractDetail(ContractDetail input);
         ContractDetail CreateContractDetail(ContractDetail input);
         int EditContractDetail(ContractDetail input);
-        double UpdateContractDetailCost(int id);
+        ContractDetailUpdateVM UpdateContractDetailCost(int id);
     }
 
     public class ContractDetailService : IContractDetailService
@@ -141,9 +142,9 @@ namespace ATV_Advertisment.Services
             return _ContractDetailRepository.GetById(id);
         }
 
-        public double UpdateContractDetailCost(int id)
+        public ContractDetailUpdateVM UpdateContractDetailCost(int id)
         {
-            double result = 0;
+            ContractDetailUpdateVM result = new ContractDetailUpdateVM();
 
             ContractDetail contractDetail = GetById(id);
             if (contractDetail != null)
@@ -151,10 +152,12 @@ namespace ATV_Advertisment.Services
                 List<ProductScheduleShow> productScheduleShows = _productScheduleShowService.GetAllByContractDetailId(id);
                 foreach (var pss in productScheduleShows)
                 {
-                    result += pss.TotalCost;
+                    result.Cost += pss.TotalCost;
+                    result.NumberOfShow += pss.Quantity;
                 }
 
-                contractDetail.TotalCost = result;
+                contractDetail.TotalCost = result.Cost;
+                contractDetail.NumberOfShow = result.NumberOfShow;
                 EditContractDetail(contractDetail);
             }
 

@@ -18,14 +18,17 @@ namespace ATV_Advertisment.Forms.DetailForms
     public partial class TimeSlotDetailForm : CommonForm
     {
         public TimeSlot model { get; set; }
+        private int CompleteLoadData = 0;
         private TimeSlotService _timeSlotService = null;
         private SessionService _sessionService = null;
+        private DurationService _durationService = null;
 
         public TimeSlotDetailForm(TimeSlot inputModel)
         {
             this.model = inputModel;
             InitializeComponent();
             LoadCboSession();
+            LoadCboDuration();
             LoadData();
         }
 
@@ -49,6 +52,27 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
         }
 
+        public void LoadCboDuration()
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                _durationService = new DurationService();
+
+                Utilities.LoadComboBoxOptions(cboDuration, _durationService.Getoptions());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                CompleteLoadData = 1;
+                _durationService = null;
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
         public void LoadData()
         {
             try
@@ -65,8 +89,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         txtPrice.Text = Utilities.DoubleMoneyToText(model.Price);
                         txtFromHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
                         txtFromMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
-                        txtToHour.Text = Utilities.GetHourFromHourInt(model.ToHour).ToString();
-                        txtToMinute.Text = Utilities.GetMinuteFromHourInt(model.ToHour).ToString();
+                        cboDuration.SelectedValue = model.Length;
                     }
                 }
             }
@@ -98,7 +121,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         Name = txtName.Text,
                         Price = double.Parse(txtPrice.Text),
                         FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
-                        ToHour = Utilities.GetHourFromHourString(txtToHour.Text, txtToHour.Text),
+                        Length = (int)cboDuration.SelectedValue,
                         SessionCode = cboSession.SelectedValue.ToString()
                     };
                     result = _timeSlotService.AddTimeSlot(model);
@@ -114,7 +137,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model.Name = txtName.Text;
                     model.Price = double.Parse(txtPrice.Text);
                     model.FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text);
-                    model.ToHour = Utilities.GetHourFromHourString(txtToHour.Text, txtToMinute.Text);
+                    model.Length = (int)cboDuration.SelectedValue;
                     model.SessionCode = cboSession.SelectedValue.ToString();
 
                     result = _timeSlotService.EditTimeSlot(model);
@@ -134,15 +157,28 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
         }
 
-        private void txtCode_Validated(object sender, EventArgs e)
+        private void txtCode_Leave(object sender, EventArgs e)
+        {
+            CheckExistTimeSlotInfo();
+        }
+
+        private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(CompleteLoadData == 1)
+            {
+                CheckExistTimeSlotInfo();
+            }
+        }
+
+        private void CheckExistTimeSlotInfo()
         {
             try
             {
                 _timeSlotService = new TimeSlotService();
-                bool result = _timeSlotService.IsExistCode(txtCode.Text);
+                bool result = _timeSlotService.IsExistCodeAndLength(txtCode.Text, (int)cboDuration.SelectedValue);
                 if (result)
                 {
-                    Utilities.ShowMessage(CommonMessage.USED_CODE);
+                    Utilities.ShowMessage(CommonMessage.USED_CODE_LENGTH);
                 }
             }
             catch (Exception)

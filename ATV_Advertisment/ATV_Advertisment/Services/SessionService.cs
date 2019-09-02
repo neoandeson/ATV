@@ -12,6 +12,7 @@ namespace ATV_Advertisment.Services
         List<Session> GetAll();
         Dictionary<string, string> Getoptions();
         List<string> GetSessionCodeAndName();
+        bool IsExistCode(string code);
         int DeleteSession(int id);
         int AddSession(Session input);
         int EditSession(Session input);
@@ -102,6 +103,11 @@ namespace ATV_Advertisment.Services
         public List<string> GetSessionCodeAndName()
         {
             return _SessionRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).Select(q => q.Code + " | " + q.Name).ToList();
+        }
+
+        public bool IsExistCode(string code)
+        {
+            return _SessionRepository.Exist(c => c.Code == code);
         }
     }
 }

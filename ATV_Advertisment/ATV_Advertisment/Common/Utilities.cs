@@ -96,6 +96,19 @@ namespace ATV_Advertisment.Common
             comboBox.ValueMember = "Key";
         }
 
+        public static void LoadComboBoxOptions(ComboBox comboBox, List<KeyValuePair<int, int>> pairs)
+        {
+            comboBox.DataSource = new BindingSource(pairs, null);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+        }
+        public static void LoadComboBoxOptions(ComboBox comboBox, List<KeyValuePair<double, int>> pairs)
+        {
+            comboBox.DataSource = new BindingSource(pairs, null);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+        }
+
         public static int GetHourFromHourInt(int hourInt)
         {
             return hourInt / 100;

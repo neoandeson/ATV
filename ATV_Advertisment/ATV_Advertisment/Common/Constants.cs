@@ -24,7 +24,6 @@ namespace ATV_Advertisment.Common
             public static string ALREADY_LOGIN = "Tài khoản hiện đang được đăng nhập";
 
             public static string APPLICATION_IS_RUNNING = "Ứng dụng đang chạy";
-            public static string USED_CODE = "Mã đã được sử dụng";
             public static string CUSTOMER_NOTFOUND = "Không tìm thấy thông tin khách hàng";
             public static string ADD_SUCESSFULLY = "Thêm mới thành công";
             public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
@@ -33,6 +32,9 @@ namespace ATV_Advertisment.Common
             public static string CANCEL_SUCESSFULLY = "Cập nhật thành công";
 
             public static string CONFIRM_DELETE = "Có phải bạn muốn xóa thông tin này ?";
+
+            public static string USED_CODE = "Mã đã được sử dụng";
+            public static string USED_CODE_LENGTH = "Thời điểm có (Mã, Thời lượng) này đã được tạo";
 
             public static string EXISTED_PRODUCT_IN_CONTRACT = "Sản phẩm đã được tạo trong hợp đồng";
             public static string EXISTED_PRODUCT_SCHEDULE = "Sản phẩm đã được tạo lịch vào (Thời điểm phát, Ngày chiếu) này";
@@ -51,8 +53,8 @@ namespace ATV_Advertisment.Common
             //Discounts
             public static string PriceRate = "Mức giá";
             public static string Discount = "Giảm giá (%)";
-            //Durations
-            public static string Duration = "Thời lượng";
+            //Durations, TimSlots(Duration)
+            public static string Duration = "Thời lượng (s)";
             //TimSlots
             public static string Session = "Buổi";
             //Contracts
@@ -94,7 +96,9 @@ namespace ATV_Advertisment.Common
             public static int TEXTBOX_WIDTH_NORMAL = 140;
             public static int TEXTBOX_HEIGHT = 26;
 
+            public static int GV_WIDTH_SMALL = 50;
             public static int GV_WIDTH_NORMAL = 150;
+            public static int GV_WIDTH_MEDIUM = 170;
         }
         #endregion
     }

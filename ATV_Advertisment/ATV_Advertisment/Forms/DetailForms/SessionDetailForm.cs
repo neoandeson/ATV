@@ -89,5 +89,27 @@ namespace ATV_Advertisment.Forms.DetailForms
                 _sessionService = null;
             }
         }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _sessionService = new SessionService();
+                var isExistCode = _sessionService.IsExistCode(txtCode.Text);
+                if (isExistCode)
+                {
+                    Utilities.ShowMessage(CommonMessage.USED_CODE);
+                    txtCode.Focus();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _sessionService = null;
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace ATV_Advertisment.Forms.DetailForms
     public partial class ProductScheduleDetailForm : CommonForm
     {
         public ProductScheduleShow model { get; set; }
-        private bool CompleteLoadData = false;
+        private int CompleteLoadData = 0;
         private ProductScheduleShowService _productScheduleShowService = null;
         private TimeSlotService _timeSlotService = null;
         private DiscountService _discountService = null;
@@ -21,6 +21,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.model = inputModel;
             InitializeComponent();
             LoadTimeSlots();
+            LoadTimeSlotLengthByTimeSlot();
             LoadData();
         }
 
@@ -30,7 +31,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if (model != null)
                 {
-                    txtDuration.Text = model.Duration.ToString();
+                    cboTimeSlotLength.Text = model.TimeSlotLength.ToString();
                     if (model.Id != 0)
                     {
                         _productScheduleShowService = new ProductScheduleShowService();
@@ -38,11 +39,11 @@ namespace ATV_Advertisment.Forms.DetailForms
                         if (model != null)
                         {
                             dtpShowDate.Text = model.ShowDate;
-                            cboTimeSlot.SelectedValue = model.TimeSlot;
-                            txtCost.Text = String.Format("{0:0,0}", model.Cost);
-                            txtTotalCost.Text = String.Format("{0:0,0}", model.TotalCost);
+                            cboTimeSlot.Text = model.TimeSlot;
+                            txtCost.Text = Utilities.DoubleMoneyToText(model.Cost);
+                            txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
                             txtDiscount.Text = model.Discount.ToString();
-                            txtDuration.Text = model.Duration.ToString();
+                            cboTimeSlotLength.Text = model.TimeSlotLength.ToString();
                             txtQuantity.Text = model.Quantity.ToString();
                         }
                     }
@@ -72,7 +73,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             finally
             {
-                CompleteLoadData = true;
+                CompleteLoadData = 1;
                 _timeSlotService = null;
             }
         }
@@ -94,7 +95,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.Cost = (double)txtCost.MoneyValue;
                         model.TotalCost = (double)txtTotalCost.MoneyValue;
                         model.Discount = double.Parse(txtDiscount.Text);
-                        model.Duration = int.Parse(txtDuration.Text);
+                        model.TimeSlotLength = int.Parse(cboTimeSlotLength.Text);
                         model.Quantity = int.Parse(txtQuantity.Text);
                         model.ShowDate = dtpShowDate.Text;
                         result = _productScheduleShowService.AddProductScheduleShow(model);
@@ -113,7 +114,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.Cost = (double)txtCost.MoneyValue;
                         model.TotalCost = (double)txtTotalCost.MoneyValue;
                         model.Discount = double.Parse(txtDiscount.Text);
-                        model.Duration = int.Parse(txtDuration.Text);
+                        model.TimeSlotLength = int.Parse(cboTimeSlotLength.Text);
                         model.Quantity = int.Parse(txtQuantity.Text);
                         model.ShowDate = dtpShowDate.Text;
 
@@ -139,11 +140,11 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             try
             {
-                if (CompleteLoadData)
+                if (CompleteLoadData == 2)
                 {
                     _discountService = new DiscountService();
 
-                    double timeSlotPrice = (double)cboTimeSlot.SelectedValue;
+                    double timeSlotPrice = (double)cboTimeSlotLength.SelectedValue;
                     int quantity = Utilities.GetIntFromTextBox(txtQuantity);
                     double cost = timeSlotPrice * quantity;
                     double discount = _discountService.GetDiscountByCost(cost);
@@ -166,12 +167,39 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void cboTimeSlot_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadTimeSlotLengthByTimeSlot();
+            CalculateCost();
+        }
+
+        private void cboTimeSlotLength_SelectedIndexChanged(object sender, EventArgs e)
+        {
             CalculateCost();
         }
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
             CalculateCost();
+        }
+
+        private void LoadTimeSlotLengthByTimeSlot()
+        {
+            try
+            {
+                if(CompleteLoadData >= 1)
+                {
+                    _timeSlotService = new TimeSlotService();
+                    Utilities.LoadComboBoxOptions(cboTimeSlotLength, _timeSlotService.GetTimeSlotLengthOptions((int)cboTimeSlot.SelectedValue));
+                    CompleteLoadData = 2;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _timeSlotService = null;
+            }
         }
     }
 }

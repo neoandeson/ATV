@@ -21,7 +21,7 @@ namespace DataService.Model
 
         public int FromHour { get; set; }
 
-        public int ToHour { get; set; }
+        public int Length { get; set; }
 
         public double Price { get; set; }
 

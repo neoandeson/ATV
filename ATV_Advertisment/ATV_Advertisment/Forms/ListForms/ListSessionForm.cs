@@ -90,10 +90,13 @@ namespace ATV_Advertisment.Forms.ListForms
             var selectedRow = adgv.SelectedRows[0];
 
             //Prepare model
-            session = new Session()
+            if (selectedRow.Cells[0].Value.ToString() != "0")
             {
-                Id = int.Parse(selectedRow.Cells[0].Value.ToString())
-            };
+                session = new Session()
+                {
+                    Id = int.Parse(selectedRow.Cells[0].Value.ToString())
+                };
+            }
         }
         #endregion
 

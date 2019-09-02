@@ -208,6 +208,7 @@
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\MenuItemService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModel\ContractDetailUpdateVM.cs" />
     <Compile Include="ViewModel\ContractViewModel.cs" />
     <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
     <EmbeddedResource Include="Assets\FormResource.resx">

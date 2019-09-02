@@ -12,8 +12,9 @@ namespace ATV_Advertisment.Services
         TimeSlot GetById(int id);
         List<TimeSlot> GetAll();
         List<TimeSlot> GetAllForList();
-        List<KeyValuePair<double, string>> Getoptions();
-        bool IsExistCode(string code);
+        Dictionary<int, string> Getoptions();
+        List<KeyValuePair<double, int>> GetTimeSlotLengthOptions(int timeSlotId);
+        bool IsExistCodeAndLength(string code, int length);
         int DeleteTimeSlot(int id);
         int AddTimeSlot(TimeSlot input);
         int EditTimeSlot(TimeSlot input);
@@ -35,10 +36,10 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _TimeSlotRepository.Exist(t => t.Code == input.Code || 
-                                                                t.Name == input.Name ||
-                                                                (t.FromHour == input.FromHour && 
-                                                                t.ToHour == input.ToHour));
+                bool isExisted = _TimeSlotRepository.Exist(t => t.Code == input.Code && 
+                                                                t.Name == input.Name &&
+                                                                t.FromHour == input.FromHour && 
+                                                                t.Length == input.Length);
                 if (!isExisted)
                 {
                     input.StatusId = CommonStatus.ACTIVE;
@@ -57,10 +58,10 @@ namespace ATV_Advertisment.Services
             return result;
         }
 
-        public bool IsExistCode(string code)
+        public bool IsExistCodeAndLength(string code, int length)
         {
             bool result = false;
-            TimeSlot timeSlot = _TimeSlotRepository.Get(q => q.Code == code).FirstOrDefault();
+            TimeSlot timeSlot = _TimeSlotRepository.Get(q => q.Code == code && q.Length == length).FirstOrDefault();
             if( timeSlot != null )
             {
                 result = true;
@@ -94,7 +95,7 @@ namespace ATV_Advertisment.Services
                 TimeSlot.Name = input.Name;
                 TimeSlot.Code = input.Code;
                 TimeSlot.FromHour = input.FromHour;
-                TimeSlot.ToHour = input.ToHour;
+                TimeSlot.Length = input.Length;
                 TimeSlot.SessionCode = input.SessionCode;
 
                 TimeSlot.LastUpdateDate = Utilities.GetServerDateTimeNow();
@@ -122,6 +123,7 @@ namespace ATV_Advertisment.Services
                 .Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .ToDictionary(q => q.Code, q => string.Format("{0} {1}", q.Code, q.Name));
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .OrderBy(c => c.SessionCode).ThenBy(c => c.Name)
                 .Select(ts => new TimeSlot() {
                     Id = ts.Id,
                     Code = ts.Code,
@@ -133,19 +135,26 @@ namespace ATV_Advertisment.Services
                     Name = ts.Name,
                     Price = ts.Price,
                     SessionCode = sessionCodeName.Where(s => s.Key == ts.SessionCode).FirstOrDefault().Value,
-                    ToHour = ts.ToHour
+                    Length = ts.Length
                 })
                 .ToList();
         }
 
-        public List<KeyValuePair<double, string>> Getoptions()
+        public Dictionary<int, string> Getoptions()
         {
-            List<KeyValuePair<double, string>> result = new List<KeyValuePair<double, string>>();
-            KeyValuePair<double, string> op = new KeyValuePair<double, string>();
-            var options = _TimeSlotRepository.Get(t => t.StatusId == CommonStatus.ACTIVE);
+            var options = _TimeSlotRepository.Get(t => t.StatusId == CommonStatus.ACTIVE).ToDictionary(x => x.Id, x => x.Name);
+            
+            return options;
+        }
+
+        public List<KeyValuePair<double, int>> GetTimeSlotLengthOptions(int timeSlotId)
+        {
+            List<KeyValuePair<double, int>> result = new List<KeyValuePair<double, int>>();
+            KeyValuePair<double, int> op = new KeyValuePair<double, int>();
+            var options = _TimeSlotRepository.Get(t => t.Id == timeSlotId);
             foreach (var option in options)
             {
-                op = new KeyValuePair<double, string>(option.Price, option.Name);
+                op = new KeyValuePair<double, int>(option.Price, option.Length);
                 result.Add(op);
             }
             return result;

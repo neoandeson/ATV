@@ -44,7 +44,7 @@
             this.gbList.Controls.Add(this.adgv);
             this.gbList.Location = new System.Drawing.Point(12, 11);
             this.gbList.Name = "gbList";
-            this.gbList.Size = new System.Drawing.Size(398, 470);
+            this.gbList.Size = new System.Drawing.Size(437, 470);
             this.gbList.TabIndex = 0;
             this.gbList.TabStop = false;
             this.gbList.Text = "Danh sách";
@@ -59,7 +59,7 @@
             this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.adgv.Size = new System.Drawing.Size(383, 438);
+            this.adgv.Size = new System.Drawing.Size(424, 438);
             this.adgv.TabIndex = 1;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
@@ -74,7 +74,7 @@
             this.gbControl.Controls.Add(this.btnViewDetail);
             this.gbControl.Location = new System.Drawing.Point(12, 487);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(398, 68);
+            this.gbControl.Size = new System.Drawing.Size(437, 68);
             this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
@@ -82,7 +82,7 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDelete.Location = new System.Drawing.Point(280, 25);
+            this.btnDelete.Location = new System.Drawing.Point(321, 25);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
             this.btnDelete.TabIndex = 4;
@@ -93,7 +93,7 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAdd.Location = new System.Drawing.Point(151, 25);
+            this.btnAdd.Location = new System.Drawing.Point(170, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
             this.btnAdd.TabIndex = 3;
@@ -104,7 +104,7 @@
             // btnViewDetail
             // 
             this.btnViewDetail.BackColor = System.Drawing.SystemColors.Control;
-            this.btnViewDetail.Location = new System.Drawing.Point(19, 25);
+            this.btnViewDetail.Location = new System.Drawing.Point(16, 25);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
             this.btnViewDetail.TabIndex = 2;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 562);
+            this.ClientSize = new System.Drawing.Size(461, 562);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbList);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);

@@ -31,18 +31,16 @@ namespace ATV_Advertisment.Forms.DetailForms
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.cboDuration = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblColon1 = new System.Windows.Forms.Label();
-            this.txtToHour = new NumberTextBox(24);
-            this.txtToMinute = new NumberTextBox(60);
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.txtFromHour = new NumberTextBox(24);
             this.txtFromMinute = new NumberTextBox(60);
-            this.txtCode = new System.Windows.Forms.TextBox();
             this.txtPrice = new TControls.MoneyTextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cboSession = new System.Windows.Forms.ComboBox();
-            this.lblTo = new System.Windows.Forms.Label();
+            this.lblLength = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
@@ -56,18 +54,16 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // gbDetail
             // 
+            this.gbDetail.Controls.Add(this.cboDuration);
             this.gbDetail.Controls.Add(this.lblCurrency);
-            this.gbDetail.Controls.Add(this.label1);
             this.gbDetail.Controls.Add(this.lblColon1);
-            this.gbDetail.Controls.Add(this.txtToMinute);
             this.gbDetail.Controls.Add(this.txtFromMinute);
             this.gbDetail.Controls.Add(this.txtCode);
-            this.gbDetail.Controls.Add(this.txtToHour);
             this.gbDetail.Controls.Add(this.txtPrice);
             this.gbDetail.Controls.Add(this.txtFromHour);
             this.gbDetail.Controls.Add(this.txtName);
             this.gbDetail.Controls.Add(this.cboSession);
-            this.gbDetail.Controls.Add(this.lblTo);
+            this.gbDetail.Controls.Add(this.lblLength);
             this.gbDetail.Controls.Add(this.lblPrice);
             this.gbDetail.Controls.Add(this.lblCode);
             this.gbDetail.Controls.Add(this.lblFrom);
@@ -80,23 +76,23 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin";
             // 
+            // cboDuration
+            // 
+            this.cboDuration.FormattingEnabled = true;
+            this.cboDuration.Location = new System.Drawing.Point(387, 157);
+            this.cboDuration.Name = "cboDuration";
+            this.cboDuration.Size = new System.Drawing.Size(89, 28);
+            this.cboDuration.TabIndex = 9;
+            this.cboDuration.SelectedIndexChanged += new System.EventHandler(this.cboDuration_SelectedIndexChanged);
+            // 
             // lblCurrency
             // 
             this.lblCurrency.AutoSize = true;
-            this.lblCurrency.Location = new System.Drawing.Point(434, 157);
+            this.lblCurrency.Location = new System.Drawing.Point(236, 217);
             this.lblCurrency.Name = "lblCurrency";
             this.lblCurrency.Size = new System.Drawing.Size(43, 20);
             this.lblCurrency.TabIndex = 0;
             this.lblCurrency.Text = "VNĐ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(124, 211);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = ":";
             // 
             // lblColon1
             // 
@@ -106,15 +102,6 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblColon1.Size = new System.Drawing.Size(13, 20);
             this.lblColon1.TabIndex = 0;
             this.lblColon1.Text = ":";
-            // 
-            // txtToMinute
-            // 
-            this.txtToMinute.Location = new System.Drawing.Point(143, 208);
-            this.txtToMinute.MaxLength = 2;
-            this.txtToMinute.Name = "txtToMinute";
-            this.txtToMinute.NumberValue = 0;
-            this.txtToMinute.Size = new System.Drawing.Size(40, 26);
-            this.txtToMinute.TabIndex = 7;
             // 
             // txtFromMinute
             // 
@@ -127,25 +114,17 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // txtCode
             // 
+            this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCode.Location = new System.Drawing.Point(387, 37);
             this.txtCode.MaxLength = 10;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(90, 26);
             this.txtCode.TabIndex = 2;
-            this.txtCode.Validated += new System.EventHandler(this.txtCode_Validated);
-            // 
-            // txtToHour
-            // 
-            this.txtToHour.Location = new System.Drawing.Point(78, 208);
-            this.txtToHour.MaxLength = 2;
-            this.txtToHour.Name = "txtToHour";
-            this.txtToHour.NumberValue = 0;
-            this.txtToHour.Size = new System.Drawing.Size(40, 26);
-            this.txtToHour.TabIndex = 6;
+            this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(276, 154);
+            this.txtPrice.Location = new System.Drawing.Point(78, 214);
             this.txtPrice.MoneyValue = new decimal(new int[] {
             0,
             0,
@@ -181,19 +160,19 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.cboSession.Size = new System.Drawing.Size(164, 28);
             this.cboSession.TabIndex = 1;
             // 
-            // lblTo
+            // lblLength
             // 
-            this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(21, 211);
-            this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(39, 20);
-            this.lblTo.TabIndex = 0;
-            this.lblTo.Text = "Đến";
+            this.lblLength.AutoSize = true;
+            this.lblLength.Location = new System.Drawing.Point(285, 160);
+            this.lblLength.Name = "lblLength";
+            this.lblLength.Size = new System.Drawing.Size(82, 20);
+            this.lblLength.TabIndex = 0;
+            this.lblLength.Text = "Thời lượng";
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(236, 157);
+            this.lblPrice.Location = new System.Drawing.Point(21, 214);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(34, 20);
             this.lblPrice.TabIndex = 0;
@@ -276,23 +255,21 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private System.Windows.Forms.GroupBox gbDetail;
         private System.Windows.Forms.GroupBox gbControl;
-        private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.Label lblLength;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblSession;
         private System.Windows.Forms.ComboBox cboSession;
-        private NumberTextBox txtToHour;
         private MoneyTextBox txtPrice;
         private NumberTextBox txtFromHour;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label lblColon1;
-        private NumberTextBox txtToMinute;
         private NumberTextBox txtFromMinute;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblCurrency;
+        private System.Windows.Forms.ComboBox cboDuration;
     }
 }

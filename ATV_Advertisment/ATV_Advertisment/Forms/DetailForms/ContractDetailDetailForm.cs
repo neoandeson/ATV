@@ -60,6 +60,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         {
                             txtProductName.Text = model.ProductName;
                             txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
+                            txtNumberOfShow.Text = model.NumberOfShow.ToString();
                             cboDuration.SelectedValue = model.DurationSecond;
 
                             LoadDGV();
@@ -123,19 +124,19 @@ namespace ATV_Advertisment.Forms.DetailForms
                     adgv.Columns["TimeSlot"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     adgv.Columns["Quantity"].HeaderText = ADGVText.Quantity;
                     adgv.Columns["Quantity"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
-                    adgv.Columns["Duration"].HeaderText = ADGVText.Duration;
-                    adgv.Columns["Duration"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                    adgv.Columns["TimeSlotLength"].HeaderText = ADGVText.Duration;
+                    adgv.Columns["TimeSlotLength"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                     adgv.Columns["Cost"].HeaderText = ADGVText.Cost;
                     adgv.Columns["Cost"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                     adgv.Columns["Discount"].HeaderText = ADGVText.Discount;
                     adgv.Columns["Discount"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                     adgv.Columns["TotalCost"].HeaderText = ADGVText.TotalCost;
-                    adgv.Columns["TotalCost"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                    adgv.Columns["TotalCost"].Width = ControlsAttribute.GV_WIDTH_MEDIUM;
 
                     productScheduleShow = new ProductScheduleShow()
                     {
                         ContractDetailId = model.Id,
-                        Duration = model.DurationSecond
+                        TimeSlotLength = model.DurationSecond
                     };
                 }
             }
@@ -176,6 +177,12 @@ namespace ATV_Advertisment.Forms.DetailForms
             if (selectedRow.Cells[0].Value.ToString() != "0" && !String.IsNullOrWhiteSpace(selectedRow.Cells[0].Value.ToString()))
             {
                 productScheduleShowId = int.Parse(selectedRow.Cells[0].Value.ToString());
+                productScheduleShow = new ProductScheduleShow()
+                {
+                    Id = (int)selectedRow.Cells[0].Value,
+                    ContractDetailId = model.Id,
+                    TimeSlotLength = (int)cboDuration.SelectedValue
+                };
             }
             else
             {
@@ -201,6 +208,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.ProductName = txtProductName.Text;
                         model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
                         model.DurationSecond = (int)cboDuration.SelectedValue;
+                        model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
                         result = _contractDetailService.CreateContractDetail(model);
                         if (result != null)
                         {
@@ -213,7 +221,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             productScheduleShow = new ProductScheduleShow()
                             {
                                 ContractDetailId = model.Id,
-                                Duration = (int)cboDuration.SelectedValue
+                                TimeSlotLength = (int)cboDuration.SelectedValue
                             };
                             Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
                         }
@@ -224,6 +232,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.ProductName = txtProductName.Text;
 
                         model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
+                        model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
                         model.DurationSecond = (int)cboDuration.SelectedValue;
 
                         editResult = _contractDetailService.EditContractDetail(model);
@@ -264,6 +273,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
                         //Completely delete from DB
                         _productScheduleShowService.DeleteProductScheduleShow(productScheduleShowId);
+                        UpdateContractDetailTotalCost();
                     }
 
                 }
@@ -289,8 +299,9 @@ namespace ATV_Advertisment.Forms.DetailForms
             try
             {
                 _contractDetailService = new ContractDetailService();
-                double result = _contractDetailService.UpdateContractDetailCost(model.Id);
-                txtTotalCost.Text = Utilities.DoubleMoneyToText(result);
+                ContractDetailUpdateVM result = _contractDetailService.UpdateContractDetailCost(model.Id);
+                txtTotalCost.Text = Utilities.DoubleMoneyToText(result.Cost);
+                txtNumberOfShow.Text = result.NumberOfShow.ToString();
             }
             catch (Exception)
             {
@@ -299,6 +310,16 @@ namespace ATV_Advertisment.Forms.DetailForms
             finally
             {
                 _contractDetailService = null;
+            }
+        }
+
+        private void btnViewDetail_Click(object sender, EventArgs e)
+        {
+            if(productScheduleShow.Id != 0)
+            {
+                ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow);
+                contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
+                contractDetailDetailForm.ShowDialog();
             }
         }
     }

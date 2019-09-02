@@ -47,7 +47,7 @@
             this.gbDetail.Controls.Add(this.lblCode);
             this.gbDetail.Location = new System.Drawing.Point(13, 13);
             this.gbDetail.Name = "gbDetail";
-            this.gbDetail.Size = new System.Drawing.Size(557, 127);
+            this.gbDetail.Size = new System.Drawing.Size(382, 127);
             this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin";
@@ -57,16 +57,18 @@
             this.txtName.Location = new System.Drawing.Point(103, 81);
             this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(410, 26);
+            this.txtName.Size = new System.Drawing.Size(241, 26);
             this.txtName.TabIndex = 2;
             // 
             // txtCode
             // 
+            this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCode.Location = new System.Drawing.Point(103, 35);
             this.txtCode.MaxLength = 1;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(33, 26);
             this.txtCode.TabIndex = 1;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // lblName
             // 
@@ -92,7 +94,7 @@
             this.gbControl.Controls.Add(this.btnSave);
             this.gbControl.Location = new System.Drawing.Point(13, 146);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(557, 66);
+            this.gbControl.Size = new System.Drawing.Size(382, 66);
             this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
@@ -112,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 222);
+            this.ClientSize = new System.Drawing.Size(408, 222);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbDetail);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);

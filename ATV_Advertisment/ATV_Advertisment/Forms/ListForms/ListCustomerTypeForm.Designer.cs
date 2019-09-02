@@ -121,7 +121,7 @@
             this.Controls.Add(this.gbList);
             this.Name = "ListCustomerTypeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ListCustomerTypeForm";
+            this.Text = "Danh sách loại khách hàng";
             this.gbList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).EndInit();
             this.gbControl.ResumeLayout(false);

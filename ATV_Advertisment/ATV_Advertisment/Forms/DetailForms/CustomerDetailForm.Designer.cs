@@ -95,15 +95,18 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(200, 26);
             this.txtFax.TabIndex = 7;
+            this.txtFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFax_KeyPress);
             // 
             // txtCode
             // 
+            this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCode.Location = new System.Drawing.Point(116, 39);
             this.txtCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCode.MaxLength = 20;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(200, 26);
             this.txtCode.TabIndex = 1;
+            this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // txtPhone2
             // 
@@ -113,6 +116,7 @@
             this.txtPhone2.Name = "txtPhone2";
             this.txtPhone2.Size = new System.Drawing.Size(200, 26);
             this.txtPhone2.TabIndex = 6;
+            this.txtPhone2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone2_KeyPress);
             // 
             // txtTaxCode
             // 
@@ -122,6 +126,7 @@
             this.txtTaxCode.Name = "txtTaxCode";
             this.txtTaxCode.Size = new System.Drawing.Size(163, 26);
             this.txtTaxCode.TabIndex = 8;
+            this.txtTaxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaxCode_KeyPress);
             // 
             // txtPhone1
             // 
@@ -131,6 +136,7 @@
             this.txtPhone1.Name = "txtPhone1";
             this.txtPhone1.Size = new System.Drawing.Size(200, 26);
             this.txtPhone1.TabIndex = 5;
+            this.txtPhone1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone1_KeyPress);
             // 
             // txtAddress
             // 
@@ -145,7 +151,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(116, 104);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.MaxLength = 10;
+            this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(594, 26);
             this.txtName.TabIndex = 3;

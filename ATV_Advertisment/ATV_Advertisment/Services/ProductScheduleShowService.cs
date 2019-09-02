@@ -77,14 +77,16 @@ namespace ATV_Advertisment.Services
                 ProductScheduleShow.ContractDetailId = input.ContractDetailId;
                 ProductScheduleShow.Cost = input.Cost;
                 ProductScheduleShow.Quantity = input.Quantity;
-                ProductScheduleShow.Duration = input.Duration;
+                ProductScheduleShow.TimeSlotLength = input.TimeSlotLength;
                 ProductScheduleShow.ShowDate = input.ShowDate;
                 ProductScheduleShow.TimeSlot = input.TimeSlot;
                 ProductScheduleShow.TotalCost = input.TotalCost;
                 ProductScheduleShow.Discount = input.Discount;
 
-                bool isExisted = _ProductScheduleShowRepository.Exist(t => t.ContractDetailId == input.ContractDetailId ||
-                                                                t.TimeSlot == input.TimeSlot);
+                bool isExisted = _ProductScheduleShowRepository.Exist(t => t.ContractDetailId == input.ContractDetailId &&
+                                                                t.TimeSlot == input.TimeSlot &&
+                                                                t.Quantity == input.Quantity &&
+                                                                t.TimeSlotLength == input.TimeSlotLength);
                 if (!isExisted)
                 {
                     _ProductScheduleShowRepository.Update(ProductScheduleShow);

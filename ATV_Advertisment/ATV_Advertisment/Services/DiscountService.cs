@@ -97,7 +97,7 @@ namespace ATV_Advertisment.Services
         public double GetDiscountByCost(double cost)
         {
             double result = 0;
-            var discount = _DiscountRepository.Get(d => d.PriceRate <= cost).OrderByDescending(d => d.PriceRate).First();
+            var discount = _DiscountRepository.Get(d => d.PriceRate <= cost).OrderByDescending(d => d.PriceRate).FirstOrDefault();
             if(discount != null)
             {
                 result = discount.Dicount.Value;

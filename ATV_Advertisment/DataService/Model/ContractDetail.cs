@@ -21,6 +21,8 @@ namespace DataService.Model
 
         public int DurationSecond { get; set; }
 
+        public int NumberOfShow { get; set; }
+
         public double TotalCost { get; set; }
 
         public int StatusId { get; set; }

@@ -10,6 +10,8 @@ namespace ATV_Advertisment.Forms.DetailForms
 {
     public partial class CustomerDetailForm : CommonForm
     {
+        private CustomerService _customerService;
+
         public Customer model { get; set; }
 
         public CustomerDetailForm(Customer inputModel)
@@ -112,6 +114,48 @@ namespace ATV_Advertisment.Forms.DetailForms
             finally
             {
                 customerService = null;
+            }
+        }
+
+        private void txtPhone1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtPhone2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtFax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtTaxCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtCode_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                _customerService = new CustomerService();
+                var isExistCode = _customerService.IsExistCode(txtCode.Text);
+                if(isExistCode)
+                {
+                    Utilities.ShowMessage(CommonMessage.USED_CODE);
+                    txtCode.Focus();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _customerService = null;
             }
         }
     }
