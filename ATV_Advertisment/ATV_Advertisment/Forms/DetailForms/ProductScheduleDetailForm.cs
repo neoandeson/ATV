@@ -188,7 +188,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                 if(CompleteLoadData >= 1)
                 {
                     _timeSlotService = new TimeSlotService();
-                    Utilities.LoadComboBoxOptions(cboTimeSlotLength, _timeSlotService.GetTimeSlotLengthOptions((int)cboTimeSlot.SelectedValue));
+                    //TODO Load length price
+                    //Utilities.LoadComboBoxOptions(cboTimeSlotLength, _timeSlotService.GetTimeSlotLengthOptions((int)cboTimeSlot.SelectedValue));
                     CompleteLoadData = 2;
                 }
             }

@@ -1,6 +1,8 @@
-﻿using ATV_Advertisment.Common;
+﻿using ATV_Advertisement.Common;
+using ATV_Advertisment.Common;
 using ATV_Advertisment.Forms.CommonForms;
 using ATV_Advertisment.Services;
+using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ATV_Advertisment.Common.Constants;
@@ -18,8 +21,10 @@ namespace ATV_Advertisment.Forms.DetailForms
     public partial class TimeSlotDetailForm : CommonForm
     {
         public TimeSlot model { get; set; }
+        private CostRule costRule { get; set; }
         private int CompleteLoadData = 0;
         private TimeSlotService _timeSlotService = null;
+        private CostRuleService _costRuleService = null;
         private SessionService _sessionService = null;
         private DurationService _durationService = null;
 
@@ -86,10 +91,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         cboSession.SelectedValue = model.SessionCode;
                         txtCode.Text = model.Code;
                         txtName.Text = model.Name;
-                        txtPrice.Text = Utilities.DoubleMoneyToText(model.Price);
                         txtFromHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
                         txtFromMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
-                        cboDuration.SelectedValue = model.Length;
+
+                        LoadDGV();
                     }
                 }
             }
@@ -119,9 +124,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         Code = txtCode.Text,
                         Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
                         FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
-                        Length = (int)cboDuration.SelectedValue,
                         SessionCode = cboSession.SelectedValue.ToString()
                     };
                     result = _timeSlotService.AddTimeSlot(model);
@@ -135,9 +138,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //Edit
                     model.Code = txtCode.Text;
                     model.Name = txtName.Text;
-                    model.Price = double.Parse(txtPrice.Text);
                     model.FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text);
-                    model.Length = (int)cboDuration.SelectedValue;
                     model.SessionCode = cboSession.SelectedValue.ToString();
 
                     result = _timeSlotService.EditTimeSlot(model);
@@ -164,7 +165,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(CompleteLoadData == 1)
+            if (CompleteLoadData == 1)
             {
                 CheckExistTimeSlotInfo();
             }
@@ -175,7 +176,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             try
             {
                 _timeSlotService = new TimeSlotService();
-                bool result = _timeSlotService.IsExistCodeAndLength(txtCode.Text, (int)cboDuration.SelectedValue);
+                bool result = false;//TODO check _timeSlotService.IsExistCodeAndLength(txtCode.Text, (int)cboDuration.SelectedValue);
                 if (result)
                 {
                     Utilities.ShowMessage(CommonMessage.USED_CODE_LENGTH);
@@ -189,6 +190,173 @@ namespace ATV_Advertisment.Forms.DetailForms
             finally
             {
                 _timeSlotService = null;
+            }
+        }
+
+        #region AdvanceDataGridView
+        private BindingSource bs = null;
+
+        private void LoadDGV()
+        {
+            try
+            {
+                _costRuleService = new CostRuleService();
+                List<CostRuleViewModel> costRuleVMs = _costRuleService.GetAllForList(model.Id);
+                SortableBindingList<CostRuleViewModel> sbl = new SortableBindingList<CostRuleViewModel>(costRuleVMs);
+                bs = new BindingSource();
+                bs.DataSource = sbl;
+                adgv.DataSource = bs;
+
+                adgv.Columns["Id"].Visible = false;
+                adgv.Columns["TimeSlotId"].Visible = false;
+
+                adgv.Columns["Length"].HeaderText = ADGVText.Duration;
+                adgv.Columns["Length"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["Price"].HeaderText = ADGVText.Session;
+                adgv.Columns["Price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                _costRuleService = null;
+            }
+        }
+
+        private void adgv_SortStringChanged(object sender, EventArgs e)
+        {
+            bs.Sort = adgv.SortString;
+        }
+
+        private void adgv_FilterStringChanged(object sender, EventArgs e)
+        {
+            string tmp = adgv.FilterString;
+            string pattern = @"([a-zA-Z0-9 ]+)";
+            MatchCollection matches = Regex.Matches(tmp, pattern);
+            try
+            {
+                bs.Filter = adgv.FilterString;
+            }
+            catch (Exception ex)
+            {
+                Utilities.ShowError(ex.Message);
+            }
+        }
+
+        private void adgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var selectedRow = adgv.SelectedRows[0];
+
+            //Prepare model
+            if (selectedRow.Cells[0].Value.ToString() != "0")
+            {
+                int id = int.Parse(selectedRow.Cells[0].Value.ToString());
+                costRule = GetCostRuleById(id);
+
+                //Binding data
+                if(costRule != null)
+                {
+                    cboDuration.SelectedValue = costRule.Length;
+                    txtPrice.Text = Utilities.DoubleMoneyToText(costRule.Price);
+                }
+            }
+            else
+            {
+                costRule = null;
+            }
+        }
+        #endregion
+
+        private CostRule GetCostRuleById(int id)
+        {
+            try
+            {
+                _costRuleService = new CostRuleService();
+                CostRule costRule = _costRuleService.GetById(id);
+
+                return costRule;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _costRuleService = null;
+            }
+        }
+
+        private void btnSaveCostRule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(costRule != null)
+                {
+                    //Edit
+                    int result = CRUDStatusCode.ERROR;
+                    _costRuleService = new CostRuleService();
+
+                    result = _costRuleService.EditCostRule(costRule);
+                    if (result == CRUDStatusCode.SUCCESS)
+                    {
+                        LoadDGV();
+                        Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                    }
+                } else
+                {
+                    //Add
+                    int result = CRUDStatusCode.ERROR;
+                    _costRuleService = new CostRuleService();
+
+                    CostRule newCodeRule = new CostRule()
+                    {
+                        Length = (int)cboDuration.SelectedValue,
+                        Price = (double)txtPrice.MoneyValue,
+                        TimeSlotId = model.Id
+                    };
+                    result = _costRuleService.AddCostRule(newCodeRule);
+                    if (result == CRUDStatusCode.SUCCESS)
+                    {
+                        Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                        LoadDGV();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _costRuleService = null;
+            }
+        }
+
+        private void btnDeleteCostRule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (costRule != null)
+                {
+                    int result = CRUDStatusCode.ERROR;
+                    _costRuleService = new CostRuleService();
+                    result = _costRuleService.DeleteCostRule(costRule.Id);
+                    if(result == CRUDStatusCode.SUCCESS)
+                    {
+                        Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+                        LoadDGV();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _costRuleService = null;
             }
         }
     }

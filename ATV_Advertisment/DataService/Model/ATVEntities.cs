@@ -16,6 +16,7 @@ namespace DataService.Model
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<ContractDetail> ContractDetails { get; set; }
         public virtual DbSet<ContractType> ContractTypes { get; set; }
+        public virtual DbSet<CostRule> CostRules { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerType> CustomerTypes { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
@@ -46,6 +47,11 @@ namespace DataService.Model
                 .WithRequired(e => e.MenuItem)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<ProductScheduleShow>()
+                .Property(e => e.SessionCode)
+                .IsFixedLength()
+                .IsUnicode(false);
+
             modelBuilder.Entity<Role>()
                 .HasMany(e => e.RoleHasMenuItems)
                 .WithRequired(e => e.Role)
@@ -63,7 +69,6 @@ namespace DataService.Model
 
             modelBuilder.Entity<TimeSlot>()
                 .Property(e => e.Code)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<TimeSlot>()

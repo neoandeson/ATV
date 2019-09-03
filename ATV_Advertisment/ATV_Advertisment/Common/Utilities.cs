@@ -119,6 +119,15 @@ namespace ATV_Advertisment.Common
             return hourInt % 100;
         }
 
+        public static string GetHourFormInt(int hourInt)
+        {
+            int hour = GetHourFromHourInt(hourInt);
+            int minute = GetMinuteFromHourInt(hourInt);
+
+            string result = hour.ToString("00") + ":" + minute.ToString("00");
+            return result;
+        }
+
         public static int GetHourFromHourString(string hour, string minute)
         {
             return int.Parse(hour) * 100 + int.Parse(minute);

@@ -14,6 +14,14 @@ namespace DataService.Model
         public int ContractDetailId { get; set; }
 
         [Required]
+        [StringLength(1)]
+        public string SessionCode { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string SessionName { get; set; }
+
+        [Required]
         [StringLength(10)]
         public string ShowDate { get; set; }
 

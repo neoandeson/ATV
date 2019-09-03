@@ -66,6 +66,7 @@
       <DependentUpon>FormResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Logging.cs" />
     <Compile Include="Common\PropertyComparer.cs" />
     <Compile Include="Common\Session.cs" />
     <Compile Include="Common\SortableBindingList.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Services\CustomerTypeService.cs" />
     <Compile Include="Services\ProductScheduleShowService.cs" />
     <Compile Include="Services\SystemConfigService.cs" />
+    <Compile Include="Services\CostRuleService.cs" />
     <Compile Include="Services\TimeSlotService.cs" />
     <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\CustomerService.cs" />
@@ -210,7 +212,9 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModel\ContractDetailUpdateVM.cs" />
     <Compile Include="ViewModel\ContractViewModel.cs" />
+    <Compile Include="ViewModel\CostRuleViewModel.cs" />
     <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
+    <Compile Include="ViewModel\TimeSlotViewModel.cs" />
     <EmbeddedResource Include="Assets\FormResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormResource.Designer.cs</LastGenOutput>

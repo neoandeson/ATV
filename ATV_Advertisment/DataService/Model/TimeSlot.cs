@@ -21,10 +21,6 @@ namespace DataService.Model
 
         public int FromHour { get; set; }
 
-        public int Length { get; set; }
-
-        public double Price { get; set; }
-
         [Required]
         [StringLength(1)]
         public string SessionCode { get; set; }

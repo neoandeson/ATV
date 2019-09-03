@@ -57,6 +57,7 @@
     <Compile Include="Model\Contract.cs" />
     <Compile Include="Model\ContractDetail.cs" />
     <Compile Include="Model\ContractType.cs" />
+    <Compile Include="Model\CostRule.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\CustomerType.cs" />
     <Compile Include="Model\Discount.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Repositories\MenuItemRepository.cs" />
     <Compile Include="Repositories\ProductScheduleShowRepository.cs" />
     <Compile Include="Repositories\SystemConfigRepository.cs" />
+    <Compile Include="Repositories\CostRuleRepository.cs" />
     <Compile Include="Repositories\TimeSlotRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>

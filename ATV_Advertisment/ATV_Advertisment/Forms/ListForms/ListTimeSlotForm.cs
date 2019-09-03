@@ -3,6 +3,7 @@ using ATV_Advertisment.Common;
 using ATV_Advertisment.Forms.CommonForms;
 using ATV_Advertisment.Forms.DetailForms;
 using ATV_Advertisment.Services;
+using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace ATV_Advertisment.Forms.ListForms
 {
     public partial class ListTimeSlotForm : CommonForm
     {
-        private TimeSlot session = null;
+        private TimeSlot timeslot = null;
         private TimeSlotService _timeSlotService = null;
 
         public ListTimeSlotForm()
@@ -31,8 +32,8 @@ namespace ATV_Advertisment.Forms.ListForms
             try
             {
                 _timeSlotService = new TimeSlotService();
-                List<TimeSlot> timeSlots = _timeSlotService.GetAllForList();
-                SortableBindingList<TimeSlot> sbl = new SortableBindingList<TimeSlot>(timeSlots);
+                List<TimeSlotViewModel> timeSlotVMs = _timeSlotService.GetAllForDetailList();
+                SortableBindingList<TimeSlotViewModel> sbl = new SortableBindingList<TimeSlotViewModel>(timeSlotVMs);
                 bs = new BindingSource();
                 bs.DataSource = sbl;
                 adgv.DataSource = bs;
@@ -42,17 +43,15 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["CreateDate"].Visible = false;
                 adgv.Columns["LastUpdateBy"].Visible = false;
                 adgv.Columns["LastUpdateDate"].Visible = false;
-                adgv.Columns["FromHour"].Visible = false;
-                adgv.Columns["Price"].Visible = false;
 
                 adgv.Columns["Code"].HeaderText = ADGVText.Code;
                 adgv.Columns["Code"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["Name"].HeaderText = ADGVText.Name;
                 adgv.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["FromHour"].HeaderText = ADGVText.TimeSlot;
+                adgv.Columns["FromHour"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["SessionCode"].HeaderText = ADGVText.Session;
                 adgv.Columns["SessionCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
-                adgv.Columns["Length"].HeaderText = ADGVText.Duration;
-                adgv.Columns["Length"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
             }
             catch (Exception ex)
             {
@@ -91,22 +90,22 @@ namespace ATV_Advertisment.Forms.ListForms
             //Prepare model
             if(selectedRow.Cells[0].Value.ToString() != "0")
             {
-                session = new TimeSlot()
+                timeslot = new TimeSlot()
                 {
                     Id = int.Parse(selectedRow.Cells[0].Value.ToString())
                 };
             } else
             {
-                session = null;
+                timeslot = null;
             }
         }
         #endregion
 
         private void btnViewDetail_Click(object sender, EventArgs e)
         {
-            if (session != null)
+            if (timeslot != null)
             {
-                TimeSlotDetailForm detailForm = new TimeSlotDetailForm(session);
+                TimeSlotDetailForm detailForm = new TimeSlotDetailForm(timeslot);
                 detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
                 detailForm.ShowDialog();
             }
@@ -114,8 +113,8 @@ namespace ATV_Advertisment.Forms.ListForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            session = null;
-            TimeSlotDetailForm detailForm = new TimeSlotDetailForm(session);
+            timeslot = null;
+            TimeSlotDetailForm detailForm = new TimeSlotDetailForm(timeslot);
             detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             detailForm.ShowDialog();
         }
@@ -124,10 +123,10 @@ namespace ATV_Advertisment.Forms.ListForms
         {
             try
             {
-                if (session != null)
+                if (timeslot != null)
                 {
                     _timeSlotService = new TimeSlotService();
-                    int result = _timeSlotService.DeleteTimeSlot(session.Id);
+                    int result = _timeSlotService.DeleteTimeSlot(timeslot.Id);
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         LoadDGV();
