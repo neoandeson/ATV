@@ -14,6 +14,16 @@ namespace ATV_Advertisment.Services
 
     public class SystemLogService : ISystemLogService
     {
-        
+        private readonly SystemLogRepository _systemLogRepository;
+
+        public SystemLogService()
+        {
+            _systemLogRepository = new SystemLogRepository();
+        }
+
+        public void Log(SystemLog input)
+        {
+            _systemLogRepository.Add(input);
+        }
     }
 }

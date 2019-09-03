@@ -74,12 +74,18 @@ namespace ATV_Advertisment.Common
 
         public static class BusinessLogType
         {
-
+            public static int Login = 1;
+            public static int Logout = 2;
+            public static int Create = 3;
+            public static int Delete = 4;
+            public static int Update = 5;
+            public static int ExportData = 6;
         }
 
         public static class SystemLogType
         {
-
+            public static int Exception = 1;
+            public static int Backup = 2;
         }
 
         public static class CRUDStatusCode

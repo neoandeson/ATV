@@ -34,9 +34,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
                 throw;
             }
             finally

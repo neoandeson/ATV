@@ -49,6 +49,7 @@ namespace ATV_Advertisment.Forms.CommonForms
             this.Name = "GlobalForm";
             this.Text = "Hợp đồng quảng cáo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GlobalForm_FormClosing);
             this.ResumeLayout(false);
 
         }

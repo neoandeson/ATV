@@ -179,5 +179,10 @@ namespace ATV_Advertisment.Forms.CommonForms
                 MinimizeAllChildForms(this);
             }
         }
+
+        private void GlobalForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Session.Logout();
+        }
     }
 }
