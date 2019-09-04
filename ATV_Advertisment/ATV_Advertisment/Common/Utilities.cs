@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 using ATV_Advertisment.Forms.InputForms;
+using ATV_Advertisment.Forms.PrintForms;
 
 namespace ATV_Advertisment.Common
 {
@@ -217,6 +218,10 @@ namespace ATV_Advertisment.Common
                     case "Hợp đồng quảng cáo":
                         ListContractForm listContractForm = new ListContractForm();
                         form = (Form)listContractForm;
+                        break;
+                    case "In lịch phát sóng":
+                        SchedulePrintForm schedulePrintForm = new SchedulePrintForm();
+                        form = (Form)schedulePrintForm;
                         break;
 
                     case "Logout":

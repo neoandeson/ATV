@@ -13,7 +13,7 @@ namespace ATV_Advertisment.Services
         Contract GetById(int id);
         Contract GetByCode(string code);
         List<Contract> GetAll();
-        List<ContractViewModel> GetForList();
+        List<ContractViewModel> GetAllVMForList();
         int DeleteContract(int id);
         Contract AddContract(Contract input);
         int EditContract(Contract input);
@@ -131,7 +131,7 @@ namespace ATV_Advertisment.Services
             return _ContractRepository.GetById(id);
         }
 
-        public List<ContractViewModel> GetForList()
+        public List<ContractViewModel> GetAllVMForList()
         {
             Dictionary<int, string> contractTypes = _contractTypeRepository
                 .Get(c => c.StatusId == CommonStatus.ACTIVE)

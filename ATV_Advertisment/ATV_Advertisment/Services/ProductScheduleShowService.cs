@@ -1,4 +1,5 @@
 ﻿using ATV_Advertisment.Common;
+using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using DataService.Repositories;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace ATV_Advertisment.Services
     {
         ProductScheduleShow GetById(int id);
         List<ProductScheduleShow> GetAllByContractDetailId(int contractDetailId);
-        //List<ProductScheduleShow> GetAllForList();
+        List<ProductScheduleShowViewModel> GetAllVMForList(int contractDetailId);
         int DeleteProductScheduleShow(int id);
         int AddProductScheduleShow(ProductScheduleShow input);
         int EditProductScheduleShow(ProductScheduleShow input);
@@ -110,26 +111,24 @@ namespace ATV_Advertisment.Services
             return _ProductScheduleShowRepository.GetById(id);
         }
 
-        //public List<ProductScheduleShow> GetAllForList()
-        //{
-        //    Dictionary<string, string> sessionCodeName = _sessionRepository
-        //        .Get(c => c.StatusId == CommonStatus.ACTIVE)
-        //        .ToDictionary(q => q.Code, q => string.Format("{0} {1}", q.Code, q.Name));
-        //    return _ProductScheduleShowRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
-        //        .Select(ts => new ProductScheduleShow() {
-        //            Id = ts.Id,
-        //            Code = ts.Code,
-        //            StatusId = ts.StatusId,
-        //            CreateDate = ts.CreateDate,
-        //            FromHour = ts.FromHour,
-        //            LastUpdateBy = ts.LastUpdateBy,
-        //            LastUpdateDate = ts.LastUpdateDate,
-        //            Name = ts.Name,
-        //            Price = ts.Price,
-        //            SessionCode = sessionCodeName.Where(s => s.Key == ts.SessionCode).FirstOrDefault().Value,
-        //            ToHour = ts.ToHour
-        //        })
-        //        .ToList();
-        //}
+        public List<ProductScheduleShowViewModel> GetAllVMForList(int contractDetailId)
+        {
+            return _ProductScheduleShowRepository.Get(c => c.ContractDetailId == contractDetailId)
+                .Select(ts => new ProductScheduleShowViewModel()
+                {
+                    Id = ts.Id,
+                    ContractDetailId = ts.ContractDetailId,
+                    Quantity = ts.Quantity,
+                    SessionCode = ts.SessionCode,
+                    SessionName = ts.SessionName,
+                    ShowDate = ts.ShowDate,
+                    TimeSlot = ts.TimeSlot,
+                    TimeSlotLength = ts.TimeSlotLength,
+                    Cost = Utilities.DoubleMoneyToText(ts.Cost),
+                    TotalCost = Utilities.DoubleMoneyToText(ts.TotalCost),
+                    Discount = ts.Discount.ToString()
+                })
+                .ToList();
+        }
     }
 }

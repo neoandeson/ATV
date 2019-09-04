@@ -1,4 +1,5 @@
 ﻿using ATV_Advertisment.Common;
+using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using DataService.Repositories;
 using System.Collections.Generic;
@@ -73,7 +74,7 @@ namespace ATV_Advertisment.Services
             if (Discount != null)
             {
                 Discount.PriceRate = input.PriceRate;
-                Discount.Dicount = input.Dicount;
+                Discount.DiscountPercent = input.DiscountPercent;
 
                 Discount.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 Discount.LastUpdateBy = Common.Session.GetId();
@@ -89,6 +90,22 @@ namespace ATV_Advertisment.Services
             return _DiscountRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
         }
 
+        public List<DiscountViewModel> GetAllVMForList()
+        {
+            return _DiscountRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .Select(ts => new DiscountViewModel()
+                {
+                    Id = ts.Id,
+                    CreateDate = ts.CreateDate,
+                    LastUpdateBy = ts.LastUpdateBy,
+                    LastUpdateDate = ts.LastUpdateDate,
+                    PriceRate = Utilities.DoubleMoneyToText(ts.PriceRate.Value),
+                    StatusId = ts.StatusId,
+                    Dicount = ts.DiscountPercent
+                })
+                .ToList();
+        }
+
         public Discount GetById(int id)
         {
             return _DiscountRepository.GetById(id);
@@ -100,7 +117,7 @@ namespace ATV_Advertisment.Services
             var discount = _DiscountRepository.Get(d => d.PriceRate <= cost).OrderByDescending(d => d.PriceRate).FirstOrDefault();
             if(discount != null)
             {
-                result = discount.Dicount.Value;
+                result = discount.DiscountPercent.Value;
             }
             return result;
         }

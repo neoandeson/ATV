@@ -2,6 +2,7 @@
 using ATV_Advertisment.Common;
 using ATV_Advertisment.Forms.CommonForms;
 using ATV_Advertisment.Services;
+using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using System;
 using System.Collections.Generic;
@@ -236,8 +237,8 @@ namespace ATV_Advertisment.Forms.DetailForms
             try
             {
                 _contractDetailService = new ContractDetailService();
-                List<ContractDetail> contractDetails = _contractDetailService.GetAllByContractCode(model.Code);
-                SortableBindingList<ContractDetail> sbl = new SortableBindingList<ContractDetail>(contractDetails);
+                List<ContractDetailViewModel> contractDetailVMs = _contractDetailService.GetAllVMForListByContractCode(model.Code);
+                SortableBindingList<ContractDetailViewModel> sbl = new SortableBindingList<ContractDetailViewModel>(contractDetailVMs);
                 bs = new BindingSource();
                 bs.DataSource = sbl;
                 adgv.DataSource = bs;
@@ -253,10 +254,12 @@ namespace ATV_Advertisment.Forms.DetailForms
                 adgv.Columns["ContractCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["ProductName"].HeaderText = ADGVText.Name;
                 adgv.Columns["ProductName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["NumberOfShow"].HeaderText = ADGVText.NumberOfShow;
+                adgv.Columns["NumberOfShow"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["TotalCost"].HeaderText = ADGVText.Cost;
                 adgv.Columns["TotalCost"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
 
-                lblNOProducts.Text = contractDetails.Count + " sản phẩm";
+                lblNOProducts.Text = contractDetailVMs.Count + " sản phẩm";
             }
             catch (Exception ex)
             {

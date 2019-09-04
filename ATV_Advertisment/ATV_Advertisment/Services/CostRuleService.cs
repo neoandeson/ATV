@@ -14,7 +14,7 @@ namespace ATV_Advertisment.Services
         List<CostRule> GetAll();
         List<CostRuleViewModel> GetAllForList(int timeSlotId);
         Dictionary<double, int> Getoptions(int timeSlotID);
-        List<KeyValuePair<double, int>> GetCostRuleLengthOptions(int CostRuleId);
+        List<KeyValuePair<double, int>> GetCostRuleOptions(int timeSlotId);
         int DeleteCostRule(int id);
         int AddCostRule(CostRule input);
         int EditCostRule(CostRule input);
@@ -124,11 +124,11 @@ namespace ATV_Advertisment.Services
             return options;
         }
 
-        public List<KeyValuePair<double, int>> GetCostRuleLengthOptions(int CostRuleId)
+        public List<KeyValuePair<double, int>> GetCostRuleOptions(int timeSlotId)
         {
             List<KeyValuePair<double, int>> result = new List<KeyValuePair<double, int>>();
             KeyValuePair<double, int> op = new KeyValuePair<double, int>();
-            var options = _CostRuleRepository.Get(t => t.Id == CostRuleId);
+            var options = _CostRuleRepository.Get(t => t.TimeSlotId == timeSlotId);
             foreach (var option in options)
             {
                 op = new KeyValuePair<double, int>(option.Price, option.Length);

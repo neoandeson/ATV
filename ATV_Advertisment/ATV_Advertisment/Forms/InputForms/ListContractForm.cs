@@ -38,7 +38,7 @@ namespace ATV_Advertisment.Forms.InputForms
             try
             {
                 _contractService = new ContractService();
-                List<ContractViewModel> contractVMs = _contractService.GetForList();
+                List<ContractViewModel> contractVMs = _contractService.GetAllVMForList();
                 SortableBindingList<ContractViewModel> sbl = new SortableBindingList<ContractViewModel>(contractVMs);
                 bs = new BindingSource();
                 bs.DataSource = sbl;

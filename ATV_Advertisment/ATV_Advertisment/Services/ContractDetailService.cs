@@ -164,27 +164,23 @@ namespace ATV_Advertisment.Services
             return result;
         }
 
-        //public List<ContractDetail> GetAllForList()
-        //{
-        //    Dictionary<string, string> sessionCodeName = _sessionRepository
-        //        .Get(c => c.StatusId == CommonStatus.ACTIVE)
-        //        .ToDictionary(q => q.Code, q => string.Format("{0} {1}", q.Code, q.Name));
-        //    return _ContractDetailRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
-        //        .Select(ts => new ContractDetail()
-        //        {
-        //            Id = ts.Id,
-        //            Code = ts.Code,
-        //            StatusId = ts.StatusId,
-        //            CreateDate = ts.CreateDate,
-        //            FromHour = ts.FromHour,
-        //            LastUpdateBy = ts.LastUpdateBy,
-        //            LastUpdateDate = ts.LastUpdateDate,
-        //            Name = ts.Name,
-        //            Price = ts.Price,
-        //            SessionCode = sessionCodeName.Where(s => s.Key == ts.SessionCode).FirstOrDefault().Value,
-        //            ToHour = ts.ToHour
-        //        })
-        //        .ToList();
-        //}
+        public List<ContractDetailViewModel> GetAllVMForListByContractCode(string contractCode)
+        {
+            return _ContractDetailRepository.Get(c => c.ContractCode == contractCode)
+                .Select(ts => new ContractDetailViewModel()
+                {
+                    Id = ts.Id,
+                    ContractCode = ts.ContractCode,
+                    ProductName = ts.ProductName,
+                    StatusId = ts.StatusId,
+                    NumberOfShow = ts.NumberOfShow,
+                    DurationSecond = ts.DurationSecond,
+                    TotalCost = Utilities.DoubleMoneyToText(ts.TotalCost),
+                    CreateDate = ts.CreateDate,
+                    LastUpdateBy = ts.LastUpdateBy,
+                    LastUpdateDate = ts.LastUpdateDate
+                })
+                .ToList();
+        }
     }
 }

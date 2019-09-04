@@ -109,27 +109,30 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if (model.Id != 0)
                 {
-                    var productScheduleShows = new ProductScheduleShowService().GetAllByContractDetailId(model.Id);
+                    var productScheduleShows = new ProductScheduleShowService().GetAllVMForList(model.Id);
 
-                    SortableBindingList<ProductScheduleShow> sbl = new SortableBindingList<ProductScheduleShow>(productScheduleShows);
+                    SortableBindingList<ProductScheduleShowViewModel> sbl = new SortableBindingList<ProductScheduleShowViewModel>(productScheduleShows);
                     bs = new BindingSource();
                     bs.DataSource = sbl;
                     adgv.DataSource = bs;
                     adgv.Columns["Id"].Visible = false;
                     adgv.Columns["ContractDetailId"].Visible = false;
+                    adgv.Columns["SessionCode"].Visible = false;
 
+                    adgv.Columns["SessionName"].HeaderText = ADGVText.ShowDate;
+                    adgv.Columns["SessionName"].Width = ControlsAttribute.GV_WIDTH_MEDIUM;
                     adgv.Columns["ShowDate"].HeaderText = ADGVText.ShowDate;
                     adgv.Columns["ShowDate"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                     adgv.Columns["TimeSlot"].HeaderText = ADGVText.TimeSlot;
                     adgv.Columns["TimeSlot"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    adgv.Columns["Quantity"].HeaderText = ADGVText.Quantity;
-                    adgv.Columns["Quantity"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                    adgv.Columns["Quantity"].HeaderText = ADGVText.NumberOfShow;
+                    adgv.Columns["Quantity"].Width = ControlsAttribute.GV_WIDTH_SEEM;
                     adgv.Columns["TimeSlotLength"].HeaderText = ADGVText.Duration;
-                    adgv.Columns["TimeSlotLength"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                    adgv.Columns["TimeSlotLength"].Width = ControlsAttribute.GV_WIDTH_SEEM;
                     adgv.Columns["Cost"].HeaderText = ADGVText.Cost;
                     adgv.Columns["Cost"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                     adgv.Columns["Discount"].HeaderText = ADGVText.Discount;
-                    adgv.Columns["Discount"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                    adgv.Columns["Discount"].Width = ControlsAttribute.GV_WIDTH_SEEM;
                     adgv.Columns["TotalCost"].HeaderText = ADGVText.TotalCost;
                     adgv.Columns["TotalCost"].Width = ControlsAttribute.GV_WIDTH_MEDIUM;
 

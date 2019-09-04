@@ -4,6 +4,7 @@ using ATV_Advertisment.Services;
 using DataService.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Forms.DetailForms
@@ -14,14 +15,15 @@ namespace ATV_Advertisment.Forms.DetailForms
         private int CompleteLoadData = 0;
         private ProductScheduleShowService _productScheduleShowService = null;
         private TimeSlotService _timeSlotService = null;
+        private CostRuleService _costRuleService = null;
         private DiscountService _discountService = null;
 
         public ProductScheduleDetailForm(ProductScheduleShow inputModel)
         {
             this.model = inputModel;
             InitializeComponent();
+            CompleteLoadData = 0;
             LoadTimeSlots();
-            LoadTimeSlotLengthByTimeSlot();
             LoadData();
         }
 
@@ -50,8 +52,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                     CalculateCost();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
                 throw;
             }
             finally
@@ -67,14 +70,37 @@ namespace ATV_Advertisment.Forms.DetailForms
                 _timeSlotService = new TimeSlotService();
                 Utilities.LoadComboBoxOptions(cboTimeSlot, _timeSlotService.Getoptions());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
                 throw;
             }
             finally
             {
                 CompleteLoadData = 1;
                 _timeSlotService = null;
+            }
+        }
+
+        private void LoadTimeSlotCostRules()
+        {
+            try
+            {
+                _costRuleService = new CostRuleService();
+                Utilities.LoadComboBoxOptions(cboTimeSlotLength, _costRuleService.GetCostRuleOptions((int)cboTimeSlot.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
+                throw;
+            }
+            finally
+            {
+                if(cboTimeSlotLength.Items.Count != 0)
+                {
+                    CompleteLoadData = 2;
+                }
+                _costRuleService = null;
             }
         }
 
@@ -98,6 +124,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TimeSlotLength = int.Parse(cboTimeSlotLength.Text);
                         model.Quantity = int.Parse(txtQuantity.Text);
                         model.ShowDate = dtpShowDate.Text;
+                        //TODO Get sessionCode and Name
+                        model.SessionCode = "S";
+                        model.SessionName = dtpShowDate.Text;
                         result = _productScheduleShowService.AddProductScheduleShow(model);
                         if (result == CRUDStatusCode.SUCCESS)
                         {
@@ -117,6 +146,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TimeSlotLength = int.Parse(cboTimeSlotLength.Text);
                         model.Quantity = int.Parse(txtQuantity.Text);
                         model.ShowDate = dtpShowDate.Text;
+                        //TODO Get sessionCode and Name
+                        model.SessionCode = "S";
+                        model.SessionName = dtpShowDate.Text;
 
                         result = _productScheduleShowService.EditProductScheduleShow(model);
                         if (result == CRUDStatusCode.SUCCESS)
@@ -128,6 +160,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             catch (Exception ex)
             {
+                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
                 throw;
             }
             finally
@@ -157,6 +190,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             catch (Exception ex)
             {
+                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
                 throw;
             }
             finally
@@ -167,8 +201,11 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void cboTimeSlot_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadTimeSlotLengthByTimeSlot();
-            CalculateCost();
+            if(CompleteLoadData >= 1)
+            {
+                LoadTimeSlotCostRules();
+                CalculateCost();
+            }
         }
 
         private void cboTimeSlotLength_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,26 +218,14 @@ namespace ATV_Advertisment.Forms.DetailForms
             CalculateCost();
         }
 
-        private void LoadTimeSlotLengthByTimeSlot()
+        private void ProductScheduleDetailForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if(CompleteLoadData >= 1)
-                {
-                    _timeSlotService = new TimeSlotService();
-                    //TODO Load length price
-                    //Utilities.LoadComboBoxOptions(cboTimeSlotLength, _timeSlotService.GetTimeSlotLengthOptions((int)cboTimeSlot.SelectedValue));
-                    CompleteLoadData = 2;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                _timeSlotService = null;
-            }
+            LoadTimeSlotCostRules();
+        }
+
+        private void ProductScheduleDetailForm_Shown(object sender, EventArgs e)
+        {
+            CalculateCost();
         }
     }
 }

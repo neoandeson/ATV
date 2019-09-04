@@ -19,6 +19,7 @@ namespace ATV_Advertisment.Services
         int DeleteTimeSlot(int id);
         int AddTimeSlot(TimeSlot input);
         int EditTimeSlot(TimeSlot input);
+        TimeSlot CreateTimeSlot(TimeSlot input);
     }
 
     public class TimeSlotService : ITimeSlotService
@@ -52,6 +53,27 @@ namespace ATV_Advertisment.Services
                 else
                 {
                     result = CRUDStatusCode.EXISTED;
+                }
+            }
+
+            return result;
+        }
+
+        public TimeSlot CreateTimeSlot(TimeSlot input)
+        {
+            TimeSlot result = null;
+            if (input != null)
+            {
+                bool isExisted = _TimeSlotRepository.Exist(t => t.Code == input.Code &&
+                                                                t.Name == input.Name &&
+                                                                t.FromHour == input.FromHour);
+                if (!isExisted)
+                {
+                    input.StatusId = CommonStatus.ACTIVE;
+                    input.CreateDate = Utilities.GetServerDateTimeNow();
+                    input.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                    input.LastUpdateBy = Common.Session.GetId();
+                    result = _TimeSlotRepository.Create(input);
                 }
             }
 

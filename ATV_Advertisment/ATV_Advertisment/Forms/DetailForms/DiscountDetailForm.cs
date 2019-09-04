@@ -30,7 +30,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (model != null)
                     {
                         txtPriceRate.Text = Utilities.DoubleMoneyToText(model.PriceRate.Value);
-                        txtDiscount.Text = model.Dicount.ToString();
+                        txtDiscount.Text = model.DiscountPercent.ToString();
                     }
                 }
             }
@@ -59,7 +59,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model = new Discount()
                     {
                         PriceRate = (double)txtPriceRate.MoneyValue,
-                        Dicount = int.Parse(txtDiscount.Text)
+                        DiscountPercent = int.Parse(txtDiscount.Text)
                     };
                     result = _discountService.AddDiscount(model);
                     if (result == CRUDStatusCode.SUCCESS)
@@ -71,7 +71,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 {
                     //Edit
                     model.PriceRate = (double)txtPriceRate.MoneyValue;
-                    model.Dicount = int.Parse(txtDiscount.Text);
+                    model.DiscountPercent = int.Parse(txtDiscount.Text);
 
                     result = _discountService.EditDiscount(model);
                     if (result == CRUDStatusCode.SUCCESS)

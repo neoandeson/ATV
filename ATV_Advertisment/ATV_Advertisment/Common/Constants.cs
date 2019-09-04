@@ -64,11 +64,11 @@ namespace ATV_Advertisment.Common
             public static string EndDate = "Kết thúc";
             public static string ContractType = "Loại HĐ";
             public static string Cost = "Giá tiền (VNĐ)";
-            //ContractDetail
+            //ContractDetail, ProductScheduleShow(NumberOfShow)
             public static string BelongToContractCode = "Mã hợp đồng";
             public static string ShowDate = "Ngày chiếu";
             public static string TimeSlot = "Khung giờ";
-            public static string Quantity = "Số lượng";
+            public static string NumberOfShow = "Số lượng";
             public static string TotalCost = "Thành tiền (VNĐ)";
         }
 
@@ -103,6 +103,7 @@ namespace ATV_Advertisment.Common
             public static int TEXTBOX_HEIGHT = 26;
 
             public static int GV_WIDTH_SMALL = 50;
+            public static int GV_WIDTH_SEEM = 100;
             public static int GV_WIDTH_NORMAL = 150;
             public static int GV_WIDTH_MEDIUM = 170;
         }

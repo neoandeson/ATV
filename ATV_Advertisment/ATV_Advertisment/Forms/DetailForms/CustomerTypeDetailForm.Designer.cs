@@ -55,7 +55,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(98, 73);
-            this.txtDescription.MaxLength = 50;
+            this.txtDescription.MaxLength = 100;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(657, 26);
             this.txtDescription.TabIndex = 2;
@@ -117,7 +117,7 @@
             this.Controls.Add(this.gbDetail);
             this.Name = "CustomerTypeDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CustomerTypeDetailForm";
+            this.Text = "Loại hình khách hàng";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
             this.gbControl.ResumeLayout(false);

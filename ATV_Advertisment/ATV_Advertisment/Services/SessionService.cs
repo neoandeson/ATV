@@ -32,14 +32,20 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _SessionRepository.Exist(t => t.Name == input.Name);
-                if (!isExisted)
+                var session = _SessionRepository.Get(t => t.Name == input.Name || t.Code == input.Code).FirstOrDefault();
+                if (session == null)
                 {
                     input.StatusId = CommonStatus.ACTIVE;
                     input.CreateDate = Common.Utilities.GetServerDateTimeNow();
                     input.LastUpdateDate = Common.Utilities.GetServerDateTimeNow();
                     input.LastUpdateBy = Common.Session.GetId();
                     _SessionRepository.Add(input);
+                    result = CRUDStatusCode.SUCCESS;
+                } else if (session != null && session.StatusId == CommonStatus.DELETE)
+                {
+                    session.Name = input.Name;
+                    session.StatusId = CommonStatus.ACTIVE;
+                    _SessionRepository.Update(session);
                     result = CRUDStatusCode.SUCCESS;
                 }
                 else
@@ -107,7 +113,7 @@ namespace ATV_Advertisment.Services
 
         public bool IsExistCode(string code)
         {
-            return _SessionRepository.Exist(c => c.Code == code);
+            return _SessionRepository.Exist(c => c.Code == code && c.StatusId != CommonStatus.DELETE);
         }
     }
 }

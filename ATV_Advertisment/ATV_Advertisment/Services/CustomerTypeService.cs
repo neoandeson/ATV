@@ -33,8 +33,8 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _customerTypeRepository.Exist(t => t.Type == input.Type);
-                if (!isExisted)
+                var customerType = _customerTypeRepository.Get(t => t.Type == input.Type).FirstOrDefault();
+                if (customerType == null)
                 {
                     input.StatusId = CommonStatus.ACTIVE;
                     input.CreateDate = Utilities.GetServerDateTimeNow();
@@ -42,6 +42,10 @@ namespace ATV_Advertisment.Services
                     input.LastUpdateBy = Common.Session.GetId();
                     _customerTypeRepository.Add(input);
                     result = CRUDStatusCode.SUCCESS;
+                } else if (customerType != null && customerType.StatusId == CommonStatus.DELETE) {
+                    customerType.Description = input.Description;
+                    customerType.StatusId = CommonStatus.ACTIVE;
+                    _customerTypeRepository.Update(customerType);
                 } else
                 {
                     result = CRUDStatusCode.EXISTED;
@@ -87,7 +91,7 @@ namespace ATV_Advertisment.Services
 
         public List<CustomerType> GetAll()
         {
-            return _customerTypeRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
+            return _customerTypeRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).OrderBy(c => c.Type).ToList();
         }
 
         public CustomerType GetById(int id)

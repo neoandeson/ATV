@@ -41,10 +41,10 @@
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbRegisterSchedule = new System.Windows.Forms.GroupBox();
+            this.btnViewDetail = new System.Windows.Forms.Button();
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.adgv = new ADGV.AdvancedDataGridView();
-            this.btnViewDetail = new System.Windows.Forms.Button();
             this.gbContractDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.gbRegisterSchedule.SuspendLayout();
@@ -73,6 +73,7 @@
             // 
             this.txtNumberOfShow.Location = new System.Drawing.Point(445, 75);
             this.txtNumberOfShow.Name = "txtNumberOfShow";
+            this.txtNumberOfShow.ReadOnly = true;
             this.txtNumberOfShow.Size = new System.Drawing.Size(46, 26);
             this.txtNumberOfShow.TabIndex = 11;
             this.txtNumberOfShow.Text = "0";
@@ -123,9 +124,9 @@
             this.lblDuration.AutoSize = true;
             this.lblDuration.Location = new System.Drawing.Point(17, 78);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(82, 20);
+            this.lblDuration.Size = new System.Drawing.Size(55, 20);
             this.lblDuration.TabIndex = 4;
-            this.lblDuration.Text = "Thời lượng";
+            this.lblDuration.Text = "Độ dài";
             // 
             // cboDuration
             // 
@@ -186,6 +187,16 @@
             this.gbRegisterSchedule.TabStop = false;
             this.gbRegisterSchedule.Text = "Lịch đăng ký";
             // 
+            // btnViewDetail
+            // 
+            this.btnViewDetail.Location = new System.Drawing.Point(869, 25);
+            this.btnViewDetail.Name = "btnViewDetail";
+            this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
+            this.btnViewDetail.TabIndex = 12;
+            this.btnViewDetail.Text = "Xem";
+            this.btnViewDetail.UseVisualStyleBackColor = true;
+            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
+            // 
             // btnDeleteSchedule
             // 
             this.btnDeleteSchedule.Location = new System.Drawing.Point(1144, 25);
@@ -222,16 +233,6 @@
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
-            // 
-            // btnViewDetail
-            // 
-            this.btnViewDetail.Location = new System.Drawing.Point(869, 25);
-            this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
-            this.btnViewDetail.TabIndex = 12;
-            this.btnViewDetail.Text = "Xem";
-            this.btnViewDetail.UseVisualStyleBackColor = true;
-            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // ContractDetailDetailForm
             // 

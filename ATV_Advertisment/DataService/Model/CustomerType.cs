@@ -21,7 +21,7 @@ namespace DataService.Model
         [StringLength(20)]
         public string Type { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string Description { get; set; }
 
         public int StatusId { get; set; }

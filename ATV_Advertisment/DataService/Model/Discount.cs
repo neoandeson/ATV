@@ -13,7 +13,7 @@ namespace DataService.Model
 
         public double? PriceRate { get; set; }
 
-        public double? Dicount { get; set; }
+        public double? DiscountPercent { get; set; }
 
         public int StatusId { get; set; }
 

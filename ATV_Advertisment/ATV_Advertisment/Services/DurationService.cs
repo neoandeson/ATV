@@ -92,7 +92,7 @@ namespace ATV_Advertisment.Services
 
         public List<Duration> GetAll()
         {
-            return _DurationRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
+            return _DurationRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).OrderBy(c => c.Length).ToList();
         }
 
         public Duration GetById(int id)

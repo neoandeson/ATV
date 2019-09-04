@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.cboTimeSlotLength = new System.Windows.Forms.ComboBox();
             this.cboTimeSlot = new System.Windows.Forms.ComboBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.lblShowDate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.cboTimeSlotLength = new System.Windows.Forms.ComboBox();
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,15 @@
             this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin lịch";
+            // 
+            // cboTimeSlotLength
+            // 
+            this.cboTimeSlotLength.FormattingEnabled = true;
+            this.cboTimeSlotLength.Location = new System.Drawing.Point(140, 83);
+            this.cboTimeSlotLength.Name = "cboTimeSlotLength";
+            this.cboTimeSlotLength.Size = new System.Drawing.Size(72, 28);
+            this.cboTimeSlotLength.TabIndex = 13;
+            this.cboTimeSlotLength.SelectedIndexChanged += new System.EventHandler(this.cboTimeSlotLength_SelectedIndexChanged);
             // 
             // cboTimeSlot
             // 
@@ -215,15 +224,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // cboTimeSlotLength
-            // 
-            this.cboTimeSlotLength.FormattingEnabled = true;
-            this.cboTimeSlotLength.Location = new System.Drawing.Point(140, 83);
-            this.cboTimeSlotLength.Name = "cboTimeSlotLength";
-            this.cboTimeSlotLength.Size = new System.Drawing.Size(72, 28);
-            this.cboTimeSlotLength.TabIndex = 13;
-            this.cboTimeSlotLength.SelectedIndexChanged += new System.EventHandler(this.cboTimeSlotLength_SelectedIndexChanged);
-            // 
             // ProductScheduleDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -235,6 +235,8 @@
             this.Name = "ProductScheduleDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chi tiết lịch";
+            this.Load += new System.EventHandler(this.ProductScheduleDetailForm_Load);
+            this.Shown += new System.EventHandler(this.ProductScheduleDetailForm_Shown);
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
             this.gbControl.ResumeLayout(false);

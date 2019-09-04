@@ -51,8 +51,8 @@ namespace ATV_Advertisment.Forms.ListForms
 
                 adgv.Columns["PriceRate"].HeaderText = ADGVText.PriceRate;
                 adgv.Columns["PriceRate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                adgv.Columns["Dicount"].HeaderText = ADGVText.Discount;
-                adgv.Columns["Dicount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                adgv.Columns["DiscountPercent"].HeaderText = ADGVText.Discount;
+                adgv.Columns["DiscountPercent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             catch (Exception ex)
             {

@@ -32,6 +32,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             this.model = inputModel;
             InitializeComponent();
+            gbCostRule.Visible = false;
             LoadCboSession();
             LoadCboDuration();
             LoadData();
@@ -96,6 +97,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
                         LoadDGV();
                     }
+                    gbCostRule.Visible = true;
                 }
             }
             catch (Exception)
@@ -111,7 +113,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int result = CRUDStatusCode.ERROR;
+            TimeSlot result = null;
 
             try
             {
@@ -127,22 +129,25 @@ namespace ATV_Advertisment.Forms.DetailForms
                         FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
                         SessionCode = cboSession.SelectedValue.ToString()
                     };
-                    result = _timeSlotService.AddTimeSlot(model);
-                    if (result == CRUDStatusCode.SUCCESS)
+                    result = _timeSlotService.CreateTimeSlot(model);
+                    if (result != null)
                     {
+                        model = result;
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                        gbCostRule.Visible = true;
                     }
                 }
                 else
                 {
                     //Edit
+                    int editResult = CRUDStatusCode.ERROR;
                     model.Code = txtCode.Text;
                     model.Name = txtName.Text;
                     model.FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text);
                     model.SessionCode = cboSession.SelectedValue.ToString();
 
-                    result = _timeSlotService.EditTimeSlot(model);
-                    if (result == CRUDStatusCode.SUCCESS)
+                    editResult = _timeSlotService.EditTimeSlot(model);
+                    if (editResult == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
                     }
