@@ -117,10 +117,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                     adgv.DataSource = bs;
                     adgv.Columns["Id"].Visible = false;
                     adgv.Columns["ContractDetailId"].Visible = false;
-                    adgv.Columns["SessionCode"].Visible = false;
+                    adgv.Columns["ProductName"].Visible = false;
+                    adgv.Columns["ShowTime"].Visible = false;
 
-                    adgv.Columns["SessionName"].HeaderText = ADGVText.ShowDate;
-                    adgv.Columns["SessionName"].Width = ControlsAttribute.GV_WIDTH_MEDIUM;
                     adgv.Columns["ShowDate"].HeaderText = ADGVText.ShowDate;
                     adgv.Columns["ShowDate"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                     adgv.Columns["TimeSlot"].HeaderText = ADGVText.TimeSlot;
@@ -139,7 +138,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                     productScheduleShow = new ProductScheduleShow()
                     {
                         ContractDetailId = model.Id,
-                        TimeSlotLength = model.DurationSecond
+                        TimeSlotLength = model.DurationSecond,
+                        ProductName = model.ProductName
                     };
                 }
             }
@@ -184,7 +184,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                 {
                     Id = (int)selectedRow.Cells[0].Value,
                     ContractDetailId = model.Id,
-                    TimeSlotLength = (int)cboDuration.SelectedValue
+                    TimeSlotLength = (int)cboDuration.SelectedValue,
+                    ProductName = txtProductName.Text
                 };
             }
             else
@@ -224,7 +225,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                             productScheduleShow = new ProductScheduleShow()
                             {
                                 ContractDetailId = model.Id,
-                                TimeSlotLength = (int)cboDuration.SelectedValue
+                                TimeSlotLength = (int)cboDuration.SelectedValue,
+                                ProductName = txtProductName.Text
                             };
                             Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
                         }
@@ -259,6 +261,10 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
+            if(productScheduleShow != null)
+            {
+                productScheduleShow.Id = 0;
+            }
             ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow);
             contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             contractDetailDetailForm.ShowDialog();
@@ -277,6 +283,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         //Completely delete from DB
                         _productScheduleShowService.DeleteProductScheduleShow(productScheduleShowId);
                         UpdateContractDetailTotalCost();
+                        LoadDGV();
                     }
 
                 }

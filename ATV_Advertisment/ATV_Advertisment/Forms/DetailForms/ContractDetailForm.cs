@@ -300,7 +300,8 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 contractDetail = new ContractDetail()
                 {
-                    Id = int.Parse(selectedRow.Cells[0].Value.ToString())
+                    Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
+                    ProductName = selectedRow.Cells[2].Value.ToString()
                 };
             }
             else
@@ -312,6 +313,10 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnAddDetail_Click(object sender, EventArgs e)
         {
+            if(contractDetail != null)
+            {
+                contractDetail.Id = 0;
+            }
             ContractDetailDetailForm contractDetailDetailForm = new ContractDetailDetailForm(contractDetail);
             contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             contractDetailDetailForm.ShowDialog();

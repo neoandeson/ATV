@@ -221,6 +221,7 @@
     <Compile Include="ViewModel\ContractViewModel.cs" />
     <Compile Include="ViewModel\CostRuleViewModel.cs" />
     <Compile Include="ViewModel\DiscountViewModel.cs" />
+    <Compile Include="ViewModel\ProductScheduleShowRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowViewModel.cs" />
     <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
     <Compile Include="ViewModel\TimeSlotViewModel.cs" />

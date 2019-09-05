@@ -96,7 +96,7 @@ namespace ReportService.ExportExcel
                 }
 
                 /* Load the datatable into the sheet, starting from cell A1. Print the column names on row 1 */
-                worksheet.Cells["A4"].LoadFromCollection(list, true);
+                worksheet.Cells["A3"].LoadFromCollection(list, false);
             }
             catch (Exception ex)
             {

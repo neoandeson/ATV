@@ -34,7 +34,8 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _ProductScheduleShowRepository.Exist(t => t.ContractDetailId == input.ContractDetailId && 
+                bool isExisted = _ProductScheduleShowRepository.Exist(t => t.ContractDetailId == input.ContractDetailId &&
+                                                                t.TimeSlotLength == input.TimeSlotLength &&
                                                                 t.TimeSlot == input.TimeSlot &&
                                                                 t.ShowDate == input.ShowDate);
                 if (!isExisted)
@@ -77,6 +78,8 @@ namespace ATV_Advertisment.Services
             {
                 ProductScheduleShow.ContractDetailId = input.ContractDetailId;
                 ProductScheduleShow.Cost = input.Cost;
+                ProductScheduleShow.ProductName = input.ProductName;
+                ProductScheduleShow.ShowTime = input.ShowTime;
                 ProductScheduleShow.Quantity = input.Quantity;
                 ProductScheduleShow.TimeSlotLength = input.TimeSlotLength;
                 ProductScheduleShow.ShowDate = input.ShowDate;
@@ -85,6 +88,8 @@ namespace ATV_Advertisment.Services
                 ProductScheduleShow.Discount = input.Discount;
 
                 bool isExisted = _ProductScheduleShowRepository.Exist(t => t.ContractDetailId == input.ContractDetailId &&
+                                                                t.ProductName == input.ProductName &&
+                                                                t.ShowDate == input.ShowDate &&
                                                                 t.TimeSlot == input.TimeSlot &&
                                                                 t.Quantity == input.Quantity &&
                                                                 t.TimeSlotLength == input.TimeSlotLength);
@@ -92,7 +97,8 @@ namespace ATV_Advertisment.Services
                 {
                     _ProductScheduleShowRepository.Update(ProductScheduleShow);
                     result = CRUDStatusCode.SUCCESS;
-                } else
+                }
+                else
                 {
                     result = CRUDStatusCode.EXISTED;
                 }
@@ -114,19 +120,35 @@ namespace ATV_Advertisment.Services
         public List<ProductScheduleShowViewModel> GetAllVMForList(int contractDetailId)
         {
             return _ProductScheduleShowRepository.Get(c => c.ContractDetailId == contractDetailId)
+                .OrderBy(c => c.ShowDate)//TODO timeslotid.ThenBy(c => c.)
                 .Select(ts => new ProductScheduleShowViewModel()
                 {
                     Id = ts.Id,
                     ContractDetailId = ts.ContractDetailId,
                     Quantity = ts.Quantity,
-                    SessionCode = ts.SessionCode,
-                    SessionName = ts.SessionName,
+                    ProductName = ts.ProductName,
+                    ShowTime = ts.ShowTime,
                     ShowDate = ts.ShowDate,
                     TimeSlot = ts.TimeSlot,
                     TimeSlotLength = ts.TimeSlotLength,
                     Cost = Utilities.DoubleMoneyToText(ts.Cost),
                     TotalCost = Utilities.DoubleMoneyToText(ts.TotalCost),
                     Discount = ts.Discount.ToString()
+                })
+                .ToList();
+        }
+
+        public List<ProductScheduleShowRM> GetAllForRptByDate(string date)
+        {
+            return _ProductScheduleShowRepository.Get(p => p.ShowDate == date)
+                .OrderBy(c => c.ShowDate)
+                .Select(ts => new ProductScheduleShowRM()
+                {
+                    ProductName = ts.ProductName,
+                    ShowTime = ts.ShowTime,
+                    ShowDate = ts.ShowDate,
+                    TimeSlot = ts.TimeSlot,
+                    TimeSlotLength = ts.TimeSlotLength,
                 })
                 .ToList();
         }

@@ -148,6 +148,7 @@
             // txtProductName
             // 
             this.txtProductName.Location = new System.Drawing.Point(146, 31);
+            this.txtProductName.MaxLength = 80;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(345, 26);
             this.txtProductName.TabIndex = 1;

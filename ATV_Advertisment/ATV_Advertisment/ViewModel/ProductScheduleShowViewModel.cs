@@ -12,9 +12,9 @@ namespace ATV_Advertisment.ViewModel
 
         public int ContractDetailId { get; set; }
 
-        public string SessionCode { get; set; }
+        public string ProductName { get; set; }
 
-        public string SessionName { get; set; }
+        public string ShowTime { get; set; }
 
         public string ShowDate { get; set; }
 

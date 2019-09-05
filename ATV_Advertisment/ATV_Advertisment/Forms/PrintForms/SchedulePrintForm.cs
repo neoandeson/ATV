@@ -1,4 +1,6 @@
-﻿using ATV_Advertisment.Services;
+﻿using ATV_Advertisment.Common;
+using ATV_Advertisment.Services;
+using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using ReportService.ExportExcel;
 using System;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Forms.PrintForms
 {
@@ -26,8 +29,10 @@ namespace ATV_Advertisment.Forms.PrintForms
             var exportDir = Path.GetFullPath(@"LichChieu.xlsx");
             var templateDir = Path.GetFullPath(@"Schedule.xlsx");
 
-            EPPlusExport<TimeSlot> ePPlusExport = new EPPlusExport<TimeSlot>(exportDir, templateDir, new TimeSlotService().GetAll());
+            EPPlusExport<ProductScheduleShowRM> ePPlusExport = new EPPlusExport<ProductScheduleShowRM>(exportDir, templateDir,
+                new ProductScheduleShowService().GetAllForRptByDate(dtpDate.Text));
             ePPlusExport.CreateFileWithTemplate();
+            Utilities.ShowMessage(CommonMessage.EXPORT_SUCESSFULLY);
         }
     }
 }

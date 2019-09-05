@@ -48,8 +48,7 @@ namespace DataService.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductScheduleShow>()
-                .Property(e => e.SessionCode)
-                .IsFixedLength()
+                .Property(e => e.ShowTime)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Role>()

@@ -26,6 +26,7 @@ namespace ATV_Advertisment.Common
             public static string APPLICATION_IS_RUNNING = "Ứng dụng đang chạy";
             public static string CUSTOMER_NOTFOUND = "Không tìm thấy thông tin khách hàng";
             public static string ADD_SUCESSFULLY = "Thêm mới thành công";
+            public static string EXPORT_SUCESSFULLY = "Xuất file thành công";
             public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
             public static string DELETE_SUCESSFULLY = "Xóa thành công";
             public static string UPDATE_SUCESSFULLY = "Cập nhật thành công";

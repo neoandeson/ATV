@@ -20,6 +20,7 @@ namespace ATV_Advertisment.Services
         int AddTimeSlot(TimeSlot input);
         int EditTimeSlot(TimeSlot input);
         TimeSlot CreateTimeSlot(TimeSlot input);
+        string GetShowTimeById(int timeslotId);
     }
 
     public class TimeSlotService : ITimeSlotService
@@ -132,6 +133,17 @@ namespace ATV_Advertisment.Services
         {
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
         }
+        public string GetShowTimeById(int timeslotId)
+        {
+            string result = "";
+            var timeSlot = _TimeSlotRepository.GetById(timeslotId);
+            if(timeSlot != null)
+            {
+                result = Utilities.GetHourFormInt(timeSlot.FromHour);
+            }
+
+            return result;
+        }
 
         public TimeSlot GetById(int id)
         {
@@ -144,7 +156,7 @@ namespace ATV_Advertisment.Services
                 .Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .ToDictionary(q => q.Code, q => string.Format("{0} {1}", q.Code, q.Name));
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
-                .OrderBy(c => c.SessionCode).ThenBy(c => c.Name)
+                .OrderBy(c => c.SessionCode)
                 .Select(ts => new TimeSlot() {
                     Id = ts.Id,
                     Code = ts.Code,
@@ -162,7 +174,7 @@ namespace ATV_Advertisment.Services
         public List<TimeSlotViewModel> GetAllForDetailList()
         {
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
-                .OrderBy(c => c.SessionCode).ThenBy(c => c.Name)
+                .OrderBy(c => c.SessionCode)
                 .Select(ts => new TimeSlotViewModel()
                 {
                     Id = ts.Id,

@@ -13,6 +13,7 @@ namespace ATV_Advertisment.Forms.DetailForms
     {
         public ProductScheduleShow model { get; set; }
         private int CompleteLoadData = 0;
+        private string ProductName = "";
         private ProductScheduleShowService _productScheduleShowService = null;
         private TimeSlotService _timeSlotService = null;
         private CostRuleService _costRuleService = null;
@@ -21,6 +22,11 @@ namespace ATV_Advertisment.Forms.DetailForms
         public ProductScheduleDetailForm(ProductScheduleShow inputModel)
         {
             this.model = inputModel;
+            if(model != null)
+            {
+                ProductName = inputModel.ProductName;
+            }
+            
             InitializeComponent();
             CompleteLoadData = 0;
             LoadTimeSlots();
@@ -47,6 +53,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             txtDiscount.Text = model.Discount.ToString();
                             cboTimeSlotLength.Text = model.TimeSlotLength.ToString();
                             txtQuantity.Text = model.Quantity.ToString();
+                            model.ProductName = ProductName;
                         }
                     }
                     CalculateCost();
@@ -111,6 +118,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             try
             {
                 _productScheduleShowService = new ProductScheduleShowService();
+                _timeSlotService = new TimeSlotService();
 
                 if (model != null)
                 {
@@ -124,9 +132,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TimeSlotLength = int.Parse(cboTimeSlotLength.Text);
                         model.Quantity = int.Parse(txtQuantity.Text);
                         model.ShowDate = dtpShowDate.Text;
-                        //TODO Get sessionCode and Name
-                        model.SessionCode = "S";
-                        model.SessionName = dtpShowDate.Text;
+                        model.ProductName = ProductName;
+                        model.ShowTime = _timeSlotService.GetShowTimeById((int)cboTimeSlot.SelectedValue);
                         result = _productScheduleShowService.AddProductScheduleShow(model);
                         if (result == CRUDStatusCode.SUCCESS)
                         {
@@ -146,14 +153,16 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TimeSlotLength = int.Parse(cboTimeSlotLength.Text);
                         model.Quantity = int.Parse(txtQuantity.Text);
                         model.ShowDate = dtpShowDate.Text;
-                        //TODO Get sessionCode and Name
-                        model.SessionCode = "S";
-                        model.SessionName = dtpShowDate.Text;
+                        model.ProductName = ProductName;
+                        model.ShowTime = _timeSlotService.GetShowTimeById((int)cboTimeSlot.SelectedValue);
 
                         result = _productScheduleShowService.EditProductScheduleShow(model);
                         if (result == CRUDStatusCode.SUCCESS)
                         {
                             Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        } else if (result == CRUDStatusCode.EXISTED)
+                        {
+                            Utilities.ShowMessage(CommonMessage.EXISTED_PRODUCT_SCHEDULE);
                         }
                     }
                 }
@@ -165,6 +174,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             finally
             {
+                _timeSlotService = null;
                 _productScheduleShowService = null;
             }
         }
