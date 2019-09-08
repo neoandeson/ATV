@@ -49,8 +49,6 @@ namespace ATV_Advertisment.Forms.InputForms
                 adgv.Columns["ContractCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["CustomerCode"].HeaderText = ADGVText.CustomerCode;
                 adgv.Columns["CustomerCode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                adgv.Columns["ContractType"].HeaderText = ADGVText.ContractType;
-                adgv.Columns["ContractType"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["StartDate"].HeaderText = ADGVText.StartDate;
                 adgv.Columns["StartDate"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["EndDate"].HeaderText = ADGVText.EndDate;

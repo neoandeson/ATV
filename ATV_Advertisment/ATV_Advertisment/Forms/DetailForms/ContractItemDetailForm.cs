@@ -19,16 +19,17 @@ using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Forms.DetailForms
 {
-    public partial class ContractDetailDetailForm : CommonForm
+    public partial class ContractItemDetailForm : CommonForm
     {
-        public ContractDetail model { get; set; }
+        public ContractItem model { get; set; }
         public ProductScheduleShow productScheduleShow = null;
         public int productScheduleShowId = 0;
-        private ContractDetailService _contractDetailService = null;
+        private ContractItemService _contractDetailService = null;
         private ProductScheduleShowService _productScheduleShowService = null;
         private DurationService _durationService = null;
+        private ShowTypeService _showTypeService = null;
 
-        public ContractDetailDetailForm(ContractDetail inputModel)
+        public ContractItemDetailForm(ContractItem inputModel)
         {
             InitializeComponent();
             this.model = inputModel;
@@ -42,6 +43,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
 
             LoadDurationComboBox();
+            LoadCboShowType();
             LoadData();
         }
 
@@ -54,7 +56,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (model.Id != 0)
                     {
                         //Existed
-                        _contractDetailService = new ContractDetailService();
+                        _contractDetailService = new ContractItemService();
                         model = _contractDetailService.GetById(model.Id);
                         if (model != null)
                         {
@@ -62,6 +64,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
                             txtNumberOfShow.Text = model.NumberOfShow.ToString();
                             cboDuration.SelectedValue = model.DurationSecond;
+                            cboShowType.SelectedValue = model.ShowTypeId;
 
                             LoadDGV();
                         }
@@ -97,6 +100,26 @@ namespace ATV_Advertisment.Forms.DetailForms
             finally
             {
                 _durationService = null;
+            }
+        }
+
+        public void LoadCboShowType()
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                _showTypeService = new ShowTypeService();
+
+                Utilities.LoadComboBoxOptions(cboShowType, _showTypeService.Getoptions());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _showTypeService = null;
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -185,7 +208,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                     Id = (int)selectedRow.Cells[0].Value,
                     ContractDetailId = model.Id,
                     TimeSlotLength = (int)cboDuration.SelectedValue,
-                    ProductName = txtProductName.Text
+                    ProductName = txtProductName.Text,
+                    ShowTypeId = (int)cboShowType.SelectedValue
                 };
             }
             else
@@ -199,10 +223,10 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             try
             {
-                ContractDetail result = null;
+                ContractItem result = null;
                 int editResult = CRUDStatusCode.ERROR;
 
-                _contractDetailService = new ContractDetailService();
+                _contractDetailService = new ContractItemService();
 
                 if (model != null)
                 {
@@ -213,6 +237,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
                         model.DurationSecond = (int)cboDuration.SelectedValue;
                         model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
+                        model.ShowTypeId = (int)cboShowType.SelectedValue;
                         result = _contractDetailService.CreateContractDetail(model);
                         if (result != null)
                         {
@@ -238,6 +263,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
                         model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
                         model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
+                        model.ShowTypeId = (int)cboShowType.SelectedValue;
                         model.DurationSecond = (int)cboDuration.SelectedValue;
 
                         editResult = _contractDetailService.EditContractDetail(model);
@@ -308,7 +334,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             try
             {
-                _contractDetailService = new ContractDetailService();
+                _contractDetailService = new ContractItemService();
                 ContractDetailUpdateVM result = _contractDetailService.UpdateContractDetailCost(model.Id);
                 txtTotalCost.Text = Utilities.DoubleMoneyToText(result.Cost);
                 txtNumberOfShow.Text = result.NumberOfShow.ToString();

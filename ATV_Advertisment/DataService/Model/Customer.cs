@@ -36,8 +36,6 @@ namespace DataService.Model
         [StringLength(10)]
         public string TaxCode { get; set; }
 
-        public int CustomerTypeId { get; set; }
-
         public int StatusId { get; set; }
 
         public DateTime? CreateDate { get; set; }
@@ -45,7 +43,5 @@ namespace DataService.Model
         public DateTime? LastUpdateDate { get; set; }
 
         public int? LastUpdateBy { get; set; }
-
-        public virtual CustomerType CustomerType { get; set; }
     }
 }

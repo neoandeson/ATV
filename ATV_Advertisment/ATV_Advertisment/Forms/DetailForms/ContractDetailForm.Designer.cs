@@ -36,8 +36,6 @@
             this.lblCustomerCode = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.cboContractType = new System.Windows.Forms.ComboBox();
-            this.lblContractType = new System.Windows.Forms.Label();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.gbContractDetail = new System.Windows.Forms.GroupBox();
@@ -81,7 +79,7 @@
             this.btnCustomerDetail.Location = new System.Drawing.Point(317, 30);
             this.btnCustomerDetail.Name = "btnCustomerDetail";
             this.btnCustomerDetail.Size = new System.Drawing.Size(25, 25);
-            this.btnCustomerDetail.TabIndex = 17;
+            this.btnCustomerDetail.TabIndex = 0;
             this.btnCustomerDetail.UseVisualStyleBackColor = true;
             // 
             // txtCustomerName
@@ -91,16 +89,15 @@
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(459, 26);
-            this.txtCustomerName.TabIndex = 16;
+            this.txtCustomerName.TabIndex = 2;
             // 
             // lblTaxCode
             // 
             this.lblTaxCode.AutoSize = true;
             this.lblTaxCode.Location = new System.Drawing.Point(369, 32);
             this.lblTaxCode.Name = "lblTaxCode";
-            this.lblTaxCode.Size = new System.Drawing.Size(36, 20);
+            this.lblTaxCode.Size = new System.Drawing.Size(0, 20);
             this.lblTaxCode.TabIndex = 15;
-            this.lblTaxCode.Text = "Tên";
             // 
             // txtCustomerCode
             // 
@@ -110,7 +107,7 @@
             this.txtCustomerCode.MaxLength = 20;
             this.txtCustomerCode.Name = "txtCustomerCode";
             this.txtCustomerCode.Size = new System.Drawing.Size(177, 26);
-            this.txtCustomerCode.TabIndex = 7;
+            this.txtCustomerCode.TabIndex = 1;
             this.txtCustomerCode.Leave += new System.EventHandler(this.txtCustomerCode_Leave);
             // 
             // lblCustomerCode
@@ -128,7 +125,7 @@
             this.dtpEndDate.Location = new System.Drawing.Point(714, 77);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(146, 26);
-            this.dtpEndDate.TabIndex = 10;
+            this.dtpEndDate.TabIndex = 4;
             // 
             // dtpStartDate
             // 
@@ -136,24 +133,7 @@
             this.dtpStartDate.Location = new System.Drawing.Point(714, 33);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(146, 26);
-            this.dtpStartDate.TabIndex = 9;
-            // 
-            // cboContractType
-            // 
-            this.cboContractType.FormattingEnabled = true;
-            this.cboContractType.Location = new System.Drawing.Point(404, 33);
-            this.cboContractType.Name = "cboContractType";
-            this.cboContractType.Size = new System.Drawing.Size(146, 28);
-            this.cboContractType.TabIndex = 6;
-            // 
-            // lblContractType
-            // 
-            this.lblContractType.AutoSize = true;
-            this.lblContractType.Location = new System.Drawing.Point(319, 38);
-            this.lblContractType.Name = "lblContractType";
-            this.lblContractType.Size = new System.Drawing.Size(67, 20);
-            this.lblContractType.TabIndex = 3;
-            this.lblContractType.Text = "Loại HĐ";
+            this.dtpStartDate.TabIndex = 3;
             // 
             // lblEndDate
             // 
@@ -161,7 +141,7 @@
             this.lblEndDate.Location = new System.Drawing.Point(602, 82);
             this.lblEndDate.Name = "lblEndDate";
             this.lblEndDate.Size = new System.Drawing.Size(106, 20);
-            this.lblEndDate.TabIndex = 2;
+            this.lblEndDate.TabIndex = 0;
             this.lblEndDate.Text = "Ngày kết thúc";
             // 
             // lblStartDate
@@ -170,7 +150,7 @@
             this.lblStartDate.Location = new System.Drawing.Point(602, 38);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(103, 20);
-            this.lblStartDate.TabIndex = 1;
+            this.lblStartDate.TabIndex = 0;
             this.lblStartDate.Text = "Ngày bắt đầu";
             // 
             // gbContractDetail
@@ -183,7 +163,7 @@
             this.gbContractDetail.Location = new System.Drawing.Point(13, 214);
             this.gbContractDetail.Name = "gbContractDetail";
             this.gbContractDetail.Size = new System.Drawing.Size(885, 281);
-            this.gbContractDetail.TabIndex = 1;
+            this.gbContractDetail.TabIndex = 0;
             this.gbContractDetail.TabStop = false;
             this.gbContractDetail.Text = "Nội dung";
             // 
@@ -192,7 +172,7 @@
             this.btnViewDtail.Location = new System.Drawing.Point(477, 241);
             this.btnViewDtail.Name = "btnViewDtail";
             this.btnViewDtail.Size = new System.Drawing.Size(110, 30);
-            this.btnViewDtail.TabIndex = 4;
+            this.btnViewDtail.TabIndex = 5;
             this.btnViewDtail.Text = "Xem";
             this.btnViewDtail.UseVisualStyleBackColor = true;
             this.btnViewDtail.Click += new System.EventHandler(this.btnViewDtail_Click);
@@ -202,7 +182,7 @@
             this.btnDeleteDetail.Location = new System.Drawing.Point(769, 241);
             this.btnDeleteDetail.Name = "btnDeleteDetail";
             this.btnDeleteDetail.Size = new System.Drawing.Size(110, 30);
-            this.btnDeleteDetail.TabIndex = 3;
+            this.btnDeleteDetail.TabIndex = 7;
             this.btnDeleteDetail.Text = "Xóa";
             this.btnDeleteDetail.UseVisualStyleBackColor = true;
             this.btnDeleteDetail.Click += new System.EventHandler(this.btnDeleteDetail_Click);
@@ -212,7 +192,7 @@
             this.btnAddDetail.Location = new System.Drawing.Point(622, 241);
             this.btnAddDetail.Name = "btnAddDetail";
             this.btnAddDetail.Size = new System.Drawing.Size(110, 30);
-            this.btnAddDetail.TabIndex = 2;
+            this.btnAddDetail.TabIndex = 6;
             this.btnAddDetail.Text = "Thêm";
             this.btnAddDetail.UseVisualStyleBackColor = true;
             this.btnAddDetail.Click += new System.EventHandler(this.btnAddDetail_Click);
@@ -223,7 +203,7 @@
             this.lblNOProducts.Location = new System.Drawing.Point(776, 22);
             this.lblNOProducts.Name = "lblNOProducts";
             this.lblNOProducts.Size = new System.Drawing.Size(103, 20);
-            this.lblNOProducts.TabIndex = 1;
+            this.lblNOProducts.TabIndex = 0;
             this.lblNOProducts.Text = "Số sản phẩm";
             // 
             // adgv
@@ -249,7 +229,7 @@
             this.lblCost.Location = new System.Drawing.Point(22, 83);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(79, 20);
-            this.lblCost.TabIndex = 14;
+            this.lblCost.TabIndex = 0;
             this.lblCost.Text = "Giá trị HĐ";
             // 
             // txtCost
@@ -272,8 +252,6 @@
             this.gbContractInfo.Controls.Add(this.lblContractCode);
             this.gbContractInfo.Controls.Add(this.lblCurrency2);
             this.gbContractInfo.Controls.Add(this.txtCost);
-            this.gbContractInfo.Controls.Add(this.cboContractType);
-            this.gbContractInfo.Controls.Add(this.lblContractType);
             this.gbContractInfo.Controls.Add(this.dtpStartDate);
             this.gbContractInfo.Controls.Add(this.lblStartDate);
             this.gbContractInfo.Controls.Add(this.lblCost);
@@ -282,7 +260,7 @@
             this.gbContractInfo.Location = new System.Drawing.Point(13, 88);
             this.gbContractInfo.Name = "gbContractInfo";
             this.gbContractInfo.Size = new System.Drawing.Size(885, 120);
-            this.gbContractInfo.TabIndex = 2;
+            this.gbContractInfo.TabIndex = 0;
             this.gbContractInfo.TabStop = false;
             this.gbContractInfo.Text = "Hợp đồng";
             // 
@@ -293,7 +271,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(108, 26);
-            this.txtCode.TabIndex = 20;
+            this.txtCode.TabIndex = 0;
             // 
             // lblContractCode
             // 
@@ -301,7 +279,7 @@
             this.lblContractCode.Location = new System.Drawing.Point(19, 38);
             this.lblContractCode.Name = "lblContractCode";
             this.lblContractCode.Size = new System.Drawing.Size(59, 20);
-            this.lblContractCode.TabIndex = 19;
+            this.lblContractCode.TabIndex = 0;
             this.lblContractCode.Text = "Mã HĐ";
             // 
             // lblCurrency2
@@ -310,7 +288,7 @@
             this.lblCurrency2.Location = new System.Drawing.Point(319, 81);
             this.lblCurrency2.Name = "lblCurrency2";
             this.lblCurrency2.Size = new System.Drawing.Size(43, 20);
-            this.lblCurrency2.TabIndex = 18;
+            this.lblCurrency2.TabIndex = 0;
             this.lblCurrency2.Text = "VNĐ";
             // 
             // gbControl
@@ -321,7 +299,7 @@
             this.gbControl.Location = new System.Drawing.Point(13, 501);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(885, 70);
-            this.gbControl.TabIndex = 3;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -331,7 +309,7 @@
             this.btnCancel.Location = new System.Drawing.Point(170, 26);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 30);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -342,7 +320,7 @@
             this.btnSave.Location = new System.Drawing.Point(26, 26);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -374,14 +352,12 @@
 
         private System.Windows.Forms.GroupBox gbCustomerInfo;
         private System.Windows.Forms.GroupBox gbContractDetail;
-        private System.Windows.Forms.Label lblContractType;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label lblCustomerCode;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.TextBox txtCustomerCode;
-        private System.Windows.Forms.ComboBox cboContractType;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label lblTaxCode;
         private System.Windows.Forms.Label lblCost;

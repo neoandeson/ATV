@@ -173,6 +173,9 @@ namespace ATV_Advertisment.Services
 
         public List<TimeSlotViewModel> GetAllForDetailList()
         {
+            Dictionary<string, string> sessionCodeName = _sessionRepository
+                .Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .ToDictionary(q => q.Code, q => string.Format("{0} | {1}", q.Code, q.Name));
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .OrderBy(c => c.SessionCode)
                 .Select(ts => new TimeSlotViewModel()
@@ -185,7 +188,7 @@ namespace ATV_Advertisment.Services
                     LastUpdateBy = ts.LastUpdateBy,
                     LastUpdateDate = ts.LastUpdateDate,
                     Name = ts.Name,
-                    SessionCode = ts.SessionCode
+                    SessionCode = sessionCodeName.Where(s => s.Key == ts.SessionCode).FirstOrDefault().Value
                 })
                 .ToList();
         }

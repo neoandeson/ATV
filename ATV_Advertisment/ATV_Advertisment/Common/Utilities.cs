@@ -30,7 +30,14 @@ namespace ATV_Advertisment.Common
 
         public static void ShowReturnMessage(int type, string message)
         {
-            //TODO show message by type
+            string noti = "";
+            //CRUDStatusCode
+            switch (type)
+            {
+                case 0: noti = string.Format("{0} không thành công", message); break; //ERROR
+                case 1: noti = string.Format("{0} thành công", message); break; //SUCCESS
+                case 2: noti = string.Format("Dữ liệu ({0}) đã tồn tại.", message); break; //EXISTED
+            }
             var cursor = Cursor.Current;
             MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -168,7 +175,7 @@ namespace ATV_Advertisment.Common
             return result;
         }
 
-        public static Form OpenFormByName(string formName, out bool isLogout)
+        public static Form ShowFormByName(string formName, out bool isLogout)
         {
             Form form = null;
             bool isFunctionLogout = false;
@@ -194,9 +201,9 @@ namespace ATV_Advertisment.Common
                         ListCustomerForm listCustomerForm = new ListCustomerForm();
                         form = (Form)listCustomerForm;
                         break;
-                    case "Danh mục loại hình khách hàng":
-                        ListCustomerTypeForm listCustomerTypeForm = new ListCustomerTypeForm();
-                        form = (Form)listCustomerTypeForm;
+                    case "Danh mục loại quảng cáo":
+                        ListShowTypeForm listShowTypeForm = new ListShowTypeForm();
+                        form = (Form)listShowTypeForm;
                         break;
                     case "Danh mục buổi phát":
                         ListSessionForm listSessionForm = new ListSessionForm();

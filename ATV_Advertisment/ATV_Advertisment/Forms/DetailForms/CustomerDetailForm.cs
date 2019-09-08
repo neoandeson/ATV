@@ -19,29 +19,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.model = inputModel;
 
             InitializeComponent();
-            LoadAllCustomerTypes();
             LoadData();
-        }
-
-        public void LoadAllCustomerTypes()
-        {
-            CustomerTypeService customerTypeService = null;
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                customerTypeService = new CustomerTypeService();
-
-                Utilities.LoadComboBoxOptions(cboCustomerType, customerTypeService.Getoptions());
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                customerTypeService = null;
-                Cursor.Current = Cursors.Default;
-            }
         }
 
         public void LoadData()
@@ -55,7 +33,6 @@ namespace ATV_Advertisment.Forms.DetailForms
                 txtPhone2.Text = model.Phone2;
                 txtFax.Text = model.Fax;
                 txtTaxCode.Text = model.TaxCode;
-                cboCustomerType.SelectedValue = model.CustomerTypeId;
             }
         }
 
@@ -80,7 +57,6 @@ namespace ATV_Advertisment.Forms.DetailForms
                         Phone2 = txtPhone2.Text,
                         Fax = txtFax.Text,
                         TaxCode = txtTaxCode.Text,
-                        CustomerTypeId = (int)cboCustomerType.SelectedValue
                     };
                     result = customerService.AddCustomer(model);
                     if (result)
@@ -98,7 +74,6 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model.Phone2 = txtPhone2.Text;
                     model.Fax = txtFax.Text;
                     model.TaxCode = txtTaxCode.Text;
-                    model.CustomerTypeId = (int)cboCustomerType.SelectedValue;
 
                     result = customerService.EditCustomer(model);
                     if (result)

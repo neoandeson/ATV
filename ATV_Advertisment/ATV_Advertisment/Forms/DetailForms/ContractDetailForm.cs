@@ -15,12 +15,11 @@ namespace ATV_Advertisment.Forms.DetailForms
     //Contract infomation
     public partial class ContractDetailForm : CommonForm
     {
-        private ContractDetail contractDetail = null;
+        private ContractItem contractDetail = null;
         public Contract model { get; set; }
         private ContractService _contractService = null;
-        private ContractDetailService _contractDetailService = null;
+        private ContractItemService _contractItemService = null;
         private CustomerService _customerService = null;
-        private ContractTypeService _contractTypeService = null;
         private SystemConfigService _systemConfigService = null;
         private int CustomerId = 0;
 
@@ -33,7 +32,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if(model.Code != "0")
                 {
-                    contractDetail = new ContractDetail()
+                    contractDetail = new ContractItem()
                     {
                         ContractCode = model.Code
                     };
@@ -42,7 +41,6 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             
             LoadListCustomerCode();
-            LoadContractType();
             LoadData();
         }
 
@@ -66,7 +64,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             txtCustomerName.Text = customer.Name;
 
                             txtCode.Text = model.Code;
-                            cboContractType.SelectedValue = model.ContractTypeId;
+                            //cboContractType.SelectedValue = model.ContractTypeId;
                             dtpStartDate.Value = model.StartDate.Value;
                             dtpEndDate.Value = model.EndDate.Value;
                             txtCost.Text = Utilities.DoubleMoneyToText(model.Cost);
@@ -90,23 +88,6 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 _contractService = null;
                 _customerService = null;
-            }
-        }
-
-        private void LoadContractType()
-        {
-            try
-            {
-                _contractTypeService = new ContractTypeService();
-                Utilities.LoadComboBoxOptions(cboContractType, _contractTypeService.Getoptions());
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                _contractTypeService = null;
             }
         }
 
@@ -151,7 +132,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         Code = txtCode.Text,
                         CustomerCode = txtCustomerCode.Text,
-                        ContractTypeId = (int)cboContractType.SelectedValue,
+                        //ContractTypeId = (int)cboContractType.SelectedValue,
                         StartDate = dtpStartDate.Value,
                         EndDate = dtpEndDate.Value,
                         Cost = double.Parse(txtCost.Text),
@@ -162,7 +143,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model = result;
                         gbContractDetail.Visible = true;
                         _systemConfigService.UseLastContractNumber();
-                        contractDetail = new ContractDetail()
+                        contractDetail = new ContractItem()
                         {
                             ContractCode = model.Code
                         };
@@ -174,7 +155,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //Edit
                     model.CustomerCode = txtCustomerCode.Text;
 
-                    model.ContractTypeId = (int)cboContractType.SelectedValue;
+                    //model.ContractTypeId = (int)cboContractType.SelectedValue;
                     model.StartDate = dtpStartDate.Value;
                     model.EndDate = dtpEndDate.Value;
                     model.Cost = Utilities.GetDoubleFromTextBox(txtCost);
@@ -236,9 +217,9 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             try
             {
-                _contractDetailService = new ContractDetailService();
-                List<ContractDetailViewModel> contractDetailVMs = _contractDetailService.GetAllVMForListByContractCode(model.Code);
-                SortableBindingList<ContractDetailViewModel> sbl = new SortableBindingList<ContractDetailViewModel>(contractDetailVMs);
+                _contractItemService = new ContractItemService();
+                List<ContractItemViewModel> contractDetailVMs = _contractItemService.GetAllVMForListByContractCode(model.Code);
+                SortableBindingList<ContractItemViewModel> sbl = new SortableBindingList<ContractItemViewModel>(contractDetailVMs);
                 bs = new BindingSource();
                 bs.DataSource = sbl;
                 adgv.DataSource = bs;
@@ -267,7 +248,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             finally
             {
-                _contractDetailService = null;
+                _contractItemService = null;
             }
         }
 
@@ -298,7 +279,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             //Prepare model
             if (selectedRow.Cells[0].Value.ToString() != "0" && !String.IsNullOrWhiteSpace(selectedRow.Cells[0].Value.ToString()))
             {
-                contractDetail = new ContractDetail()
+                contractDetail = new ContractItem()
                 {
                     Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
                     ProductName = selectedRow.Cells[2].Value.ToString()
@@ -317,7 +298,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 contractDetail.Id = 0;
             }
-            ContractDetailDetailForm contractDetailDetailForm = new ContractDetailDetailForm(contractDetail);
+            ContractItemDetailForm contractDetailDetailForm = new ContractItemDetailForm(contractDetail);
             contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             contractDetailDetailForm.ShowDialog();
         }
@@ -354,7 +335,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if(contractDetail.Id != 0)
                 {
-                    ContractDetailDetailForm detailForm = new ContractDetailDetailForm(contractDetail);
+                    ContractItemDetailForm detailForm = new ContractItemDetailForm(contractDetail);
                     detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
                     detailForm.ShowDialog();
                 }

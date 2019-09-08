@@ -10,8 +10,6 @@ namespace ATV_Advertisment.ViewModel
 
         public string CustomerCode { get; set; }
 
-        public string ContractType { get; set; }
-
         public string StartDate { get; set; }
 
         public string EndDate { get; set; }

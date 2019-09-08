@@ -1,6 +1,6 @@
 ﻿namespace ATV_Advertisment.Forms.DetailForms
 {
-    partial class ContractDetailDetailForm
+    partial class ContractItemDetailForm
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,8 @@
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.adgv = new ADGV.AdvancedDataGridView();
+            this.lblShowType = new System.Windows.Forms.Label();
+            this.cboShowType = new System.Windows.Forms.ComboBox();
             this.gbContractDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.gbRegisterSchedule.SuspendLayout();
@@ -53,6 +55,8 @@
             // 
             // gbContractDetail
             // 
+            this.gbContractDetail.Controls.Add(this.cboShowType);
+            this.gbContractDetail.Controls.Add(this.lblShowType);
             this.gbContractDetail.Controls.Add(this.txtNumberOfShow);
             this.gbContractDetail.Controls.Add(this.lblQuantity);
             this.gbContractDetail.Controls.Add(this.lblSecond);
@@ -75,7 +79,7 @@
             this.txtNumberOfShow.Name = "txtNumberOfShow";
             this.txtNumberOfShow.ReadOnly = true;
             this.txtNumberOfShow.Size = new System.Drawing.Size(46, 26);
-            this.txtNumberOfShow.TabIndex = 11;
+            this.txtNumberOfShow.TabIndex = 0;
             this.txtNumberOfShow.Text = "0";
             // 
             // lblQuantity
@@ -84,7 +88,7 @@
             this.lblQuantity.Location = new System.Drawing.Point(307, 78);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(108, 20);
-            this.lblQuantity.TabIndex = 10;
+            this.lblQuantity.TabIndex = 0;
             this.lblQuantity.Text = "Số lượng phát";
             // 
             // lblSecond
@@ -93,7 +97,7 @@
             this.lblSecond.Location = new System.Drawing.Point(232, 78);
             this.lblSecond.Name = "lblSecond";
             this.lblSecond.Size = new System.Drawing.Size(27, 20);
-            this.lblSecond.TabIndex = 9;
+            this.lblSecond.TabIndex = 0;
             this.lblSecond.Text = "(s)";
             // 
             // txtTotalCost
@@ -107,7 +111,7 @@
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.ReadOnly = true;
             this.txtTotalCost.Size = new System.Drawing.Size(200, 26);
-            this.txtTotalCost.TabIndex = 8;
+            this.txtTotalCost.TabIndex = 0;
             this.txtTotalCost.Text = "0";
             // 
             // lblTotalCost
@@ -116,7 +120,7 @@
             this.lblTotalCost.Location = new System.Drawing.Point(951, 34);
             this.lblTotalCost.Name = "lblTotalCost";
             this.lblTotalCost.Size = new System.Drawing.Size(75, 20);
-            this.lblTotalCost.TabIndex = 7;
+            this.lblTotalCost.TabIndex = 0;
             this.lblTotalCost.Text = "Tổng tiền";
             // 
             // lblDuration
@@ -125,7 +129,7 @@
             this.lblDuration.Location = new System.Drawing.Point(17, 78);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(55, 20);
-            this.lblDuration.TabIndex = 4;
+            this.lblDuration.TabIndex = 0;
             this.lblDuration.Text = "Độ dài";
             // 
             // cboDuration
@@ -142,7 +146,7 @@
             this.lblProductName.Location = new System.Drawing.Point(17, 34);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(110, 20);
-            this.lblProductName.TabIndex = 2;
+            this.lblProductName.TabIndex = 0;
             this.lblProductName.Text = "Tên sản phẩm";
             // 
             // txtProductName
@@ -170,7 +174,7 @@
             this.btnSave.Location = new System.Drawing.Point(20, 26);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -184,7 +188,7 @@
             this.gbRegisterSchedule.Location = new System.Drawing.Point(13, 135);
             this.gbRegisterSchedule.Name = "gbRegisterSchedule";
             this.gbRegisterSchedule.Size = new System.Drawing.Size(1272, 513);
-            this.gbRegisterSchedule.TabIndex = 2;
+            this.gbRegisterSchedule.TabIndex = 0;
             this.gbRegisterSchedule.TabStop = false;
             this.gbRegisterSchedule.Text = "Lịch đăng ký";
             // 
@@ -193,7 +197,7 @@
             this.btnViewDetail.Location = new System.Drawing.Point(869, 25);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
-            this.btnViewDetail.TabIndex = 12;
+            this.btnViewDetail.TabIndex = 4;
             this.btnViewDetail.Text = "Xem";
             this.btnViewDetail.UseVisualStyleBackColor = true;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
@@ -203,7 +207,7 @@
             this.btnDeleteSchedule.Location = new System.Drawing.Point(1144, 25);
             this.btnDeleteSchedule.Name = "btnDeleteSchedule";
             this.btnDeleteSchedule.Size = new System.Drawing.Size(110, 30);
-            this.btnDeleteSchedule.TabIndex = 2;
+            this.btnDeleteSchedule.TabIndex = 6;
             this.btnDeleteSchedule.Text = "Xóa lịch";
             this.btnDeleteSchedule.UseVisualStyleBackColor = true;
             this.btnDeleteSchedule.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
@@ -213,7 +217,7 @@
             this.btnAddSchedule.Location = new System.Drawing.Point(1008, 25);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(110, 30);
-            this.btnAddSchedule.TabIndex = 1;
+            this.btnAddSchedule.TabIndex = 5;
             this.btnAddSchedule.Text = "Thêm lịch";
             this.btnAddSchedule.UseVisualStyleBackColor = true;
             this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
@@ -235,7 +239,24 @@
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
             // 
-            // ContractDetailDetailForm
+            // lblShowType
+            // 
+            this.lblShowType.AutoSize = true;
+            this.lblShowType.Location = new System.Drawing.Point(553, 34);
+            this.lblShowType.Name = "lblShowType";
+            this.lblShowType.Size = new System.Drawing.Size(75, 20);
+            this.lblShowType.TabIndex = 0;
+            this.lblShowType.Text = "Loại phát";
+            // 
+            // cboShowType
+            // 
+            this.cboShowType.FormattingEnabled = true;
+            this.cboShowType.Location = new System.Drawing.Point(651, 31);
+            this.cboShowType.Name = "cboShowType";
+            this.cboShowType.Size = new System.Drawing.Size(150, 28);
+            this.cboShowType.TabIndex = 2;
+            // 
+            // ContractItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -244,7 +265,7 @@
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbContractDetail);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.Name = "ContractDetailDetailForm";
+            this.Name = "ContractItemDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi tiết sản phẩm";
             this.gbContractDetail.ResumeLayout(false);
@@ -275,5 +296,7 @@
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.TextBox txtNumberOfShow;
         private System.Windows.Forms.Button btnViewDetail;
+        private System.Windows.Forms.ComboBox cboShowType;
+        private System.Windows.Forms.Label lblShowType;
     }
 }

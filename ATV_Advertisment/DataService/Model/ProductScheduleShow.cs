@@ -25,6 +25,8 @@ namespace DataService.Model
         [StringLength(10)]
         public string ShowDate { get; set; }
 
+        public int ShowTypeId { get; set; }
+
         public int Quantity { get; set; }
 
         [Required]

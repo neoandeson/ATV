@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.gbCustomerInfo = new System.Windows.Forms.GroupBox();
-            this.cboCustomerType = new System.Windows.Forms.ComboBox();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.txtPhone2 = new System.Windows.Forms.TextBox();
@@ -38,7 +37,6 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
             this.lblTaxCode = new System.Windows.Forms.Label();
             this.lblFax = new System.Windows.Forms.Label();
             this.lblPhone2 = new System.Windows.Forms.Label();
@@ -53,7 +51,6 @@
             // 
             // gbCustomerInfo
             // 
-            this.gbCustomerInfo.Controls.Add(this.cboCustomerType);
             this.gbCustomerInfo.Controls.Add(this.txtFax);
             this.gbCustomerInfo.Controls.Add(this.txtCode);
             this.gbCustomerInfo.Controls.Add(this.txtPhone2);
@@ -62,7 +59,6 @@
             this.gbCustomerInfo.Controls.Add(this.txtAddress);
             this.gbCustomerInfo.Controls.Add(this.txtName);
             this.gbCustomerInfo.Controls.Add(this.lblCode);
-            this.gbCustomerInfo.Controls.Add(this.lblType);
             this.gbCustomerInfo.Controls.Add(this.lblTaxCode);
             this.gbCustomerInfo.Controls.Add(this.lblFax);
             this.gbCustomerInfo.Controls.Add(this.lblPhone2);
@@ -77,15 +73,6 @@
             this.gbCustomerInfo.TabIndex = 0;
             this.gbCustomerInfo.TabStop = false;
             this.gbCustomerInfo.Text = "Thông tin";
-            // 
-            // cboCustomerType
-            // 
-            this.cboCustomerType.FormattingEnabled = true;
-            this.cboCustomerType.Location = new System.Drawing.Point(510, 39);
-            this.cboCustomerType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboCustomerType.Name = "cboCustomerType";
-            this.cboCustomerType.Size = new System.Drawing.Size(200, 28);
-            this.cboCustomerType.TabIndex = 2;
             // 
             // txtFax
             // 
@@ -165,16 +152,6 @@
             this.lblCode.Size = new System.Drawing.Size(31, 20);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Mã";
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(397, 42);
-            this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(73, 20);
-            this.lblType.TabIndex = 0;
-            this.lblType.Text = "Loại hình";
             // 
             // lblTaxCode
             // 
@@ -278,7 +255,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbCustomerInfo;
-        private System.Windows.Forms.ComboBox cboCustomerType;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.TextBox txtPhone2;
@@ -287,7 +263,6 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblCode;
-        private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Label lblTaxCode;
         private System.Windows.Forms.Label lblFax;
         private System.Windows.Forms.Label lblPhone2;

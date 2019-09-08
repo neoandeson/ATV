@@ -35,18 +35,20 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.txtCode = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cboSession = new System.Windows.Forms.ComboBox();
+            this.txtFromHour = new NumberTextBox(24);
+            this.txtFromMinute = new NumberTextBox(60);
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSession = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
-            this.txtFromHour = new NumberTextBox(24);
-            this.txtFromMinute = new NumberTextBox(60);
             this.cboDuration = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.txtPrice = new TControls.MoneyTextBox();
             this.lblLength = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.gbCostRule = new System.Windows.Forms.GroupBox();
+            this.cboShowType = new System.Windows.Forms.ComboBox();
+            this.lblShowType = new System.Windows.Forms.Label();
             this.btnDeleteCostRule = new System.Windows.Forms.Button();
             this.adgv = new ADGV.AdvancedDataGridView();
             this.btnSaveCostRule = new System.Windows.Forms.Button();
@@ -102,7 +104,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(449, 26);
-            this.txtName.TabIndex = 3;
+            this.txtName.TabIndex = 5;
             // 
             // txtFromMinute
             // 
@@ -111,7 +113,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.txtFromMinute.Name = "txtFromMinute";
             this.txtFromMinute.NumberValue = 0;
             this.txtFromMinute.Size = new System.Drawing.Size(40, 26);
-            this.txtFromMinute.TabIndex = 5;
+            this.txtFromMinute.TabIndex = 4;
             // 
             // cboSession
             // 
@@ -137,7 +139,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.txtFromHour.Name = "txtFromHour";
             this.txtFromHour.NumberValue = 0;
             this.txtFromHour.Size = new System.Drawing.Size(40, 26);
-            this.txtFromHour.TabIndex = 4;
+            this.txtFromHour.TabIndex = 3;
             // 
             // lblName
             // 
@@ -169,10 +171,10 @@ namespace ATV_Advertisment.Forms.DetailForms
             // cboDuration
             // 
             this.cboDuration.FormattingEnabled = true;
-            this.cboDuration.Location = new System.Drawing.Point(122, 64);
+            this.cboDuration.Location = new System.Drawing.Point(122, 107);
             this.cboDuration.Name = "cboDuration";
             this.cboDuration.Size = new System.Drawing.Size(80, 28);
-            this.cboDuration.TabIndex = 9;
+            this.cboDuration.TabIndex = 8;
             this.cboDuration.SelectedIndexChanged += new System.EventHandler(this.cboDuration_SelectedIndexChanged);
             // 
             // lblCurrency
@@ -194,13 +196,13 @@ namespace ATV_Advertisment.Forms.DetailForms
             0});
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(152, 26);
-            this.txtPrice.TabIndex = 8;
+            this.txtPrice.TabIndex = 6;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblLength
             // 
             this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(21, 67);
+            this.lblLength.Location = new System.Drawing.Point(21, 110);
             this.lblLength.Name = "lblLength";
             this.lblLength.Size = new System.Drawing.Size(82, 20);
             this.lblLength.TabIndex = 0;
@@ -217,6 +219,8 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // gbCostRule
             // 
+            this.gbCostRule.Controls.Add(this.cboShowType);
+            this.gbCostRule.Controls.Add(this.lblShowType);
             this.gbCostRule.Controls.Add(this.btnDeleteCostRule);
             this.gbCostRule.Controls.Add(this.adgv);
             this.gbCostRule.Controls.Add(this.btnSaveCostRule);
@@ -227,17 +231,34 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.gbCostRule.Controls.Add(this.txtPrice);
             this.gbCostRule.Location = new System.Drawing.Point(13, 146);
             this.gbCostRule.Name = "gbCostRule";
-            this.gbCostRule.Size = new System.Drawing.Size(555, 304);
+            this.gbCostRule.Size = new System.Drawing.Size(555, 352);
             this.gbCostRule.TabIndex = 1;
             this.gbCostRule.TabStop = false;
             this.gbCostRule.Text = "Quy định giá tiền";
+            // 
+            // cboShowType
+            // 
+            this.cboShowType.FormattingEnabled = true;
+            this.cboShowType.Location = new System.Drawing.Point(122, 67);
+            this.cboShowType.Name = "cboShowType";
+            this.cboShowType.Size = new System.Drawing.Size(152, 28);
+            this.cboShowType.TabIndex = 7;
+            // 
+            // lblShowType
+            // 
+            this.lblShowType.AutoSize = true;
+            this.lblShowType.Location = new System.Drawing.Point(21, 70);
+            this.lblShowType.Name = "lblShowType";
+            this.lblShowType.Size = new System.Drawing.Size(39, 20);
+            this.lblShowType.TabIndex = 0;
+            this.lblShowType.Text = "Loại";
             // 
             // btnDeleteCostRule
             // 
             this.btnDeleteCostRule.Location = new System.Drawing.Point(417, 65);
             this.btnDeleteCostRule.Name = "btnDeleteCostRule";
             this.btnDeleteCostRule.Size = new System.Drawing.Size(110, 30);
-            this.btnDeleteCostRule.TabIndex = 12;
+            this.btnDeleteCostRule.TabIndex = 10;
             this.btnDeleteCostRule.Text = "Xóa";
             this.btnDeleteCostRule.UseVisualStyleBackColor = true;
             this.btnDeleteCostRule.Click += new System.EventHandler(this.btnDeleteCostRule_Click);
@@ -248,7 +269,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.adgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgv.DateWithTime = false;
             this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.adgv.Location = new System.Drawing.Point(23, 104);
+            this.adgv.Location = new System.Drawing.Point(23, 149);
             this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -264,7 +285,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.btnSaveCostRule.Location = new System.Drawing.Point(417, 25);
             this.btnSaveCostRule.Name = "btnSaveCostRule";
             this.btnSaveCostRule.Size = new System.Drawing.Size(110, 30);
-            this.btnSaveCostRule.TabIndex = 10;
+            this.btnSaveCostRule.TabIndex = 9;
             this.btnSaveCostRule.Text = "Lưu";
             this.btnSaveCostRule.UseVisualStyleBackColor = true;
             this.btnSaveCostRule.Click += new System.EventHandler(this.btnSaveCostRule_Click);
@@ -275,7 +296,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.btnSave.Location = new System.Drawing.Point(24, 24);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(179, 30);
-            this.btnSave.TabIndex = 9;
+            this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Lưu thời điểm phát";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -284,7 +305,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnSave);
-            this.gbControl.Location = new System.Drawing.Point(12, 456);
+            this.gbControl.Location = new System.Drawing.Point(12, 504);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(556, 65);
             this.gbControl.TabIndex = 0;
@@ -295,7 +316,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 533);
+            this.ClientSize = new System.Drawing.Size(582, 581);
             this.Controls.Add(this.gbCostRule);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbDetail);
@@ -336,6 +357,8 @@ namespace ATV_Advertisment.Forms.DetailForms
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbControl;
         private System.Windows.Forms.Button btnDeleteCostRule;
+        private System.Windows.Forms.ComboBox cboShowType;
+        private System.Windows.Forms.Label lblShowType;
 
         //this.txtFromHour = new NumberTextBox(24);
         //this.txtFromMinute = new NumberTextBox(60);

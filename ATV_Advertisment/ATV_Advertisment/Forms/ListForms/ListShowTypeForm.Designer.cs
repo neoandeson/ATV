@@ -1,6 +1,6 @@
 ﻿namespace ATV_Advertisment.Forms.ListForms
 {
-    partial class ListCustomerTypeForm
+    partial class ListShowTypeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,8 +31,8 @@
             this.gbList = new System.Windows.Forms.GroupBox();
             this.adgv = new ADGV.AdvancedDataGridView();
             this.gbControl = new System.Windows.Forms.GroupBox();
-            this.btnViewDetail = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnViewDetail = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.gbList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).BeginInit();
@@ -42,9 +42,9 @@
             // gbList
             // 
             this.gbList.Controls.Add(this.adgv);
-            this.gbList.Location = new System.Drawing.Point(12, 12);
+            this.gbList.Location = new System.Drawing.Point(13, 13);
             this.gbList.Name = "gbList";
-            this.gbList.Size = new System.Drawing.Size(776, 281);
+            this.gbList.Size = new System.Drawing.Size(485, 342);
             this.gbList.TabIndex = 0;
             this.gbList.TabStop = false;
             this.gbList.Text = "Danh sách";
@@ -56,10 +56,9 @@
             this.adgv.DateWithTime = false;
             this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.adgv.Location = new System.Drawing.Point(7, 26);
-            this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.adgv.Size = new System.Drawing.Size(763, 239);
+            this.adgv.Size = new System.Drawing.Size(472, 310);
             this.adgv.TabIndex = 1;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
@@ -68,60 +67,56 @@
             // 
             // gbControl
             // 
-            this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.gbControl.Controls.Add(this.btnViewDetail);
             this.gbControl.Controls.Add(this.btnDelete);
+            this.gbControl.Controls.Add(this.btnViewDetail);
             this.gbControl.Controls.Add(this.btnAdd);
-            this.gbControl.Location = new System.Drawing.Point(12, 300);
+            this.gbControl.Location = new System.Drawing.Point(13, 361);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(776, 63);
+            this.gbControl.Size = new System.Drawing.Size(485, 65);
             this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
-            // btnViewDetail
-            // 
-            this.btnViewDetail.BackColor = System.Drawing.SystemColors.Control;
-            this.btnViewDetail.Location = new System.Drawing.Point(19, 23);
-            this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
-            this.btnViewDetail.TabIndex = 2;
-            this.btnViewDetail.Text = "Xem";
-            this.btnViewDetail.UseVisualStyleBackColor = false;
-            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
-            // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDelete.Location = new System.Drawing.Point(336, 23);
+            this.btnDelete.Location = new System.Drawing.Point(283, 25);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 30);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnViewDetail
+            // 
+            this.btnViewDetail.Location = new System.Drawing.Point(22, 25);
+            this.btnViewDetail.Name = "btnViewDetail";
+            this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
+            this.btnViewDetail.TabIndex = 3;
+            this.btnViewDetail.Text = "Xem";
+            this.btnViewDetail.UseVisualStyleBackColor = true;
+            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAdd.Location = new System.Drawing.Point(180, 23);
+            this.btnAdd.Location = new System.Drawing.Point(152, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 30);
-            this.btnAdd.TabIndex = 3;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // ListCustomerTypeForm
+            // ListShowTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 376);
+            this.ClientSize = new System.Drawing.Size(510, 438);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbList);
-            this.Name = "ListCustomerTypeForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Danh sách loại khách hàng";
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Name = "ListShowTypeForm";
+            this.Text = "Danh sách loại quảng cáo";
             this.gbList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).EndInit();
             this.gbControl.ResumeLayout(false);
@@ -132,10 +127,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbList;
-        private ADGV.AdvancedDataGridView adgv;
         private System.Windows.Forms.GroupBox gbControl;
+        private ADGV.AdvancedDataGridView adgv;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnViewDetail;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

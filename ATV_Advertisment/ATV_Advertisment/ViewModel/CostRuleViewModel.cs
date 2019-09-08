@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ATV_Advertisment.ViewModel
 {
     public class CostRuleViewModel
@@ -13,6 +8,8 @@ namespace ATV_Advertisment.ViewModel
         public int TimeSlotId { get; set; }
 
         public int Length { get; set; }
+
+        public string ShowType { get; set; }
 
         public string Price { get; set; }
     }

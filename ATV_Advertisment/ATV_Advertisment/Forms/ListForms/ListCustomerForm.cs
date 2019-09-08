@@ -44,12 +44,10 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["Phone1"].Visible = false;
                 adgv.Columns["Phone2"].Visible = false;
                 adgv.Columns["Fax"].Visible = false;
-                adgv.Columns["CustomerTypeId"].Visible = false;
                 adgv.Columns["StatusId"].Visible = false;
                 adgv.Columns["CreateDate"].Visible = false;
                 adgv.Columns["LastUpdateBy"].Visible = false;
                 adgv.Columns["LastUpdateDate"].Visible = false;
-                adgv.Columns["CustomerType"].Visible = false;
 
                 adgv.Columns["Code"].HeaderText = ADGVText.Code;
                 adgv.Columns["Code"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
@@ -58,7 +56,7 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["Address"].HeaderText = ADGVText.Address;
                 adgv.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["TaxCode"].HeaderText = ADGVText.TaxCode;
-                adgv.Columns["TaxCode"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["TaxCode"].Width = ControlsAttribute.GV_WIDTH_SEEM;
             }
             catch (Exception ex)
             {
@@ -107,8 +105,7 @@ namespace ATV_Advertisment.Forms.ListForms
                     Phone2 = (selectedRow.Cells[5].Value == null) ? "" : selectedRow.Cells[5].Value.ToString(),
                     Fax = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString(),
                     TaxCode = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString(),
-                    CustomerTypeId = int.Parse(selectedRow.Cells[8].Value.ToString()),
-                    StatusId = int.Parse(selectedRow.Cells[9].Value.ToString()),
+                    StatusId = int.Parse(selectedRow.Cells[8].Value.ToString()),
                 };
             }
         }

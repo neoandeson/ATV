@@ -24,14 +24,14 @@ namespace ATV_Advertisment.Services
     public class ContractService : IContractService
     {
         private readonly ContractRepository _ContractRepository;
-        private readonly ContractDetailService _contractDetailService;
-        private readonly ContractTypeRepository _contractTypeRepository;
+        private readonly ContractItemService _contractItemService;
+        private readonly ShowTypeRepository _contractTypeRepository;
 
         public ContractService()
         {
             _ContractRepository = new ContractRepository();
-            _contractDetailService = new ContractDetailService();
-            _contractTypeRepository = new ContractTypeRepository();
+            _contractItemService = new ContractItemService();
+            _contractTypeRepository = new ShowTypeRepository();
         }
 
         public Contract AddContract(Contract input)
@@ -102,7 +102,6 @@ namespace ATV_Advertisment.Services
                 //TODO: Define if seperative contract
                 //bool isExisted = _ContractRepository.Exist(t => t. == input.Length);
                 //if (!isExisted)
-                Contract.ContractTypeId = input.ContractTypeId;
                 Contract.CustomerCode = input.CustomerCode;
                 Contract.StartDate = input.StartDate;
                 Contract.EndDate = input.EndDate;
@@ -143,7 +142,6 @@ namespace ATV_Advertisment.Services
                     Id = c.Id,
                     ContractCode = c.Code,
                     CustomerCode = c.CustomerCode,
-                    ContractType = contractTypes.Where(s => s.Key == c.ContractTypeId).FirstOrDefault().Value,
                     StartDate = c.StartDate.Value.ToString("dd/MM/yyyy"),
                     EndDate = c.EndDate.Value.ToString("dd/MM/yyyy")
                 })
@@ -157,7 +155,7 @@ namespace ATV_Advertisment.Services
             Contract contract = GetByCode(contractCode);
             if(contract != null)
             {
-                List<ContractDetail> contractDetails = _contractDetailService.GetAllByContractCode(contractCode);
+                List<ContractItem> contractDetails = _contractItemService.GetAllByContractCode(contractCode);
                 foreach (var cd in contractDetails)
                 {
                     result += cd.TotalCost;

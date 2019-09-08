@@ -27,6 +27,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private CostRuleService _costRuleService = null;
         private SessionService _sessionService = null;
         private DurationService _durationService = null;
+        private ShowTypeService _showTypeService = null;
 
         public TimeSlotDetailForm(TimeSlot inputModel)
         {
@@ -35,6 +36,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             gbCostRule.Visible = false;
             LoadCboSession();
             LoadCboDuration();
+            LoadCboShowType();
             LoadData();
         }
 
@@ -75,6 +77,27 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 CompleteLoadData = 1;
                 _durationService = null;
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        public void LoadCboShowType()
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                _showTypeService = new ShowTypeService();
+
+                Utilities.LoadComboBoxOptions(cboShowType, _showTypeService.Getoptions());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                CompleteLoadData = 2;
+                _showTypeService = null;
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -127,7 +150,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         Code = txtCode.Text,
                         Name = txtName.Text,
                         FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
-                        SessionCode = cboSession.SelectedValue.ToString()
+                        SessionCode = cboSession.SelectedValue.ToString(),
                     };
                     result = _timeSlotService.CreateTimeSlot(model);
                     if (result != null)
@@ -170,7 +193,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CompleteLoadData == 1)
+            if (CompleteLoadData == 2)
             {
                 CheckExistTimeSlotInfo();
             }
@@ -217,7 +240,9 @@ namespace ATV_Advertisment.Forms.DetailForms
 
                 adgv.Columns["Length"].HeaderText = ADGVText.Duration;
                 adgv.Columns["Length"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
-                adgv.Columns["Price"].HeaderText = ADGVText.Session;
+                adgv.Columns["ShowType"].HeaderText = ADGVText.ShowType;
+                adgv.Columns["ShowType"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["Price"].HeaderText = ADGVText.Cost;
                 adgv.Columns["Price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             catch (Exception ex)
@@ -264,6 +289,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 if(costRule != null)
                 {
                     cboDuration.SelectedValue = costRule.Length;
+                    cboShowType.SelectedValue = costRule.ShowTypeId;
                     txtPrice.Text = Utilities.DoubleMoneyToText(costRule.Price);
                 }
             }

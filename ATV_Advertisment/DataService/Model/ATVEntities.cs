@@ -14,11 +14,9 @@ namespace DataService.Model
 
         public virtual DbSet<BusinessLog> BusinessLogs { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
-        public virtual DbSet<ContractDetail> ContractDetails { get; set; }
-        public virtual DbSet<ContractType> ContractTypes { get; set; }
+        public virtual DbSet<ContractItem> ContractItems { get; set; }
         public virtual DbSet<CostRule> CostRules { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<CustomerType> CustomerTypes { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<Duration> Durations { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }
@@ -26,6 +24,7 @@ namespace DataService.Model
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RoleHasMenuItem> RoleHasMenuItems { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<ShowType> ShowTypes { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<SystemLog> SystemLogs { get; set; }
         public virtual DbSet<TimeSlot> TimeSlots { get; set; }
@@ -36,11 +35,6 @@ namespace DataService.Model
             modelBuilder.Entity<Contract>()
                 .Property(e => e.Code)
                 .IsFixedLength();
-
-            modelBuilder.Entity<CustomerType>()
-                .HasMany(e => e.Customers)
-                .WithRequired(e => e.CustomerType)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MenuItem>()
                 .HasMany(e => e.RoleHasMenuItems)

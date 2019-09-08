@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATV_Advertisment.ViewModel
 {
-    public class ContractDetailViewModel
+    public class ContractItemViewModel
     {
         public int Id { get; set; }
 
@@ -21,6 +21,8 @@ namespace ATV_Advertisment.ViewModel
         public string TotalCost { get; set; }
 
         public int StatusId { get; set; }
+
+        public string ShowTypeId { get; set; }
 
         public DateTime? CreateDate { get; set; }
 

@@ -24,11 +24,13 @@ namespace ATV_Advertisment.Services
     {
         private readonly CostRuleRepository _CostRuleRepository;
         private readonly SessionRepository _sessionRepository;
+        private readonly ShowTypeRepository _showTypeRepository;
 
         public CostRuleService()
         {
             _CostRuleRepository = new CostRuleRepository();
             _sessionRepository = new SessionRepository();
+            _showTypeRepository = new ShowTypeRepository();
         }
 
         public int AddCostRule(CostRule input)
@@ -106,12 +108,17 @@ namespace ATV_Advertisment.Services
 
         public List<CostRuleViewModel> GetAllForList(int timeSlotId)
         {
+            Dictionary<int, string> showTypeNames = _showTypeRepository
+                .Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .ToDictionary(q => q.Id, q => string.Format("{0}", q.Type));
             return _CostRuleRepository.Get(c => c.TimeSlotId == timeSlotId)
-                .OrderBy(c => c.Length)
-                .Select(ts => new CostRuleViewModel() {
+                .OrderBy(c => c.Length).ThenBy(c => c.ShowTypeId)
+                .Select(ts => new CostRuleViewModel()
+                {
                     Id = ts.Id,
                     Length = ts.Length,
-                    Price = Utilities.DoubleMoneyToText(ts.Price)
+                    Price = Utilities.DoubleMoneyToText(ts.Price),
+                    ShowType = showTypeNames.Where(s => s.Key == ts.ShowTypeId).FirstOrDefault().Value
                 })
                 .ToList();
         }

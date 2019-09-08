@@ -16,5 +16,7 @@ namespace DataService.Model
         public int Length { get; set; }
 
         public double Price { get; set; }
+
+        public int ShowTypeId { get; set; }
     }
 }

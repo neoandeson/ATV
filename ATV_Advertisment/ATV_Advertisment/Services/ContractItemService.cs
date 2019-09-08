@@ -12,36 +12,38 @@ namespace ATV_Advertisment.Services
 {
     public interface IContractDetailService
     {
-        ContractDetail GetById(int id);
-        List<ContractDetail> GetAll();
-        List<ContractDetail> GetAllByContractCode(string contractCode);
-        //List<ContractDetail> GetAllForList();
+        ContractItem GetById(int id);
+        List<ContractItem> GetAll();
+        List<ContractItem> GetAllByContractCode(string contractCode);
+        //List<ContractItem> GetAllForList();
         int DeleteContractDetail(int id);
-        int AddContractDetail(ContractDetail input);
-        ContractDetail CreateContractDetail(ContractDetail input);
-        int EditContractDetail(ContractDetail input);
+        int AddContractDetail(ContractItem input);
+        ContractItem CreateContractDetail(ContractItem input);
+        int EditContractDetail(ContractItem input);
         ContractDetailUpdateVM UpdateContractDetailCost(int id);
     }
 
-    public class ContractDetailService : IContractDetailService
+    public class ContractItemService : IContractDetailService
     {
-        private readonly ContractDetailRepository _ContractDetailRepository;
+        private readonly ContractItemlRepository _contractItemRepository;
         private readonly SessionRepository _sessionRepository;
+        private readonly ShowTypeRepository _showTypeRepository;
         private readonly ProductScheduleShowService _productScheduleShowService;
 
-        public ContractDetailService()
+        public ContractItemService()
         {
-            _ContractDetailRepository = new ContractDetailRepository();
+            _contractItemRepository = new ContractItemlRepository();
             _sessionRepository = new SessionRepository();
+            _showTypeRepository = new ShowTypeRepository();
             _productScheduleShowService = new ProductScheduleShowService();
         }
 
-        public int AddContractDetail(ContractDetail input)
+        public int AddContractDetail(ContractItem input)
         {
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _ContractDetailRepository.Exist(t => t.ContractCode == input.ContractCode &&
+                bool isExisted = _contractItemRepository.Exist(t => t.ContractCode == input.ContractCode &&
                                                                 t.ProductName == input.ProductName);
                 if (!isExisted)
                 {
@@ -49,7 +51,7 @@ namespace ATV_Advertisment.Services
                     input.CreateDate = Utilities.GetServerDateTimeNow();
                     input.LastUpdateDate = Utilities.GetServerDateTimeNow();
                     input.LastUpdateBy = Common.Session.GetId();
-                    _ContractDetailRepository.Add(input);
+                    _contractItemRepository.Add(input);
                     result = CRUDStatusCode.SUCCESS;
                 }
                 else
@@ -61,12 +63,12 @@ namespace ATV_Advertisment.Services
             return result;
         }
 
-        public ContractDetail CreateContractDetail(ContractDetail input)
+        public ContractItem CreateContractDetail(ContractItem input)
         {
-            ContractDetail result = null;
+            ContractItem result = null;
             if (input != null)
             {
-                bool isExisted = _ContractDetailRepository.Exist(t => t.ContractCode == input.ContractCode &&
+                bool isExisted = _contractItemRepository.Exist(t => t.ContractCode == input.ContractCode &&
                                                                 t.ProductName == input.ProductName);
                 if (!isExisted)
                 {
@@ -75,12 +77,12 @@ namespace ATV_Advertisment.Services
                     input.LastUpdateDate = Utilities.GetServerDateTimeNow();
                     input.LastUpdateBy = Common.Session.GetId();
 
-                    result = _ContractDetailRepository.Create(input);
+                    result = _contractItemRepository.Create(input);
                 }
                 else
                 {
                     //In case existed check result id = 0;
-                    result = new ContractDetail()
+                    result = new ContractItem()
                     {
                         Id = 0
                     };
@@ -93,60 +95,60 @@ namespace ATV_Advertisment.Services
         public int DeleteContractDetail(int id)
         {
             int result = CRUDStatusCode.ERROR;
-            var ContractDetail = _ContractDetailRepository.GetById(id);
-            if (ContractDetail != null)
+            var ContractItem = _contractItemRepository.GetById(id);
+            if (ContractItem != null)
             {
-                ContractDetail.StatusId = CommonStatus.DELETE;
-                ContractDetail.LastUpdateDate = Utilities.GetServerDateTimeNow();
-                ContractDetail.LastUpdateBy = Common.Session.GetId();
-                _ContractDetailRepository.Update(ContractDetail);
+                ContractItem.StatusId = CommonStatus.DELETE;
+                ContractItem.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                ContractItem.LastUpdateBy = Common.Session.GetId();
+                _contractItemRepository.Update(ContractItem);
                 result = CRUDStatusCode.SUCCESS;
             }
 
             return result;
         }
 
-        public int EditContractDetail(ContractDetail input)
+        public int EditContractDetail(ContractItem input)
         {
             int result = CRUDStatusCode.ERROR;
-            var ContractDetail = _ContractDetailRepository.GetById(input.Id);
-            bool isExisted = _ContractDetailRepository.Exist(t => t.ContractCode == input.ContractCode &&
+            var ContractItem = _contractItemRepository.GetById(input.Id);
+            bool isExisted = _contractItemRepository.Exist(t => t.ContractCode == input.ContractCode &&
                                                                     t.ProductName == input.ProductName &&
                                                                     t.Id != input.Id);
-            if (ContractDetail != null)
+            if (ContractItem != null)
             {
-                ContractDetail.ProductName = input.ProductName;
-                ContractDetail.TotalCost = input.TotalCost;
+                ContractItem.ProductName = input.ProductName;
+                ContractItem.TotalCost = input.TotalCost;
 
-                ContractDetail.LastUpdateDate = Utilities.GetServerDateTimeNow();
-                ContractDetail.LastUpdateBy = Common.Session.GetId();
-                _ContractDetailRepository.Update(ContractDetail);
+                ContractItem.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                ContractItem.LastUpdateBy = Common.Session.GetId();
+                _contractItemRepository.Update(ContractItem);
                 result = CRUDStatusCode.SUCCESS;
             }
 
             return result;
         }
 
-        public List<ContractDetail> GetAll()
+        public List<ContractItem> GetAll()
         {
-            return _ContractDetailRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
+            return _contractItemRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
         }
 
-        public List<ContractDetail> GetAllByContractCode(string contractCode)
+        public List<ContractItem> GetAllByContractCode(string contractCode)
         {
-            return _ContractDetailRepository.Get(c => c.StatusId == CommonStatus.ACTIVE && c.ContractCode == contractCode).ToList();
+            return _contractItemRepository.Get(c => c.StatusId == CommonStatus.ACTIVE && c.ContractCode == contractCode).ToList();
         }
 
-        public ContractDetail GetById(int id)
+        public ContractItem GetById(int id)
         {
-            return _ContractDetailRepository.GetById(id);
+            return _contractItemRepository.GetById(id);
         }
 
         public ContractDetailUpdateVM UpdateContractDetailCost(int id)
         {
             ContractDetailUpdateVM result = new ContractDetailUpdateVM();
 
-            ContractDetail contractDetail = GetById(id);
+            ContractItem contractDetail = GetById(id);
             if (contractDetail != null)
             {
                 List<ProductScheduleShow> productScheduleShows = _productScheduleShowService.GetAllByContractDetailId(id);
@@ -164,15 +166,19 @@ namespace ATV_Advertisment.Services
             return result;
         }
 
-        public List<ContractDetailViewModel> GetAllVMForListByContractCode(string contractCode)
+        public List<ContractItemViewModel> GetAllVMForListByContractCode(string contractCode)
         {
-            return _ContractDetailRepository.Get(c => c.ContractCode == contractCode)
-                .Select(ts => new ContractDetailViewModel()
+            Dictionary<int, string> showTypeNames = _showTypeRepository
+                .Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .ToDictionary(q => q.Id, q => string.Format("{0}", q.Type));
+            return _contractItemRepository.Get(c => c.ContractCode == contractCode)
+                .Select(ts => new ContractItemViewModel()
                 {
                     Id = ts.Id,
                     ContractCode = ts.ContractCode,
                     ProductName = ts.ProductName,
                     StatusId = ts.StatusId,
+                    ShowTypeId = showTypeNames.Where(s => s.Key == ts.ShowTypeId).FirstOrDefault().Value,
                     NumberOfShow = ts.NumberOfShow,
                     DurationSecond = ts.DurationSecond,
                     TotalCost = Utilities.DoubleMoneyToText(ts.TotalCost),

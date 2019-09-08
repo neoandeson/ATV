@@ -19,8 +19,6 @@ namespace DataService.Model
         [StringLength(20)]
         public string CustomerCode { get; set; }
 
-        public int ContractTypeId { get; set; }
-
         public double Cost { get; set; }
 
         public DateTime? StartDate { get; set; }

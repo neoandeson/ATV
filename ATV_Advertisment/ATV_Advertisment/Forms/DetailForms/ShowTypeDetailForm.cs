@@ -7,12 +7,12 @@ using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Forms.DetailForms
 {
-    public partial class CustomerTypeDetailForm : CommonForm
+    public partial class ShowTypeDetailForm : CommonForm
     {
-        public CustomerType model { get; set; }
-        private CustomerTypeService _customerTypeService = null;
+        public ShowType model { get; set; }
+        private ShowTypeService _showService = null;
 
-        public CustomerTypeDetailForm(CustomerType inputModel)
+        public ShowTypeDetailForm(ShowType inputModel)
         {
             this.model = inputModel;
             InitializeComponent();
@@ -25,23 +25,23 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if (model != null)
                 {
-                    _customerTypeService = new CustomerTypeService();
-                    model = _customerTypeService.GetById(model.Id);
-                    if(model != null)
+                    _showService = new ShowTypeService();
+                    model = _showService.GetById(model.Id);
+                    if (model != null)
                     {
-                        txtType.Text = model.Type;
-                        txtDescription.Text = model.Description;
+                        txtType.Text = model.Type.ToString();
+                        txtDescription.Text = model.Description.ToString();
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
+
                 throw;
             }
             finally
             {
-                _customerTypeService = null;
+                _showService = null;
             }
         }
 
@@ -51,17 +51,17 @@ namespace ATV_Advertisment.Forms.DetailForms
 
             try
             {
-                _customerTypeService = new CustomerTypeService();
+                _showService = new ShowTypeService();
 
                 if (model == null)
                 {
                     //Add
-                    model = new CustomerType()
+                    model = new ShowType()
                     {
                         Type = txtType.Text,
                         Description = txtDescription.Text
                     };
-                    result = _customerTypeService.AddCustomerType(model);
+                    result = _showService.AddShowType(model);
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
@@ -73,7 +73,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model.Type = txtType.Text;
                     model.Description = txtDescription.Text;
 
-                    result = _customerTypeService.EditCustomerType(model);
+                    result = _showService.EditShowType(model);
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
@@ -86,7 +86,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             finally
             {
-                _customerTypeService = null;
+                _showService = null;
             }
         }
     }

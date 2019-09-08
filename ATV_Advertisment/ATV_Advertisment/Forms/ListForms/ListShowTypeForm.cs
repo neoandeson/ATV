@@ -18,12 +18,12 @@ using static ATV_Advertisment.Common.Constants;
 
 namespace ATV_Advertisment.Forms.ListForms
 {
-    public partial class ListCustomerTypeForm : CommonForm
+    public partial class ListShowTypeForm : CommonForm
     {
-        private CustomerType customerType = null;
-        private CustomerTypeService _customerTypeService = null;
+        private ShowType duration = null;
+        private ShowTypeService _showTypeService = null;
 
-        public ListCustomerTypeForm()
+        public ListShowTypeForm()
         {
             InitializeComponent();
             LoadDGV();
@@ -36,9 +36,9 @@ namespace ATV_Advertisment.Forms.ListForms
         {
             try
             {
-                _customerTypeService = new CustomerTypeService();
-                List<CustomerType> customerTypes = _customerTypeService.GetAll();
-                SortableBindingList<CustomerType> sbl = new SortableBindingList<CustomerType>(customerTypes);
+                _showTypeService = new ShowTypeService();
+                List<ShowType> durations = _showTypeService.GetAll();
+                SortableBindingList<ShowType> sbl = new SortableBindingList<ShowType>(durations);
                 bs = new BindingSource();
                 bs.DataSource = sbl;
                 adgv.DataSource = bs;
@@ -46,11 +46,10 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["Id"].Visible = false;
                 adgv.Columns["StatusId"].Visible = false;
                 adgv.Columns["CreateDate"].Visible = false;
-                adgv.Columns["Customers"].Visible = false;
                 adgv.Columns["LastUpdateBy"].Visible = false;
                 adgv.Columns["LastUpdateDate"].Visible = false;
 
-                adgv.Columns["Type"].HeaderText = ADGVText.CustomerType;
+                adgv.Columns["Type"].HeaderText = ADGVText.ShowType;
                 adgv.Columns["Type"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
                 adgv.Columns["Description"].HeaderText = ADGVText.Description;
                 adgv.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -61,7 +60,7 @@ namespace ATV_Advertisment.Forms.ListForms
             }
             finally
             {
-                _customerTypeService = null;
+                _showTypeService = null;
             }
         }
 
@@ -90,7 +89,7 @@ namespace ATV_Advertisment.Forms.ListForms
             var selectedRow = adgv.SelectedRows[0];
 
             //Prepare model
-            customerType = new CustomerType()
+            duration = new ShowType()
             {
                 Id = int.Parse(selectedRow.Cells[0].Value.ToString())
             };
@@ -99,9 +98,9 @@ namespace ATV_Advertisment.Forms.ListForms
 
         private void btnViewDetail_Click(object sender, EventArgs e)
         {
-            if (customerType != null)
+            if (duration != null)
             {
-                CustomerTypeDetailForm detailForm = new CustomerTypeDetailForm(customerType);
+                ShowTypeDetailForm detailForm = new ShowTypeDetailForm(duration);
                 detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
                 detailForm.ShowDialog();
             }
@@ -109,8 +108,8 @@ namespace ATV_Advertisment.Forms.ListForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            customerType = null;
-            CustomerTypeDetailForm detailForm = new CustomerTypeDetailForm(customerType);
+            duration = null;
+            ShowTypeDetailForm detailForm = new ShowTypeDetailForm(duration);
             detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             detailForm.ShowDialog();
         }
@@ -119,10 +118,10 @@ namespace ATV_Advertisment.Forms.ListForms
         {
             try
             {
-                if (customerType != null)
+                if (duration != null)
                 {
-                    _customerTypeService = new CustomerTypeService();
-                    int result = _customerTypeService.DeleteCustomerType(customerType.Id);
+                    _showTypeService = new ShowTypeService();
+                    int result = _showTypeService.DeleteShowType(duration.Id);
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         LoadDGV();
@@ -136,7 +135,7 @@ namespace ATV_Advertisment.Forms.ListForms
             }
             finally
             {
-                _customerTypeService = null;
+                _showTypeService = null;
             }
         }
 

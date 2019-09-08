@@ -118,7 +118,7 @@ namespace ATV_Advertisment.Forms.CommonForms
                 if (menuItem.Name != null)
                 {
                     formName = menuItem.Text;
-                    Utilities.OpenFormByName(formName, out isLogout);
+                    Utilities.ShowFormByName(formName, out isLogout);
                     if (isLogout)
                     {
                         Application.Exit();
