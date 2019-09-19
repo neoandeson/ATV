@@ -101,7 +101,7 @@ namespace ATV_Advertisment.Services
                     LastUpdateDate = ts.LastUpdateDate,
                     PriceRate = Utilities.DoubleMoneyToText(ts.PriceRate.Value),
                     StatusId = ts.StatusId,
-                    Dicount = ts.DiscountPercent
+                    DiscountPercent = ts.DiscountPercent
                 })
                 .ToList();
         }

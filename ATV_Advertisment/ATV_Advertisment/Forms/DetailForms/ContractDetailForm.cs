@@ -276,20 +276,23 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void adgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = adgv.SelectedRows[0];
+            if (adgv.SelectedRows.Count > 0)
+            {
+                var selectedRow = adgv.SelectedRows[0];
 
-            //Prepare model
-            if (selectedRow.Cells[0].Value.ToString() != "0" && !String.IsNullOrWhiteSpace(selectedRow.Cells[0].Value.ToString()))
-            {
-                contractDetail = new ContractItem()
+                //Prepare model
+                if (selectedRow.Cells[0].Value.ToString() != "0" && !String.IsNullOrWhiteSpace(selectedRow.Cells[0].Value.ToString()))
                 {
-                    Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
-                    ProductName = selectedRow.Cells[2].Value.ToString()
-                };
-            }
-            else
-            {
-                contractDetail = null;
+                    contractDetail = new ContractItem()
+                    {
+                        Id = int.Parse(selectedRow.Cells[0].Value.ToString()),
+                        ProductName = selectedRow.Cells[2].Value.ToString()
+                    };
+                }
+                else
+                {
+                    contractDetail = null;
+                }
             }
         }
         #endregion
@@ -417,6 +420,11 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 _contractService = null;
             }
+        }
+
+        private void adgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            adgv.ClearSelection();
         }
     }
 }

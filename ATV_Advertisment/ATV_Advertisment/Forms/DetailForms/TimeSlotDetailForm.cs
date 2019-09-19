@@ -234,6 +234,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 bs = new BindingSource();
                 bs.DataSource = sbl;
                 adgv.DataSource = bs;
+                adgv.ClearSelection();
 
                 adgv.Columns["Id"].Visible = false;
                 adgv.Columns["TimeSlotId"].Visible = false;
@@ -391,6 +392,11 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 _costRuleService = null;
             }
+        }
+
+        private void adgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            adgv.ClearSelection();
         }
     }
 }

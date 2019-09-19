@@ -65,6 +65,7 @@
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
+            this.adgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adgv_DataBindingComplete);
             // 
             // gbControl
             // 

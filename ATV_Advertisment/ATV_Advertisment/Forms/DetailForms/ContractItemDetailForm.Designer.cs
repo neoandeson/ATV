@@ -45,10 +45,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.gbRegisterSchedule = new System.Windows.Forms.GroupBox();
             this.btnViewDetail = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.adgv = new ADGV.AdvancedDataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbContractDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.gbRegisterSchedule.SuspendLayout();
@@ -231,6 +231,17 @@
             this.btnViewDetail.UseVisualStyleBackColor = true;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(847, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Xóa lịch";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
+            // 
             // btnDeleteSchedule
             // 
             this.btnDeleteSchedule.Location = new System.Drawing.Point(726, 25);
@@ -268,17 +279,7 @@
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(847, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 30);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Xóa lịch";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
+            this.adgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adgv_DataBindingComplete);
             // 
             // ContractItemDetailForm
             // 

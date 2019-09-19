@@ -35,12 +35,12 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.txtCode = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cboSession = new System.Windows.Forms.ComboBox();
-            this.txtFromHour = new NumberTextBox(24);
-            this.txtFromMinute = new NumberTextBox(60);
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSession = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
+            this.txtFromHour = new NumberTextBox(24);
+            this.txtFromMinute = new NumberTextBox(60);
             this.cboDuration = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.txtPrice = new TControls.MoneyTextBox();
@@ -279,6 +279,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
+            this.adgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adgv_DataBindingComplete);
             // 
             // btnSaveCostRule
             // 
@@ -322,7 +323,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.Controls.Add(this.gbDetail);
             this.Name = "TimeSlotDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thông tin thời điểm phát";
+            this.Text = "x`x";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
             this.gbCostRule.ResumeLayout(false);

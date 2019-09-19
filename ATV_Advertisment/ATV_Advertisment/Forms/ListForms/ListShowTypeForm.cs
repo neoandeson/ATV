@@ -86,13 +86,16 @@ namespace ATV_Advertisment.Forms.ListForms
 
         private void adgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = adgv.SelectedRows[0];
-
-            //Prepare model
-            duration = new ShowType()
+            if (adgv.SelectedRows.Count > 0)
             {
-                Id = int.Parse(selectedRow.Cells[0].Value.ToString())
-            };
+                var selectedRow = adgv.SelectedRows[0];
+
+                //Prepare model
+                duration = new ShowType()
+                {
+                    Id = int.Parse(selectedRow.Cells[0].Value.ToString())
+                };
+            }
         }
         #endregion
 
@@ -142,6 +145,11 @@ namespace ATV_Advertisment.Forms.ListForms
         private void DetailForm_Closed(object sender, FormClosedEventArgs e)
         {
             LoadDGV();
+        }
+
+        private void adgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            adgv.ClearSelection();
         }
     }
 }
