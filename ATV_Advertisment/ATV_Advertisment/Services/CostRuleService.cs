@@ -106,6 +106,13 @@ namespace ATV_Advertisment.Services
             return _CostRuleRepository.GetById(id);
         }
 
+        public CostRule GetCostRule(int timeSlotId, int showTypeId, int length)
+        {
+            return _CostRuleRepository.Get(c => c.TimeSlotId == timeSlotId 
+                                                && c.ShowTypeId == showTypeId 
+                                                && c.Length == length).FirstOrDefault();
+        }
+
         public List<CostRuleViewModel> GetAllForList(int timeSlotId)
         {
             Dictionary<int, string> showTypeNames = _showTypeRepository

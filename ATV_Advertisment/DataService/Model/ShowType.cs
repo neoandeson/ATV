@@ -12,7 +12,7 @@ namespace DataService.Model
         public int Id { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(50)]
         public string Type { get; set; }
 
         [StringLength(100)]

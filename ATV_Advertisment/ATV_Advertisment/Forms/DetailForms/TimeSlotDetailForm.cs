@@ -327,6 +327,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 {
                     //Edit
                     int result = CRUDStatusCode.ERROR;
+                    costRule.ShowTypeId = (int)cboShowType.SelectedValue;
                     _costRuleService = new CostRuleService();
 
                     result = _costRuleService.EditCostRule(costRule);
@@ -345,7 +346,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         Length = (int)cboDuration.SelectedValue,
                         Price = (double)txtPrice.MoneyValue,
-                        TimeSlotId = model.Id
+                        TimeSlotId = model.Id,
+                        ShowTypeId = (int)cboShowType.SelectedValue
                     };
                     result = _costRuleService.AddCostRule(newCodeRule);
                     if (result == CRUDStatusCode.SUCCESS)

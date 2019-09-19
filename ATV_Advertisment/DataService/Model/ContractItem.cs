@@ -16,7 +16,11 @@ namespace DataService.Model
         public string ContractCode { get; set; }
 
         [Required]
-        [StringLength(80)]
+        [StringLength(200)]
+        public string FileName { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string ProductName { get; set; }
 
         public int DurationSecond { get; set; }
@@ -25,9 +29,9 @@ namespace DataService.Model
 
         public double TotalCost { get; set; }
 
-        public int StatusId { get; set; }
-
         public int ShowTypeId { get; set; }
+
+        public int StatusId { get; set; }
 
         public DateTime? CreateDate { get; set; }
 

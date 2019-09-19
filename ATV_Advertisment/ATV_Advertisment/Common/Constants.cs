@@ -48,7 +48,7 @@ namespace ATV_Advertisment.Common
             public static string Code = "Mã";
             public static string Address = "Địa chỉ";
             public static string TaxCode = "Mã số thuế";
-            //ShowTypes, CostRules(ShowType)
+            //ShowTypes, CostRules(ShowType), Contract(ShowType)
             public static string Description = "Mô tả";
             public static string ShowType = "Loại hình";
             //Discounts

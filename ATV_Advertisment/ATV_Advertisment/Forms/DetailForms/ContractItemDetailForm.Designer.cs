@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.gbContractDetail = new System.Windows.Forms.GroupBox();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.labelFileName = new System.Windows.Forms.Label();
+            this.cboShowType = new System.Windows.Forms.ComboBox();
+            this.lblShowType = new System.Windows.Forms.Label();
             this.txtNumberOfShow = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
-            this.lblSecond = new System.Windows.Forms.Label();
             this.txtTotalCost = new TControls.MoneyTextBox();
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.lblDuration = new System.Windows.Forms.Label();
@@ -45,8 +48,7 @@
             this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.adgv = new ADGV.AdvancedDataGridView();
-            this.lblShowType = new System.Windows.Forms.Label();
-            this.cboShowType = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbContractDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.gbRegisterSchedule.SuspendLayout();
@@ -55,11 +57,12 @@
             // 
             // gbContractDetail
             // 
+            this.gbContractDetail.Controls.Add(this.txtFileName);
+            this.gbContractDetail.Controls.Add(this.labelFileName);
             this.gbContractDetail.Controls.Add(this.cboShowType);
             this.gbContractDetail.Controls.Add(this.lblShowType);
             this.gbContractDetail.Controls.Add(this.txtNumberOfShow);
             this.gbContractDetail.Controls.Add(this.lblQuantity);
-            this.gbContractDetail.Controls.Add(this.lblSecond);
             this.gbContractDetail.Controls.Add(this.txtTotalCost);
             this.gbContractDetail.Controls.Add(this.lblTotalCost);
             this.gbContractDetail.Controls.Add(this.lblDuration);
@@ -73,9 +76,43 @@
             this.gbContractDetail.TabStop = false;
             this.gbContractDetail.Text = "Thông tin sản phẩm";
             // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(146, 69);
+            this.txtFileName.MaxLength = 200;
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(345, 26);
+            this.txtFileName.TabIndex = 5;
+            // 
+            // labelFileName
+            // 
+            this.labelFileName.AutoSize = true;
+            this.labelFileName.Location = new System.Drawing.Point(20, 72);
+            this.labelFileName.Name = "labelFileName";
+            this.labelFileName.Size = new System.Drawing.Size(94, 20);
+            this.labelFileName.TabIndex = 4;
+            this.labelFileName.Text = "Mô tả Video";
+            // 
+            // cboShowType
+            // 
+            this.cboShowType.FormattingEnabled = true;
+            this.cboShowType.Location = new System.Drawing.Point(664, 31);
+            this.cboShowType.Name = "cboShowType";
+            this.cboShowType.Size = new System.Drawing.Size(150, 28);
+            this.cboShowType.TabIndex = 2;
+            // 
+            // lblShowType
+            // 
+            this.lblShowType.AutoSize = true;
+            this.lblShowType.Location = new System.Drawing.Point(551, 34);
+            this.lblShowType.Name = "lblShowType";
+            this.lblShowType.Size = new System.Drawing.Size(75, 20);
+            this.lblShowType.TabIndex = 0;
+            this.lblShowType.Text = "Loại phát";
+            // 
             // txtNumberOfShow
             // 
-            this.txtNumberOfShow.Location = new System.Drawing.Point(445, 75);
+            this.txtNumberOfShow.Location = new System.Drawing.Point(1055, 72);
             this.txtNumberOfShow.Name = "txtNumberOfShow";
             this.txtNumberOfShow.ReadOnly = true;
             this.txtNumberOfShow.Size = new System.Drawing.Size(46, 26);
@@ -85,20 +122,11 @@
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(307, 78);
+            this.lblQuantity.Location = new System.Drawing.Point(929, 75);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(108, 20);
             this.lblQuantity.TabIndex = 0;
             this.lblQuantity.Text = "Số lượng phát";
-            // 
-            // lblSecond
-            // 
-            this.lblSecond.AutoSize = true;
-            this.lblSecond.Location = new System.Drawing.Point(232, 78);
-            this.lblSecond.Name = "lblSecond";
-            this.lblSecond.Size = new System.Drawing.Size(27, 20);
-            this.lblSecond.TabIndex = 0;
-            this.lblSecond.Text = "(s)";
             // 
             // txtTotalCost
             // 
@@ -117,7 +145,7 @@
             // lblTotalCost
             // 
             this.lblTotalCost.AutoSize = true;
-            this.lblTotalCost.Location = new System.Drawing.Point(951, 34);
+            this.lblTotalCost.Location = new System.Drawing.Point(929, 34);
             this.lblTotalCost.Name = "lblTotalCost";
             this.lblTotalCost.Size = new System.Drawing.Size(75, 20);
             this.lblTotalCost.TabIndex = 0;
@@ -126,16 +154,16 @@
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(17, 78);
+            this.lblDuration.Location = new System.Drawing.Point(551, 72);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(55, 20);
+            this.lblDuration.Size = new System.Drawing.Size(96, 20);
             this.lblDuration.TabIndex = 0;
-            this.lblDuration.Text = "Độ dài";
+            this.lblDuration.Text = "Độ dài video";
             // 
             // cboDuration
             // 
             this.cboDuration.FormattingEnabled = true;
-            this.cboDuration.Location = new System.Drawing.Point(146, 75);
+            this.cboDuration.Location = new System.Drawing.Point(664, 65);
             this.cboDuration.Name = "cboDuration";
             this.cboDuration.Size = new System.Drawing.Size(80, 28);
             this.cboDuration.TabIndex = 3;
@@ -182,6 +210,7 @@
             // gbRegisterSchedule
             // 
             this.gbRegisterSchedule.Controls.Add(this.btnViewDetail);
+            this.gbRegisterSchedule.Controls.Add(this.button1);
             this.gbRegisterSchedule.Controls.Add(this.btnDeleteSchedule);
             this.gbRegisterSchedule.Controls.Add(this.btnAddSchedule);
             this.gbRegisterSchedule.Controls.Add(this.adgv);
@@ -194,7 +223,7 @@
             // 
             // btnViewDetail
             // 
-            this.btnViewDetail.Location = new System.Drawing.Point(869, 25);
+            this.btnViewDetail.Location = new System.Drawing.Point(999, 25);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
             this.btnViewDetail.TabIndex = 4;
@@ -204,17 +233,18 @@
             // 
             // btnDeleteSchedule
             // 
-            this.btnDeleteSchedule.Location = new System.Drawing.Point(1144, 25);
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(726, 25);
             this.btnDeleteSchedule.Name = "btnDeleteSchedule";
             this.btnDeleteSchedule.Size = new System.Drawing.Size(110, 30);
             this.btnDeleteSchedule.TabIndex = 6;
             this.btnDeleteSchedule.Text = "Xóa lịch";
             this.btnDeleteSchedule.UseVisualStyleBackColor = true;
+            this.btnDeleteSchedule.Visible = false;
             this.btnDeleteSchedule.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
             // 
             // btnAddSchedule
             // 
-            this.btnAddSchedule.Location = new System.Drawing.Point(1008, 25);
+            this.btnAddSchedule.Location = new System.Drawing.Point(1144, 25);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(110, 30);
             this.btnAddSchedule.TabIndex = 5;
@@ -239,22 +269,16 @@
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
             // 
-            // lblShowType
+            // button1
             // 
-            this.lblShowType.AutoSize = true;
-            this.lblShowType.Location = new System.Drawing.Point(553, 34);
-            this.lblShowType.Name = "lblShowType";
-            this.lblShowType.Size = new System.Drawing.Size(75, 20);
-            this.lblShowType.TabIndex = 0;
-            this.lblShowType.Text = "Loại phát";
-            // 
-            // cboShowType
-            // 
-            this.cboShowType.FormattingEnabled = true;
-            this.cboShowType.Location = new System.Drawing.Point(651, 31);
-            this.cboShowType.Name = "cboShowType";
-            this.cboShowType.Size = new System.Drawing.Size(150, 28);
-            this.cboShowType.TabIndex = 2;
+            this.button1.Location = new System.Drawing.Point(847, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Xóa lịch";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
             // 
             // ContractItemDetailForm
             // 
@@ -292,11 +316,13 @@
         private System.Windows.Forms.Button btnSave;
         private TControls.MoneyTextBox txtTotalCost;
         private System.Windows.Forms.Label lblTotalCost;
-        private System.Windows.Forms.Label lblSecond;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.TextBox txtNumberOfShow;
         private System.Windows.Forms.Button btnViewDetail;
         private System.Windows.Forms.ComboBox cboShowType;
         private System.Windows.Forms.Label lblShowType;
+        private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.Label labelFileName;
+        private System.Windows.Forms.Button button1;
     }
 }

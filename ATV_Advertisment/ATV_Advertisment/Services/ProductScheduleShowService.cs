@@ -2,6 +2,7 @@
 using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using DataService.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using static ATV_Advertisment.Common.Constants;
@@ -13,6 +14,7 @@ namespace ATV_Advertisment.Services
         ProductScheduleShow GetById(int id);
         List<ProductScheduleShow> GetAllByContractDetailId(int contractDetailId);
         List<ProductScheduleShowViewModel> GetAllVMForList(int contractDetailId);
+        DateTime[] GetAllSelectedDatesByContractDetailId(int contractDetailId);
         int DeleteProductScheduleShow(int id);
         int AddProductScheduleShow(ProductScheduleShow input);
         int EditProductScheduleShow(ProductScheduleShow input);
@@ -141,7 +143,7 @@ namespace ATV_Advertisment.Services
         public List<ProductScheduleShowRM> GetAllForRptByDate(string date)
         {
             return _ProductScheduleShowRepository.Get(p => p.ShowDate == date)
-                .OrderBy(c => c.ShowDate)
+                .OrderBy(c => c.ShowDate).ThenBy(c => c.ShowTime).ThenBy(c => c.TimeSlotLength)
                 .Select(ts => new ProductScheduleShowRM()
                 {
                     ProductName = ts.ProductName,
@@ -151,6 +153,13 @@ namespace ATV_Advertisment.Services
                     TimeSlotLength = ts.TimeSlotLength,
                 })
                 .ToList();
+        }
+
+        public DateTime[] GetAllSelectedDatesByContractDetailId(int contractDetailId)
+        {
+            return _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractDetailId)
+                .OrderBy(p => p.ShowDate)
+                .Select(q => DateTime.Parse(q.ShowDate)).ToArray();
         }
     }
 }

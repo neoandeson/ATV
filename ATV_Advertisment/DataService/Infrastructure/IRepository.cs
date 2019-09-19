@@ -133,5 +133,7 @@ namespace DataService.Infrastructure
             context.SaveChanges();
             return entity;
         }
+
+        //Scaffold-DbContext "Server=DESKTOP-UH7HU37\TIENTPSQL;Database=PBSA;User ID=sa;Password=1234;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force
     }
 }

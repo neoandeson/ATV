@@ -39,7 +39,7 @@ namespace ATV_Advertisment.Common
                 case 2: noti = string.Format("Dữ liệu ({0}) đã tồn tại.", message); break; //EXISTED
             }
             var cursor = Cursor.Current;
-            MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(noti, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static bool ShowConfirmMessage(string message)

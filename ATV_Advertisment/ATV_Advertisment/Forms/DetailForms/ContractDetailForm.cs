@@ -236,9 +236,11 @@ namespace ATV_Advertisment.Forms.DetailForms
                 adgv.Columns["ProductName"].HeaderText = ADGVText.Name;
                 adgv.Columns["ProductName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["NumberOfShow"].HeaderText = ADGVText.NumberOfShow;
-                adgv.Columns["NumberOfShow"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["NumberOfShow"].Width = ControlsAttribute.GV_WIDTH_SEEM;
                 adgv.Columns["TotalCost"].HeaderText = ADGVText.Cost;
                 adgv.Columns["TotalCost"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["ShowTypeId"].HeaderText = ADGVText.ShowType;
+                adgv.Columns["ShowTypeId"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
 
                 lblNOProducts.Text = contractDetailVMs.Count + " sản phẩm";
             }
