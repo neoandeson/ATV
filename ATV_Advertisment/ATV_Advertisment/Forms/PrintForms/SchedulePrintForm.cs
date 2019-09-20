@@ -1,19 +1,11 @@
 ﻿using ATV_Advertisment.Common;
 using ATV_Advertisment.Services;
 using ATV_Advertisment.ViewModel;
-using DataService.Model;
-using ReportService.ExportExcel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ATV_Advertisment.Common.Constants;
+using ATV_Advertisment.Reports;
 
 namespace ATV_Advertisment.Forms.PrintForms
 {
@@ -29,9 +21,13 @@ namespace ATV_Advertisment.Forms.PrintForms
             var exportDir = Path.GetFullPath(@"LichChieu.xlsx");
             var templateDir = Path.GetFullPath(@"Schedule.xlsx");
 
-            EPPlusExport<ProductScheduleShowRM> ePPlusExport = new EPPlusExport<ProductScheduleShowRM>(exportDir, templateDir,
-                new ProductScheduleShowService().GetAllForRptByDate(dtpDate.Text));
-            ePPlusExport.CreateFileWithTemplate();
+            //EPPlusExport<ProductScheduleShowRM> ePPlusExport = new EPPlusExport<ProductScheduleShowRM>(exportDir, templateDir,
+            //    new ProductScheduleShowService().GetAllForRptByDate(dtpDate.Text));
+            //ePPlusExport.CreateFileWithTemplate();
+
+            ProductScheduleShowRpt productScheduleShowRpt = new ProductScheduleShowRpt();
+            FileInfo newFile = new FileInfo(exportDir);
+            productScheduleShowRpt.ExportToExcel(new ProductScheduleShowService().GetAllForRptByDate(dtpDate.Text), newFile);
             Utilities.ShowMessage(CommonMessage.EXPORT_SUCESSFULLY);
         }
     }

@@ -329,6 +329,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //Edit
                     int result = CRUDStatusCode.ERROR;
                     costRule.ShowTypeId = (int)cboShowType.SelectedValue;
+                    costRule.Price = (double)txtPrice.MoneyValue;
                     _costRuleService = new CostRuleService();
 
                     result = _costRuleService.EditCostRule(costRule);

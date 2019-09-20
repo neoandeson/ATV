@@ -37,10 +37,10 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.cboSession = new System.Windows.Forms.ComboBox();
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblSession = new System.Windows.Forms.Label();
-            this.lblFrom = new System.Windows.Forms.Label();
             this.txtFromHour = new NumberTextBox(24);
             this.txtFromMinute = new NumberTextBox(60);
+            this.lblSession = new System.Windows.Forms.Label();
+            this.lblFrom = new System.Windows.Forms.Label();
             this.cboDuration = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.txtPrice = new TControls.MoneyTextBox();
@@ -323,7 +323,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.Controls.Add(this.gbDetail);
             this.Name = "TimeSlotDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "x`x";
+            this.Text = "Thông tin thời điểm phát";
             this.gbDetail.ResumeLayout(false);
             this.gbDetail.PerformLayout();
             this.gbCostRule.ResumeLayout(false);

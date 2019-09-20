@@ -109,5 +109,12 @@ namespace ATV_Advertisment.Common
             public static int GV_WIDTH_MEDIUM = 170;
         }
         #endregion
+
+        #region
+        public static class ReportText
+        {
+            public static string ADSVERTISE_SCHEDULE = "LỊCH QUẢNG CÁO";
+        }
+        #endregion
     }
 }

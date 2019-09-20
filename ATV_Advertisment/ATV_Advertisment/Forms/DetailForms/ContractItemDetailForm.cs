@@ -143,6 +143,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                     adgv.Columns["ContractDetailId"].Visible = false;
                     adgv.Columns["ProductName"].Visible = false;
                     adgv.Columns["ShowTime"].Visible = false;
+                    adgv.Columns["Discount"].Visible = false;
+                    adgv.Columns["TotalCost"].Visible = false;
 
                     adgv.Columns["ShowDate"].HeaderText = ADGVText.ShowDate;
                     adgv.Columns["ShowDate"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
@@ -163,7 +165,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         ContractDetailId = model.Id,
                         TimeSlotLength = model.DurationSecond,
-                        ProductName = model.ProductName
+                        ProductName = txtFileName.Text//model.ProductName
                     };
                 }
             }
@@ -211,7 +213,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         Id = (int)selectedRow.Cells[0].Value,
                         ContractDetailId = model.Id,
                         TimeSlotLength = (int)cboDuration.SelectedValue,
-                        ProductName = txtProductName.Text,
+                        ProductName = txtFileName.Text,
                         ShowTypeId = (int)cboShowType.SelectedValue
                     };
                 }
@@ -257,7 +259,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             {
                                 ContractDetailId = model.Id,
                                 TimeSlotLength = (int)cboDuration.SelectedValue,
-                                ProductName = txtProductName.Text
+                                ProductName = txtFileName.Text
                             };
                             Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
                         }
