@@ -36,6 +36,7 @@
             this.lblCustomerCode = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.txtDiscount = new TControls.NumberTextBox(100);
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.gbContractDetail = new System.Windows.Forms.GroupBox();
@@ -47,10 +48,10 @@
             this.lblCost = new System.Windows.Forms.Label();
             this.txtCost = new TControls.MoneyTextBox();
             this.gbContractInfo = new System.Windows.Forms.GroupBox();
+            this.lblPercent = new System.Windows.Forms.Label();
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.txtTotalCost = new TControls.MoneyTextBox();
             this.lblDiscount = new System.Windows.Forms.Label();
-            this.txtDiscount = new TControls.NumberTextBox(100);
             this.txtCode = new System.Windows.Forms.TextBox();
             this.lblContractCode = new System.Windows.Forms.Label();
             this.lblCurrency2 = new System.Windows.Forms.Label();
@@ -147,6 +148,17 @@
             this.lblEndDate.Size = new System.Drawing.Size(106, 20);
             this.lblEndDate.TabIndex = 0;
             this.lblEndDate.Text = "Ngày kết thúc";
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(487, 79);
+            this.txtDiscount.MaxLength = 100;
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.NumberValue = 0;
+            this.txtDiscount.Size = new System.Drawing.Size(56, 26);
+            this.txtDiscount.TabIndex = 19;
+            this.txtDiscount.Text = "0";
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             // 
             // lblStartDate
             // 
@@ -253,6 +265,7 @@
             // 
             // gbContractInfo
             // 
+            this.gbContractInfo.Controls.Add(this.lblPercent);
             this.gbContractInfo.Controls.Add(this.lblTotalCost);
             this.gbContractInfo.Controls.Add(this.txtTotalCost);
             this.gbContractInfo.Controls.Add(this.txtDiscount);
@@ -272,6 +285,15 @@
             this.gbContractInfo.TabIndex = 0;
             this.gbContractInfo.TabStop = false;
             this.gbContractInfo.Text = "Hợp đồng";
+            // 
+            // lblPercent
+            // 
+            this.lblPercent.AutoSize = true;
+            this.lblPercent.Location = new System.Drawing.Point(549, 81);
+            this.lblPercent.Name = "lblPercent";
+            this.lblPercent.Size = new System.Drawing.Size(23, 20);
+            this.lblPercent.TabIndex = 22;
+            this.lblPercent.Text = "%";
             // 
             // lblTotalCost
             // 
@@ -295,16 +317,6 @@
             this.txtTotalCost.Size = new System.Drawing.Size(179, 26);
             this.txtTotalCost.TabIndex = 20;
             this.txtTotalCost.Text = "0";
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(487, 79);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.NumberValue = 0;
-            this.txtDiscount.Size = new System.Drawing.Size(100, 26);
-            this.txtDiscount.TabIndex = 19;
-            this.txtDiscount.Text = "0";
-            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             // 
             // lblDiscount
             // 
@@ -430,6 +442,7 @@
         private TControls.MoneyTextBox txtTotalCost;
         private TControls.NumberTextBox txtDiscount;
         private System.Windows.Forms.Label lblDiscount;
+        private System.Windows.Forms.Label lblPercent;
         //this.txtDiscount = new TControls.NumberTextBox(100);
     }
 }

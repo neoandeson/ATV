@@ -102,6 +102,9 @@ namespace ATV_Advertisment.Services
                 //TODO: Define if seperative contract
                 //bool isExisted = _ContractRepository.Exist(t => t. == input.Length);
                 //if (!isExisted)
+                Contract.Cost = input.Cost;
+                Contract.SumCost = input.SumCost;
+                Contract.Discount = input.Discount;
                 Contract.CustomerCode = input.CustomerCode;
                 Contract.StartDate = input.StartDate;
                 Contract.EndDate = input.EndDate;
@@ -166,6 +169,19 @@ namespace ATV_Advertisment.Services
             }
 
             return result;
+        }
+
+        public void UpdatContractCostInfo(string contractCode, double cost, double sumCost, double discount)
+        {
+            Contract contract = GetByCode(contractCode);
+            if(contract != null)
+            {
+                contract.Cost = cost;
+                contract.SumCost = sumCost;
+                contract.Discount = discount;
+
+                EditContract(contract);
+            }
         }
     }
 }
