@@ -222,9 +222,14 @@ namespace ATV_Advertisment.Common
                         ListContractForm listContractForm = new ListContractForm();
                         form = (Form)listContractForm;
                         break;
+                    //In ấn
                     case "In lịch phát sóng":
                         SchedulePrintForm schedulePrintForm = new SchedulePrintForm();
                         form = (Form)schedulePrintForm;
+                        break;
+                    case "Báo cáo doanh thu":
+                        RevenuePrintForm revenuePrintForm = new RevenuePrintForm();
+                        form = (Form)revenuePrintForm;
                         break;
 
                     case "Logout":

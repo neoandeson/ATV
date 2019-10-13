@@ -2,6 +2,7 @@
 using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using DataService.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using static ATV_Advertisment.Common.Constants;
@@ -25,6 +26,7 @@ namespace ATV_Advertisment.Services
     {
         private readonly ContractRepository _ContractRepository;
         private readonly ContractItemService _contractItemService;
+        private readonly CustomerService _customerService;
         private readonly ShowTypeRepository _contractTypeRepository;
 
         public ContractService()
@@ -32,6 +34,7 @@ namespace ATV_Advertisment.Services
             _ContractRepository = new ContractRepository();
             _contractItemService = new ContractItemService();
             _contractTypeRepository = new ShowTypeRepository();
+            _customerService = new CustomerService();
         }
 
         public Contract AddContract(Contract input)
@@ -43,6 +46,7 @@ namespace ATV_Advertisment.Services
                 //bool isExisted = _ContractRepository.Exist(t => t.Length == input.Length);
                 //if (!isExisted)
                 input.StatusId = CommonStatus.ACTIVE;
+                input.CustomerName = _customerService.GetNameByCode(input.CustomerCode);
                 input.CreateDate = Utilities.GetServerDateTimeNow();
                 input.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 input.LastUpdateBy = Common.Session.GetId();
@@ -182,6 +186,41 @@ namespace ATV_Advertisment.Services
 
                 EditContract(contract);
             }
+        }
+
+        //Report
+        public List<RevenueRM> GetRevenueRptByMonth(DateTime exportMonth)
+        {
+            return _ContractRepository.Get(p => p.StartDate.Value.Month == exportMonth.Month 
+                                                && p.StartDate.Value.Year == exportMonth.Year
+                                                && p.EndDate.Value.Month == exportMonth.Month
+                                                && p.EndDate.Value.Year == exportMonth.Year)
+                .OrderBy(c => c.Code)
+                .Select(con => new RevenueRM()
+                {
+                    Code = con.Code,
+                    CustomerName = con.CustomerName,
+                    SumCost = con.SumCost,
+                    TotalCost = con.Cost
+                })
+                .ToList();
+        }
+
+        public List<RevenueRM> GetRevenueRptByMonths(DateTime fromMonth, DateTime toMonth)
+        {
+            return _ContractRepository.Get(p => p.StartDate.Value.Month == fromMonth.Month
+                                                && p.StartDate.Value.Year == fromMonth.Year
+                                                && p.EndDate.Value.Month == toMonth.Month
+                                                && p.EndDate.Value.Year == toMonth.Year)
+                .OrderBy(c => c.Code)
+                .Select(con => new RevenueRM()
+                {
+                    Code = con.Code,
+                    CustomerName = con.CustomerName,
+                    SumCost = con.SumCost,
+                    TotalCost = con.Cost
+                })
+                .ToList();
         }
     }
 }

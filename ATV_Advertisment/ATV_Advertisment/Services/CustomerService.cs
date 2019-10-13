@@ -14,6 +14,7 @@ namespace ATV_Advertisment.Services
         List<Customer> GetAll();
         List<string> GetAllCustomerCode();
         Customer GetByCode(string code);
+        string GetNameByCode(string code);
         bool IsExistCode(string code);
         bool DeleteCustomer(int customerId);
         bool AddCustomer(Customer input);
@@ -105,6 +106,18 @@ namespace ATV_Advertisment.Services
         public bool IsExistCode(string code)
         {
             return _customerRepository.Exist(c => c.Code == code);
+        }
+
+        public string GetNameByCode(string code)
+        {
+            string result = "";
+            var customer = _customerRepository.Get(c => c.Code == code).FirstOrDefault();
+            if (customer != null)
+            {
+                result = customer.Name;
+            }
+
+            return result;
         }
     }
 }

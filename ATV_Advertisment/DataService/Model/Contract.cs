@@ -19,6 +19,8 @@ namespace DataService.Model
         [StringLength(20)]
         public string CustomerCode { get; set; }
 
+        public string CustomerName { get; set; }
+
         public double SumCost { get; set; }
 
         public double Discount { get; set; }

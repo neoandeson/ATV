@@ -57,6 +57,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model = _contractService.GetById(model.Id);
                     if (model != null)
                     {
+                        txtCustomerCode.ReadOnly = true;
                         var customer = _customerService.GetByCode(model.CustomerCode);
                         if (customer != null)
                         {
@@ -151,6 +152,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         {
                             ContractCode = model.Code
                         };
+                        txtCustomerCode.ReadOnly = true;
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
                     }
                 }

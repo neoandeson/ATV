@@ -27,6 +27,7 @@ namespace ATV_Advertisment.Common
             public static string CUSTOMER_NOTFOUND = "Không tìm thấy thông tin khách hàng";
             public static string ADD_SUCESSFULLY = "Thêm mới thành công";
             public static string EXPORT_SUCESSFULLY = "Xuất file thành công";
+            public static string EXPORT_FAIL = "Xuất file không thành công, không tìm thấy dữ liệu";
             public static string EDIT_SUCESSFULLY = "Cập nhật thành công";
             public static string DELETE_SUCESSFULLY = "Xóa thành công";
             public static string UPDATE_SUCESSFULLY = "Cập nhật thành công";
@@ -114,6 +115,7 @@ namespace ATV_Advertisment.Common
         public static class ReportText
         {
             public static string ADSVERTISE_SCHEDULE = "LỊCH QUẢNG CÁO";
+            public static string REVENUE_REPORT = "BÁO CÁO DOANH THU THÁNG";
         }
         #endregion
     }
