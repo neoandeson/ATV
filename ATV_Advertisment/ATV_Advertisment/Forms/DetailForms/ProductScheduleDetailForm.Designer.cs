@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.txtSumCost = new TControls.MoneyTextBox();
+            this.lblTotalCost = new System.Windows.Forms.Label();
             this.mpShowDate = new System.Windows.Forms.MonthCalendar();
             this.lblSecond = new System.Windows.Forms.Label();
             this.txtTimeSlotLength = new System.Windows.Forms.TextBox();
             this.cboTimeSlot = new System.Windows.Forms.ComboBox();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.txtTotalCost = new TControls.MoneyTextBox();
             this.txtCost = new TControls.MoneyTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTimeSlot = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.Label();
@@ -46,8 +44,6 @@
             this.lblShowDate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblTotalCost = new System.Windows.Forms.Label();
-            this.txtSumCost = new TControls.MoneyTextBox();
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.SuspendLayout();
@@ -60,12 +56,8 @@
             this.gbDetail.Controls.Add(this.lblSecond);
             this.gbDetail.Controls.Add(this.txtTimeSlotLength);
             this.gbDetail.Controls.Add(this.cboTimeSlot);
-            this.gbDetail.Controls.Add(this.txtDiscount);
             this.gbDetail.Controls.Add(this.txtQuantity);
-            this.gbDetail.Controls.Add(this.txtTotalCost);
             this.gbDetail.Controls.Add(this.txtCost);
-            this.gbDetail.Controls.Add(this.label1);
-            this.gbDetail.Controls.Add(this.label6);
             this.gbDetail.Controls.Add(this.label5);
             this.gbDetail.Controls.Add(this.lblTimeSlot);
             this.gbDetail.Controls.Add(this.lbl);
@@ -77,6 +69,28 @@
             this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin lịch";
+            // 
+            // txtSumCost
+            // 
+            this.txtSumCost.Location = new System.Drawing.Point(155, 175);
+            this.txtSumCost.MoneyValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtSumCost.Name = "txtSumCost";
+            this.txtSumCost.ReadOnly = true;
+            this.txtSumCost.Size = new System.Drawing.Size(238, 26);
+            this.txtSumCost.TabIndex = 12;
+            // 
+            // lblTotalCost
+            // 
+            this.lblTotalCost.AutoSize = true;
+            this.lblTotalCost.Location = new System.Drawing.Point(21, 178);
+            this.lblTotalCost.Name = "lblTotalCost";
+            this.lblTotalCost.Size = new System.Drawing.Size(75, 20);
+            this.lblTotalCost.TabIndex = 11;
+            this.lblTotalCost.Text = "Tổng tiền";
             // 
             // mpShowDate
             // 
@@ -115,14 +129,6 @@
             this.cboTimeSlot.TabIndex = 1;
             this.cboTimeSlot.SelectedIndexChanged += new System.EventHandler(this.cboTimeSlot_SelectedIndexChanged);
             // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(515, 175);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.ReadOnly = true;
-            this.txtDiscount.Size = new System.Drawing.Size(74, 26);
-            this.txtDiscount.TabIndex = 5;
-            // 
             // txtQuantity
             // 
             this.txtQuantity.Location = new System.Drawing.Point(155, 81);
@@ -131,19 +137,6 @@
             this.txtQuantity.TabIndex = 10;
             this.txtQuantity.Text = "1";
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
-            // 
-            // txtTotalCost
-            // 
-            this.txtTotalCost.Location = new System.Drawing.Point(513, 225);
-            this.txtTotalCost.MoneyValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtTotalCost.Name = "txtTotalCost";
-            this.txtTotalCost.ReadOnly = true;
-            this.txtTotalCost.Size = new System.Drawing.Size(200, 26);
-            this.txtTotalCost.TabIndex = 6;
             // 
             // txtCost
             // 
@@ -157,24 +150,6 @@
             this.txtCost.ReadOnly = true;
             this.txtCost.Size = new System.Drawing.Size(238, 26);
             this.txtCost.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(423, 228);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Thành tiền";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(423, 178);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 20);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Giảm giá";
             // 
             // label5
             // 
@@ -241,27 +216,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblTotalCost
-            // 
-            this.lblTotalCost.AutoSize = true;
-            this.lblTotalCost.Location = new System.Drawing.Point(21, 178);
-            this.lblTotalCost.Name = "lblTotalCost";
-            this.lblTotalCost.Size = new System.Drawing.Size(75, 20);
-            this.lblTotalCost.TabIndex = 11;
-            this.lblTotalCost.Text = "Tổng tiền";
-            // 
-            // txtSumCost
-            // 
-            this.txtSumCost.Location = new System.Drawing.Point(155, 175);
-            this.txtSumCost.MoneyValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtSumCost.Name = "txtSumCost";
-            this.txtSumCost.Size = new System.Drawing.Size(238, 26);
-            this.txtSumCost.TabIndex = 12;
-            // 
             // ProductScheduleDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -286,17 +240,13 @@
 
         private System.Windows.Forms.GroupBox gbDetail;
         private System.Windows.Forms.GroupBox gbControl;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTimeSlot;
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblShowDate;
-        private System.Windows.Forms.Label label1;
-        private TControls.MoneyTextBox txtTotalCost;
         private TControls.MoneyTextBox txtCost;
         private System.Windows.Forms.ComboBox cboTimeSlot;
-        private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtTimeSlotLength;

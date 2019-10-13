@@ -133,12 +133,6 @@
     <Compile Include="Forms\DetailForms\CustomerDetailForm.Designer.cs">
       <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DetailForms\DiscountDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DetailForms\DiscountDetailForm.Designer.cs">
-      <DependentUpon>DiscountDetailForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\DetailForms\DurationDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,12 +174,6 @@
     </Compile>
     <Compile Include="Forms\ListForms\ListCustomerForm.Designer.cs">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ListForms\ListDiscountForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ListForms\ListDiscountForm.Designer.cs">
-      <DependentUpon>ListDiscountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ListForms\ListDurationForm.cs">
       <SubType>Form</SubType>
@@ -230,7 +218,6 @@
     <Compile Include="Services\SystemConfigService.cs" />
     <Compile Include="Services\CostRuleService.cs" />
     <Compile Include="Services\TimeSlotService.cs" />
-    <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ContractItemService.cs" />
     <Compile Include="Services\ContractService.cs" />
@@ -273,9 +260,6 @@
     <EmbeddedResource Include="Forms\DetailForms\CustomerDetailForm.resx">
       <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DetailForms\DiscountDetailForm.resx">
-      <DependentUpon>DiscountDetailForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DetailForms\DurationDetailForm.resx">
       <DependentUpon>DurationDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,9 +280,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListCustomerForm.resx">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ListForms\ListDiscountForm.resx">
-      <DependentUpon>ListDiscountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListDurationForm.resx">
       <DependentUpon>ListDurationForm.cs</DependentUpon>

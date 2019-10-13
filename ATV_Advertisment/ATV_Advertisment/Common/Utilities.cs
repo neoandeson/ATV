@@ -218,10 +218,6 @@ namespace ATV_Advertisment.Common
                         ListDurationForm listDurationForm = new ListDurationForm();
                         form = (Form)listDurationForm;
                         break;
-                    case "Danh mục giảm giá":
-                        ListDiscountForm listDiscountForm = new ListDiscountForm();
-                        form = (Form)listDiscountForm;
-                        break;
                     case "Hợp đồng quảng cáo":
                         ListContractForm listContractForm = new ListContractForm();
                         form = (Form)listContractForm;

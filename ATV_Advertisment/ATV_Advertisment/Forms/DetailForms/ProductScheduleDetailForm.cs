@@ -21,7 +21,6 @@ namespace ATV_Advertisment.Forms.DetailForms
         private ProductScheduleShowService _productScheduleShowService = null;
         private TimeSlotService _timeSlotService = null;
         private CostRuleService _costRuleService = null;
-        private DiscountService _discountService = null;
         private ContractService _contractService = null;
 
         public ProductScheduleDetailForm(ProductScheduleShow inputModel, string contractCode)
@@ -79,8 +78,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                             mpShowDate.Text = model.ShowDate;
                             cboTimeSlot.Text = model.TimeSlot;
                             txtSumCost.Text = Utilities.DoubleMoneyToText(model.Cost);
-                            txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
-                            txtDiscount.Text = model.Discount.ToString();
+                            //txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
+                            //txtDiscount.Text = model.Discount.ToString();
                             txtTimeSlotLength.Text = model.TimeSlotLength.ToString();
                             txtQuantity.Text = model.Quantity.ToString();
                             model.ProductName = ProductName;
@@ -168,11 +167,11 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //Add Edit
                     ProductScheduleShow originModel = model;
                     model.TimeSlot = cboTimeSlot.Text;
-                    //model.Cost = (double)txtSumCost.MoneyValue;
+                    model.TotalCost = (double)txtSumCost.MoneyValue;
                     //model.TotalCost = (double)txtTotalCost.MoneyValue;
                     model.Cost = (double)txtCost.MoneyValue;
-                    model.TotalCost = (double)txtTotalCost.MoneyValue;
-                    model.Discount = double.Parse(txtDiscount.Text);
+                    //model.TotalCost = (double)txtTotalCost.MoneyValue;
+                    //model.Discount = double.Parse(txtDiscount.Text);
                     model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
                     model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
                     model.ShowDate = mpShowDate.Text;
@@ -258,26 +257,18 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if (CompleteLoadData == 2)
                 {
-                    _discountService = new DiscountService();
 
                     int quantity = Utilities.GetIntFromTextBox(txtQuantity);
                     double cost = CostRulePrice * quantity;
-                    double discount = _discountService.GetDiscountByCost(cost);
-                    double totalCost = cost - (cost * discount / 100);
 
                     txtSumCost.Text = Utilities.DoubleMoneyToText(cost);
-                    txtDiscount.Text = discount.ToString();
-                    txtTotalCost.Text = Utilities.DoubleMoneyToText(totalCost);
+                    txtSumCost.Text = Utilities.DoubleMoneyToText(cost);
                 }
             }
             catch (Exception ex)
             {
                 Logging.LogSystem(ex.StackTrace, SystemLogType.Exception);
                 throw;
-            }
-            finally
-            {
-                _discountService = null;
             }
         }
 
