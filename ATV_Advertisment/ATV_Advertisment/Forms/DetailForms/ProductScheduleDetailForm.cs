@@ -93,6 +93,17 @@ namespace ATV_Advertisment.Forms.DetailForms
                                 CalculateCost();
                             }
                         }
+                    } else if(model.ContractDetailId != 0)
+                    {
+                        _productScheduleShowService = new ProductScheduleShowService();
+                        //Load selected dates
+                        var selectedDates = _productScheduleShowService.GetAllSelectedDatesByContractDetailId(model.ContractDetailId);
+                        if (selectedDates != null)
+                        {
+                            mpShowDate.BoldedDates = selectedDates;
+                            txtQuantity.Text = mpShowDate.BoldedDates.Count().ToString();
+                            CalculateCost();
+                        }
                     }
                     CalculateCost();
                 }

@@ -302,6 +302,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                 productScheduleShow.TimeSlotLength = (int)cboDuration.SelectedValue;
                 productScheduleShow.ShowTypeId = (int)cboShowType.SelectedValue;
             }
+            if(model.Id != 0)
+            {
+                productScheduleShow.ContractDetailId = model.Id;
+            }
             ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow, model.ContractCode);
             contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
             contractDetailDetailForm.ShowDialog();

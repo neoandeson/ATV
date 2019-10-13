@@ -71,7 +71,7 @@ namespace ATV_Advertisment.Services
                 DateTime serverDatetime = Utilities.GetServerDateTimeNow();
 
                 result = "HD" 
-                    + contractNumberInMonth.ValueNumber.Value.ToString("0000") 
+                    + contractNumberInMonth.ValueNumber.Value.ToString("000") 
                     + serverDatetime.Month.ToString("00")
                     + serverDatetime.ToString("yy");
             }

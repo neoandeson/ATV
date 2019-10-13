@@ -67,7 +67,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             //cboContractType.SelectedValue = model.ContractTypeId;
                             dtpStartDate.Value = model.StartDate.Value;
                             dtpEndDate.Value = model.EndDate.Value;
-                            txtCost.Text = Utilities.DoubleMoneyToText(model.Cost);
+                            txtCost.Text = Utilities.DoubleMoneyToText(model.SumCost);
                         }
                         else
                         {
@@ -135,7 +135,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                         //ContractTypeId = (int)cboContractType.SelectedValue,
                         StartDate = dtpStartDate.Value,
                         EndDate = dtpEndDate.Value,
-                        Cost = double.Parse(txtCost.Text),
+                        SumCost = Utilities.GetDoubleFromTextBox(txtCost),
+                        Discount = Utilities.GetDoubleFromTextBox(txtDiscount),
+                        Cost = Utilities.GetDoubleFromTextBox(txtTotalCost)
                     };
                     result = _contractService.AddContract(model);
                     if (result != null)
@@ -158,7 +160,9 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //model.ContractTypeId = (int)cboContractType.SelectedValue;
                     model.StartDate = dtpStartDate.Value;
                     model.EndDate = dtpEndDate.Value;
-                    model.Cost = Utilities.GetDoubleFromTextBox(txtCost);
+                    model.SumCost = Utilities.GetDoubleFromTextBox(txtCost);
+                    model.Cost = Utilities.GetDoubleFromTextBox(txtTotalCost);
+                    model.Discount = Utilities.GetDoubleFromTextBox(txtDiscount);
 
                     editResult = _contractService.EditContract(model);
                     if (editResult == CRUDStatusCode.SUCCESS)
@@ -411,6 +415,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 _contractService = new ContractService();
                 double result = _contractService.UpdateContractCost(model.Code);
                 txtCost.Text = Utilities.DoubleMoneyToText(result);
+                CalculateContractTotalCost();
             }
             catch (Exception)
             {
@@ -422,9 +427,30 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
         }
 
+        private void CalculateContractTotalCost()
+        {
+            try
+            {
+                double cost = Utilities.GetDoubleFromTextBox(txtCost);
+                double discount = Utilities.GetDoubleFromTextBox(txtDiscount);
+                double sumCost = cost - (cost * discount) / 100;
+
+                txtTotalCost.Text = Utilities.DoubleMoneyToText(sumCost);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         private void adgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             adgv.ClearSelection();
+        }
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            CalculateContractTotalCost();
         }
     }
 }

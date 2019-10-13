@@ -107,6 +107,7 @@
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbList);
             this.Name = "ListContractForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Danh sách hợp đồng";
             this.gbList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adgv)).EndInit();

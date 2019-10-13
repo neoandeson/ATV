@@ -47,6 +47,10 @@
             this.lblCost = new System.Windows.Forms.Label();
             this.txtCost = new TControls.MoneyTextBox();
             this.gbContractInfo = new System.Windows.Forms.GroupBox();
+            this.lblTotalCost = new System.Windows.Forms.Label();
+            this.txtTotalCost = new TControls.MoneyTextBox();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.txtDiscount = new TControls.NumberTextBox(100);
             this.txtCode = new System.Windows.Forms.TextBox();
             this.lblContractCode = new System.Windows.Forms.Label();
             this.lblCurrency2 = new System.Windows.Forms.Label();
@@ -160,7 +164,7 @@
             this.gbContractDetail.Controls.Add(this.btnAddDetail);
             this.gbContractDetail.Controls.Add(this.lblNOProducts);
             this.gbContractDetail.Controls.Add(this.adgv);
-            this.gbContractDetail.Location = new System.Drawing.Point(13, 214);
+            this.gbContractDetail.Location = new System.Drawing.Point(13, 264);
             this.gbContractDetail.Name = "gbContractDetail";
             this.gbContractDetail.Size = new System.Drawing.Size(885, 281);
             this.gbContractDetail.TabIndex = 0;
@@ -227,7 +231,7 @@
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(22, 83);
+            this.lblCost.Location = new System.Drawing.Point(19, 82);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(79, 20);
             this.lblCost.TabIndex = 0;
@@ -249,6 +253,10 @@
             // 
             // gbContractInfo
             // 
+            this.gbContractInfo.Controls.Add(this.lblTotalCost);
+            this.gbContractInfo.Controls.Add(this.txtTotalCost);
+            this.gbContractInfo.Controls.Add(this.txtDiscount);
+            this.gbContractInfo.Controls.Add(this.lblDiscount);
             this.gbContractInfo.Controls.Add(this.txtCode);
             this.gbContractInfo.Controls.Add(this.lblContractCode);
             this.gbContractInfo.Controls.Add(this.lblCurrency2);
@@ -260,10 +268,52 @@
             this.gbContractInfo.Controls.Add(this.dtpEndDate);
             this.gbContractInfo.Location = new System.Drawing.Point(13, 88);
             this.gbContractInfo.Name = "gbContractInfo";
-            this.gbContractInfo.Size = new System.Drawing.Size(885, 120);
+            this.gbContractInfo.Size = new System.Drawing.Size(885, 170);
             this.gbContractInfo.TabIndex = 0;
             this.gbContractInfo.TabStop = false;
             this.gbContractInfo.Text = "Hợp đồng";
+            // 
+            // lblTotalCost
+            // 
+            this.lblTotalCost.AutoSize = true;
+            this.lblTotalCost.Location = new System.Drawing.Point(19, 126);
+            this.lblTotalCost.Name = "lblTotalCost";
+            this.lblTotalCost.Size = new System.Drawing.Size(84, 20);
+            this.lblTotalCost.TabIndex = 21;
+            this.lblTotalCost.Text = "Thành tiền";
+            // 
+            // txtTotalCost
+            // 
+            this.txtTotalCost.Location = new System.Drawing.Point(134, 123);
+            this.txtTotalCost.MoneyValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTotalCost.Name = "txtTotalCost";
+            this.txtTotalCost.ReadOnly = true;
+            this.txtTotalCost.Size = new System.Drawing.Size(179, 26);
+            this.txtTotalCost.TabIndex = 20;
+            this.txtTotalCost.Text = "0";
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(487, 79);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.NumberValue = 0;
+            this.txtDiscount.Size = new System.Drawing.Size(100, 26);
+            this.txtDiscount.TabIndex = 19;
+            this.txtDiscount.Text = "0";
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.Location = new System.Drawing.Point(400, 82);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(72, 20);
+            this.lblDiscount.TabIndex = 18;
+            this.lblDiscount.Text = "Giảm giá";
             // 
             // txtCode
             // 
@@ -297,7 +347,7 @@
             this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnCancel);
             this.gbControl.Controls.Add(this.btnSave);
-            this.gbControl.Location = new System.Drawing.Point(13, 501);
+            this.gbControl.Location = new System.Drawing.Point(13, 551);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(885, 70);
             this.gbControl.TabIndex = 0;
@@ -330,7 +380,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 582);
+            this.ClientSize = new System.Drawing.Size(910, 629);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbContractInfo);
             this.Controls.Add(this.gbContractDetail);
@@ -376,5 +426,10 @@
         private System.Windows.Forms.Button btnDeleteDetail;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label lblContractCode;
+        private System.Windows.Forms.Label lblTotalCost;
+        private TControls.MoneyTextBox txtTotalCost;
+        private TControls.NumberTextBox txtDiscount;
+        private System.Windows.Forms.Label lblDiscount;
+        //this.txtDiscount = new TControls.NumberTextBox(100);
     }
 }
