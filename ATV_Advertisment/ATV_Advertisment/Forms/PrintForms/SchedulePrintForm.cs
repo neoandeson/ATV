@@ -27,7 +27,7 @@ namespace ATV_Advertisment.Forms.PrintForms
 
             ProductScheduleShowRpt productScheduleShowRpt = new ProductScheduleShowRpt();
             FileInfo newFile = new FileInfo(exportDir);
-            productScheduleShowRpt.ExportToExcel(new ProductScheduleShowService().GetAllForRptByDate(dtpDate.Text), newFile);
+            productScheduleShowRpt.ExportToExcel(new ProductScheduleShowService().GetAllForRptByDate(dtpDate.Value), newFile);
             Utilities.ShowMessage(CommonMessage.EXPORT_SUCESSFULLY);
         }
     }

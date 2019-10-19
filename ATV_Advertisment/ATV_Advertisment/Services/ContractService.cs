@@ -4,6 +4,8 @@ using DataService.Model;
 using DataService.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using static ATV_Advertisment.Common.Constants;
 
@@ -190,12 +192,26 @@ namespace ATV_Advertisment.Services
         }
 
         //Report
+        public static DateTime GetServerDateTimeNow()
+        {
+            DateTime dt;
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
+            {
+                var cmd = new SqlCommand("SELECT GETDATE()", conn);
+                conn.Open();
+
+                dt = (DateTime)cmd.ExecuteScalar();
+            };
+            return dt;
+        }
+
         public List<RevenueRM> GetRevenueRptByMonth(DateTime exportMonth)
         {
             return _ContractRepository.Get(p => p.StartDate.Value.Month == exportMonth.Month 
                                                 && p.StartDate.Value.Year == exportMonth.Year
                                                 && p.EndDate.Value.Month == exportMonth.Month
-                                                && p.EndDate.Value.Year == exportMonth.Year)
+                                                && p.EndDate.Value.Year == exportMonth.Year
+                                                && p.StatusId == CommonStatus.ACTIVE)
                 .OrderBy(c => c.Code)
                 .Select(con => new RevenueRM()
                 {

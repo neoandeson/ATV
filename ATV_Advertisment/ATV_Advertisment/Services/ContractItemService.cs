@@ -154,7 +154,7 @@ namespace ATV_Advertisment.Services
                 List<ProductScheduleShow> productScheduleShows = _productScheduleShowService.GetAllByContractDetailId(id);
                 foreach (var pss in productScheduleShows)
                 {
-                    result.Cost += pss.TotalCost;
+                    result.Cost += pss.Cost;
                     result.NumberOfShow += pss.Quantity;
                 }
 

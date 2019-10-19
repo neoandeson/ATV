@@ -130,7 +130,7 @@ namespace ATV_Advertisment.Services
                     Quantity = ts.Quantity,
                     ProductName = ts.ProductName,
                     ShowTime = ts.ShowTime,
-                    ShowDate = ts.ShowDate,
+                    ShowDate = ts.ShowDate.ToShortDateString(),
                     TimeSlot = ts.TimeSlot,
                     TimeSlotLength = ts.TimeSlotLength,
                     Cost = Utilities.DoubleMoneyToText(ts.Cost),
@@ -140,7 +140,7 @@ namespace ATV_Advertisment.Services
                 .ToList();
         }
 
-        public List<ProductScheduleShowRM> GetAllForRptByDate(string date)
+        public List<ProductScheduleShowRM> GetAllForRptByDate(DateTime date)
         {
             return _ProductScheduleShowRepository.Get(p => p.ShowDate == date)
                 .OrderBy(c => c.ShowDate).ThenBy(c => c.ShowTime).ThenBy(c => c.TimeSlotLength)
@@ -148,7 +148,8 @@ namespace ATV_Advertisment.Services
                 {
                     ProductName = ts.ProductName,
                     ShowTime = ts.ShowTime,
-                    ShowDate = ts.ShowDate,
+                    //TODO Check Remove
+                    //ShowDate = ts.ShowDate,
                     TimeSlot = ts.TimeSlot,
                     TimeSlotLength = ts.TimeSlotLength,
                 })
@@ -159,7 +160,7 @@ namespace ATV_Advertisment.Services
         {
             return _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractDetailId)
                 .OrderBy(p => p.ShowDate)
-                .Select(q => DateTime.Parse(q.ShowDate)).ToArray();
+                .Select(q => q.ShowDate).ToArray();
         }
     }
 }

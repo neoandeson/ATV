@@ -21,9 +21,7 @@ namespace DataService.Model
         [StringLength(5)]
         public string ShowTime { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string ShowDate { get; set; }
+        public DateTime ShowDate { get; set; }
 
         public int ShowTypeId { get; set; }
 

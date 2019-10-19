@@ -393,10 +393,6 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ReportFiles\Outputs\LichChieu.xlsx" />
-    <None Include="ReportFiles\Templates\Report.mrt" />
-    <None Include="ReportFiles\Templates\RevenueTemplate.xlsx" />
-    <None Include="ReportFiles\Templates\Schedule.xlsx" />
     <None Include="Resources\background.bmp" />
   </ItemGroup>
   <ItemGroup>

@@ -75,7 +75,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model = _productScheduleShowService.GetById(model.Id);
                         if (model != null)
                         {
-                            mpShowDate.Text = model.ShowDate;
+                            mpShowDate.Text = model.ShowDate.ToString("dd/MM/YYYY");
                             cboTimeSlot.Text = model.TimeSlot;
                             txtSumCost.Text = Utilities.DoubleMoneyToText(model.Cost);
                             //txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
@@ -186,7 +186,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     //model.Discount = double.Parse(txtDiscount.Text);
                     model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
                     model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
-                    model.ShowDate = mpShowDate.Text;
+                    model.ShowDate = mpShowDate.BoldedDates[0];
                     model.ProductName = ProductName;
                     model.ShowTime = _timeSlotService.GetShowTimeById((int)cboTimeSlot.SelectedValue);
                     result = AddProductSchedultShows(mpShowDate.BoldedDates, originModel);
@@ -234,7 +234,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             foreach (var date in selectedDates)
                             {
                                 pss = originModel;
-                                pss.ShowDate = date.ToString("dd/MM/yyyy");
+                                pss.ShowDate = date;
                                 context.ProductScheduleShows.Add(pss);
                                 context.SaveChanges();
                             }
