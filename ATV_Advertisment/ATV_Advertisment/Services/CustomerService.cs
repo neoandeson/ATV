@@ -59,6 +59,7 @@ namespace ATV_Advertisment.Services
                 customer.Phone2 = input.Phone2;
                 customer.Fax = input.Fax;
                 customer.TaxCode = input.TaxCode;
+                customer.Email = input.Email;
 
                 customer.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 customer.LastUpdateBy = Common.Session.GetId();

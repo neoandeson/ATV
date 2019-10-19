@@ -44,6 +44,7 @@ namespace ATV_Advertisment.Forms.ListForms
                 adgv.Columns["Phone1"].Visible = false;
                 adgv.Columns["Phone2"].Visible = false;
                 adgv.Columns["Fax"].Visible = false;
+                adgv.Columns["Email"].Visible = false;
                 adgv.Columns["StatusId"].Visible = false;
                 adgv.Columns["CreateDate"].Visible = false;
                 adgv.Columns["LastUpdateBy"].Visible = false;
@@ -105,9 +106,10 @@ namespace ATV_Advertisment.Forms.ListForms
                         Address = (selectedRow.Cells[3].Value == null) ? "" : selectedRow.Cells[3].Value.ToString(),
                         Phone1 = (selectedRow.Cells[4].Value == null) ? "" : selectedRow.Cells[4].Value.ToString(),
                         Phone2 = (selectedRow.Cells[5].Value == null) ? "" : selectedRow.Cells[5].Value.ToString(),
-                        Fax = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString(),
-                        TaxCode = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString(),
-                        StatusId = int.Parse(selectedRow.Cells[8].Value.ToString()),
+                        Email = (selectedRow.Cells[6].Value == null) ? "" : selectedRow.Cells[6].Value.ToString(),
+                        Fax = (selectedRow.Cells[7].Value == null) ? "" : selectedRow.Cells[7].Value.ToString(),
+                        TaxCode = (selectedRow.Cells[8].Value == null) ? "" : selectedRow.Cells[8].Value.ToString(),
+                        StatusId = int.Parse(selectedRow.Cells[9].Value.ToString()),
                     };
                 }
             }

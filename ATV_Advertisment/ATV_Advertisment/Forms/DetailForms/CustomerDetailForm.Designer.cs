@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbCustomerInfo = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.txtPhone2 = new System.Windows.Forms.TextBox();
@@ -51,6 +53,8 @@
             // 
             // gbCustomerInfo
             // 
+            this.gbCustomerInfo.Controls.Add(this.txtEmail);
+            this.gbCustomerInfo.Controls.Add(this.lblEmail);
             this.gbCustomerInfo.Controls.Add(this.txtFax);
             this.gbCustomerInfo.Controls.Add(this.txtCode);
             this.gbCustomerInfo.Controls.Add(this.txtPhone2);
@@ -73,6 +77,22 @@
             this.gbCustomerInfo.TabIndex = 0;
             this.gbCustomerInfo.TabStop = false;
             this.gbCustomerInfo.Text = "Thông tin";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(510, 239);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(200, 26);
+            this.txtEmail.TabIndex = 8;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(397, 242);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(48, 20);
+            this.lblEmail.TabIndex = 0;
+            this.lblEmail.Text = "Email";
             // 
             // txtFax
             // 
@@ -107,12 +127,12 @@
             // 
             // txtTaxCode
             // 
-            this.txtTaxCode.Location = new System.Drawing.Point(510, 242);
+            this.txtTaxCode.Location = new System.Drawing.Point(510, 39);
             this.txtTaxCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTaxCode.MaxLength = 10;
             this.txtTaxCode.Name = "txtTaxCode";
             this.txtTaxCode.Size = new System.Drawing.Size(163, 26);
-            this.txtTaxCode.TabIndex = 8;
+            this.txtTaxCode.TabIndex = 2;
             this.txtTaxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaxCode_KeyPress);
             // 
             // txtPhone1
@@ -156,7 +176,7 @@
             // lblTaxCode
             // 
             this.lblTaxCode.AutoSize = true;
-            this.lblTaxCode.Location = new System.Drawing.Point(397, 242);
+            this.lblTaxCode.Location = new System.Drawing.Point(397, 42);
             this.lblTaxCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTaxCode.Name = "lblTaxCode";
             this.lblTaxCode.Size = new System.Drawing.Size(88, 20);
@@ -271,5 +291,7 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.GroupBox gbControl;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
     }
 }

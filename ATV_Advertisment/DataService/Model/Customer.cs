@@ -30,6 +30,9 @@ namespace DataService.Model
         [StringLength(14)]
         public string Phone2 { get; set; }
 
+        [StringLength(50)]
+        public string Email { get; set; }
+
         [StringLength(14)]
         public string Fax { get; set; }
 

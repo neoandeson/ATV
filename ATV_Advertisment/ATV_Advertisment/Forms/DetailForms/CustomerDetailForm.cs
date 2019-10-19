@@ -33,6 +33,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                 txtPhone2.Text = model.Phone2;
                 txtFax.Text = model.Fax;
                 txtTaxCode.Text = model.TaxCode;
+                txtEmail.Text = model.Email;
             }
         }
 
@@ -44,6 +45,11 @@ namespace ATV_Advertisment.Forms.DetailForms
             try
             {
                 customerService = new CustomerService();
+
+                if(!IsValidate())
+                {
+                    return;
+                }
 
                 if (model == null)
                 {
@@ -57,6 +63,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         Phone2 = txtPhone2.Text,
                         Fax = txtFax.Text,
                         TaxCode = txtTaxCode.Text,
+                        Email = txtEmail.Text,
                     };
                     result = customerService.AddCustomer(model);
                     if (result)
@@ -74,6 +81,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     model.Phone2 = txtPhone2.Text;
                     model.Fax = txtFax.Text;
                     model.TaxCode = txtTaxCode.Text;
+                    model.Email = txtEmail.Text;
 
                     result = customerService.EditCustomer(model);
                     if (result)
@@ -132,6 +140,31 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 _customerService = null;
             }
+        }
+
+        private bool IsValidate()
+        {
+            bool result = true;
+
+            if (string.IsNullOrWhiteSpace(txtCode.Text))
+            {
+                MessageBox.Show("Mã không được để trống");
+                result = false;
+            } else if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Tên không được để trống");
+                result = false;
+            } else if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            {
+                MessageBox.Show("Địa chỉ không được để trống");
+                result = false;
+            } else if (string.IsNullOrWhiteSpace(txtPhone1.Text))
+            {
+                MessageBox.Show("Số điện thoại 1 không được để trống");
+                result = false;
+            }
+
+            return result;
         }
     }
 }

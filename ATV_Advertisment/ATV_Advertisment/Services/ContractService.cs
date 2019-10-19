@@ -144,6 +144,7 @@ namespace ATV_Advertisment.Services
                 .ToDictionary(q => q.Id, q => q.Type);
 
             return _ContractRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
+                .OrderByDescending(c => c.CreateDate)
                 .Select(c => new ContractViewModel()
                 {
                     Id = c.Id,

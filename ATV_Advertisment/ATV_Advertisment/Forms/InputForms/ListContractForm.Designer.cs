@@ -57,6 +57,7 @@
             this.adgv.Location = new System.Drawing.Point(6, 25);
             this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
+            this.adgv.ReadOnly = true;
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.adgv.Size = new System.Drawing.Size(850, 480);
             this.adgv.TabIndex = 0;
@@ -64,6 +65,7 @@
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
+            this.adgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adgv_DataBindingComplete);
             // 
             // gbControl
             // 

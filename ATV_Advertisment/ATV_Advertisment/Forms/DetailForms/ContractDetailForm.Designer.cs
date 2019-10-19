@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.gbCustomerInfo = new System.Windows.Forms.GroupBox();
-            this.btnCustomerDetail = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.lblTaxCode = new System.Windows.Forms.Label();
             this.txtCustomerCode = new System.Windows.Forms.TextBox();
             this.lblCustomerCode = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.txtDiscount = new TControls.NumberTextBox(100);
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.gbContractDetail = new System.Windows.Forms.GroupBox();
@@ -45,6 +43,7 @@
             this.btnAddDetail = new System.Windows.Forms.Button();
             this.lblNOProducts = new System.Windows.Forms.Label();
             this.adgv = new ADGV.AdvancedDataGridView();
+            this.txtDiscount = new TControls.NumberTextBox(100);
             this.lblCost = new System.Windows.Forms.Label();
             this.txtCost = new TControls.MoneyTextBox();
             this.gbContractInfo = new System.Windows.Forms.GroupBox();
@@ -67,7 +66,6 @@
             // 
             // gbCustomerInfo
             // 
-            this.gbCustomerInfo.Controls.Add(this.btnCustomerDetail);
             this.gbCustomerInfo.Controls.Add(this.txtCustomerName);
             this.gbCustomerInfo.Controls.Add(this.lblTaxCode);
             this.gbCustomerInfo.Controls.Add(this.txtCustomerCode);
@@ -78,14 +76,6 @@
             this.gbCustomerInfo.TabIndex = 0;
             this.gbCustomerInfo.TabStop = false;
             this.gbCustomerInfo.Text = "Khách hàng";
-            // 
-            // btnCustomerDetail
-            // 
-            this.btnCustomerDetail.Location = new System.Drawing.Point(317, 30);
-            this.btnCustomerDetail.Name = "btnCustomerDetail";
-            this.btnCustomerDetail.Size = new System.Drawing.Size(25, 25);
-            this.btnCustomerDetail.TabIndex = 0;
-            this.btnCustomerDetail.UseVisualStyleBackColor = true;
             // 
             // txtCustomerName
             // 
@@ -140,15 +130,6 @@
             this.dtpStartDate.Size = new System.Drawing.Size(146, 26);
             this.dtpStartDate.TabIndex = 3;
             // 
-            // lblEndDate
-            // 
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(602, 82);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(106, 20);
-            this.lblEndDate.TabIndex = 0;
-            this.lblEndDate.Text = "Ngày kết thúc";
-            // 
             // txtDiscount
             // 
             this.txtDiscount.Location = new System.Drawing.Point(487, 79);
@@ -159,6 +140,15 @@
             this.txtDiscount.TabIndex = 19;
             this.txtDiscount.Text = "0";
             this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Location = new System.Drawing.Point(602, 82);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(106, 20);
+            this.lblEndDate.TabIndex = 0;
+            this.lblEndDate.Text = "Ngày kết thúc";
             // 
             // lblStartDate
             // 
@@ -427,7 +417,6 @@
         private TControls.MoneyTextBox txtCost;
         private System.Windows.Forms.GroupBox gbContractInfo;
         private System.Windows.Forms.Label lblCurrency2;
-        private System.Windows.Forms.Button btnCustomerDetail;
         private ADGV.AdvancedDataGridView adgv;
         private System.Windows.Forms.Label lblNOProducts;
         private System.Windows.Forms.GroupBox gbControl;
