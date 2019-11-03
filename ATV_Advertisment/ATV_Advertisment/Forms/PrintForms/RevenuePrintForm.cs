@@ -6,7 +6,9 @@ using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -43,36 +45,57 @@ namespace ATV_Advertisment.Forms.PrintForms
             {
                 string exeFolder = Application.StartupPath;
                 string reportPath = Path.Combine(exeFolder, @"Reports\RevenueRpt.rdlc");
-                var reportData = GetRevenues();
-                DateTime today = Utilities.GetServerDateTimeNow();
-                string strToday = Utilities.DateToFormatVNDate(today);
-                var totalCost = (decimal)reportData.Sum(r => r.SumCost);
-                string strTotal = MoneyToText.NumberToTextVN(totalCost);
 
-                ReportParameterCollection reportParameters = new ReportParameterCollection();
-                reportParameters.Add(new ReportParameter("strMonthYear", this.dtpFromMonth.Value.Month + "/" + this.dtpFromMonth.Value.Year));
-                reportParameters.Add(new ReportParameter("strReportDate", strToday));
-                reportParameters.Add(new ReportParameter("strTotal", strTotal));
+                //
+                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
+                {
+                    SqlDataAdapter da = null;
 
-                rptViewer.LocalReport.ReportPath = reportPath;
-                rptViewer.LocalReport.DataSources.Clear();
-                rptViewer.LocalReport.SetParameters(reportParameters);
-                rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsRevenues", reportData));
-                rptViewer.RefreshReport();
+                    try
+                    {
+                        string query = "select ct.Code, ct.CustomerName, sum(pd.Cost)AS Cost, sum(pd.Cost) - (sum(pd.Cost) * ct.Discount / 100) AS TotalCost " +
+                                "from ProductScheduleShow pd inner join ContractItem cti on pd.ContractDetailId = cti.Id " +
+                                "inner join [Contract] ct on ct.Code = cti.ContractCode " +
+                                "where YEAR(ShowDate) = @rptYear and MONTH(ShowDate) = @rptMonth group by ct.Code, ct.CustomerName, ct.Discount";
+                        var cmd = new SqlCommand(query, con);
+                        cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpFromMonth.Value.Year));
+                        cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpFromMonth.Value.Month));
 
-                //ReportViewerForm reportViewerForm = new ReportViewerForm();
-                //var reportData = GetRevenues();
+                        da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
 
-                //ReportParameterCollection reportParameters = new ReportParameterCollection();
-                //reportParameters.Add(new ReportParameter("strMonthYear", this.dtpFromMonth.Value.Month + "/" + this.dtpFromMonth.Value.Year));
+                        List<ViewModel.RevenueRM> reportData = Utilities.ConvertDataTable<ViewModel.RevenueRM>(dt);
 
-                //reportViewerForm.reportViewer.LocalReport.ReportPath = "H:/Project/ATV2/ATV_Advertisment/ATV_Advertisment/Reports/RevenueRpt.rdlc";
-                //reportViewerForm.reportViewer.LocalReport.DataSources.Clear();
-                //reportViewerForm.reportViewer.LocalReport.SetParameters(reportParameters);
-                //reportViewerForm.reportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsRevenues", reportData));
-                //reportViewerForm.Refresh();
+                        DateTime today = Utilities.GetServerDateTimeNow();
+                        string strToday = Utilities.DateToFormatVNDate(today);
+                        var totalCost = (decimal)reportData.Sum(r => r.SumCost);
+                        string strTotal = MoneyToText.NumberToTextVN(totalCost);
 
-                //reportViewerForm.ShowDialog();
+                        ReportParameterCollection reportParameters = new ReportParameterCollection();
+                        reportParameters.Add(new ReportParameter("strMonthYear", this.dtpFromMonth.Value.Month + "/" + this.dtpFromMonth.Value.Year));
+                        reportParameters.Add(new ReportParameter("strReportDate", strToday));
+                        reportParameters.Add(new ReportParameter("strTotal", strTotal));
+
+                        rptViewer.LocalReport.ReportPath = reportPath;
+                        rptViewer.LocalReport.DataSources.Clear();
+                        rptViewer.LocalReport.SetParameters(reportParameters);
+                        rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsRevenues", dt));
+                        rptViewer.RefreshReport();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        if(da != null)
+                        {
+                            da.Dispose();
+                        }
+                    }
+                    
+                };
             }
             catch (Exception ex)
             {
@@ -80,6 +103,36 @@ namespace ATV_Advertisment.Forms.PrintForms
                 throw;
             }
         }
+
+        //private void btnPrint_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        string exeFolder = Application.StartupPath;
+        //        string reportPath = Path.Combine(exeFolder, @"Reports\RevenueRpt.rdlc");
+        //        var reportData = GetRevenues();
+        //        DateTime today = Utilities.GetServerDateTimeNow();
+        //        string strToday = Utilities.DateToFormatVNDate(today);
+        //        var totalCost = (decimal)reportData.Sum(r => r.SumCost);
+        //        string strTotal = MoneyToText.NumberToTextVN(totalCost);
+
+        //        ReportParameterCollection reportParameters = new ReportParameterCollection();
+        //        reportParameters.Add(new ReportParameter("strMonthYear", this.dtpFromMonth.Value.Month + "/" + this.dtpFromMonth.Value.Year));
+        //        reportParameters.Add(new ReportParameter("strReportDate", strToday));
+        //        reportParameters.Add(new ReportParameter("strTotal", strTotal));
+
+        //        rptViewer.LocalReport.ReportPath = reportPath;
+        //        rptViewer.LocalReport.DataSources.Clear();
+        //        rptViewer.LocalReport.SetParameters(reportParameters);
+        //        rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsRevenues", reportData));
+        //        rptViewer.RefreshReport();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         private List<ViewModel.RevenueRM> GetRevenues()
         {
@@ -105,48 +158,5 @@ namespace ATV_Advertisment.Forms.PrintForms
             this.rptViewer.RefreshReport();
             this.rptViewer.RefreshReport();
         }
-
-        //private void btnPrint_Click(object sender, EventArgs e)
-        //{
-        //    RevenuePrintForm revenuePrintForm = new RevenuePrintForm();
-        //    SaveFileDialog sfd = new SaveFileDialog();
-        //    sfd.Title = "Chọn thư mục lưu";
-        //    //theDialog.Filter = "TXT files|*.txt";
-        //    //theDialog.InitialDirectory = @"C:\";
-        //    if (sfd.ShowDialog() == DialogResult.OK)
-        //    {
-        //        try
-        //        {
-        //            if (!sfd.FileName.Contains("xlsx"))
-        //            {
-        //                sfd.FileName = sfd.FileName + ".xlsx";
-        //            }
-
-        //            FileInfo fileInfo = new FileInfo(sfd.FileName);
-        //            RevenueReport revenueReport = new RevenueReport();
-        //            _contractService = new ContractService();
-        //            List<ViewModel.RevenueRM> models = null;
-        //            models = _contractService.GetRevenueRptByMonth(new DateTime(dtpFromMonth.Value.Year, dtpFromMonth.Value.Month, 1));
-
-        //            if (models.Count <= 0)
-        //            {
-        //                Utilities.ShowMessage(CommonMessage.EXPORT_FAIL);
-        //            }
-        //            else
-        //            {
-        //                revenueReport.ExportToExcel(models, fileInfo, dtpFromMonth.Value.Year, dtpFromMonth.Value.Month);
-        //                Utilities.ShowMessage(CommonMessage.EXPORT_SUCESSFULLY);
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-        //            throw;
-        //        }
-        //        finally
-        //        {
-        //            _contractService = null;
-        //        }
-        //    }
-        //}
     }
 }
