@@ -10,7 +10,7 @@ namespace ATV_Advertisment.ViewModel
     {
         public string Code { get; set; }
         public string CustomerName { get; set; }
-        public double SumCost { get; set; }
+        public double Cost { get; set; }
         public double TotalCost { get; set; }
     }
 }

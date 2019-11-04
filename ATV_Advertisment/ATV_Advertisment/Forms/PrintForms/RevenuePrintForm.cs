@@ -69,7 +69,7 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                         DateTime today = Utilities.GetServerDateTimeNow();
                         string strToday = Utilities.DateToFormatVNDate(today);
-                        var totalCost = (decimal)reportData.Sum(r => r.SumCost);
+                        var totalCost = (decimal)reportData.Sum(r => r.Cost);
                         string strTotal = MoneyToText.NumberToTextVN(totalCost);
 
                         ReportParameterCollection reportParameters = new ReportParameterCollection();

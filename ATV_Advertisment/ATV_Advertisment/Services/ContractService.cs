@@ -217,7 +217,7 @@ namespace ATV_Advertisment.Services
                 {
                     Code = con.Code,
                     CustomerName = con.CustomerName,
-                    SumCost = con.SumCost,
+                    Cost = con.SumCost,
                     TotalCost = con.Cost
                 })
                 .ToList();
@@ -234,7 +234,7 @@ namespace ATV_Advertisment.Services
                 {
                     Code = con.Code,
                     CustomerName = con.CustomerName,
-                    SumCost = con.SumCost,
+                    Cost = con.SumCost,
                     TotalCost = con.Cost
                 })
                 .ToList();

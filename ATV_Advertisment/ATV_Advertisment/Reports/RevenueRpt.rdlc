@@ -21,13 +21,13 @@
           <DataField>Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Cost">
+          <DataField>Cost</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
         <Field Name="CustomerName">
           <DataField>CustomerName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SumCost">
-          <DataField>SumCost</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="TotalCost">
           <DataField>TotalCost</DataField>
@@ -468,14 +468,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SumCost">
+                        <Textbox Name="Cost">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!SumCost.Value</Value>
+                                  <Value>=Fields!Cost.Value</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
@@ -485,7 +485,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>SumCost</rd:DefaultName>
+                          <rd:DefaultName>Cost</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -691,7 +691,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!SumCost.Value, "dsRevenues")</Value>
+                    <Value>=Sum(Fields!Cost.Value, "dsRevenues")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <Format>#,0;(#,0)</Format>
@@ -700,7 +700,9 @@
                 </TextRuns>
                 <SpaceBefore>0pt</SpaceBefore>
                 <SpaceAfter>0pt</SpaceAfter>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox19</rd:DefaultName>
@@ -735,7 +737,9 @@
                 </TextRuns>
                 <SpaceBefore>0pt</SpaceBefore>
                 <SpaceAfter>0pt</SpaceAfter>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
