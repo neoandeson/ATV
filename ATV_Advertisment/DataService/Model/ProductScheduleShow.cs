@@ -21,6 +21,8 @@ namespace DataService.Model
         [StringLength(5)]
         public string ShowTime { get; set; }
 
+        public int? ShowTimeInt { get; set; }
+
         public DateTime ShowDate { get; set; }
 
         public int ShowTypeId { get; set; }
@@ -30,6 +32,9 @@ namespace DataService.Model
         [Required]
         [StringLength(50)]
         public string TimeSlot { get; set; }
+
+        [MaxLength(10)]
+        public string TimeSlotCode { get; set; }
 
         public int TimeSlotLength { get; set; }
 

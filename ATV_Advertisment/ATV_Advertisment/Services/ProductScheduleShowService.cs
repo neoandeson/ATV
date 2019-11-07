@@ -14,7 +14,7 @@ namespace ATV_Advertisment.Services
         ProductScheduleShow GetById(int id);
         List<ProductScheduleShow> GetAllByContractDetailId(int contractDetailId);
         List<ProductScheduleShowViewModel> GetAllVMForList(int contractDetailId);
-        DateTime[] GetAllSelectedDatesByContractDetailId(int contractDetailId);
+        DateTime[] GetAllSelectedDatesByContractDetailIdAndTimeSlotCode(int contractDetailId, string timeSlotCode);
         int DeleteProductScheduleShow(int id);
         int AddProductScheduleShow(ProductScheduleShow input);
         int EditProductScheduleShow(ProductScheduleShow input);
@@ -156,9 +156,9 @@ namespace ATV_Advertisment.Services
                 .ToList();
         }
 
-        public DateTime[] GetAllSelectedDatesByContractDetailId(int contractDetailId)
+        public DateTime[] GetAllSelectedDatesByContractDetailIdAndTimeSlotCode(int contractDetailId, string timeslotCode)
         {
-            return _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractDetailId)
+            return _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractDetailId && p.TimeSlotCode == timeslotCode)
                 .OrderBy(p => p.ShowDate)
                 .Select(q => q.ShowDate).ToArray();
         }

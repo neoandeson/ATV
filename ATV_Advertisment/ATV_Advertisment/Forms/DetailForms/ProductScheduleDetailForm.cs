@@ -85,7 +85,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             model.ProductName = ProductName;
 
                             //Load selected dates
-                            var selectedDates = _productScheduleShowService.GetAllSelectedDatesByContractDetailId(model.ContractDetailId);
+                            var selectedDates = _productScheduleShowService.GetAllSelectedDatesByContractDetailIdAndTimeSlotCode(model.ContractDetailId, model.TimeSlotCode);
                             if (selectedDates != null)
                             {
                                 mpShowDate.BoldedDates = selectedDates;
@@ -176,19 +176,27 @@ namespace ATV_Advertisment.Forms.DetailForms
 
                 if (model != null)
                 {
+                    TimeSlot selectedTimeSlot = _timeSlotService.GetById((int)cboTimeSlot.SelectedValue);
                     //Add Edit
                     ProductScheduleShow originModel = model;
                     model.TimeSlot = cboTimeSlot.Text;
+                    model.TimeSlotCode = selectedTimeSlot.Code;
                     model.TotalCost = (double)txtSumCost.MoneyValue;
-                    //model.TotalCost = (double)txtTotalCost.MoneyValue;
                     model.Cost = (double)txtCost.MoneyValue;
-                    //model.TotalCost = (double)txtTotalCost.MoneyValue;
-                    //model.Discount = double.Parse(txtDiscount.Text);
                     model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
                     model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
-                    model.ShowDate = mpShowDate.BoldedDates[0];
+
+                    if(mpShowDate.BoldedDates.Length > 0)
+                    {
+                        model.ShowDate = mpShowDate.BoldedDates[0];
+                    } else
+                    {
+                        model.ShowDate = DateTime.Now;
+                    }
+                    
                     model.ProductName = ProductName;
-                    model.ShowTime = _timeSlotService.GetShowTimeById((int)cboTimeSlot.SelectedValue);
+                    model.ShowTime = Utilities.GetHourFormInt(selectedTimeSlot.FromHour);
+                    model.ShowTimeInt = selectedTimeSlot.FromHour;
                     result = AddProductSchedultShows(mpShowDate.BoldedDates, originModel);
                     Utilities.ShowReturnMessage(result, "Lưu");
                 }
@@ -228,6 +236,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                                 foreach (var item in pssInDB)
                                 {
                                     context.ProductScheduleShows.Remove(item);
+                                    context.SaveChanges();
                                 }
                             }
                             ProductScheduleShow pss = null;

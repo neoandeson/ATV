@@ -38,7 +38,8 @@ namespace ATV_Advertisment.Services
             int result = CRUDStatusCode.ERROR;
             if (input != null)
             {
-                bool isExisted = _CostRuleRepository.Exist(t => t.TimeSlotId == input.TimeSlotId && 
+                bool isExisted = _CostRuleRepository.Exist(t => t.TimeSlotId == input.TimeSlotId &&
+                                                                t.ShowTypeId == input.ShowTypeId &&
                                                                 t.Length == input.Length);
                 if (!isExisted)
                 {

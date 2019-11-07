@@ -20,7 +20,6 @@ namespace ATV_Advertisment.Services
         int AddTimeSlot(TimeSlot input);
         int EditTimeSlot(TimeSlot input);
         TimeSlot CreateTimeSlot(TimeSlot input);
-        string GetShowTimeById(int timeslotId);
     }
 
     public class TimeSlotService : ITimeSlotService
@@ -132,17 +131,6 @@ namespace ATV_Advertisment.Services
         public List<TimeSlot> GetAll()
         {
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE).ToList();
-        }
-        public string GetShowTimeById(int timeslotId)
-        {
-            string result = "";
-            var timeSlot = _TimeSlotRepository.GetById(timeslotId);
-            if(timeSlot != null)
-            {
-                result = Utilities.GetHourFormInt(timeSlot.FromHour);
-            }
-
-            return result;
         }
 
         public TimeSlot GetById(int id)
