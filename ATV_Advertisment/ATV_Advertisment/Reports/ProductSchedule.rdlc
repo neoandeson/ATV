@@ -435,8 +435,8 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=right("0" &amp; int((sum(Fields!TimeSlotLength.Value) Mod 3600)/60),2) &amp; "'" 
-&amp; right("0" &amp; (sum(Fields!TimeSlotLength.Value) Mod 3600) Mod 60,2) &amp; "''"</Value>
+                                  <Value>=IIF(int((sum(Fields!TimeSlotLength.Value) Mod 3600)/60) = 0, "", right("0" &amp; int((sum(Fields!TimeSlotLength.Value) Mod 3600)/60),2) &amp; "'")  
+&amp; IIF((sum(Fields!TimeSlotLength.Value) Mod 3600) Mod 60 = 0, "", right("0" &amp; (sum(Fields!TimeSlotLength.Value) Mod 3600) Mod 60,2))&amp; "''"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -461,6 +461,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
