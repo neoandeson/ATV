@@ -8,7 +8,7 @@ namespace ATV_Advertisment.ViewModel
 {
     public class ProductScheduleShowRM
     {
-        public string ShowDate { get; set; }
+        public DateTime ShowDate { get; set; }
         public string TimeSlot { get; set; }
         public string ShowTime { get; set; }
         public string ProductName { get; set; }
