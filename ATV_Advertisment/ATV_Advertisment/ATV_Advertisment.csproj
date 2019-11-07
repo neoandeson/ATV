@@ -225,6 +225,12 @@
     <Compile Include="Forms\ListForms\ListTimeSlotForm.Designer.cs">
       <DependentUpon>ListTimeSlotForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PrintForms\LiabilitesPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\LiabilitesPrintForm.Designer.cs">
+      <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PrintForms\RevenuePrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,12 @@
     </Compile>
     <Compile Include="Forms\PrintForms\SchedulePrintForm.Designer.cs">
       <DependentUpon>SchedulePrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\ShowCommitmentPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\ShowCommitmentPrintForm.Designer.cs">
+      <DependentUpon>ShowCommitmentPrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -268,6 +280,7 @@
     <Compile Include="ViewModel\ContractViewModel.cs" />
     <Compile Include="ViewModel\CostRuleViewModel.cs" />
     <Compile Include="ViewModel\DiscountViewModel.cs" />
+    <Compile Include="ViewModel\LiabilitiesRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowViewModel.cs" />
     <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
@@ -331,16 +344,25 @@
     <EmbeddedResource Include="Forms\ListForms\ListTimeSlotForm.resx">
       <DependentUpon>ListTimeSlotForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\LiabilitesPrintForm.resx">
+      <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintForms\RevenuePrintForm.resx">
       <DependentUpon>RevenuePrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintForms\SchedulePrintForm.resx">
       <DependentUpon>SchedulePrintForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\ShowCommitmentPrintForm.resx">
+      <DependentUpon>ShowCommitmentPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\LiabilitiesReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProductSchedule.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -349,6 +371,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.LiabilitiesRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ProductScheduleShowRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.RevenueRM.datasource" />
     <None Include="Properties\Settings.settings">

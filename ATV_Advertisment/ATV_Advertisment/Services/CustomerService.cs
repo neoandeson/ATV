@@ -120,5 +120,11 @@ namespace ATV_Advertisment.Services
 
             return result;
         }
+
+        public Dictionary<string, string> GetOptions()
+        {
+            var options = _customerRepository.GetAll().ToDictionary(x => x.Code, x => x.Code);
+            return options;
+        }
     }
 }

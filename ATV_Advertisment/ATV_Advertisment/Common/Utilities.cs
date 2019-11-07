@@ -297,6 +297,10 @@ namespace ATV_Advertisment.Common
                         RevenuePrintForm revenuePrintForm = new RevenuePrintForm();
                         form = (Form)revenuePrintForm;
                         break;
+                    case "Đối chiếu công nợ":
+                        LiabilitesPrintForm liabilitesPrintForm = new LiabilitesPrintForm();
+                        form = (Form)liabilitesPrintForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();
