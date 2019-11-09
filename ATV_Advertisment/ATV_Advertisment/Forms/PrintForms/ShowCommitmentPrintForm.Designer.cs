@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.gbCriteria = new System.Windows.Forms.GroupBox();
-            this.gbContent = new System.Windows.Forms.GroupBox();
-            this.cboCustomer = new System.Windows.Forms.ComboBox();
-            this.lblCustomer = new System.Windows.Forms.Label();
-            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
-            this.lblMonth = new System.Windows.Forms.Label();
-            this.lblProduct = new System.Windows.Forms.Label();
-            this.cboProduct = new System.Windows.Forms.ComboBox();
-            this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.lblContract = new System.Windows.Forms.Label();
             this.cboContractCode = new System.Windows.Forms.ComboBox();
+            this.lblContract = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.cboProduct = new System.Windows.Forms.ComboBox();
+            this.lblProduct = new System.Windows.Forms.Label();
+            this.lblMonth = new System.Windows.Forms.Label();
+            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
+            this.lblCustomer = new System.Windows.Forms.Label();
+            this.cboCustomer = new System.Windows.Forms.ComboBox();
+            this.gbContent = new System.Windows.Forms.GroupBox();
+            this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gbCriteria.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
@@ -59,40 +59,64 @@
             this.gbCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCriteria.Location = new System.Drawing.Point(0, 0);
             this.gbCriteria.Name = "gbCriteria";
-            this.gbCriteria.Size = new System.Drawing.Size(964, 101);
+            this.gbCriteria.Size = new System.Drawing.Size(929, 101);
             this.gbCriteria.TabIndex = 0;
             this.gbCriteria.TabStop = false;
             this.gbCriteria.Text = "Điều kiện";
             // 
-            // gbContent
+            // cboContractCode
             // 
-            this.gbContent.Controls.Add(this.rptViewer);
-            this.gbContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbContent.Location = new System.Drawing.Point(0, 101);
-            this.gbContent.Name = "gbContent";
-            this.gbContent.Size = new System.Drawing.Size(964, 356);
-            this.gbContent.TabIndex = 1;
-            this.gbContent.TabStop = false;
-            this.gbContent.Text = "Nội dung";
+            this.cboContractCode.FormattingEnabled = true;
+            this.cboContractCode.Location = new System.Drawing.Point(105, 59);
+            this.cboContractCode.Name = "cboContractCode";
+            this.cboContractCode.Size = new System.Drawing.Size(138, 28);
+            this.cboContractCode.TabIndex = 3;
+            this.cboContractCode.SelectedIndexChanged += new System.EventHandler(this.cboContractCode_SelectedIndexChanged);
             // 
-            // cboCustomer
+            // lblContract
             // 
-            this.cboCustomer.FormattingEnabled = true;
-            this.cboCustomer.Location = new System.Drawing.Point(105, 21);
-            this.cboCustomer.Name = "cboCustomer";
-            this.cboCustomer.Size = new System.Drawing.Size(225, 28);
-            this.cboCustomer.TabIndex = 0;
-            this.cboCustomer.SelectedIndexChanged += new System.EventHandler(this.cboCustomer_SelectedIndexChanged);
+            this.lblContract.AutoSize = true;
+            this.lblContract.Location = new System.Drawing.Point(16, 62);
+            this.lblContract.Name = "lblContract";
+            this.lblContract.Size = new System.Drawing.Size(79, 20);
+            this.lblContract.TabIndex = 0;
+            this.lblContract.Text = "Hợp đồng";
             // 
-            // lblCustomer
+            // btnPrint
             // 
-            this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Location = new System.Drawing.Point(16, 26);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(57, 20);
-            this.lblCustomer.TabIndex = 1;
-            this.lblCustomer.Text = "Mã KH";
+            this.btnPrint.Location = new System.Drawing.Point(812, 60);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(100, 25);
+            this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "In";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // cboProduct
+            // 
+            this.cboProduct.FormattingEnabled = true;
+            this.cboProduct.Location = new System.Drawing.Point(485, 59);
+            this.cboProduct.Name = "cboProduct";
+            this.cboProduct.Size = new System.Drawing.Size(294, 28);
+            this.cboProduct.TabIndex = 4;
+            // 
+            // lblProduct
+            // 
+            this.lblProduct.AutoSize = true;
+            this.lblProduct.Location = new System.Drawing.Point(397, 62);
+            this.lblProduct.Name = "lblProduct";
+            this.lblProduct.Size = new System.Drawing.Size(82, 20);
+            this.lblProduct.TabIndex = 0;
+            this.lblProduct.Text = "Sản phẩm";
+            // 
+            // lblMonth
+            // 
+            this.lblMonth.AutoSize = true;
+            this.lblMonth.Location = new System.Drawing.Point(397, 24);
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Size = new System.Drawing.Size(54, 20);
+            this.lblMonth.TabIndex = 0;
+            this.lblMonth.Text = "Tháng";
             // 
             // dtpMonth
             // 
@@ -102,31 +126,35 @@
             this.dtpMonth.TabIndex = 2;
             this.dtpMonth.Validated += new System.EventHandler(this.dtpMonth_Validated);
             // 
-            // lblMonth
+            // lblCustomer
             // 
-            this.lblMonth.AutoSize = true;
-            this.lblMonth.Location = new System.Drawing.Point(397, 24);
-            this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(54, 20);
-            this.lblMonth.TabIndex = 3;
-            this.lblMonth.Text = "Tháng";
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(16, 26);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(57, 20);
+            this.lblCustomer.TabIndex = 0;
+            this.lblCustomer.Text = "Mã KH";
             // 
-            // lblProduct
+            // cboCustomer
             // 
-            this.lblProduct.AutoSize = true;
-            this.lblProduct.Location = new System.Drawing.Point(397, 62);
-            this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(82, 20);
-            this.lblProduct.TabIndex = 4;
-            this.lblProduct.Text = "Sản phẩm";
+            this.cboCustomer.FormattingEnabled = true;
+            this.cboCustomer.Location = new System.Drawing.Point(105, 21);
+            this.cboCustomer.Name = "cboCustomer";
+            this.cboCustomer.Size = new System.Drawing.Size(225, 28);
+            this.cboCustomer.TabIndex = 1;
+            this.cboCustomer.SelectedIndexChanged += new System.EventHandler(this.cboCustomer_SelectedIndexChanged);
             // 
-            // cboProduct
+            // gbContent
             // 
-            this.cboProduct.FormattingEnabled = true;
-            this.cboProduct.Location = new System.Drawing.Point(485, 59);
-            this.cboProduct.Name = "cboProduct";
-            this.cboProduct.Size = new System.Drawing.Size(294, 28);
-            this.cboProduct.TabIndex = 5;
+            this.gbContent.Controls.Add(this.rptViewer);
+            this.gbContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbContent.Location = new System.Drawing.Point(0, 101);
+            this.gbContent.Name = "gbContent";
+            this.gbContent.Size = new System.Drawing.Size(929, 356);
+            this.gbContent.TabIndex = 0;
+            this.gbContent.TabStop = false;
+            this.gbContent.Text = "Nội dung";
             // 
             // rptViewer
             // 
@@ -134,42 +162,14 @@
             this.rptViewer.Location = new System.Drawing.Point(3, 22);
             this.rptViewer.Name = "rptViewer";
             this.rptViewer.ServerReport.BearerToken = null;
-            this.rptViewer.Size = new System.Drawing.Size(958, 331);
+            this.rptViewer.Size = new System.Drawing.Size(923, 331);
             this.rptViewer.TabIndex = 0;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(834, 62);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 25);
-            this.btnPrint.TabIndex = 6;
-            this.btnPrint.Text = "In";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // lblContract
-            // 
-            this.lblContract.AutoSize = true;
-            this.lblContract.Location = new System.Drawing.Point(20, 62);
-            this.lblContract.Name = "lblContract";
-            this.lblContract.Size = new System.Drawing.Size(79, 20);
-            this.lblContract.TabIndex = 7;
-            this.lblContract.Text = "Hợp đồng";
-            // 
-            // cboContractCode
-            // 
-            this.cboContractCode.FormattingEnabled = true;
-            this.cboContractCode.Location = new System.Drawing.Point(105, 59);
-            this.cboContractCode.Name = "cboContractCode";
-            this.cboContractCode.Size = new System.Drawing.Size(138, 28);
-            this.cboContractCode.TabIndex = 8;
-            this.cboContractCode.SelectedIndexChanged += new System.EventHandler(this.cboContractCode_SelectedIndexChanged);
             // 
             // ShowCommitmentPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 457);
+            this.ClientSize = new System.Drawing.Size(929, 457);
             this.Controls.Add(this.gbContent);
             this.Controls.Add(this.gbCriteria);
             this.Name = "ShowCommitmentPrintForm";

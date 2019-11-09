@@ -54,10 +54,7 @@ namespace ATV_Advertisment.Forms.PrintForms
             {
                 string customerCode = cboCustomer.SelectedValue + "";
                 var options = new ContractService().GetOptionsByCustomerCodeAndMonth(customerCode, dtpMonth.Value, dtpMonth.Value);
-                if(options.Count > 0)
-                {
-                    Utilities.LoadComboBoxOptions(cboContractCode, options);
-                }
+                Utilities.LoadComboBoxOptions(cboContractCode, options);
             }
             catch (Exception ex)
             {
@@ -71,10 +68,7 @@ namespace ATV_Advertisment.Forms.PrintForms
             {
                 string contracCode = cboContractCode.SelectedValue + "";
                 var options = new ContractItemService().GetOptionsByContractCode(contracCode.Trim());
-                if(options.Count > 0)
-                {
-                    Utilities.LoadComboBoxOptions(cboProduct, options);
-                }
+                Utilities.LoadComboBoxOptions(cboProduct, options);
             }
             catch (Exception)
             {
@@ -89,10 +83,10 @@ namespace ATV_Advertisment.Forms.PrintForms
             {
                 string contracCode = cboContractCode.SelectedValue.ToString();
                 string productName = cboProduct.SelectedValue.ToString();
-                if(!string.IsNullOrWhiteSpace(contracCode) && !string.IsNullOrWhiteSpace(productName))
+                if (!string.IsNullOrWhiteSpace(contracCode) && !string.IsNullOrWhiteSpace(productName))
                 {
                     ContractItem contractItem = new ContractItemService().GetByContractCodeAndProductName(contracCode, productName);
-                    if(contractItem != null)
+                    if (contractItem != null)
                     {
                         int contractDetailId = contractItem.Id;
                         string cdProductName = contractItem.FileName;
@@ -201,10 +195,11 @@ namespace ATV_Advertisment.Forms.PrintForms
 
         private void cboContractCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboContractCode.Items.Count > 0)
+            if (cboContractCode.Items.Count > 0)
             {
                 LoadCboProductCode();
-            } else
+            }
+            else
             {
                 cboProduct.Items.Clear();
             }

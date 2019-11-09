@@ -199,7 +199,16 @@ namespace ATV_Advertisment.Services
 
         public Dictionary<string, string> GetOptionsByContractCode(string contractCode)
         {
-            var options = _contractItemRepository.Get(c => c.ContractCode == contractCode).ToDictionary(x => x.FileName, x => x.ProductName);
+            var options = new Dictionary<string, string>();
+            options.Add("", "");
+            var contractItems = _contractItemRepository.Get(c => c.ContractCode == contractCode);
+            if (contractItems.Count() > 0)
+            {
+                foreach (var ci in contractItems)
+                {
+                    options.Add(ci.FileName.Trim(), ci.ProductName.Trim());
+                }
+            }
             return options;
         }
     }

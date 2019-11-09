@@ -242,11 +242,20 @@ namespace ATV_Advertisment.Services
 
         public Dictionary<string, string> GetOptionsByCustomerCodeAndMonth(string customerCode, DateTime fromMonth, DateTime toMonth)
         {
-            var options = _ContractRepository.Get(c => c.CustomerCode == customerCode
-                                                    && c.StartDate.Value.Month == fromMonth.Month
-                                                    && c.StartDate.Value.Year == fromMonth.Year
-                                                    && c.EndDate.Value.Month == toMonth.Month
-                                                    && c.EndDate.Value.Year == toMonth.Year).ToDictionary(x => x.Code, x => x.Code);
+            var minToDate = new DateTime(toMonth.Year, toMonth.Month, 1);
+
+            var options = new Dictionary<string, string>();
+            options.Add("", "");
+            var contracts = _ContractRepository.Get(c => c.CustomerCode == customerCode
+                                                    && c.StatusId == CommonStatus.ACTIVE
+                                                    && (c.StartDate < fromMonth && c.EndDate >= minToDate));
+            if(contracts.Count() > 0)
+            {
+                foreach (var con in contracts)
+                {
+                    options.Add(con.Code.Trim(), con.Code.Trim());
+                }
+            }
             return options;
         }
     }
