@@ -301,6 +301,10 @@ namespace ATV_Advertisment.Common
                         LiabilitesPrintForm liabilitesPrintForm = new LiabilitesPrintForm();
                         form = (Form)liabilitesPrintForm;
                         break;
+                    case "Chứng nhận phát sóng":
+                        ShowCommitmentPrintForm showCommitmentPrintForm = new ShowCommitmentPrintForm();
+                        form = (Form)showCommitmentPrintForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();

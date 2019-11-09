@@ -163,7 +163,7 @@ namespace ATV_Advertisment.Services
             double result = 0;
 
             Contract contract = GetByCode(contractCode);
-            if(contract != null)
+            if (contract != null)
             {
                 List<ContractItem> contractDetails = _contractItemService.GetAllByContractCode(contractCode);
                 foreach (var cd in contractDetails)
@@ -181,7 +181,7 @@ namespace ATV_Advertisment.Services
         public void UpdatContractCostInfo(string contractCode, double cost, double sumCost, double discount)
         {
             Contract contract = GetByCode(contractCode);
-            if(contract != null)
+            if (contract != null)
             {
                 contract.Cost = cost;
                 contract.SumCost = sumCost;
@@ -207,7 +207,7 @@ namespace ATV_Advertisment.Services
 
         public List<RevenueRM> GetRevenueRptByMonth(DateTime exportMonth)
         {
-            return _ContractRepository.Get(p => p.StartDate.Value.Month == exportMonth.Month 
+            return _ContractRepository.Get(p => p.StartDate.Value.Month == exportMonth.Month
                                                 && p.StartDate.Value.Year == exportMonth.Year
                                                 && p.EndDate.Value.Month == exportMonth.Month
                                                 && p.EndDate.Value.Year == exportMonth.Year
@@ -238,6 +238,16 @@ namespace ATV_Advertisment.Services
                     TotalCost = con.Cost
                 })
                 .ToList();
+        }
+
+        public Dictionary<string, string> GetOptionsByCustomerCodeAndMonth(string customerCode, DateTime fromMonth, DateTime toMonth)
+        {
+            var options = _ContractRepository.Get(c => c.CustomerCode == customerCode
+                                                    && c.StartDate.Value.Month == fromMonth.Month
+                                                    && c.StartDate.Value.Year == fromMonth.Year
+                                                    && c.EndDate.Value.Month == toMonth.Month
+                                                    && c.EndDate.Value.Year == toMonth.Year).ToDictionary(x => x.Code, x => x.Code);
+            return options;
         }
     }
 }

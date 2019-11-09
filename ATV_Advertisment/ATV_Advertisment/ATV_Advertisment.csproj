@@ -285,6 +285,7 @@
     <Compile Include="ViewModel\ProductScheduleShowViewModel.cs" />
     <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
     <Compile Include="ViewModel\RevenueRM.cs" />
+    <Compile Include="ViewModel\ShowCommitmentRM.cs" />
     <Compile Include="ViewModel\TimeSlotViewModel.cs" />
     <EmbeddedResource Include="Assets\FormResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -370,10 +371,15 @@
     <EmbeddedResource Include="Reports\RevenueRpt.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ShowCommitmentReport.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.LiabilitiesRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ProductScheduleShowRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.RevenueRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ShowCommitmentRM.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

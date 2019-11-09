@@ -139,6 +139,14 @@ namespace ATV_Advertisment.Services
             return _contractItemRepository.Get(c => c.StatusId == CommonStatus.ACTIVE && c.ContractCode == contractCode).ToList();
         }
 
+        public ContractItem GetByContractCodeAndProductName(string contractCode, string fileName)
+        {
+            return _contractItemRepository.Get(c => c.StatusId == CommonStatus.ACTIVE 
+                                                    && c.ContractCode == contractCode 
+                                                    && c.FileName == fileName)
+                                                    .FirstOrDefault();
+        }
+
         public ContractItem GetById(int id)
         {
             return _contractItemRepository.GetById(id);
@@ -187,6 +195,12 @@ namespace ATV_Advertisment.Services
                     LastUpdateDate = ts.LastUpdateDate
                 })
                 .ToList();
+        }
+
+        public Dictionary<string, string> GetOptionsByContractCode(string contractCode)
+        {
+            var options = _contractItemRepository.Get(c => c.ContractCode == contractCode).ToDictionary(x => x.FileName, x => x.ProductName);
+            return options;
         }
     }
 }
