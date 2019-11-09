@@ -139,7 +139,51 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                                 var firstDayOfMonth = new DateTime(this.dtpMonth.Value.Year, this.dtpMonth.Value.Month, 1);
                                 var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-                                List<ViewModel.LiabilitiesRM> reportData = Utilities.ConvertDataTable<ViewModel.LiabilitiesRM>(dt);
+                                List<ViewModel.ShowCommitmentRM> commitments = Utilities.ConvertDataTable<ViewModel.ShowCommitmentRM>(dt);
+                                List<ViewModel.SCommitmentMRM> reportData = new List<ViewModel.SCommitmentMRM>();
+                                foreach (var cm in commitments)
+                                {
+                                    ViewModel.SCommitmentMRM sc = new ViewModel.SCommitmentMRM()
+                                    {
+                                        ShowTime = cm.ShowTime,
+                                        TimeSlot = cm.TimeSlot,
+                                        TimeSlotCode = cm.TimeSlotCode,
+                                        Qty = cm.Qty,
+                                        D1 = cm.D1 == 0 ? "" : cm.D1 + "",
+                                        D2 = cm.D2 == 0 ? "" : cm.D2 + "",
+                                        D3 = cm.D3 == 0 ? "" : cm.D3 + "",
+                                        D4 = cm.D4 == 0 ? "" : cm.D4 + "",
+                                        D5 = cm.D5 == 0 ? "" : cm.D5 + "",
+                                        D6 = cm.D6 == 0 ? "" : cm.D6 + "",
+                                        D7 = cm.D7 == 0 ? "" : cm.D7 + "",
+                                        D8 = cm.D8 == 0 ? "" : cm.D8 + "",
+                                        D9 = cm.D9 == 0 ? "" : cm.D9 + "",
+                                        D10 = cm.D10 == 0 ? "" : cm.D10 + "",
+                                        D11 = cm.D11 == 0 ? "" : cm.D11 + "",
+                                        D12 = cm.D12 == 0 ? "" : cm.D12 + "",
+                                        D13 = cm.D13 == 0 ? "" : cm.D13 + "",
+                                        D14 = cm.D14 == 0 ? "" : cm.D14 + "",
+                                        D15 = cm.D15 == 0 ? "" : cm.D15 + "",
+                                        D16 = cm.D16 == 0 ? "" : cm.D16 + "",
+                                        D17 = cm.D17 == 0 ? "" : cm.D17 + "",
+                                        D18 = cm.D18 == 0 ? "" : cm.D18 + "",
+                                        D19 = cm.D19 == 0 ? "" : cm.D19 + "",
+                                        D20 = cm.D20 == 0 ? "" : cm.D20 + "",
+                                        D21 = cm.D21 == 0 ? "" : cm.D21 + "",
+                                        D22 = cm.D22 == 0 ? "" : cm.D22 + "",
+                                        D23 = cm.D23 == 0 ? "" : cm.D23 + "",
+                                        D24 = cm.D24 == 0 ? "" : cm.D24 + "",
+                                        D25 = cm.D25 == 0 ? "" : cm.D25 + "",
+                                        D26 = cm.D26 == 0 ? "" : cm.D26 + "",
+                                        D27 = cm.D27 == 0 ? "" : cm.D27 + "",
+                                        D28 = cm.D28 == 0 ? "" : cm.D28 + "",
+                                        D29 = cm.D29 == 0 ? "" : cm.D29 + "",
+                                        D30 = cm.D30 == 0 ? "" : cm.D30 + "",
+                                        D31 = cm.D31 == 0 ? "" : cm.D31 + "",
+
+                                    };
+                                    reportData.Add(sc);
+                                }
 
                                 ReportParameterCollection reportParameters = new ReportParameterCollection();
                                 reportParameters.Add(new ReportParameter("strDate", this.dtpMonth.Value.Month + "/" + this.dtpMonth.Value.Year));
@@ -147,14 +191,15 @@ namespace ATV_Advertisment.Forms.PrintForms
                                 reportParameters.Add(new ReportParameter("strFileName", contractItem.FileName));
                                 reportParameters.Add(new ReportParameter("strLength", contractItem.DurationSecond + " giây"));
                                 reportParameters.Add(new ReportParameter("strFromToDate", string.Format("{0} đến {1}", firstDayOfMonth.ToShortDateString(), lastDayOfMonth.ToShortDateString())));
+                                reportParameters.Add(new ReportParameter("intMaxDate", lastDayOfMonth.Day+""));
 
                                 rptViewer.LocalReport.ReportPath = reportPath;
                                 rptViewer.LocalReport.DataSources.Clear();
                                 rptViewer.LocalReport.SetParameters(reportParameters);
-                                rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsShowCommitment", dt));
+                                rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsShowCommitment", reportData.AsEnumerable()));
                                 rptViewer.RefreshReport();
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
                                 throw;
                             }
