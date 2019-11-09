@@ -143,22 +143,16 @@ namespace ATV_Advertisment.Forms.PrintForms
                                 DataTable dt = new DataTable();
                                 da.Fill(dt);
 
+                                var firstDayOfMonth = new DateTime(this.dtpMonth.Value.Year, this.dtpMonth.Value.Month, 1);
+                                var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
                                 List<ViewModel.LiabilitiesRM> reportData = Utilities.ConvertDataTable<ViewModel.LiabilitiesRM>(dt);
-
-                                //DateTime today = Utilities.GetServerDateTimeNow();
-                                //string strToday = Utilities.DateToFormatVNDate(today);
-                                //var firstDayOfMonth = new DateTime(this.dtpMonth.Value.Year, this.dtpMonth.Value.Month, 1);
-                                //var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-                                //string customerName = new CustomerService().GetNameByCode(cboCustomer.SelectedValue.ToString());
-                                //var finalCost = (decimal)reportData.Sum(r => r.FinalCost);
-                                //string strTotal = MoneyToText.NumberToTextVN(finalCost);
 
                                 ReportParameterCollection reportParameters = new ReportParameterCollection();
                                 reportParameters.Add(new ReportParameter("strDate", this.dtpMonth.Value.Month + "/" + this.dtpMonth.Value.Year));
-                                //reportParameters.Add(new ReportParameter("strReportFromDate", firstDayOfMonth.ToShortDateString()));
-                                //reportParameters.Add(new ReportParameter("strReportToDate", lastDayOfMonth.ToShortDateString()));
-                                //reportParameters.Add(new ReportParameter("strTotal", strTotal));
-                                //reportParameters.Add(new ReportParameter("strCustomerName", customerName));
+                                reportParameters.Add(new ReportParameter("strProductName", contractItem.ProductName));
+                                reportParameters.Add(new ReportParameter("strFileName", contractItem.FileName));
+                                reportParameters.Add(new ReportParameter("strLength", contractItem.DurationSecond + " giây"));
+                                reportParameters.Add(new ReportParameter("strFromToDate", string.Format("{0} đến {1}", firstDayOfMonth.ToShortDateString(), lastDayOfMonth.ToShortDateString())));
 
                                 rptViewer.LocalReport.ReportPath = reportPath;
                                 rptViewer.LocalReport.DataSources.Clear();
