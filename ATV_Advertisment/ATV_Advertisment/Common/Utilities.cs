@@ -305,6 +305,10 @@ namespace ATV_Advertisment.Common
                         ShowCommitmentPrintForm showCommitmentPrintForm = new ShowCommitmentPrintForm();
                         form = (Form)showCommitmentPrintForm;
                         break;
+                    case "Dự trù thời lượng":
+                        ExpectedPrintForm expectedPrintForm = new ExpectedPrintForm();
+                        form = (Form)expectedPrintForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();
