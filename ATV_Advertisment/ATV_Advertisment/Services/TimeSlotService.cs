@@ -26,11 +26,13 @@ namespace ATV_Advertisment.Services
     {
         private readonly TimeSlotRepository _TimeSlotRepository;
         private readonly SessionRepository _sessionRepository;
+        private readonly CostRuleRepository _costRuleRepository;
 
         public TimeSlotService()
         {
             _TimeSlotRepository = new TimeSlotRepository();
             _sessionRepository = new SessionRepository();
+            _costRuleRepository = new CostRuleRepository();
         }
 
         public int AddTimeSlot(TimeSlot input)
@@ -185,6 +187,27 @@ namespace ATV_Advertisment.Services
         {
             var options = _TimeSlotRepository.Get(t => t.StatusId == CommonStatus.ACTIVE).ToDictionary(x => x.Id, x => x.Name);
             
+            return options;
+        }
+
+        public Dictionary<int, string> GetOptionsByLengthShowType(int length, int showTypeId)
+        {
+            var costRule = _costRuleRepository.Get(c => c.Length == length && c.ShowTypeId == showTypeId)
+                .Select(c => c.TimeSlotId);
+
+            var options = new Dictionary<int, string>();
+            options.Add(-1, "");
+            var timeSlots = _TimeSlotRepository.Get(t => t.StatusId == CommonStatus.ACTIVE
+                                                && costRule.Contains(t.Id));
+            if (timeSlots.Count() > 0)
+            {
+                options = new Dictionary<int, string>();
+                foreach (var ts in timeSlots)
+                {
+                    options.Add(ts.Id, ts.Name.Trim());
+                }
+            }
+
             return options;
         }
     }

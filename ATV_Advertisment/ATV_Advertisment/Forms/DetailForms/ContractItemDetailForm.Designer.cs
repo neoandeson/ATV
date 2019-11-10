@@ -100,6 +100,7 @@
             this.cboShowType.Name = "cboShowType";
             this.cboShowType.Size = new System.Drawing.Size(150, 28);
             this.cboShowType.TabIndex = 2;
+            this.cboShowType.SelectedIndexChanged += new System.EventHandler(this.cboShowType_SelectedIndexChanged);
             // 
             // lblShowType
             // 

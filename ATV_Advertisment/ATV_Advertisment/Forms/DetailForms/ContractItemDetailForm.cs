@@ -28,6 +28,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private ProductScheduleShowService _productScheduleShowService = null;
         private DurationService _durationService = null;
         private ShowTypeService _showTypeService = null;
+        private bool IsExisted = false;
 
         public ContractItemDetailForm(ContractItem inputModel)
         {
@@ -60,6 +61,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model = _contractDetailService.GetById(model.Id);
                         if (model != null)
                         {
+                            IsExisted = true;
+
                             txtProductName.Text = model.ProductName;
                             txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
                             txtNumberOfShow.Text = model.NumberOfShow.ToString();
@@ -245,7 +248,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.FileName = txtFileName.Text;
                         model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
                         model.ShowTypeId = (int)cboShowType.SelectedValue;
-                        
+
                         result = _contractDetailService.CreateContractDetail(model);
                         if (result != null)
                         {
@@ -296,19 +299,28 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
-            if(productScheduleShow != null)
+            if (productScheduleShow != null)
             {
                 productScheduleShow.Id = 0;
                 productScheduleShow.TimeSlotLength = (int)cboDuration.SelectedValue;
                 productScheduleShow.ShowTypeId = (int)cboShowType.SelectedValue;
             }
-            if(model.Id != 0)
+            if (model.Id != 0)
             {
                 productScheduleShow.ContractDetailId = model.Id;
             }
-            ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow, model.ContractCode);
-            contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
-            contractDetailDetailForm.ShowDialog();
+
+            var options = new TimeSlotService().GetOptionsByLengthShowType((int)cboDuration.SelectedValue, (int)cboShowType.SelectedValue);
+            if (options.FirstOrDefault().Key == -1)
+            {
+                Utilities.ShowMessage("Không tìm thấy thời điểm có thời lượng " + (int)cboDuration.SelectedValue + " (s) !\nVui lòng thêm thiết lập trong phần [Danh mục thời điểm].");
+            }
+            else
+            {
+                ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow, model.ContractCode);
+                contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
+                contractDetailDetailForm.ShowDialog();
+            }
         }
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
@@ -366,17 +378,33 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnViewDetail_Click(object sender, EventArgs e)
         {
-            if(productScheduleShow.Id != 0)
+            if (productScheduleShow.Id != 0)
             {
-                ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow, model.ContractCode);
-                contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
-                contractDetailDetailForm.ShowDialog();
+                var options = new TimeSlotService().GetOptionsByLengthShowType((int)cboDuration.SelectedValue, (int)cboShowType.SelectedValue);
+                if (options.FirstOrDefault().Key == -1)
+                {
+                    Utilities.ShowMessage("Không tìm thấy thời điểm có thời lượng " + (int)cboDuration.SelectedValue + " (s) !\nVui lòng thêm thiết lập trong phần [Danh mục thời điểm].");
+                }
+                else
+                {
+                    ProductScheduleDetailForm contractDetailDetailForm = new ProductScheduleDetailForm(productScheduleShow, model.ContractCode);
+                    contractDetailDetailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
+                    contractDetailDetailForm.ShowDialog();
+                }
             }
         }
 
         private void adgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             adgv.ClearSelection();
+        }
+
+        private void cboShowType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(IsExisted)
+            {
+                btnSave_Click(sender, e);
+            }
         }
     }
 }

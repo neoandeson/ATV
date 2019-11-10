@@ -125,7 +125,13 @@ namespace ATV_Advertisment.Forms.DetailForms
             try
             {
                 _timeSlotService = new TimeSlotService();
-                Utilities.LoadComboBoxOptions(cboTimeSlot, _timeSlotService.Getoptions());
+                var options = _timeSlotService.GetOptionsByLengthShowType(model.TimeSlotLength, model.ShowTypeId);
+                if(options.FirstOrDefault().Key == -1)
+                {
+                    Utilities.ShowMessage("Không tìm thấy thời điểm có thời lượng " + model.TimeSlotLength + " (s)!\n Vui lòng thêm thiết lập trong phần [Danh mục thời điểm].");
+                    Close();
+                }
+                Utilities.LoadComboBoxOptions(cboTimeSlot, options);
             }
             catch (Exception ex)
             {
@@ -177,28 +183,36 @@ namespace ATV_Advertisment.Forms.DetailForms
                 if (model != null)
                 {
                     TimeSlot selectedTimeSlot = _timeSlotService.GetById((int)cboTimeSlot.SelectedValue);
-                    //Add Edit
-                    ProductScheduleShow originModel = model;
-                    model.TimeSlot = cboTimeSlot.Text;
-                    model.TimeSlotCode = selectedTimeSlot.Code;
-                    model.TotalCost = (double)txtSumCost.MoneyValue;
-                    model.Cost = (double)txtCost.MoneyValue;
-                    model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
-                    model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
-
-                    if(mpShowDate.BoldedDates.Length > 0)
+                    if(selectedTimeSlot == null)
                     {
-                        model.ShowDate = mpShowDate.BoldedDates[0];
-                    } else
-                    {
-                        model.ShowDate = DateTime.Now;
+                        Utilities.ShowReturnMessage(result, "Thời điểm chọn không hợp lệ");
                     }
-                    
-                    model.ProductName = ProductName;
-                    model.ShowTime = Utilities.GetHourFormInt(selectedTimeSlot.FromHour);
-                    model.ShowTimeInt = selectedTimeSlot.FromHour;
-                    result = AddProductSchedultShows(mpShowDate.BoldedDates, originModel);
-                    Utilities.ShowReturnMessage(result, "Lưu");
+                    else
+                    {
+                        //Add Edit
+                        ProductScheduleShow originModel = model;
+                        model.TimeSlot = cboTimeSlot.Text;
+                        model.TimeSlotCode = selectedTimeSlot.Code;
+                        model.TotalCost = (double)txtSumCost.MoneyValue;
+                        model.Cost = (double)txtCost.MoneyValue;
+                        model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
+                        model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
+
+                        if (mpShowDate.BoldedDates.Length > 0)
+                        {
+                            model.ShowDate = mpShowDate.BoldedDates[0];
+                        }
+                        else
+                        {
+                            model.ShowDate = DateTime.Now;
+                        }
+
+                        model.ProductName = ProductName;
+                        model.ShowTime = Utilities.GetHourFormInt(selectedTimeSlot.FromHour);
+                        model.ShowTimeInt = selectedTimeSlot.FromHour;
+                        result = AddProductSchedultShows(mpShowDate.BoldedDates, originModel);
+                        Utilities.ShowReturnMessage(result, "Lưu");
+                    }
                 }
             }
             catch (Exception ex)
