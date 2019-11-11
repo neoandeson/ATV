@@ -58,13 +58,6 @@ namespace ATV_Advertisment.Forms.PrintForms
                         DataTable dt = new DataTable();
                         da.Fill(dt);
 
-                        List<ViewModel.ProductScheduleShowRM> reportData = Utilities.ConvertDataTable<ViewModel.ProductScheduleShowRM>(dt);
-
-                        DateTime today = Utilities.GetServerDateTimeNow();
-                        string strToday = Utilities.DateToFormatVNDate(today);
-                        var totalCost = (decimal)reportData.Sum(r => r.TimeSlotLength);
-                        string strTotal = MoneyToText.NumberToTextVN(totalCost);
-
                         ReportParameterCollection reportParameters = new ReportParameterCollection();
                         reportParameters.Add(new ReportParameter("strDate", string.Format("NGÀY {0} THÁNG {1} NĂM {2}", this.dtpDate.Value.Day, this.dtpDate.Value.Month, this.dtpDate.Value.Year)));
 
