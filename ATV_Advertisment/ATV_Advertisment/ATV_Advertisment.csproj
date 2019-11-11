@@ -231,6 +231,12 @@
     <Compile Include="Forms\PrintForms\ExpectedPrintForm.Designer.cs">
       <DependentUpon>ExpectedPrintForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PrintForms\InputSchedulePrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\InputSchedulePrintForm.Designer.cs">
+      <DependentUpon>InputSchedulePrintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PrintForms\LiabilitesPrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,8 +291,11 @@
     <Compile Include="ViewModel\ContractDetailViewModel.cs" />
     <Compile Include="ViewModel\ContractViewModel.cs" />
     <Compile Include="ViewModel\CostRuleViewModel.cs" />
+    <Compile Include="ViewModel\DaysInWeek.cs" />
     <Compile Include="ViewModel\DiscountViewModel.cs" />
     <Compile Include="ViewModel\ExpectedRM.cs" />
+    <Compile Include="ViewModel\InputScheduleMRM.cs" />
+    <Compile Include="ViewModel\InputScheduleRM.cs" />
     <Compile Include="ViewModel\LiabilitiesRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowViewModel.cs" />
@@ -356,6 +365,9 @@
     <EmbeddedResource Include="Forms\PrintForms\ExpectedPrintForm.resx">
       <DependentUpon>ExpectedPrintForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\InputSchedulePrintForm.resx">
+      <DependentUpon>InputSchedulePrintForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintForms\LiabilitesPrintForm.resx">
       <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,6 +388,9 @@
     <EmbeddedResource Include="Reports\ExpectedReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InputScheduleReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\LiabilitiesReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -390,7 +405,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DaysInWeek.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ExpectedRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.InputScheduleRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.LiabilitiesRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ProductScheduleShowRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.RevenueRM.datasource" />

@@ -309,6 +309,10 @@ namespace ATV_Advertisment.Common
                         ExpectedPrintForm expectedPrintForm = new ExpectedPrintForm();
                         form = (Form)expectedPrintForm;
                         break;
+                    case "Đăng ký quảng cáo":
+                        InputSchedulePrintForm inputSchedulePrintForm = new InputSchedulePrintForm();
+                        form = (Form)inputSchedulePrintForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();
