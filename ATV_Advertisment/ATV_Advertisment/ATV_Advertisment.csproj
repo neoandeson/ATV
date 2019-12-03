@@ -243,6 +243,12 @@
     <Compile Include="Forms\PrintForms\LiabilitesPrintForm.Designer.cs">
       <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PrintForms\PricingPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\PricingPrintForm.Designer.cs">
+      <DependentUpon>PricingPrintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PrintForms\RevenuePrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,11 +298,18 @@
     <Compile Include="ViewModel\ContractViewModel.cs" />
     <Compile Include="ViewModel\CostRuleViewModel.cs" />
     <Compile Include="ViewModel\DaysInWeek.cs" />
+    <Compile Include="ViewModel\DiscountRM.cs" />
     <Compile Include="ViewModel\DiscountViewModel.cs" />
     <Compile Include="ViewModel\ExpectedRM.cs" />
     <Compile Include="ViewModel\InputScheduleMRM.cs" />
     <Compile Include="ViewModel\InputScheduleRM.cs" />
     <Compile Include="ViewModel\LiabilitiesRM.cs" />
+    <Compile Include="ViewModel\PricingFMNotificationRM.cs" />
+    <Compile Include="ViewModel\PricingFMProductRM.cs" />
+    <Compile Include="ViewModel\PricingNotificationRM.cs" />
+    <Compile Include="ViewModel\PricingPopupRM.cs" />
+    <Compile Include="ViewModel\PricingRM.cs" />
+    <Compile Include="ViewModel\PricingSelfIntroRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowRM.cs" />
     <Compile Include="ViewModel\ProductScheduleShowViewModel.cs" />
     <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
@@ -371,6 +384,9 @@
     <EmbeddedResource Include="Forms\PrintForms\LiabilitesPrintForm.resx">
       <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\PricingPrintForm.resx">
+      <DependentUpon>PricingPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintForms\RevenuePrintForm.resx">
       <DependentUpon>RevenuePrintForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +410,9 @@
     <EmbeddedResource Include="Reports\LiabilitiesReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PricingReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProductSchedule.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -406,9 +425,16 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DaysInWeek.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DiscountRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ExpectedRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.InputScheduleRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.LiabilitiesRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingFMNotificationRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingFMProductRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingNotificationRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingPopupRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingSelfIntroRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ProductScheduleShowRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.RevenueRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ShowCommitmentRM.datasource" />

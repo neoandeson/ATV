@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.gbCriteria = new System.Windows.Forms.GroupBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.txtSendTo = new System.Windows.Forms.TextBox();
+            this.lblSendTo = new System.Windows.Forms.Label();
             this.cboContractCode = new System.Windows.Forms.ComboBox();
             this.lblContract = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -40,10 +44,6 @@
             this.cboCustomer = new System.Windows.Forms.ComboBox();
             this.gbContent = new System.Windows.Forms.GroupBox();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.lblSendTo = new System.Windows.Forms.Label();
-            this.txtSendTo = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.lblPhone = new System.Windows.Forms.Label();
             this.gbCriteria.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
@@ -67,10 +67,45 @@
             this.gbCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCriteria.Location = new System.Drawing.Point(0, 0);
             this.gbCriteria.Name = "gbCriteria";
-            this.gbCriteria.Size = new System.Drawing.Size(1003, 154);
+            this.gbCriteria.Size = new System.Drawing.Size(861, 154);
             this.gbCriteria.TabIndex = 2;
             this.gbCriteria.TabStop = false;
             this.gbCriteria.Text = "Điều kiện";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(535, 99);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhone.MaxLength = 14;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(200, 26);
+            this.txtPhone.TabIndex = 6;
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(418, 105);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(120, 20);
+            this.lblPhone.TabIndex = 0;
+            this.lblPhone.Text = "SĐT Người xuất";
+            // 
+            // txtSendTo
+            // 
+            this.txtSendTo.Location = new System.Drawing.Point(147, 102);
+            this.txtSendTo.Name = "txtSendTo";
+            this.txtSendTo.Size = new System.Drawing.Size(251, 26);
+            this.txtSendTo.TabIndex = 5;
+            // 
+            // lblSendTo
+            // 
+            this.lblSendTo.AutoSize = true;
+            this.lblSendTo.Location = new System.Drawing.Point(20, 105);
+            this.lblSendTo.Name = "lblSendTo";
+            this.lblSendTo.Size = new System.Drawing.Size(90, 20);
+            this.lblSendTo.TabIndex = 0;
+            this.lblSendTo.Text = "Người nhận";
             // 
             // cboContractCode
             // 
@@ -92,7 +127,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(880, 105);
+            this.btnPrint.Location = new System.Drawing.Point(742, 100);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 25);
             this.btnPrint.TabIndex = 7;
@@ -103,7 +138,7 @@
             // cboProduct
             // 
             this.cboProduct.FormattingEnabled = true;
-            this.cboProduct.Location = new System.Drawing.Point(582, 59);
+            this.cboProduct.Location = new System.Drawing.Point(519, 57);
             this.cboProduct.Name = "cboProduct";
             this.cboProduct.Size = new System.Drawing.Size(294, 28);
             this.cboProduct.TabIndex = 4;
@@ -111,7 +146,7 @@
             // lblProduct
             // 
             this.lblProduct.AutoSize = true;
-            this.lblProduct.Location = new System.Drawing.Point(481, 64);
+            this.lblProduct.Location = new System.Drawing.Point(418, 62);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(82, 20);
             this.lblProduct.TabIndex = 0;
@@ -120,7 +155,7 @@
             // lblMonth
             // 
             this.lblMonth.AutoSize = true;
-            this.lblMonth.Location = new System.Drawing.Point(481, 26);
+            this.lblMonth.Location = new System.Drawing.Point(418, 24);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(54, 20);
             this.lblMonth.TabIndex = 0;
@@ -128,7 +163,7 @@
             // 
             // dtpMonth
             // 
-            this.dtpMonth.Location = new System.Drawing.Point(582, 21);
+            this.dtpMonth.Location = new System.Drawing.Point(519, 19);
             this.dtpMonth.Name = "dtpMonth";
             this.dtpMonth.Size = new System.Drawing.Size(129, 26);
             this.dtpMonth.TabIndex = 2;
@@ -159,7 +194,7 @@
             this.gbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbContent.Location = new System.Drawing.Point(0, 154);
             this.gbContent.Name = "gbContent";
-            this.gbContent.Size = new System.Drawing.Size(1003, 397);
+            this.gbContent.Size = new System.Drawing.Size(861, 397);
             this.gbContent.TabIndex = 0;
             this.gbContent.TabStop = false;
             this.gbContent.Text = "Nội dung";
@@ -170,49 +205,14 @@
             this.rptViewer.Location = new System.Drawing.Point(3, 22);
             this.rptViewer.Name = "rptViewer";
             this.rptViewer.ServerReport.BearerToken = null;
-            this.rptViewer.Size = new System.Drawing.Size(997, 372);
+            this.rptViewer.Size = new System.Drawing.Size(855, 372);
             this.rptViewer.TabIndex = 0;
-            // 
-            // lblSendTo
-            // 
-            this.lblSendTo.AutoSize = true;
-            this.lblSendTo.Location = new System.Drawing.Point(20, 105);
-            this.lblSendTo.Name = "lblSendTo";
-            this.lblSendTo.Size = new System.Drawing.Size(90, 20);
-            this.lblSendTo.TabIndex = 0;
-            this.lblSendTo.Text = "Người nhận";
-            // 
-            // txtSendTo
-            // 
-            this.txtSendTo.Location = new System.Drawing.Point(147, 102);
-            this.txtSendTo.Name = "txtSendTo";
-            this.txtSendTo.Size = new System.Drawing.Size(251, 26);
-            this.txtSendTo.TabIndex = 5;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(609, 102);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPhone.MaxLength = 14;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(200, 26);
-            this.txtPhone.TabIndex = 6;
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(481, 107);
-            this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(120, 20);
-            this.lblPhone.TabIndex = 0;
-            this.lblPhone.Text = "SĐT Người xuất";
             // 
             // InputSchedulePrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 551);
+            this.ClientSize = new System.Drawing.Size(861, 551);
             this.Controls.Add(this.gbContent);
             this.Controls.Add(this.gbCriteria);
             this.Name = "InputSchedulePrintForm";

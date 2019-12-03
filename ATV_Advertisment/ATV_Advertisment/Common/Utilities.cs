@@ -313,6 +313,10 @@ namespace ATV_Advertisment.Common
                         InputSchedulePrintForm inputSchedulePrintForm = new InputSchedulePrintForm();
                         form = (Form)inputSchedulePrintForm;
                         break;
+                    case "Bảng giá quảng cáo":
+                        PricingPrintForm pricingPrintForm = new PricingPrintForm();
+                        form = (Form)pricingPrintForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();
