@@ -22,10 +22,21 @@ namespace ATV_Advertisment.Forms.PrintForms
     public partial class RevenuePrintForm : Form
     {
         private ContractService _contractService;
+        private bool byMonth = true;
 
         public RevenuePrintForm()
         {
             InitializeComponent();
+
+            rbMonth.Checked = true;
+            lblPeriod.Visible = false;
+            cboPeriod.Visible = false;
+            Dictionary<int, int> periodOptions = new Dictionary<int, int>();
+            periodOptions.Add(1, 1);
+            periodOptions.Add(2, 2);
+            periodOptions.Add(3, 3);
+            periodOptions.Add(4, 4);
+            Utilities.LoadComboBoxOptions(cboPeriod, periodOptions);
 
             System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings();
             ps.Landscape = true;
@@ -53,13 +64,39 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                     try
                     {
-                        string query = "select ct.Code, ct.CustomerName, sum(pd.Cost)AS Cost, sum(pd.Cost) - (sum(pd.Cost) * ct.Discount / 100) AS TotalCost " +
-                                "from ProductScheduleShow pd inner join ContractItem cti on pd.ContractDetailId = cti.Id " +
-                                "inner join [Contract] ct on ct.Code = cti.ContractCode " +
-                                "where YEAR(ShowDate) = @rptYear and MONTH(ShowDate) = @rptMonth group by ct.Code, ct.CustomerName, ct.Discount";
+                        string query = "";
+                        if (byMonth)
+                        {
+                            query = "select ct.Code, ct.CustomerName, sum(pd.Cost)AS Cost, sum(pd.Cost) - (sum(pd.Cost) * ct.Discount / 100) AS TotalCost " +
+                                    "from ProductScheduleShow pd inner join ContractItem cti on pd.ContractDetailId = cti.Id " +
+                                    "inner join [Contract] ct on ct.Code = cti.ContractCode " +
+                                    "where YEAR(ShowDate) = @rptYear and MONTH(ShowDate) = @rptMonth group by ct.Code, ct.CustomerName, ct.Discount";
+                        }
+
+                        if (!byMonth)
+                        {
+                            query = "select ct.Code, ct.CustomerName, sum(pd.Cost)AS Cost, sum(pd.Cost) - (sum(pd.Cost) * ct.Discount / 100) AS TotalCost " +
+                                    "from ProductScheduleShow pd inner join ContractItem cti on pd.ContractDetailId = cti.Id " +
+                                    "inner join [Contract] ct on ct.Code = cti.ContractCode " +
+                                    "where YEAR(ShowDate) = @rptYear and (MONTH(ShowDate) in ( ";
+
+                            switch (cboPeriod.SelectedValue)
+                            {
+                                case 2: query += "1, 2, 3"; break;
+                                case 3: query += "4, 5, 6"; break;
+                                case 1: query += "7, 8, 9"; break;
+                                case 4: query += "10, 11, 12"; break;
+                            }
+
+                            query += " )) group by ct.Code, ct.CustomerName, ct.Discount";
+                        }
+
                         var cmd = new SqlCommand(query, con);
                         cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpFromMonth.Value.Year));
-                        cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpFromMonth.Value.Month));
+                        if (byMonth)
+                        {
+                            cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpFromMonth.Value.Month));
+                        }
 
                         da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -89,12 +126,12 @@ namespace ATV_Advertisment.Forms.PrintForms
                     }
                     finally
                     {
-                        if(da != null)
+                        if (da != null)
                         {
                             da.Dispose();
                         }
                     }
-                    
+
                 };
             }
             catch (Exception ex)
@@ -103,36 +140,6 @@ namespace ATV_Advertisment.Forms.PrintForms
                 throw;
             }
         }
-
-        //private void btnPrint_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        string exeFolder = Application.StartupPath;
-        //        string reportPath = Path.Combine(exeFolder, @"Reports\RevenueRpt.rdlc");
-        //        var reportData = GetRevenues();
-        //        DateTime today = Utilities.GetServerDateTimeNow();
-        //        string strToday = Utilities.DateToFormatVNDate(today);
-        //        var totalCost = (decimal)reportData.Sum(r => r.SumCost);
-        //        string strTotal = MoneyToText.NumberToTextVN(totalCost);
-
-        //        ReportParameterCollection reportParameters = new ReportParameterCollection();
-        //        reportParameters.Add(new ReportParameter("strMonthYear", this.dtpFromMonth.Value.Month + "/" + this.dtpFromMonth.Value.Year));
-        //        reportParameters.Add(new ReportParameter("strReportDate", strToday));
-        //        reportParameters.Add(new ReportParameter("strTotal", strTotal));
-
-        //        rptViewer.LocalReport.ReportPath = reportPath;
-        //        rptViewer.LocalReport.DataSources.Clear();
-        //        rptViewer.LocalReport.SetParameters(reportParameters);
-        //        rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsRevenues", reportData));
-        //        rptViewer.RefreshReport();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw;
-        //    }
-        //}
 
         private List<ViewModel.RevenueRM> GetRevenues()
         {
@@ -157,6 +164,24 @@ namespace ATV_Advertisment.Forms.PrintForms
 
             this.rptViewer.RefreshReport();
             this.rptViewer.RefreshReport();
+        }
+
+        private void rbMonth_CheckedChanged(object sender, EventArgs e)
+        {
+            lblStart.Visible = true;
+            dtpFromMonth.Visible = true;
+            lblPeriod.Visible = false;
+            cboPeriod.Visible = false;
+            byMonth = true;
+        }
+
+        private void rbPeriod_CheckedChanged(object sender, EventArgs e)
+        {
+            lblStart.Visible = false;
+            dtpFromMonth.Visible = false;
+            lblPeriod.Visible = true;
+            cboPeriod.Visible = true;
+            byMonth = false;
         }
     }
 }

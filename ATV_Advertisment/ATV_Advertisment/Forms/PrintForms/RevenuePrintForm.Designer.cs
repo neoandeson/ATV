@@ -34,13 +34,17 @@
             this.gbCriteria = new System.Windows.Forms.GroupBox();
             this.gbContent = new System.Windows.Forms.GroupBox();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rbMonth = new System.Windows.Forms.RadioButton();
+            this.rbPeriod = new System.Windows.Forms.RadioButton();
+            this.lblPeriod = new System.Windows.Forms.Label();
+            this.cboPeriod = new System.Windows.Forms.ComboBox();
             this.gbCriteria.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(183, 15);
+            this.btnPrint.Location = new System.Drawing.Point(729, 11);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(125, 28);
@@ -51,7 +55,7 @@
             // 
             // dtpFromMonth
             // 
-            this.dtpFromMonth.Location = new System.Drawing.Point(70, 17);
+            this.dtpFromMonth.Location = new System.Drawing.Point(616, 14);
             this.dtpFromMonth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFromMonth.Name = "dtpFromMonth";
             this.dtpFromMonth.Size = new System.Drawing.Size(109, 26);
@@ -60,7 +64,7 @@
             // lblStart
             // 
             this.lblStart.AutoSize = true;
-            this.lblStart.Location = new System.Drawing.Point(23, 19);
+            this.lblStart.Location = new System.Drawing.Point(558, 15);
             this.lblStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(54, 20);
@@ -69,6 +73,10 @@
             // 
             // gbCriteria
             // 
+            this.gbCriteria.Controls.Add(this.cboPeriod);
+            this.gbCriteria.Controls.Add(this.lblPeriod);
+            this.gbCriteria.Controls.Add(this.rbPeriod);
+            this.gbCriteria.Controls.Add(this.rbMonth);
             this.gbCriteria.Controls.Add(this.lblStart);
             this.gbCriteria.Controls.Add(this.dtpFromMonth);
             this.gbCriteria.Controls.Add(this.btnPrint);
@@ -107,6 +115,47 @@
             this.rptViewer.Size = new System.Drawing.Size(854, 442);
             this.rptViewer.TabIndex = 0;
             // 
+            // rbMonth
+            // 
+            this.rbMonth.AutoSize = true;
+            this.rbMonth.Location = new System.Drawing.Point(13, 21);
+            this.rbMonth.Name = "rbMonth";
+            this.rbMonth.Size = new System.Drawing.Size(72, 24);
+            this.rbMonth.TabIndex = 9;
+            this.rbMonth.TabStop = true;
+            this.rbMonth.Text = "Tháng";
+            this.rbMonth.UseVisualStyleBackColor = true;
+            this.rbMonth.CheckedChanged += new System.EventHandler(this.rbMonth_CheckedChanged);
+            // 
+            // rbPeriod
+            // 
+            this.rbPeriod.AutoSize = true;
+            this.rbPeriod.Location = new System.Drawing.Point(111, 21);
+            this.rbPeriod.Name = "rbPeriod";
+            this.rbPeriod.Size = new System.Drawing.Size(55, 24);
+            this.rbPeriod.TabIndex = 10;
+            this.rbPeriod.TabStop = true;
+            this.rbPeriod.Text = "Quý";
+            this.rbPeriod.UseVisualStyleBackColor = true;
+            this.rbPeriod.CheckedChanged += new System.EventHandler(this.rbPeriod_CheckedChanged);
+            // 
+            // lblPeriod
+            // 
+            this.lblPeriod.AutoSize = true;
+            this.lblPeriod.Location = new System.Drawing.Point(459, 15);
+            this.lblPeriod.Name = "lblPeriod";
+            this.lblPeriod.Size = new System.Drawing.Size(37, 20);
+            this.lblPeriod.TabIndex = 11;
+            this.lblPeriod.Text = "Quý";
+            // 
+            // cboPeriod
+            // 
+            this.cboPeriod.FormattingEnabled = true;
+            this.cboPeriod.Location = new System.Drawing.Point(502, 14);
+            this.cboPeriod.Name = "cboPeriod";
+            this.cboPeriod.Size = new System.Drawing.Size(51, 28);
+            this.cboPeriod.TabIndex = 12;
+            // 
             // RevenuePrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,5 +181,9 @@
         private System.Windows.Forms.GroupBox gbCriteria;
         private System.Windows.Forms.GroupBox gbContent;
         private Microsoft.Reporting.WinForms.ReportViewer rptViewer;
+        private System.Windows.Forms.ComboBox cboPeriod;
+        private System.Windows.Forms.Label lblPeriod;
+        private System.Windows.Forms.RadioButton rbPeriod;
+        private System.Windows.Forms.RadioButton rbMonth;
     }
 }

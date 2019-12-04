@@ -88,16 +88,16 @@ namespace ATV_Advertisment.Forms.PrintForms
                         string querySelfIntro = "select * " +
                             "from " +
                             "( " +
-                            "SELECT  ts.SessionCode, N'Buổi ' + ss.Name as Name, ts.Code, ts.Name as TSName, ts.FromHour, 'T' + CONVERT(varchar(10), cr.Length) as TLength, cr.Price " +
+                            "SELECT  ts.SessionCode, N'Buổi ' + ss.Name as Name, ts.Code, ts.Name as TSName, ts.FromHour, 'U' + CONVERT(varchar(10), cr.Length) as TLength, cr.Price " +
                             "FROM[TimeSlot] ts " +
                             "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                             "INNER JOIN[CostRule] cr on ts.Id = cr.TimeSlotId " +
-                            "WHERE cr.ShowTypeId = 3 " +
+                            "WHERE cr.ShowTypeId = 2 " +
                             ") " +
                             "src " +
                             "pivot ( " +
                             "sum(Price) " +
-                            "for TLength in ([T10], [T15], [T20], [T30]) " +
+                            "for TLength in ([U180], [U600]) " +
                             ") piv; ";
                         var cmdSelfIntro = new SqlCommand(querySelfIntro, con);
 

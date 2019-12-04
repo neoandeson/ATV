@@ -71,6 +71,7 @@
     <Compile Include="Model\TimeSlot.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DiscountApplyRepository.cs" />
     <Compile Include="Repositories\ShowTypeRepository.cs" />
     <Compile Include="Repositories\ContractRepository.cs" />
     <Compile Include="Repositories\ContractItemlRepository.cs" />

@@ -7,6 +7,7 @@ namespace ATV_Advertisment.Common
     {
         private static string FULLNAME = "";
         private static string CODE = "";
+        private static string USERNAME = "";
         private static int ID = -1;
         private static string ROLE = "";
         private static bool ISLOGIN = false;
@@ -28,6 +29,7 @@ namespace ATV_Advertisment.Common
                         if (user != null)
                         {
                             ID = user.Id;
+                            USERNAME = user.Username;
                             FULLNAME = user.Name;
                             //CODE = user.Code;
                             ROLE = user.Role.Name;
@@ -105,6 +107,11 @@ namespace ATV_Advertisment.Common
         public static int GetId()
         {
             return ID;
+        }
+
+        public static string GetUserName()
+        {
+            return USERNAME;
         }
 
         public static bool IsLogin()

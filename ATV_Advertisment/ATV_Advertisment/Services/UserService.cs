@@ -1,4 +1,5 @@
-﻿using DataService.Infrastructure;
+﻿using ATV_Advertisment.Common;
+using DataService.Infrastructure;
 using DataService.Model;
 using DataService.Repositories;
 using System;
@@ -11,6 +12,7 @@ namespace ATV_Advertisment.Services
     {
         User GetLogin(string username, string password);
         void UpdateLastLogin(string username);
+        bool ChangePassword(int id, string username, string newPassword);
     }
 
     public class UserService : IUserService
@@ -20,6 +22,23 @@ namespace ATV_Advertisment.Services
         public UserService()
         {
             _userRepository = new UserRepository();
+        }
+
+        public bool ChangePassword(int id, string username, string newPassword)
+        {
+            bool result = false;
+            var user = _userRepository.Get(u => u.Username == username).FirstOrDefault();
+            if(user != null)
+            {
+                HashHelper hashHelper = new HashHelper();
+                user.Password = hashHelper.HashPassword(newPassword);
+                user.LastUpdateDate = Utilities.GetServerDateTimeNow();
+                user.LastUpdateBy = id;
+                _userRepository.Update(user);
+                result = true;
+            }
+
+            return result;
         }
 
         public User GetLogin(string username, string password)

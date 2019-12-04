@@ -10,6 +10,7 @@ using ATV_Advertisment.Forms.InputForms;
 using ATV_Advertisment.Forms.PrintForms;
 using System.Data;
 using System.Reflection;
+using ATV_Advertisment.Forms.SettingForms;
 
 namespace ATV_Advertisment.Common
 {
@@ -316,6 +317,15 @@ namespace ATV_Advertisment.Common
                     case "Bảng giá quảng cáo":
                         PricingPrintForm pricingPrintForm = new PricingPrintForm();
                         form = (Form)pricingPrintForm;
+                        break;
+                    //Trợ giúp
+                    case "Đổi mật khẩu":
+                        ChangePasswordForm changePasswordForm = new ChangePasswordForm();
+                        form = (Form)changePasswordForm;
+                        break;
+                    case "Thông tin ứng dụng":
+                        HelpForm helpForm = new HelpForm();
+                        form = (Form)helpForm;
                         break;
 
                     case "Logout":
