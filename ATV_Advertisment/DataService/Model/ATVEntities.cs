@@ -17,6 +17,7 @@ namespace DataService.Model
         public virtual DbSet<ContractItem> ContractItems { get; set; }
         public virtual DbSet<CostRule> CostRules { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<DiscountApply> DiscountApplies { get; set; }
         public virtual DbSet<Duration> Durations { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<ProductScheduleShow> ProductScheduleShows { get; set; }
@@ -42,6 +43,10 @@ namespace DataService.Model
 
             modelBuilder.Entity<ProductScheduleShow>()
                 .Property(e => e.ShowTime)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ProductScheduleShow>()
+                .Property(e => e.TimeSlotCode)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Role>()

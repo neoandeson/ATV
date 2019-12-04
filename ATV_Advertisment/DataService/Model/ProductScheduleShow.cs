@@ -33,7 +33,7 @@ namespace DataService.Model
         [StringLength(50)]
         public string TimeSlot { get; set; }
 
-        [MaxLength(10)]
+        [StringLength(10)]
         public string TimeSlotCode { get; set; }
 
         public int TimeSlotLength { get; set; }

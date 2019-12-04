@@ -58,6 +58,7 @@
     <Compile Include="Model\ContractItem.cs" />
     <Compile Include="Model\CostRule.cs" />
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\DiscountApply.cs" />
     <Compile Include="Model\Duration.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\ProductScheduleShow.cs" />
