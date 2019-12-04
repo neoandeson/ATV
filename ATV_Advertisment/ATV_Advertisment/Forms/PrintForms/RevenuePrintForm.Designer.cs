@@ -41,18 +41,18 @@
             // btnPrint
             // 
             this.btnPrint.Location = new System.Drawing.Point(183, 15);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(125, 25);
+            this.btnPrint.Size = new System.Drawing.Size(125, 28);
             this.btnPrint.TabIndex = 0;
-            this.btnPrint.Text = "Tạo báo cáo";
+            this.btnPrint.Text = "Xem";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // dtpFromMonth
             // 
             this.dtpFromMonth.Location = new System.Drawing.Point(70, 17);
-            this.dtpFromMonth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFromMonth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFromMonth.Name = "dtpFromMonth";
             this.dtpFromMonth.Size = new System.Drawing.Size(109, 26);
             this.dtpFromMonth.TabIndex = 8;
@@ -75,9 +75,9 @@
             this.gbCriteria.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCriteria.Location = new System.Drawing.Point(0, 0);
-            this.gbCriteria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbCriteria.Margin = new System.Windows.Forms.Padding(2);
             this.gbCriteria.Name = "gbCriteria";
-            this.gbCriteria.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbCriteria.Padding = new System.Windows.Forms.Padding(2);
             this.gbCriteria.Size = new System.Drawing.Size(858, 47);
             this.gbCriteria.TabIndex = 10;
             this.gbCriteria.TabStop = false;
@@ -89,9 +89,9 @@
             this.gbContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbContent.Location = new System.Drawing.Point(0, 47);
-            this.gbContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbContent.Margin = new System.Windows.Forms.Padding(2);
             this.gbContent.Name = "gbContent";
-            this.gbContent.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbContent.Padding = new System.Windows.Forms.Padding(2);
             this.gbContent.Size = new System.Drawing.Size(858, 465);
             this.gbContent.TabIndex = 11;
             this.gbContent.TabStop = false;
@@ -101,7 +101,7 @@
             // 
             this.rptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rptViewer.Location = new System.Drawing.Point(2, 21);
-            this.rptViewer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rptViewer.Margin = new System.Windows.Forms.Padding(2);
             this.rptViewer.Name = "rptViewer";
             this.rptViewer.ServerReport.BearerToken = null;
             this.rptViewer.Size = new System.Drawing.Size(854, 442);

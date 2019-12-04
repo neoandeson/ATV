@@ -62,7 +62,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 25);
             this.btnPrint.TabIndex = 4;
-            this.btnPrint.Text = "In";
+            this.btnPrint.Text = "Xem";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
