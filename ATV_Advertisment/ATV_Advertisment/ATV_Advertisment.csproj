@@ -195,6 +195,12 @@
     <Compile Include="Forms\InputForms\ListContractForm.Designer.cs">
       <DependentUpon>ListContractForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InputForms\SortScheduleByDayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputForms\SortScheduleByDayForm.Designer.cs">
+      <DependentUpon>SortScheduleByDayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ListForms\ListCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -373,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InputForms\ListContractForm.resx">
       <DependentUpon>ListContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputForms\SortScheduleByDayForm.resx">
+      <DependentUpon>SortScheduleByDayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListForms\ListCustomerForm.resx">
       <DependentUpon>ListCustomerForm.cs</DependentUpon>

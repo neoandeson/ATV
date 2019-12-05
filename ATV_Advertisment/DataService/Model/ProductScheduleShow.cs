@@ -43,5 +43,7 @@ namespace DataService.Model
         public double Discount { get; set; }
 
         public double TotalCost { get; set; }
+
+        public int OrderNumber { get; set; }
     }
 }

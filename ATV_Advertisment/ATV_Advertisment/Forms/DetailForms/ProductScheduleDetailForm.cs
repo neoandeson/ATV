@@ -33,6 +33,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
 
             InitializeComponent();
+            txtPosition.Text = "0";
             CompleteLoadData = 0;
             LoadTimeSlots();
             GetCostRule();
@@ -80,6 +81,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             txtSumCost.Text = Utilities.DoubleMoneyToText(model.Cost);
                             //txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
                             //txtDiscount.Text = model.Discount.ToString();
+                            txtPosition.Text = model.OrderNumber.ToString();
                             txtTimeSlotLength.Text = model.TimeSlotLength.ToString();
                             txtQuantity.Text = model.Quantity.ToString();
                             model.ProductName = ProductName;
@@ -94,18 +96,6 @@ namespace ATV_Advertisment.Forms.DetailForms
                             }
                         }
                     }
-                    //else if(model.ContractDetailId != 0)
-                    //{
-                    //    _productScheduleShowService = new ProductScheduleShowService();
-                    //    //Load selected dates
-                    //    var selectedDates = _productScheduleShowService.GetAllSelectedDatesByContractDetailId(model.ContractDetailId);
-                    //    if (selectedDates != null)
-                    //    {
-                    //        mpShowDate.BoldedDates = selectedDates;
-                    //        txtQuantity.Text = mpShowDate.BoldedDates.Count().ToString();
-                    //        CalculateCost();
-                    //    }
-                    //}
                     CalculateCost();
                 }
             }
@@ -175,6 +165,15 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             int result = CRUDStatusCode.ERROR;
 
+            if(txtPosition.NumberValue != 0)
+            {
+                if (!Utilities.ShowConfirmMessage("Vị trí ưu tiên xuất hiện của những quảng cáo tạo/cập nhật sau sẽ chèn" +
+                    " lên trước những quảng cáo được tạo trước đó. Bạn có muốn tiếp tục lưu ?"))
+                {
+                    return;
+                }
+            }
+
             try
             {
                 _productScheduleShowService = new ProductScheduleShowService();
@@ -195,6 +194,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TimeSlotCode = selectedTimeSlot.Code;
                         model.TotalCost = (double)txtSumCost.MoneyValue;
                         model.Cost = (double)txtCost.MoneyValue;
+                        model.OrderNumber = txtPosition.NumberValue;
                         model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
                         model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
 

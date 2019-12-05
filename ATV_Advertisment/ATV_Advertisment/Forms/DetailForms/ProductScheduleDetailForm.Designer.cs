@@ -1,4 +1,6 @@
-﻿namespace ATV_Advertisment.Forms.DetailForms
+﻿using TControls;
+
+namespace ATV_Advertisment.Forms.DetailForms
 {
     partial class ProductScheduleDetailForm
     {
@@ -44,12 +46,16 @@
             this.lblShowDate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPosition = new NumberTextBox(4);
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbDetail
             // 
+            this.gbDetail.Controls.Add(this.txtPosition);
+            this.gbDetail.Controls.Add(this.label1);
             this.gbDetail.Controls.Add(this.txtSumCost);
             this.gbDetail.Controls.Add(this.lblTotalCost);
             this.gbDetail.Controls.Add(this.mpShowDate);
@@ -216,6 +222,22 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(427, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Vị trí";
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(517, 78);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(72, 26);
+            this.txtPosition.TabIndex = 14;
+            // 
             // ProductScheduleDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -254,5 +276,9 @@
         private System.Windows.Forms.MonthCalendar mpShowDate;
         private TControls.MoneyTextBox txtSumCost;
         private System.Windows.Forms.Label lblTotalCost;
+        private NumberTextBox txtPosition;
+        private System.Windows.Forms.Label label1;
+
+        //this.txtPosition = new NumberTextBox(4);
     }
 }

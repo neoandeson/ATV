@@ -29,6 +29,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private DurationService _durationService = null;
         private ShowTypeService _showTypeService = null;
         private bool IsExisted = false;
+        private bool IsLoadCompleted = false;
 
         public ContractItemDetailForm(ContractItem inputModel)
         {
@@ -86,6 +87,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             finally
             {
                 _contractDetailService = null;
+                IsLoadCompleted = true;
             }
         }
 
@@ -401,7 +403,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void cboShowType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(IsExisted)
+            if(IsExisted && IsLoadCompleted)
             {
                 btnSave_Click(sender, e);
             }
