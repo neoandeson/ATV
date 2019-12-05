@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.gbCriteria = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblDirectorName = new System.Windows.Forms.Label();
+            this.txtDirectorName = new System.Windows.Forms.TextBox();
+            this.dtpApplyDate = new System.Windows.Forms.DateTimePicker();
+            this.lblApplyDate = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.gbContent = new System.Windows.Forms.GroupBox();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.lblApplyDate = new System.Windows.Forms.Label();
-            this.dtpApplyDate = new System.Windows.Forms.DateTimePicker();
-            this.txtDirectorName = new System.Windows.Forms.TextBox();
-            this.lblDirectorName = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.gbCriteria.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,48 @@
             this.gbCriteria.TabIndex = 0;
             this.gbCriteria.TabStop = false;
             this.gbCriteria.Text = "Cấu Hình";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(582, 53);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 25);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lblDirectorName
+            // 
+            this.lblDirectorName.AutoSize = true;
+            this.lblDirectorName.Location = new System.Drawing.Point(226, 19);
+            this.lblDirectorName.Name = "lblDirectorName";
+            this.lblDirectorName.Size = new System.Drawing.Size(77, 20);
+            this.lblDirectorName.TabIndex = 6;
+            this.lblDirectorName.Text = "Giám đốc";
+            // 
+            // txtDirectorName
+            // 
+            this.txtDirectorName.Location = new System.Drawing.Point(309, 16);
+            this.txtDirectorName.Name = "txtDirectorName";
+            this.txtDirectorName.Size = new System.Drawing.Size(269, 26);
+            this.txtDirectorName.TabIndex = 5;
+            // 
+            // dtpApplyDate
+            // 
+            this.dtpApplyDate.Location = new System.Drawing.Point(126, 53);
+            this.dtpApplyDate.Name = "dtpApplyDate";
+            this.dtpApplyDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpApplyDate.TabIndex = 4;
+            // 
+            // lblApplyDate
+            // 
+            this.lblApplyDate.AutoSize = true;
+            this.lblApplyDate.Location = new System.Drawing.Point(12, 55);
+            this.lblApplyDate.Name = "lblApplyDate";
+            this.lblApplyDate.Size = new System.Drawing.Size(107, 20);
+            this.lblApplyDate.TabIndex = 3;
+            this.lblApplyDate.Text = "Ngày áp dụng";
             // 
             // txtYear
             // 
@@ -110,47 +152,6 @@
             this.rptViewer.ServerReport.BearerToken = null;
             this.rptViewer.Size = new System.Drawing.Size(794, 325);
             this.rptViewer.TabIndex = 0;
-            // 
-            // lblApplyDate
-            // 
-            this.lblApplyDate.AutoSize = true;
-            this.lblApplyDate.Location = new System.Drawing.Point(12, 55);
-            this.lblApplyDate.Name = "lblApplyDate";
-            this.lblApplyDate.Size = new System.Drawing.Size(107, 20);
-            this.lblApplyDate.TabIndex = 3;
-            this.lblApplyDate.Text = "Ngày áp dụng";
-            // 
-            // dtpApplyDate
-            // 
-            this.dtpApplyDate.Location = new System.Drawing.Point(126, 53);
-            this.dtpApplyDate.Name = "dtpApplyDate";
-            this.dtpApplyDate.Size = new System.Drawing.Size(200, 26);
-            this.dtpApplyDate.TabIndex = 4;
-            // 
-            // txtDirectorName
-            // 
-            this.txtDirectorName.Location = new System.Drawing.Point(309, 16);
-            this.txtDirectorName.Name = "txtDirectorName";
-            this.txtDirectorName.Size = new System.Drawing.Size(269, 26);
-            this.txtDirectorName.TabIndex = 5;
-            // 
-            // lblDirectorName
-            // 
-            this.lblDirectorName.AutoSize = true;
-            this.lblDirectorName.Location = new System.Drawing.Point(226, 19);
-            this.lblDirectorName.Name = "lblDirectorName";
-            this.lblDirectorName.Size = new System.Drawing.Size(77, 20);
-            this.lblDirectorName.TabIndex = 6;
-            this.lblDirectorName.Text = "Giám đốc";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(582, 53);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 25);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // PricingPrintForm
             // 

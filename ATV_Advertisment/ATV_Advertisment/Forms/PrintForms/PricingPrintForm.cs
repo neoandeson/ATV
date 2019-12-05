@@ -1,4 +1,5 @@
 ﻿using ATV_Advertisment.Common;
+using ATV_Advertisment.Services;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,44 @@ namespace ATV_Advertisment.Forms.PrintForms
         public PricingPrintForm()
         {
             InitializeComponent();
+            LoadDirectorName();
+            LoadDApplyDate();
+        }
+
+        private void LoadDirectorName()
+        {
+            try
+            {
+                SystemConfigService systemConfigService = new SystemConfigService();
+                var sc = systemConfigService.GetByName("DirectorName");
+                if(sc != null)
+                {
+                    txtDirectorName.Text = sc.ValueString;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        private void LoadDApplyDate()
+        {
+            try
+            {
+                SystemConfigService systemConfigService = new SystemConfigService();
+                var sc = systemConfigService.GetByName("ApplyPricingDate");
+                if (sc != null)
+                {
+                    dtpApplyDate.Value = new DateTime((long)sc.ValueNumber.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         private void PricingPrintForm_Load(object sender, EventArgs e)
@@ -196,6 +235,35 @@ namespace ATV_Advertisment.Forms.PrintForms
                 };
             }
             catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var tickValue = dtpApplyDate.Value.Ticks;
+                SystemConfigService systemConfigService = new SystemConfigService();
+                var sc = systemConfigService.GetByName("ApplyPricingDate");
+                if(sc != null)
+                {
+                    sc.ValueNumber = tickValue;
+                    systemConfigService.EditSystemConfig(sc);
+                }
+
+                sc = systemConfigService.GetByName("DirectorName");
+                if(sc != null)
+                {
+                    sc.ValueString = txtDirectorName.Text;
+                    systemConfigService.EditSystemConfig(sc);
+                }
+
+                Utilities.ShowMessage("Lưu thành công");
+            }
+            catch (Exception)
             {
 
                 throw;
