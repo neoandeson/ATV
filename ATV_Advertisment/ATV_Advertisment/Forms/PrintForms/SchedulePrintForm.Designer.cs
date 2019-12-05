@@ -34,12 +34,28 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.gbContent = new System.Windows.Forms.GroupBox();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFromEmail = new System.Windows.Forms.TextBox();
+            this.txtToEmail = new System.Windows.Forms.TextBox();
+            this.btnSendEmail = new System.Windows.Forms.Button();
+            this.btnSaveEmailInfo = new System.Windows.Forms.Button();
+            this.txtFromPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.gbControl.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbControl
             // 
+            this.gbControl.Controls.Add(this.label3);
+            this.gbControl.Controls.Add(this.txtFromPassword);
+            this.gbControl.Controls.Add(this.btnSaveEmailInfo);
+            this.gbControl.Controls.Add(this.btnSendEmail);
+            this.gbControl.Controls.Add(this.txtToEmail);
+            this.gbControl.Controls.Add(this.txtFromEmail);
+            this.gbControl.Controls.Add(this.label2);
+            this.gbControl.Controls.Add(this.label1);
             this.gbControl.Controls.Add(this.lblDay);
             this.gbControl.Controls.Add(this.dtpDate);
             this.gbControl.Controls.Add(this.btnPrint);
@@ -47,7 +63,7 @@
             this.gbControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbControl.Location = new System.Drawing.Point(0, 0);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(870, 54);
+            this.gbControl.Size = new System.Drawing.Size(870, 122);
             this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
@@ -84,9 +100,9 @@
             this.gbContent.Controls.Add(this.rptViewer);
             this.gbContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.gbContent.Location = new System.Drawing.Point(0, 54);
+            this.gbContent.Location = new System.Drawing.Point(0, 122);
             this.gbContent.Name = "gbContent";
-            this.gbContent.Size = new System.Drawing.Size(870, 529);
+            this.gbContent.Size = new System.Drawing.Size(870, 461);
             this.gbContent.TabIndex = 1;
             this.gbContent.TabStop = false;
             this.gbContent.Text = "Nội dung";
@@ -97,8 +113,80 @@
             this.rptViewer.Location = new System.Drawing.Point(3, 22);
             this.rptViewer.Name = "rptViewer";
             this.rptViewer.ServerReport.BearerToken = null;
-            this.rptViewer.Size = new System.Drawing.Size(864, 504);
+            this.rptViewer.Size = new System.Drawing.Size(864, 436);
             this.rptViewer.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(374, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Email gửi";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(359, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Email nhận";
+            // 
+            // txtFromEmail
+            // 
+            this.txtFromEmail.Location = new System.Drawing.Point(453, 19);
+            this.txtFromEmail.MaxLength = 100;
+            this.txtFromEmail.Name = "txtFromEmail";
+            this.txtFromEmail.Size = new System.Drawing.Size(393, 26);
+            this.txtFromEmail.TabIndex = 5;
+            // 
+            // txtToEmail
+            // 
+            this.txtToEmail.Location = new System.Drawing.Point(453, 88);
+            this.txtToEmail.MaxLength = 100;
+            this.txtToEmail.Name = "txtToEmail";
+            this.txtToEmail.Size = new System.Drawing.Size(393, 26);
+            this.txtToEmail.TabIndex = 6;
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.Location = new System.Drawing.Point(196, 53);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(100, 25);
+            this.btnSendEmail.TabIndex = 7;
+            this.btnSendEmail.Text = "Gửi Email";
+            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
+            // 
+            // btnSaveEmailInfo
+            // 
+            this.btnSaveEmailInfo.Location = new System.Drawing.Point(22, 53);
+            this.btnSaveEmailInfo.Name = "btnSaveEmailInfo";
+            this.btnSaveEmailInfo.Size = new System.Drawing.Size(160, 25);
+            this.btnSaveEmailInfo.TabIndex = 8;
+            this.btnSaveEmailInfo.Text = "Lưu thông tin email";
+            this.btnSaveEmailInfo.UseVisualStyleBackColor = true;
+            this.btnSaveEmailInfo.Click += new System.EventHandler(this.btnSaveEmailInfo_Click);
+            // 
+            // txtFromPassword
+            // 
+            this.txtFromPassword.Location = new System.Drawing.Point(453, 53);
+            this.txtFromPassword.MaxLength = 100;
+            this.txtFromPassword.Name = "txtFromPassword";
+            this.txtFromPassword.PasswordChar = '*';
+            this.txtFromPassword.Size = new System.Drawing.Size(249, 26);
+            this.txtFromPassword.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(369, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Password";
             // 
             // SchedulePrintForm
             // 
@@ -125,5 +213,13 @@
         private System.Windows.Forms.Label lblDay;
         private System.Windows.Forms.GroupBox gbContent;
         private Microsoft.Reporting.WinForms.ReportViewer rptViewer;
+        private System.Windows.Forms.TextBox txtToEmail;
+        private System.Windows.Forms.TextBox txtFromEmail;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSendEmail;
+        private System.Windows.Forms.Button btnSaveEmailInfo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtFromPassword;
     }
 }

@@ -12,6 +12,7 @@ namespace ATV_Advertisment.Services
     public interface IEmailService
     {
         void SendMail(string fromMailAddress, string password, string toMailAddress, string subject, string body);
+        void SendMailWithAttachment(string fromMailAddress, string password, string toMailAddress, string subject, string body, string attPath);
     }
 
     public class EmailService : IEmailService
@@ -25,10 +26,24 @@ namespace ATV_Advertisment.Services
             mail.Subject = subject;
             mail.Body = body;
 
-            string exeFolder = Application.StartupPath;
-            string reportPath = Path.Combine(exeFolder, @"OutputReports\LichPhatSong.xls");//TODO test
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(fromMailAddress, password);
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+        }
+
+        public void SendMailWithAttachment(string fromMailAddress, string password, string toMailAddress, string subject, string body, string attPath)
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress(fromMailAddress);
+            mail.To.Add(toMailAddress);
+            mail.Subject = subject;
+            mail.Body = body;
+
             System.Net.Mail.Attachment attachment;
-            attachment = new System.Net.Mail.Attachment(reportPath);
+            attachment = new System.Net.Mail.Attachment(attPath);
             mail.Attachments.Add(attachment);
 
             SmtpServer.Port = 587;

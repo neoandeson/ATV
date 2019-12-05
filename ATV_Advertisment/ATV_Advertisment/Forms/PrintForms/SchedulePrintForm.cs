@@ -26,6 +26,7 @@ namespace ATV_Advertisment.Forms.PrintForms
             ps.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
             ps.PaperSize.RawKind = (int)System.Drawing.Printing.PaperKind.A4;
             rptViewer.SetPageSettings(ps);
+            LoadEmails();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -88,10 +89,143 @@ namespace ATV_Advertisment.Forms.PrintForms
             }
         }
 
+        private void LoadEmails()
+        {
+            SystemConfigService systemConfigService = null;
+            try
+            {
+                systemConfigService = new SystemConfigService();
+                var fromMail = systemConfigService.GetByName("FromEmail");
+                var toMail = systemConfigService.GetByName("ToEmail");
+                if (fromMail != null)
+                {
+                    txtFromEmail.Text = fromMail.ValueString;
+                }
+                if (toMail != null)
+                {
+                    txtToEmail.Text = toMail.ValueString;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                systemConfigService = null;
+            }
+        }
+
         private void SchedulePrintForm_Load(object sender, EventArgs e)
         {
-
             this.rptViewer.RefreshReport();
+        }
+
+        private void btnSendEmail_Click(object sender, EventArgs e)
+        {
+            // Variables
+            Warning[] warnings;
+            string[] streamIds;
+            string mimeType = string.Empty;
+            string encoding = string.Empty;
+            string extension = string.Empty;
+            string exeFolder = Application.StartupPath;
+            string reportPath = Path.Combine(exeFolder, @"Reports\ProductSchedule.rdlc");
+            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.xls");
+
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
+            {
+                SqlDataAdapter da = null;
+
+                try
+                {
+                    string query = "SELECT	ShowDate, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
+                        "FROM ProductScheduleShow " +
+                        "WHERE YEAR(ShowDate) = @rptYear " +
+                        "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
+                            "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1000)) " +
+                        "ORDER BY ShowTimeInt";
+                    var cmd = new SqlCommand(query, con);
+                    cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
+                    cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpDate.Value.Month));
+                    cmd.Parameters.Add(new SqlParameter("@rptDay", this.dtpDate.Value.Day));
+                    cmd.Parameters.Add(new SqlParameter("@rptNextDay", this.dtpDate.Value.Day + 1));
+
+                    da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    ReportParameterCollection reportParameters = new ReportParameterCollection();
+                    reportParameters.Add(new ReportParameter("strDate", string.Format("NGÀY {0} THÁNG {1} NĂM {2}", this.dtpDate.Value.Day, this.dtpDate.Value.Month, this.dtpDate.Value.Year)));
+
+                    rptViewer.LocalReport.ReportPath = reportPath;
+                    rptViewer.LocalReport.DataSources.Clear();
+                    rptViewer.LocalReport.SetParameters(reportParameters);
+                    rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsProductSchedule", dt));
+                    rptViewer.RefreshReport();
+
+                    //
+                    byte[] bytes = rptViewer.LocalReport.Render("EXCELOPENXML", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                    if (bytes != null)
+                    {
+                        using (FileStream fileStream = new FileStream(outputReportPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                        {
+                            fileStream.Write(bytes, 0, bytes.Length);
+                        }
+
+                        string fromMail = txtFromEmail.Text.Trim();
+                        string fromPassword = txtFromPassword.Text.Trim();
+                        string toMail = txtToEmail.Text.Trim();
+                        EmailService emailService = new EmailService();
+                        emailService.SendMailWithAttachment(fromMail, fromPassword, toMail,
+                            "Lịch quảng cáo ngày " + this.dtpDate.Value.Day + "/" + this.dtpDate.Value.Month + "/" + this.dtpDate.Value.Year,
+                            "Nội dung trong file đính kèm",
+                            outputReportPath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (da != null)
+                    {
+                        da.Dispose();
+                    }
+                }
+
+            };
+        }
+
+        private void btnSaveEmailInfo_Click(object sender, EventArgs e)
+        {
+            SystemConfigService systemConfigService = null;
+            try
+            {
+                systemConfigService = new SystemConfigService();
+                var fromEmail = systemConfigService.GetByName("FromEmail");
+                var toEmail = systemConfigService.GetByName("ToEmail");
+
+                if (fromEmail != null)
+                {
+                    fromEmail.ValueString = txtFromEmail.Text.Trim();
+                    systemConfigService.EditSystemConfig(fromEmail);
+                }
+                if (toEmail != null)
+                {
+                    toEmail.ValueString = txtToEmail.Text.Trim();
+                    systemConfigService.EditSystemConfig(toEmail);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                systemConfigService = null;
+            }
         }
     }
 }
