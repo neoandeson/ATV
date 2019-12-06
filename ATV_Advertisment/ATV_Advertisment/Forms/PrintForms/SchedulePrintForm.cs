@@ -48,7 +48,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "WHERE YEAR(ShowDate) = @rptYear " +
                             "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
                                 "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1000)) " +
-                            "ORDER BY ShowTimeInt";
+                            "ORDER BY ShowTimeInt, OrderNumber";
                         var cmd = new SqlCommand(query, con);
                         cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
                         cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpDate.Value.Month));

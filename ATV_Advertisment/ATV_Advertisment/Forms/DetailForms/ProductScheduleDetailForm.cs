@@ -33,7 +33,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
 
             InitializeComponent();
-            txtPosition.Text = "0";
+            LoadCboPosition();
             CompleteLoadData = 0;
             LoadTimeSlots();
             GetCostRule();
@@ -63,6 +63,17 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
         }
 
+        private void LoadCboPosition()
+        {
+            Dictionary<int, int> PositionOptions = new Dictionary<int, int>();
+            PositionOptions.Add(1, 1);
+            PositionOptions.Add(2, 2);
+            PositionOptions.Add(3, 3);
+            PositionOptions.Add(4, 4);
+            Utilities.LoadComboBoxOptions(cboPosition, PositionOptions);
+            cboPosition.SelectedValue = 4;
+        }
+
         public void LoadData()
         {
             try
@@ -81,7 +92,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                             txtSumCost.Text = Utilities.DoubleMoneyToText(model.Cost);
                             //txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
                             //txtDiscount.Text = model.Discount.ToString();
-                            txtPosition.Text = model.OrderNumber.ToString();
+                            cboPosition.SelectedValue = model.OrderNumber;
                             txtTimeSlotLength.Text = model.TimeSlotLength.ToString();
                             txtQuantity.Text = model.Quantity.ToString();
                             model.ProductName = ProductName;
@@ -165,7 +176,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             int result = CRUDStatusCode.ERROR;
 
-            if(txtPosition.NumberValue != 0)
+            if((int)cboPosition.SelectedValue != 4)
             {
                 if (!Utilities.ShowConfirmMessage("Vị trí ưu tiên xuất hiện của những quảng cáo tạo/cập nhật sau sẽ chèn" +
                     " lên trước những quảng cáo được tạo trước đó. Bạn có muốn tiếp tục lưu ?"))
@@ -194,7 +205,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.TimeSlotCode = selectedTimeSlot.Code;
                         model.TotalCost = (double)txtSumCost.MoneyValue;
                         model.Cost = (double)txtCost.MoneyValue;
-                        model.OrderNumber = txtPosition.NumberValue;
+                        model.OrderNumber = (int)cboPosition.SelectedValue;
                         model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
                         model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
 

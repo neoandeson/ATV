@@ -31,6 +31,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.lblPosition = new System.Windows.Forms.Label();
             this.txtSumCost = new TControls.MoneyTextBox();
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.mpShowDate = new System.Windows.Forms.MonthCalendar();
@@ -46,16 +47,15 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblShowDate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPosition = new NumberTextBox(4);
+            this.cboPosition = new System.Windows.Forms.ComboBox();
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbDetail
             // 
-            this.gbDetail.Controls.Add(this.txtPosition);
-            this.gbDetail.Controls.Add(this.label1);
+            this.gbDetail.Controls.Add(this.cboPosition);
+            this.gbDetail.Controls.Add(this.lblPosition);
             this.gbDetail.Controls.Add(this.txtSumCost);
             this.gbDetail.Controls.Add(this.lblTotalCost);
             this.gbDetail.Controls.Add(this.mpShowDate);
@@ -75,6 +75,15 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin lịch";
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Location = new System.Drawing.Point(397, 81);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(92, 20);
+            this.lblPosition.TabIndex = 13;
+            this.lblPosition.Text = "Vị trí ưu tiên";
             // 
             // txtSumCost
             // 
@@ -222,21 +231,13 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label1
+            // cboPosition
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(427, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 20);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Vị trí";
-            // 
-            // txtPosition
-            // 
-            this.txtPosition.Location = new System.Drawing.Point(517, 78);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(72, 26);
-            this.txtPosition.TabIndex = 14;
+            this.cboPosition.FormattingEnabled = true;
+            this.cboPosition.Location = new System.Drawing.Point(517, 76);
+            this.cboPosition.Name = "cboPosition";
+            this.cboPosition.Size = new System.Drawing.Size(72, 28);
+            this.cboPosition.TabIndex = 14;
             // 
             // ProductScheduleDetailForm
             // 
@@ -276,8 +277,8 @@ namespace ATV_Advertisment.Forms.DetailForms
         private System.Windows.Forms.MonthCalendar mpShowDate;
         private TControls.MoneyTextBox txtSumCost;
         private System.Windows.Forms.Label lblTotalCost;
-        private NumberTextBox txtPosition;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPosition;
+        private System.Windows.Forms.ComboBox cboPosition;
 
         //this.txtPosition = new NumberTextBox(4);
     }
