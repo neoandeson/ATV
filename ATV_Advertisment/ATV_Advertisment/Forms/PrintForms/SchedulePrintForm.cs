@@ -136,7 +136,7 @@ namespace ATV_Advertisment.Forms.PrintForms
             string extension = string.Empty;
             string exeFolder = Application.StartupPath;
             string reportPath = Path.Combine(exeFolder, @"Reports\ProductSchedule.rdlc");
-            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.xls");
+            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.xlsx");
 
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
             {
