@@ -93,6 +93,14 @@ namespace ATV_Advertisment.Common
             public static int Backup = 2;
         }
 
+        public static class LogAction
+        {
+            public static string Create = "Tạo";
+            public static string Delete = "Xóa";
+            public static string Update = "Sửa";
+            public static string ExportDate = "Xuất file";
+        }
+
         public static class CRUDStatusCode
         {
             public static int ERROR = 0;

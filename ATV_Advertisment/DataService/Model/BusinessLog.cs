@@ -17,5 +17,7 @@ namespace DataService.Model
         public int ActorId { get; set; }
 
         public int TypeId { get; set; }
+
+        public DateTime DateAct { get; set; }
     }
 }

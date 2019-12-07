@@ -267,6 +267,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                                 ProductName = txtFileName.Text
                             };
                             Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                            Common.Constants.BusinessLogType.Create);
                         }
                     }
                     else
@@ -285,6 +289,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         {
                             gbRegisterSchedule.Visible = true;
                             Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                            Common.Constants.BusinessLogType.Update);
                         }
                     }
                 }
@@ -339,6 +347,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         _productScheduleShowService.DeleteProductScheduleShow(productScheduleShowId);
                         UpdateContractDetailTotalCost();
                         LoadDGV();
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Delete, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                            Common.Constants.BusinessLogType.Delete);
                     }
 
                 }
@@ -367,6 +379,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                 ContractDetailUpdateVM result = _contractDetailService.UpdateContractDetailCost(model.Id);
                 txtTotalCost.Text = Utilities.DoubleMoneyToText(result.Cost);
                 txtNumberOfShow.Text = result.NumberOfShow.ToString();
+                Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "giá tiền sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                            Common.Constants.BusinessLogType.Update);
             }
             catch (Exception)
             {

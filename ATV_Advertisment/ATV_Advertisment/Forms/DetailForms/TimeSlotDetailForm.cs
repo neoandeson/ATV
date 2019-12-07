@@ -158,6 +158,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model = result;
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
                         gbCostRule.Visible = true;
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "thời điểm phát " + model.Code),
+                            Common.Constants.BusinessLogType.Create);
                     }
                 }
                 else
@@ -173,6 +177,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (editResult == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "thời điểm phát " + model.Code),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 }
             }
@@ -338,6 +346,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         LoadDGV();
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "giá tiền " + costRule.Length + " loại hình " + costRule.ShowTypeId + " của thời điểm " + model.Code),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 } else
                 {
@@ -357,6 +369,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
                         LoadDGV();
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "giá tiền " + costRule.Length + " loại hình " + costRule.ShowTypeId + " của thời điểm " + model.Code),
+                            Common.Constants.BusinessLogType.Create);
                     }
                 }
             }
@@ -383,6 +399,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
                         LoadDGV();
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Delete, "giá tiền " + costRule.Length + " loại hình " + costRule.ShowTypeId + " của thời điểm " + model.Code),
+                            Common.Constants.BusinessLogType.Delete);
                     }
                 }
             }

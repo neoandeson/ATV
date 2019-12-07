@@ -226,6 +226,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.ShowTimeInt = selectedTimeSlot.FromHour;
                         result = AddProductSchedultShows(mpShowDate.BoldedDates, originModel);
                         Utilities.ShowReturnMessage(result, "Lưu");
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "lịch chiếu " + model.ProductName + " " + model.TimeSlot + " " +model.ContractDetailId),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 }
             }

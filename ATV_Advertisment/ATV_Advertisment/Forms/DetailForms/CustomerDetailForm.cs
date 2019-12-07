@@ -69,6 +69,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (result)
                     {
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "khách hàng mã " + model.Code),
+                            Common.Constants.BusinessLogType.Create);
                     }
                 }
                 else
@@ -87,6 +91,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (result)
                     {
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "hợp đồng mã " + model.Code),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 }
             }

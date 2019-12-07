@@ -65,6 +65,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "buổi phát " + model.Code + " " + model.Name),
+                            Common.Constants.BusinessLogType.Create);
                     }
                 }
                 else
@@ -77,6 +81,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "buổi phát " + model.Code + " " + model.Name),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 }
             }

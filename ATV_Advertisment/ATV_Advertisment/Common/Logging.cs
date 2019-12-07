@@ -10,7 +10,8 @@ namespace ATV_Advertisment.Common
             businessLogService.Log(new DataService.Model.BusinessLog() {
                 Content = content,
                 ActorId = Session.GetId(),
-                TypeId = type
+                TypeId = type,
+                DateAct = Utilities.GetServerDateTimeNow()
             });
         }
 

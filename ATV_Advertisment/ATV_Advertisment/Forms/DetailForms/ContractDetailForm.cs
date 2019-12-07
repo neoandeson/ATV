@@ -154,6 +154,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         };
                         txtCustomerCode.ReadOnly = true;
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "hợp đồng mã " + model.Code),
+                            Common.Constants.BusinessLogType.Create);
                     }
                 }
                 else
@@ -173,6 +177,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     {
                         gbContractDetail.Visible = true;
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "hợp đồng mã " + model.Code),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 }
             }
@@ -329,6 +337,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         UpdateContractCost();
                         LoadDGV();
                         Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Delete, "hợp đồng mã " + model.Code),
+                            Common.Constants.BusinessLogType.Delete);
                     }
                 }
             }
@@ -459,6 +471,10 @@ namespace ATV_Advertisment.Forms.DetailForms
 
                     _contractService = new ContractService();
                     _contractService.UpdatContractCostInfo(txtCode.Text, cost, sumCost , discount);
+                    Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "giá tiền của hợp đồng mã " + model.Code + " do thay đổi nội dung hợp đồng"),
+                            Common.Constants.BusinessLogType.Update);
                 }
                 catch (Exception)
                 {

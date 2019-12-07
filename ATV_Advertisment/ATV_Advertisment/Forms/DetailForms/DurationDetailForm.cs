@@ -63,6 +63,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Create, "thời lượng " + model.Length),
+                            Common.Constants.BusinessLogType.Create);
                     }
                 }
                 else
@@ -74,6 +78,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                     if (result == CRUDStatusCode.SUCCESS)
                     {
                         Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "hợp đồng mã " + model.Length),
+                            Common.Constants.BusinessLogType.Update);
                     }
                 }
             }
