@@ -70,8 +70,11 @@ namespace ATV_Advertisment.Forms.DetailForms
             PositionOptions.Add(2, 2);
             PositionOptions.Add(3, 3);
             PositionOptions.Add(4, 4);
+            PositionOptions.Add(5, 5);
+            PositionOptions.Add(6, 6);
+            PositionOptions.Add(7, 7);
             Utilities.LoadComboBoxOptions(cboPosition, PositionOptions);
-            cboPosition.SelectedValue = 4;
+            cboPosition.SelectedValue = 7;
         }
 
         public void LoadData()

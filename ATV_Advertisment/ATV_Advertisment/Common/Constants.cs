@@ -70,8 +70,11 @@ namespace ATV_Advertisment.Common
             public static string BelongToContractCode = "Mã hợp đồng";
             public static string ShowDate = "Ngày chiếu";
             public static string TimeSlot = "Khung giờ";
+            public static string ShowTime = "Giờ chiếu";
             public static string NumberOfShow = "Số lượng";
             public static string TotalCost = "Thành tiền (VNĐ)";
+            public static string ProductName = "Tên sản phẩm";
+            public static string OrderNumber = "Thứ tự";
         }
 
         public static class BusinessLogType
@@ -108,6 +111,7 @@ namespace ATV_Advertisment.Common
             public static int GV_WIDTH_SEEM = 100;
             public static int GV_WIDTH_NORMAL = 150;
             public static int GV_WIDTH_MEDIUM = 170;
+            public static int GV_WIDTH_LARGE = 230;
         }
         #endregion
 

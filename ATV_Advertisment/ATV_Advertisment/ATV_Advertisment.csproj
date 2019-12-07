@@ -336,6 +336,7 @@
     <Compile Include="ViewModel\RevenueRM.cs" />
     <Compile Include="ViewModel\SCommitmentMRM.cs" />
     <Compile Include="ViewModel\ShowCommitmentRM.cs" />
+    <Compile Include="ViewModel\SortProductScheduleViewModel.cs" />
     <Compile Include="ViewModel\TimeSlotViewModel.cs" />
     <EmbeddedResource Include="Assets\FormResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

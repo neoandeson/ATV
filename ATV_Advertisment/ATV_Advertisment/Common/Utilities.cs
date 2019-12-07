@@ -285,9 +285,14 @@ namespace ATV_Advertisment.Common
                         ListDurationForm listDurationForm = new ListDurationForm();
                         form = (Form)listDurationForm;
                         break;
+                    //Nhập liệu
                     case "Hợp đồng quảng cáo":
                         ListContractForm listContractForm = new ListContractForm();
                         form = (Form)listContractForm;
+                        break;
+                    case "Xếp lịch theo ngày":
+                        SortScheduleByDayForm sortScheduleByDayForm = new SortScheduleByDayForm();
+                        form = (Form)sortScheduleByDayForm;
                         break;
                     //In ấn
                     case "In lịch phát sóng":

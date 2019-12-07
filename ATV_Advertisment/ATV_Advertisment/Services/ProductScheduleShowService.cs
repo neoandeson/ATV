@@ -14,6 +14,7 @@ namespace ATV_Advertisment.Services
         ProductScheduleShow GetById(int id);
         List<ProductScheduleShow> GetAllByContractDetailId(int contractDetailId);
         List<ProductScheduleShowViewModel> GetAllVMForList(int contractDetailId);
+        List<SortProductScheduleViewModel> GetAllVMSearchingList(SearchPSSModel searchModel);
         DateTime[] GetAllSelectedDatesByContractDetailIdAndTimeSlotCode(int contractDetailId, string timeSlotCode);
         int DeleteProductScheduleShow(int id);
         int AddProductScheduleShow(ProductScheduleShow input);
@@ -88,13 +89,15 @@ namespace ATV_Advertisment.Services
                 ProductScheduleShow.TimeSlot = input.TimeSlot;
                 ProductScheduleShow.TotalCost = input.TotalCost;
                 ProductScheduleShow.Discount = input.Discount;
+                ProductScheduleShow.OrderNumber = input.OrderNumber;
 
                 bool isExisted = _ProductScheduleShowRepository.Exist(t => t.ContractDetailId == input.ContractDetailId &&
                                                                 t.ProductName == input.ProductName &&
                                                                 t.ShowDate == input.ShowDate &&
                                                                 t.TimeSlot == input.TimeSlot &&
                                                                 t.Quantity == input.Quantity &&
-                                                                t.TimeSlotLength == input.TimeSlotLength);
+                                                                t.TimeSlotLength == input.TimeSlotLength &&
+                                                                t.OrderNumber == input.OrderNumber);
                 if (!isExisted)
                 {
                     _ProductScheduleShowRepository.Update(ProductScheduleShow);
@@ -161,6 +164,28 @@ namespace ATV_Advertisment.Services
             return _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractDetailId && p.TimeSlotCode == timeslotCode)
                 .OrderBy(p => p.ShowDate)
                 .Select(q => q.ShowDate).ToArray();
+        }
+
+        public List<SortProductScheduleViewModel> GetAllVMSearchingList(SearchPSSModel searchModel)
+        {
+            var tmp = _ProductScheduleShowRepository.Get(s => s.ShowDate.Day == searchModel.SearchDate.Day 
+                                                                && s.ShowDate.Month == searchModel.SearchDate.Month
+                                                                && s.ShowDate.Year == searchModel.SearchDate.Year)
+                .OrderBy(s => s.ShowTimeInt)
+                .ThenBy(s => s.OrderNumber)
+                .Select(s => new SortProductScheduleViewModel {
+                    Id = s.Id,
+                    ContractDetailId = s.ContractDetailId,
+                    ShowTime = s.ShowTime,
+                    ShowTimeInt = s.ShowTimeInt.Value,
+                    OrderNumber = s.OrderNumber,
+                    ShowDate = Utilities.DateToFormatVNDate(s.ShowDate),
+                    ProductName = s.ProductName,
+                    Quantity = s.Quantity,
+                    TimeSlot = s.TimeSlot,
+                    TimeSlotLength = s.TimeSlotLength
+                }).ToList();
+            return tmp;
         }
     }
 }
