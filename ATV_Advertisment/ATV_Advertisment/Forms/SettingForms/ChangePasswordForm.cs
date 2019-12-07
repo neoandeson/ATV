@@ -44,6 +44,10 @@ namespace ATV_Advertisment.Forms.SettingForms
                 UserService userService = new UserService();
                 userService.ChangePassword(Session.GetId(), Session.GetUserName(), txtNew.Text.Trim());
                 Utilities.ShowMessage("Đổi mật khẩu thành công");
+                Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "mật khẩu"),
+                            Common.Constants.BusinessLogType.Update);
             }
 
         }

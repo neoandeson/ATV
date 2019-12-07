@@ -226,6 +226,13 @@ namespace ATV_Advertisment.Forms.PrintForms
                                 rptViewer.LocalReport.SetParameters(reportParameters);
                                 rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsInputSchedule", reportData.AsEnumerable()));
                                 rptViewer.RefreshReport();
+
+                                Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                    Common.Session.GetUserName(),
+                                    Common.Constants.LogAction.ExportData, "lịch đăng ký quảng cáo của khách hàng " + cboCustomer.SelectedValue.ToString() 
+                                    + " mã hợp đồng " + cboContractCode.SelectedValue.ToString() 
+                                    + " sản phẩm " + cboProduct.SelectedValue.ToString()),
+                                    Common.Constants.BusinessLogType.ExportData);
                             }
                             catch (Exception ex)
                             {

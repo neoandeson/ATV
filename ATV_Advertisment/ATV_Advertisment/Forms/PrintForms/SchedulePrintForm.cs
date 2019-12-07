@@ -67,6 +67,11 @@ namespace ATV_Advertisment.Forms.PrintForms
                         rptViewer.LocalReport.SetParameters(reportParameters);
                         rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsProductSchedule", dt));
                         rptViewer.RefreshReport();
+
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.ExportData, "lịch phát sóng ngày " + dtpDate.Value),
+                            Common.Constants.BusinessLogType.ExportData);
                     }
                     catch (Exception ex)
                     {
@@ -181,6 +186,10 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "Lịch quảng cáo ngày " + this.dtpDate.Value.Day + "/" + this.dtpDate.Value.Month + "/" + this.dtpDate.Value.Year,
                             "Nội dung trong file đính kèm",
                             outputReportPath);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.ExportData, "lịch phát sóng ngày " + dtpDate.Value + " và gửi mail cho " + txtToEmail.Text),
+                            Common.Constants.BusinessLogType.ExportData);
                     }
                 }
                 catch (Exception ex)

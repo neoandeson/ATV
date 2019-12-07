@@ -211,6 +211,10 @@ namespace ATV_Advertisment.Forms.InputForms
                         }
                     }
                     Utilities.ShowMessage("Cập nhật thành công");
+                    Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Update, "thứ tự phát sóng của lịch chiếu ngày " + dtpOneDate.Value),
+                            Common.Constants.BusinessLogType.Update);
                 }
                 catch (Exception ex)
                 {

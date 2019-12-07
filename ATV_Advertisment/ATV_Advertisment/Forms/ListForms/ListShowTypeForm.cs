@@ -129,6 +129,10 @@ namespace ATV_Advertisment.Forms.ListForms
                     {
                         LoadDGV();
                         Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.Delete, "loại quảng cáo " + duration.Type),
+                            Common.Constants.BusinessLogType.Delete);
                     }
                 }
             }

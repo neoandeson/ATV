@@ -98,7 +98,7 @@ namespace ATV_Advertisment.Common
             public static string Create = "Tạo";
             public static string Delete = "Xóa";
             public static string Update = "Sửa";
-            public static string ExportDate = "Xuất file";
+            public static string ExportData = "Xuất file";
         }
 
         public static class CRUDStatusCode

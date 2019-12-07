@@ -74,6 +74,11 @@ namespace ATV_Advertisment.Forms.PrintForms
                         rptViewer.LocalReport.SetParameters(reportParameters);
                         rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsExpectations", dt));
                         rptViewer.RefreshReport();
+
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.ExportData, "bảng dự trù quảng cáo " + dtpDate.Value),
+                            Common.Constants.BusinessLogType.ExportData);
                     }
                     catch (Exception ex)
                     {

@@ -219,6 +219,10 @@ namespace ATV_Advertisment.Forms.PrintForms
                         rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsFMProduct", dtFMProduct));
                         rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsDiscountApply", dtDiscount));
                         rptViewer.RefreshReport();
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.ExportData, "bảng giá quảng cáo"),
+                            Common.Constants.BusinessLogType.ExportData);
                     }
                     catch (Exception ex)
                     {

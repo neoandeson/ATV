@@ -198,6 +198,13 @@ namespace ATV_Advertisment.Forms.PrintForms
                                 rptViewer.LocalReport.SetParameters(reportParameters);
                                 rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsShowCommitment", reportData.AsEnumerable()));
                                 rptViewer.RefreshReport();
+                                Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                    Common.Session.GetUserName(),
+                                    Common.Constants.LogAction.ExportData, "chứng nhận phát sóng của khách hàng " + cboCustomer.SelectedValue.ToString() 
+                                    + " mã hợp đồng " + cboContractCode.SelectedValue.ToString() 
+                                    + " sản phẩm " + cboProduct.SelectedValue.ToString() 
+                                    + " trong " + this.dtpMonth.Value.Month + "/" + this.dtpMonth.Value.Year),
+                                    Common.Constants.BusinessLogType.ExportData);
                             }
                             catch (Exception ex)
                             {

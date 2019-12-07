@@ -107,6 +107,11 @@ namespace ATV_Advertisment.Forms.PrintForms
                         rptViewer.LocalReport.SetParameters(reportParameters);
                         rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsLiabilities", dt));
                         rptViewer.RefreshReport();
+
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                            Common.Session.GetUserName(),
+                            Common.Constants.LogAction.ExportData, "báo cáo công nợ của khách hàng " + cboCustomer.SelectedValue.ToString() + " trong " + this.dtpMonth.Value.Month + "/" + this.dtpMonth.Value.Year),
+                            Common.Constants.BusinessLogType.ExportData);
                     }
                     catch (Exception)
                     {
