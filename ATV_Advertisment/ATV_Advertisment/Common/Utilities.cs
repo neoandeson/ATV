@@ -11,6 +11,7 @@ using ATV_Advertisment.Forms.PrintForms;
 using System.Data;
 using System.Reflection;
 using ATV_Advertisment.Forms.SettingForms;
+using ATV_Advertisment.Forms.AdminForms;
 
 namespace ATV_Advertisment.Common
 {
@@ -332,6 +333,15 @@ namespace ATV_Advertisment.Common
                         HelpForm helpForm = new HelpForm();
                         form = (Form)helpForm;
                         break;
+                    //Quyền Admin
+                    case "Đặt lại mật khẩu":
+                        ResetPasswordForm resetPasswordForm = new ResetPasswordForm();
+                        form = (Form)resetPasswordForm;
+                        break;
+                    case "Xem lịch sử":
+                        LoggingForm loggingForm = new LoggingForm();
+                        form = (Form)loggingForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();
@@ -340,7 +350,6 @@ namespace ATV_Advertisment.Common
                     case "Exit":
                         Application.Exit();
                         break;
-
                 }
 
                 if (form != null)

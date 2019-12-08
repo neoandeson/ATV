@@ -117,6 +117,18 @@
     <Compile Include="Common\Session.cs" />
     <Compile Include="Common\SortableBindingList.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Forms\AdminForms\LoggingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\LoggingForm.Designer.cs">
+      <DependentUpon>LoggingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CommonForms\CommonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,6 +353,12 @@
     <EmbeddedResource Include="Assets\FormResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\LoggingForm.resx">
+      <DependentUpon>LoggingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CommonForms\CommonForm.resx">
       <DependentUpon>CommonForm.cs</DependentUpon>

@@ -3,6 +3,7 @@ using DataService.Infrastructure;
 using DataService.Model;
 using DataService.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static ATV_Advertisment.Common.Constants;
 
@@ -13,6 +14,7 @@ namespace ATV_Advertisment.Services
         User GetLogin(string username, string password);
         void UpdateLastLogin(string username);
         bool ChangePassword(int id, string username, string newPassword);
+        Dictionary<int, string> Getoptions();
     }
 
     public class UserService : IUserService
@@ -49,6 +51,12 @@ namespace ATV_Advertisment.Services
                             u.StatusId == CommonStatus.ACTIVE &&
                             hashHelper.VerifyHashedPassword(u.Password, password))
                 .FirstOrDefault();
+        }
+
+        public Dictionary<int, string> Getoptions()
+        {
+            var options = _userRepository.GetAll().ToDictionary(x => x.Id, x => x.Username);
+            return options;
         }
 
         public void UpdateLastLogin(string username)

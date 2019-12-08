@@ -75,6 +75,11 @@ namespace ATV_Advertisment.Common
             public static string TotalCost = "Thành tiền (VNĐ)";
             public static string ProductName = "Tên sản phẩm";
             public static string OrderNumber = "Thứ tự";
+            //Logging
+            public static string Content = "Nội dung";
+            public static string ActUser = "Tác giả";
+            public static string ActType = "Loại";
+            public static string ActDate = "Ngày";
         }
 
         public static class BusinessLogType
