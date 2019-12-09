@@ -51,6 +51,7 @@ namespace ATV_Advertisment.Services
             SmtpServer.EnableSsl = true;
 
             SmtpServer.Send(mail);
+            attachment.Dispose();
         }
     }
 }

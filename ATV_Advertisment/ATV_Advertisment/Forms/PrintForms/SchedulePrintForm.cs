@@ -20,12 +20,6 @@ namespace ATV_Advertisment.Forms.PrintForms
         public SchedulePrintForm()
         {
             InitializeComponent();
-
-            System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings();
-            ps.Landscape = true;
-            ps.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
-            ps.PaperSize.RawKind = (int)System.Drawing.Printing.PaperKind.A4;
-            rptViewer.SetPageSettings(ps);
             LoadEmails();
         }
 
@@ -136,7 +130,7 @@ namespace ATV_Advertisment.Forms.PrintForms
             string extension = string.Empty;
             string exeFolder = Application.StartupPath;
             string reportPath = Path.Combine(exeFolder, @"Reports\ProductSchedule.rdlc");
-            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.xlsx");
+            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.doc");
 
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
             {
@@ -170,13 +164,29 @@ namespace ATV_Advertisment.Forms.PrintForms
                     rptViewer.RefreshReport();
 
                     //
-                    byte[] bytes = rptViewer.LocalReport.Render("EXCELOPENXML", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                    byte[] bytes = rptViewer.LocalReport.Render("WORD", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                     if (bytes != null)
                     {
-                        using (FileStream fileStream = new FileStream(outputReportPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                        BinaryWriter writer = null;
+
+                        try
                         {
-                            fileStream.Write(bytes, 0, bytes.Length);
+                            writer = new BinaryWriter(File.OpenWrite(outputReportPath));
+                            writer.Write(bytes);
+                            writer.Flush();
                         }
+                        catch
+                        {
+                            throw;
+                        }
+                        finally
+                        {
+                            if(writer != null)
+                            {
+                                writer.Close();
+                            }
+                        }
+
 
                         string fromMail = txtFromEmail.Text.Trim();
                         string fromPassword = txtFromPassword.Text.Trim();
@@ -186,6 +196,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "Lịch quảng cáo ngày " + this.dtpDate.Value.Day + "/" + this.dtpDate.Value.Month + "/" + this.dtpDate.Value.Year,
                             "Nội dung trong file đính kèm",
                             outputReportPath);
+                        emailService = null;
                         Logging.LogBusiness(string.Format("{0} {1} {2}",
                             Common.Session.GetUserName(),
                             Common.Constants.LogAction.ExportData, "lịch phát sóng ngày " + dtpDate.Value + " và gửi mail cho " + txtToEmail.Text),

@@ -138,7 +138,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>1.37375in</Top>
-            <Left>2.81125in</Left>
+            <Left>2.66542in</Left>
             <Height>0.25in</Height>
             <Width>1.42708in</Width>
             <ZIndex>2</ZIndex>
@@ -172,7 +172,7 @@
             <Top>1.37375in</Top>
             <Left>4.9675in</Left>
             <Height>0.25in</Height>
-            <Width>1.78125in</Width>
+            <Width>1.9375in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -202,9 +202,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
             <Top>1.37375in</Top>
-            <Left>7.3425in</Left>
+            <Left>7.18625in</Left>
             <Height>0.25in</Height>
-            <Width>1.57291in</Width>
+            <Width>1.48958in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -925,12 +925,14 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>6.03125in</Height>
+        <Height>2.67708in</Height>
         <Style />
       </Body>
       <Width>10.56124in</Width>
       <Page>
-        <LeftMargin>1in</LeftMargin>
+        <PageHeight>8.27in</PageHeight>
+        <PageWidth>11.69in</PageWidth>
+        <LeftMargin>0.5in</LeftMargin>
         <RightMargin>1in</RightMargin>
         <TopMargin>1in</TopMargin>
         <BottomMargin>1in</BottomMargin>
