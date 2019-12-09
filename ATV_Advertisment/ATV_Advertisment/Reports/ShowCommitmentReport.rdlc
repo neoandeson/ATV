@@ -340,7 +340,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3136,10 +3135,10 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox380</rd:DefaultName>
-            <Top>2.26958in</Top>
+            <Top>2.21402in</Top>
             <Left>0.60561in</Left>
             <Height>0.25in</Height>
-            <Width>1in</Width>
+            <Width>1.10069in</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -3166,10 +3165,10 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox383</rd:DefaultName>
-            <Top>2.51958in</Top>
+            <Top>2.46402in</Top>
             <Left>0.60561in</Left>
             <Height>0.25in</Height>
-            <Width>1in</Width>
+            <Width>1.10069in</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -3196,10 +3195,10 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox384</rd:DefaultName>
-            <Top>2.76958in</Top>
+            <Top>2.71402in</Top>
             <Left>0.60561in</Left>
             <Height>0.25in</Height>
-            <Width>1in</Width>
+            <Width>1.10069in</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -3226,10 +3225,10 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox385</rd:DefaultName>
-            <Top>3.03347in</Top>
+            <Top>2.96402in</Top>
             <Left>0.60561in</Left>
             <Height>0.25in</Height>
-            <Width>1in</Width>
+            <Width>1.10069in</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -3258,8 +3257,8 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>strProductName</rd:DefaultName>
-            <Top>2.26958in</Top>
-            <Left>1.60561in</Left>
+            <Top>2.21402in</Top>
+            <Left>1.7063in</Left>
             <Height>0.25in</Height>
             <Width>5.27632in</Width>
             <ZIndex>13</ZIndex>
@@ -3288,8 +3287,8 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>strFileName</rd:DefaultName>
-            <Top>2.53347in</Top>
-            <Left>1.60561in</Left>
+            <Top>2.46402in</Top>
+            <Left>1.7063in</Left>
             <Height>0.25in</Height>
             <Width>5.27632in</Width>
             <ZIndex>14</ZIndex>
@@ -3318,8 +3317,8 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>strLength</rd:DefaultName>
-            <Top>2.78347in</Top>
-            <Left>1.61949in</Left>
+            <Top>2.71402in</Top>
+            <Left>1.7063in</Left>
             <Height>0.25in</Height>
             <Width>1.93235in</Width>
             <ZIndex>15</ZIndex>
@@ -3348,8 +3347,8 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>strFromToDate</rd:DefaultName>
-            <Top>3.03347in</Top>
-            <Left>1.61949in</Left>
+            <Top>2.96402in</Top>
+            <Left>1.7063in</Left>
             <Height>0.25in</Height>
             <Width>2.64191in</Width>
             <ZIndex>16</ZIndex>
@@ -3440,10 +3439,10 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox392</rd:DefaultName>
-            <Top>5.0925in</Top>
-            <Left>9.55778in</Left>
+            <Top>4.9675in</Top>
+            <Left>9.44324in</Left>
             <Height>0.25in</Height>
-            <Width>3.03125in</Width>
+            <Width>3.59946in</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -3472,8 +3471,8 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox393</rd:DefaultName>
-            <Top>5.37028in</Top>
-            <Left>10.68625in</Left>
+            <Top>5.24528in</Top>
+            <Left>10.57171in</Left>
             <Height>0.25in</Height>
             <Width>0.81889in</Width>
             <ZIndex>20</ZIndex>
@@ -3488,15 +3487,15 @@ AN GIANG RADIO AND TELEVISION SERVICE CENTER</Value>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.77083in</Height>
+        <Height>5.76041in</Height>
         <Style />
       </Body>
       <Width>13.53in</Width>
       <Page>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>8.27in</PageHeight>
+        <PageWidth>11.69in</PageWidth>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>

@@ -24,12 +24,6 @@ namespace ATV_Advertisment.Forms.PrintForms
             InitializeComponent();
             LoadCboCustomerCode();
 
-            System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings();
-            ps.Landscape = true;
-            ps.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
-            ps.PaperSize.RawKind = (int)System.Drawing.Printing.PaperKind.A4;
-            rptViewer.SetPageSettings(ps);
-
             dtpMonth.Format = DateTimePickerFormat.Custom;
             dtpMonth.CustomFormat = "MM/yyyy";
             dtpMonth.ShowUpDown = true;
