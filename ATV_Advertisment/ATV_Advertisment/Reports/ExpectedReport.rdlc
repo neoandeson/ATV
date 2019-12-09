@@ -541,11 +541,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>4.25in</Height>
+        <Height>3.03125in</Height>
         <Style />
       </Body>
       <Width>9.79167in</Width>
       <Page>
+        <PageHeight>8.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
         <TopMargin>1in</TopMargin>
