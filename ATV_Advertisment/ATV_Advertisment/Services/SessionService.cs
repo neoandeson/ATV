@@ -102,7 +102,7 @@ namespace ATV_Advertisment.Services
 
         public Dictionary<string, string> Getoptions()
         {
-            var options = _SessionRepository.GetAll().ToDictionary(x => x.Code, x => string.Format("{0} | {1}", x.Code, x.Name));
+            var options = _SessionRepository.Get(s => s.StatusId == CommonStatus.ACTIVE).ToDictionary(x => x.Code, x => string.Format("{0} | {1}", x.Code, x.Name));
             return options;
         }
 

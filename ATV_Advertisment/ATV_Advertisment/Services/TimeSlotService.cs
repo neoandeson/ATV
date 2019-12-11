@@ -16,6 +16,7 @@ namespace ATV_Advertisment.Services
         List<TimeSlotViewModel> GetAllForDetailList();
         Dictionary<int, string> Getoptions();
         bool IsExistCodeAndFromHour(string code, int fromHour);
+        bool IsExistCode(string code);
         int DeleteTimeSlot(int id);
         int AddTimeSlot(TimeSlot input);
         int EditTimeSlot(TimeSlot input);
@@ -209,6 +210,18 @@ namespace ATV_Advertisment.Services
             }
 
             return options;
+        }
+
+        public bool IsExistCode(string code)
+        {
+            bool result = false;
+            var timeSlot = _TimeSlotRepository.Get(t => t.Code == code && t.StatusId == CommonStatus.ACTIVE).FirstOrDefault();
+            if(timeSlot != null)
+            {
+                result = true;
+            }
+
+            return result;
         }
     }
 }

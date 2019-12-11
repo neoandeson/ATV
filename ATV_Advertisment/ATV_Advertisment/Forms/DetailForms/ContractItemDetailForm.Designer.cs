@@ -281,6 +281,7 @@
             this.adgv.FilterStringChanged += new System.EventHandler(this.adgv_FilterStringChanged);
             this.adgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.adgv_CellClick);
             this.adgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adgv_DataBindingComplete);
+            this.adgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.adgv_RowPostPaint);
             // 
             // ContractItemDetailForm
             // 

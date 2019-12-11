@@ -28,6 +28,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private SessionService _sessionService = null;
         private DurationService _durationService = null;
         private ShowTypeService _showTypeService = null;
+        private bool LoadingData = true;
 
         public TimeSlotDetailForm(TimeSlot inputModel)
         {
@@ -117,6 +118,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         txtName.Text = model.Name;
                         txtFromHour.Text = Utilities.GetHourFromHourInt(model.FromHour).ToString();
                         txtFromMinute.Text = Utilities.GetMinuteFromHourInt(model.FromHour).ToString();
+                        txtCode.ReadOnly = true;
 
                         LoadDGV();
                     }
@@ -125,12 +127,12 @@ namespace ATV_Advertisment.Forms.DetailForms
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 _timeSlotService = null;
+                LoadingData = false;
             }
         }
 
@@ -142,45 +144,52 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 _timeSlotService = new TimeSlotService();
 
-                if (model == null)
+                bool isExistCode = _timeSlotService.IsExistCode(txtCode.Text.Trim());
+                if (isExistCode)
                 {
-                    //Add
-                    model = new TimeSlot()
+                    Utilities.ShowError("Mã " + txtCode.Text.Trim() + " đã tồn tại");
+                } else
+                {
+                    if (model == null)
                     {
-                        Code = txtCode.Text,
-                        Name = txtName.Text,
-                        FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
-                        SessionCode = cboSession.SelectedValue.ToString(),
-                    };
-                    result = _timeSlotService.CreateTimeSlot(model);
-                    if (result != null)
-                    {
-                        model = result;
-                        Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
-                        gbCostRule.Visible = true;
-                        Logging.LogBusiness(string.Format("{0} {1} {2}",
-                            Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Create, "thời điểm phát " + model.Code),
-                            Common.Constants.BusinessLogType.Create);
+                        //Add
+                        model = new TimeSlot()
+                        {
+                            Code = txtCode.Text,
+                            Name = txtName.Text,
+                            FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text),
+                            SessionCode = cboSession.SelectedValue.ToString(),
+                        };
+                        result = _timeSlotService.CreateTimeSlot(model);
+                        if (result != null)
+                        {
+                            model = result;
+                            Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                            gbCostRule.Visible = true;
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Create, "thời điểm phát " + model.Code),
+                                Common.Constants.BusinessLogType.Create);
+                        }
                     }
-                }
-                else
-                {
-                    //Edit
-                    int editResult = CRUDStatusCode.ERROR;
-                    model.Code = txtCode.Text;
-                    model.Name = txtName.Text;
-                    model.FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text);
-                    model.SessionCode = cboSession.SelectedValue.ToString();
-
-                    editResult = _timeSlotService.EditTimeSlot(model);
-                    if (editResult == CRUDStatusCode.SUCCESS)
+                    else
                     {
-                        Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
-                        Logging.LogBusiness(string.Format("{0} {1} {2}",
-                            Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Update, "thời điểm phát " + model.Code),
-                            Common.Constants.BusinessLogType.Update);
+                        //Edit
+                        int editResult = CRUDStatusCode.ERROR;
+                        model.Code = txtCode.Text;
+                        model.Name = txtName.Text;
+                        model.FromHour = Utilities.GetHourFromHourString(txtFromHour.Text, txtFromMinute.Text);
+                        model.SessionCode = cboSession.SelectedValue.ToString();
+
+                        editResult = _timeSlotService.EditTimeSlot(model);
+                        if (editResult == CRUDStatusCode.SUCCESS)
+                        {
+                            Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Update, "thời điểm phát " + model.Code),
+                                Common.Constants.BusinessLogType.Update);
+                        }
                     }
                 }
             }
@@ -371,12 +380,12 @@ namespace ATV_Advertisment.Forms.DetailForms
                         LoadDGV();
                         Logging.LogBusiness(string.Format("{0} {1} {2}",
                             Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Create, "giá tiền " + costRule.Length + " loại hình " + costRule.ShowTypeId + " của thời điểm " + model.Code),
+                            Common.Constants.LogAction.Create, "giá tiền " + newCodeRule.Length + " loại hình " + newCodeRule.ShowTypeId + " của thời điểm " + model.Code),
                             Common.Constants.BusinessLogType.Create);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -419,6 +428,31 @@ namespace ATV_Advertisment.Forms.DetailForms
         private void adgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             adgv.ClearSelection();
+        }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+            _timeSlotService = new TimeSlotService();
+
+            try
+            {
+                if (!LoadingData)
+                {
+                    bool isExist = _timeSlotService.IsExistCode(txtCode.Text.Trim());
+                    if (isExist)
+                    {
+                        Utilities.ShowError("Mã " + txtCode.Text.Trim() + " đã tồn tại");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                _timeSlotService = null;
+            }
         }
     }
 }

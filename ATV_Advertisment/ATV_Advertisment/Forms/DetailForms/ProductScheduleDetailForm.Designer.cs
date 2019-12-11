@@ -31,6 +31,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         private void InitializeComponent()
         {
             this.gbDetail = new System.Windows.Forms.GroupBox();
+            this.cboPosition = new System.Windows.Forms.ComboBox();
             this.lblPosition = new System.Windows.Forms.Label();
             this.txtSumCost = new TControls.MoneyTextBox();
             this.lblTotalCost = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblShowDate = new System.Windows.Forms.Label();
             this.gbControl = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.cboPosition = new System.Windows.Forms.ComboBox();
             this.gbDetail.SuspendLayout();
             this.gbControl.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,14 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.gbDetail.TabIndex = 0;
             this.gbDetail.TabStop = false;
             this.gbDetail.Text = "Thông tin lịch";
+            // 
+            // cboPosition
+            // 
+            this.cboPosition.FormattingEnabled = true;
+            this.cboPosition.Location = new System.Drawing.Point(517, 76);
+            this.cboPosition.Name = "cboPosition";
+            this.cboPosition.Size = new System.Drawing.Size(72, 28);
+            this.cboPosition.TabIndex = 14;
             // 
             // lblPosition
             // 
@@ -148,6 +156,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             this.txtQuantity.Location = new System.Drawing.Point(155, 81);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(72, 26);
             this.txtQuantity.TabIndex = 10;
             this.txtQuantity.Text = "1";
@@ -230,14 +239,6 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // cboPosition
-            // 
-            this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Location = new System.Drawing.Point(517, 76);
-            this.cboPosition.Name = "cboPosition";
-            this.cboPosition.Size = new System.Drawing.Size(72, 28);
-            this.cboPosition.TabIndex = 14;
             // 
             // ProductScheduleDetailForm
             // 

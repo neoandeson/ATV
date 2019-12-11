@@ -126,7 +126,7 @@ namespace ATV_Advertisment.Forms.ListForms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            CustomerService customerService = null;
+            CustomerService customerService = new CustomerService();
 
             try
             {
@@ -135,6 +135,7 @@ namespace ATV_Advertisment.Forms.ListForms
                     bool result = customerService.DeleteCustomer(customer.Id);
                     if (result)
                     {
+                        LoadDGV();
                         Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
                         Logging.LogBusiness(string.Format("{0} {1} {2}",
                             Common.Session.GetUserName(),
