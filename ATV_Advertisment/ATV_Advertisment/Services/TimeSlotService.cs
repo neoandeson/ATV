@@ -69,7 +69,8 @@ namespace ATV_Advertisment.Services
             {
                 bool isExisted = _TimeSlotRepository.Exist(t => t.Code == input.Code &&
                                                                 t.Name == input.Name &&
-                                                                t.FromHour == input.FromHour);
+                                                                t.FromHour == input.FromHour &&
+                                                                t.StatusId == CommonStatus.ACTIVE);
                 if (!isExisted)
                 {
                     input.StatusId = CommonStatus.ACTIVE;

@@ -89,6 +89,7 @@ namespace ATV_Advertisment.Services
             {
                 CostRule.Length = input.Length;
                 CostRule.Price = input.Price;
+                CostRule.ShowTypeId = input.ShowTypeId;
 
                 _CostRuleRepository.Update(CostRule);
                 result = CRUDStatusCode.SUCCESS;

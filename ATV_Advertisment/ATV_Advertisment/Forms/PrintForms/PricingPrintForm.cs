@@ -110,7 +110,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "FROM[TimeSlot] ts " +
                             "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                             "INNER JOIN[CostRule] cr on ts.Id = cr.TimeSlotId " +
-                            "WHERE cr.ShowTypeId = 1 " +
+                            "WHERE cr.ShowTypeId = 2 " +
                             ") " +
                             "src " +
                             "pivot ( " +
@@ -131,7 +131,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "FROM[TimeSlot] ts " +
                             "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                             "INNER JOIN[CostRule] cr on ts.Id = cr.TimeSlotId " +
-                            "WHERE cr.ShowTypeId = 2 " +
+                            "WHERE cr.ShowTypeId = 3 " +
                             ") " +
                             "src " +
                             "pivot ( " +
@@ -164,7 +164,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "FROM[TimeSlot] ts " +
                             "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                             "INNER JOIN[CostRule] cr on ts.Id = cr.TimeSlotId " +
-                            "WHERE cr.ShowTypeId = 6 " +
+                            "WHERE cr.ShowTypeId = 5 " +
                             ") " +
                             "src " +
                             "pivot ( " +
@@ -182,7 +182,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "FROM[TimeSlot] ts " +
                             "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                             "INNER JOIN[CostRule] cr on ts.Id = cr.TimeSlotId " +
-                            "WHERE cr.ShowTypeId = 7";
+                            "WHERE cr.ShowTypeId = 6";
                         var cmdFMNotification = new SqlCommand(queryFMNotification, con);
 
                         da = new SqlDataAdapter(cmdFMNotification);
