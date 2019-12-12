@@ -51,23 +51,37 @@ namespace ATV_Advertisment.Forms.AdminForms
 
             try
             {
-                bool existed = CheckExistUsername();
-                userService = new UserService();
-                if (existed)
+                string username = txtUsername.Text.Trim();
+                string fullName = txtFullName.Text.Trim();
+
+                if (username.Length < 4)
                 {
-                    Utilities.ShowError("Username đã tồn tại");
+                    Utilities.ShowMessage("Độ dài username tối thiểu là 4 ký tự");
+                } else if (fullName.Length < 4)
+                {
+                    Utilities.ShowMessage("Độ dài tên tối thiểu là 4 ký tự");
                 } else
                 {
-                    string username = txtUsername.Text.Trim();
-                    string fullName = txtFullName.Text.Trim();
-
-                    userService.CreateUser(username, fullName);
-                    Utilities.ShowMessage("Đã tạo tài khoản username: " + username + " với mật khẩu mặc định.");
+                    bool existed = CheckExistUsername();
+                    userService = new UserService();
+                    if (existed)
+                    {
+                        Utilities.ShowError("Username đã tồn tại");
+                    }
+                    else
+                    {
+                        userService.CreateUser(username, fullName);
+                        Utilities.ShowMessage("Đã tạo tài khoản username: " + username + " với mật khẩu mặc định.");
+                        Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Create, "tài khoản username:" + username),
+                                Common.Constants.BusinessLogType.Create);
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {

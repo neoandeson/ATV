@@ -70,7 +70,7 @@ namespace ATV_Advertisment.Services
                 User user = new User()
                 {
                     Name = fullName,
-                    Code = fullName.Substring(0, 6),
+                    Code = fullName.Substring(0, 4),
                     CreateDate = Utilities.GetServerDateTimeNow(),
                     LastUpdateBy = Common.Session.GetId(),
                     Password = password,

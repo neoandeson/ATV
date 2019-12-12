@@ -50,7 +50,7 @@
             this.txtUsername.MaxLength = 50;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(304, 26);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.Validated += new System.EventHandler(this.txtUsername_Validated);
             // 
             // btnAdd
@@ -69,7 +69,7 @@
             this.label1.Location = new System.Drawing.Point(17, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 20);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Họ tên";
             // 
             // txtFullName
@@ -78,7 +78,7 @@
             this.txtFullName.MaxLength = 50;
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(304, 26);
-            this.txtFullName.TabIndex = 5;
+            this.txtFullName.TabIndex = 2;
             // 
             // CreateAccountForm
             // 
