@@ -209,7 +209,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                                 reportParameters.Add(new ReportParameter("strMonth", string.Format("{0}/{1}", this.dtpMonth.Value.Month, this.dtpMonth.Value.Year)));
                                 reportParameters.Add(new ReportParameter("strCustAddress", customer.Address));
                                 reportParameters.Add(new ReportParameter("strCustPhone", customer.Phone1 + customer.Phone2));
-                                reportParameters.Add(new ReportParameter("strCustFax", customer.Fax));
+                                reportParameters.Add(new ReportParameter("strCustFax", customer.Fax + " " ));
                                 reportParameters.Add(new ReportParameter("strCustEmail", customer.Email == null ? "" : customer.Email));
                                 reportParameters.Add(new ReportParameter("strSendTo", txtSendTo.Text));
                                 reportParameters.Add(new ReportParameter("strProductName", contractItem.ProductName));
