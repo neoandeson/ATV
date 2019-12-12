@@ -342,6 +342,10 @@ namespace ATV_Advertisment.Common
                         LoggingForm loggingForm = new LoggingForm();
                         form = (Form)loggingForm;
                         break;
+                    case "Tạo tài khoản":
+                        CreateAccountForm createAccountForm = new CreateAccountForm();
+                        form = (Form)createAccountForm;
+                        break;
 
                     case "Logout":
                         Session.Logout();

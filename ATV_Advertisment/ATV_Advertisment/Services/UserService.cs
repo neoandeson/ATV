@@ -15,15 +15,19 @@ namespace ATV_Advertisment.Services
         void UpdateLastLogin(string username);
         bool ChangePassword(int id, string username, string newPassword);
         Dictionary<int, string> Getoptions();
+        bool CheckExistUserName(string username);
+        bool CreateUser(string username, string fullName);
     }
 
     public class UserService : IUserService
     {
         private readonly UserRepository _userRepository;
+        private readonly RoleRepository _roleRepository;
 
         public UserService()
         {
             _userRepository = new UserRepository();
+            _roleRepository = new RoleRepository();
         }
 
         public bool ChangePassword(int id, string username, string newPassword)
@@ -40,6 +44,45 @@ namespace ATV_Advertisment.Services
                 result = true;
             }
 
+            return result;
+        }
+
+        public bool CheckExistUserName(string username)
+        {
+            bool result = false;
+            var user = _userRepository.Get(u => u.Username == username).FirstOrDefault();
+            if(user != null)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public bool CreateUser(string username, string fullName)
+        {
+            bool result = false;
+            HashHelper hashHelper = new HashHelper();
+            string password = hashHelper.HashPassword("1234");
+            Role role = _roleRepository.Get(r => r.Name == "staff").FirstOrDefault();
+            if(role != null)
+            {
+                User user = new User()
+                {
+                    Name = fullName,
+                    Code = fullName.Substring(0, 6),
+                    CreateDate = Utilities.GetServerDateTimeNow(),
+                    LastUpdateBy = Common.Session.GetId(),
+                    Password = password,
+                    StatusId = Constants.CommonStatus.ACTIVE,
+                    RoleId = role.Id,
+                    LastUpdateDate = Utilities.GetServerDateTimeNow(),
+                    Username = username
+                };
+
+                _userRepository.Add(user);
+                result = true;
+            }
             return result;
         }
 
