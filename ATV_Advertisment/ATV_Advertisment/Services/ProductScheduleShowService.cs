@@ -19,6 +19,7 @@ namespace ATV_Advertisment.Services
         int DeleteProductScheduleShow(int id);
         int AddProductScheduleShow(ProductScheduleShow input);
         int EditProductScheduleShow(ProductScheduleShow input);
+        int EditProductFileName(int contractItemId, string productName);
     }
 
     public class ProductScheduleShowService : IProductScheduleShowService
@@ -168,12 +169,13 @@ namespace ATV_Advertisment.Services
 
         public List<SortProductScheduleViewModel> GetAllVMSearchingList(SearchPSSModel searchModel)
         {
-            var tmp = _ProductScheduleShowRepository.Get(s => s.ShowDate.Day == searchModel.SearchDate.Day 
+            var tmp = _ProductScheduleShowRepository.Get(s => s.ShowDate.Day == searchModel.SearchDate.Day
                                                                 && s.ShowDate.Month == searchModel.SearchDate.Month
                                                                 && s.ShowDate.Year == searchModel.SearchDate.Year)
                 .OrderBy(s => s.ShowTimeInt)
                 .ThenBy(s => s.OrderNumber)
-                .Select(s => new SortProductScheduleViewModel {
+                .Select(s => new SortProductScheduleViewModel
+                {
                     Id = s.Id,
                     ContractDetailId = s.ContractDetailId,
                     ShowTime = s.ShowTime,
@@ -186,6 +188,23 @@ namespace ATV_Advertisment.Services
                     TimeSlotLength = s.TimeSlotLength
                 }).ToList();
             return tmp;
+        }
+
+        public int EditProductFileName(int contractItemId, string productName)
+        {
+            int result = CRUDStatusCode.ERROR;
+                if(contractItemId != 0)
+                {
+                    List<ProductScheduleShow> productScheduleShows = _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractItemId).ToList();
+                    foreach (var pss in productScheduleShows)
+                    {
+                        pss.ProductName = productName;
+                        _ProductScheduleShowRepository.Update(pss);
+                    }
+                }
+                result = CRUDStatusCode.SUCCESS;
+
+            return result;
         }
     }
 }

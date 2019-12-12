@@ -118,12 +118,19 @@ namespace ATV_Advertisment.Services
             if (ContractItem != null)
             {
                 ContractItem.ProductName = input.ProductName;
+                ContractItem.FileName = input.FileName;
                 ContractItem.TotalCost = input.TotalCost;
+                ContractItem.ShowTypeId = input.ShowTypeId;
+                ContractItem.DurationSecond = input.DurationSecond;
 
                 ContractItem.LastUpdateDate = Utilities.GetServerDateTimeNow();
                 ContractItem.LastUpdateBy = Common.Session.GetId();
                 _contractItemRepository.Update(ContractItem);
                 result = CRUDStatusCode.SUCCESS;
+            }
+            if(result == CRUDStatusCode.SUCCESS)
+            {
+                _productScheduleShowService.EditProductFileName(ContractItem.Id, ContractItem.FileName);
             }
 
             return result;

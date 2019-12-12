@@ -214,6 +214,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                 else
                 {
                     Utilities.ShowMessage(CommonMessage.CUSTOMER_NOTFOUND);
+                    txtCustomerName.Text = string.Empty;
+                    txtCode.Text = string.Empty;
                 }
             }
             catch (Exception)
