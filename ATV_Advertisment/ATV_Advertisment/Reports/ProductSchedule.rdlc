@@ -75,14 +75,13 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.17583in</Top>
-            <Left>2.91542in</Left>
+            <Left>3.57166in</Left>
             <Height>0.25in</Height>
-            <Width>4.11458in</Width>
+            <Width>4.875in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
@@ -106,9 +105,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox22</rd:DefaultName>
             <Top>1.37375in</Top>
-            <Left>0.89458in</Left>
+            <Left>0.18625in</Left>
             <Height>0.25in</Height>
-            <Width>1.0625in</Width>
+            <Width>1in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -133,21 +132,22 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>1.37375in</Top>
-            <Left>2.66542in</Left>
+            <Left>1.18625in</Left>
             <Height>0.25in</Height>
-            <Width>1.42708in</Width>
+            <Width>2.38541in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
@@ -165,14 +165,16 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>1.37375in</Top>
-            <Left>4.9675in</Left>
+            <Left>3.57166in</Left>
             <Height>0.25in</Height>
-            <Width>1.9375in</Width>
+            <Width>4.875in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -202,15 +204,14 @@
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
             <Top>1.37375in</Top>
-            <Left>7.18625in</Left>
+            <Left>8.44666in</Left>
             <Height>0.25in</Height>
-            <Width>1.48958in</Width>
+            <Width>1.5625in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
@@ -220,10 +221,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.05208in</Width>
+                  <Width>4.20833in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.53125in</Width>
+                  <Width>0.77083in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -427,7 +428,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1.95833in</Size>
+                        <Size>2.38541in</Size>
                         <CellContents>
                           <Textbox Name="Textbox26">
                             <CanGrow>true</CanGrow>
@@ -571,7 +572,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>1.95833in</Size>
+                        <Size>2.38541in</Size>
                         <CellContents>
                           <Textbox Name="TimeSlot1">
                             <CanGrow>true</CanGrow>
@@ -671,9 +672,9 @@
             </TablixRowHierarchy>
             <DataSetName>dsProductSchedule</DataSetName>
             <Top>0.5925in</Top>
-            <Left>0.4675in</Left>
+            <Left>0.18625in</Left>
             <Height>0.5in</Height>
-            <Width>8.20833in</Width>
+            <Width>9.03125in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -685,7 +686,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.53125in</Width>
+                  <Width>0.16667in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -785,7 +786,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.67708in</Size>
+                    <Size>0.85416in</Size>
                     <CellContents>
                       <Textbox Name="Textbox57">
                         <CanGrow>true</CanGrow>
@@ -860,7 +861,7 @@
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>0.67708in</Size>
+                            <Size>0.85416in</Size>
                             <CellContents>
                               <Textbox Name="TimeSlotLength">
                                 <CanGrow>true</CanGrow>
@@ -914,9 +915,9 @@
             </TablixRowHierarchy>
             <DataSetName>dsProductSchedule</DataSetName>
             <Top>0.5925in</Top>
-            <Left>8.67583in</Left>
+            <Left>9.155in</Left>
             <Height>0.5in</Height>
-            <Width>1.20833in</Width>
+            <Width>1.02083in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -925,15 +926,15 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.67708in</Height>
+        <Height>2.08333in</Height>
         <Style />
       </Body>
       <Width>10.56124in</Width>
       <Page>
         <PageHeight>8.27in</PageHeight>
         <PageWidth>11.69in</PageWidth>
-        <LeftMargin>0.5in</LeftMargin>
-        <RightMargin>1in</RightMargin>
+        <LeftMargin>0.25in</LeftMargin>
+        <RightMargin>0.25in</RightMargin>
         <TopMargin>1in</TopMargin>
         <BottomMargin>1in</BottomMargin>
         <Style />

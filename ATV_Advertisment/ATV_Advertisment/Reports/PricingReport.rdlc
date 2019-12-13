@@ -634,6 +634,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -668,6 +669,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -702,6 +704,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -736,6 +739,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -770,6 +774,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -804,6 +809,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -838,6 +844,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1001,11 +1008,15 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!FromHour.Value \ 100 &amp; "h" &amp; Fields!FromHour.Value Mod 100</Value>
+                                  <Value>= IIF ((Fields!FromHour.Value Mod 100) &lt; 10,
+Fields!FromHour.Value \ 100 &amp; "h0" &amp; (Fields!FromHour.Value Mod 100),
+Fields!FromHour.Value \ 100 &amp; "h" &amp; (Fields!FromHour.Value Mod 100))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>FromHour</rd:DefaultName>
@@ -1278,7 +1289,7 @@
             <Top>1.74527in</Top>
             <Left>7.05083in</Left>
             <Height>0.25in</Height>
-            <Width>2in</Width>
+            <Width>1.98958in</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -1349,7 +1360,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             <Top>3.17583in</Top>
             <Left>0.73833in</Left>
             <Height>1.3125in</Height>
-            <Width>8.3125in</Width>
+            <Width>8.30208in</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -1407,6 +1418,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1441,6 +1453,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1475,6 +1488,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1509,6 +1523,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1702,7 +1717,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             <Top>5.04389in</Top>
             <Left>0.7175in</Left>
             <Height>0.25in</Height>
-            <Width>8.33333in</Width>
+            <Width>8.32291in</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -1763,6 +1778,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1798,6 +1814,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1833,6 +1850,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1881,6 +1899,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1928,6 +1947,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2205,6 +2225,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2241,6 +2262,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2496,6 +2518,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2528,6 +2551,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2562,6 +2586,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2596,6 +2621,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2777,13 +2803,13 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.7882in</Width>
+                  <Width>0.79167in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.71527in</Width>
+                  <Width>3.71874in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.80902in</Width>
+                  <Width>3.82291in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2852,6 +2878,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2884,6 +2911,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2918,6 +2946,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -3051,9 +3080,9 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             </TablixRowHierarchy>
             <DataSetName>dsFMNotification</DataSetName>
             <Top>8.16541in</Top>
-            <Left>0.72792in</Left>
+            <Left>0.7175in</Left>
             <Height>0.75in</Height>
-            <Width>8.31249in</Width>
+            <Width>8.33332in</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -3077,9 +3106,9 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             </Paragraphs>
             <rd:DefaultName>Textbox96</rd:DefaultName>
             <Top>8.91541in</Top>
-            <Left>0.74875in</Left>
+            <Left>0.7175in</Left>
             <Height>0.38542in</Height>
-            <Width>8.29166in</Width>
+            <Width>8.32291in</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -3109,9 +3138,9 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             </Paragraphs>
             <rd:DefaultName>Textbox97</rd:DefaultName>
             <Top>9.30083in</Top>
-            <Left>0.72792in</Left>
+            <Left>0.7175in</Left>
             <Height>0.29167in</Height>
-            <Width>1.38542in</Width>
+            <Width>1.39584in</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -3130,7 +3159,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                   <Width>4.51389in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.80902in</Width>
+                  <Width>3.81944in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3220,7 +3249,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             <Top>9.5925in</Top>
             <Left>0.7175in</Left>
             <Height>0.22396in</Height>
-            <Width>8.32291in</Width>
+            <Width>8.33333in</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -3277,9 +3306,9 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
             </Paragraphs>
             <rd:DefaultName>Textbox105</rd:DefaultName>
             <Top>10.10291in</Top>
-            <Left>0.72792in</Left>
+            <Left>0.7175in</Left>
             <Height>0.57292in</Height>
-            <Width>8.32291in</Width>
+            <Width>8.33333in</Width>
             <ZIndex>24</ZIndex>
             <Style>
               <Border>
@@ -3469,9 +3498,9 @@ Bảng giá này có thể thay đổi trong quá trình thực hiện, Đài Ph
             </Paragraphs>
             <rd:DefaultName>Textbox111</rd:DefaultName>
             <Top>12.57514in</Top>
-            <Left>0.72792in</Left>
+            <Left>0.7175in</Left>
             <Height>0.25in</Height>
-            <Width>3.48958in</Width>
+            <Width>3.5in</Width>
             <ZIndex>30</ZIndex>
             <Style>
               <Border>
@@ -3635,9 +3664,9 @@ SCTV và các hệ thống IPTV như MyTV, Viettel, FPT. Do vậy, kênh truyề
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox115</rd:DefaultName>
-            <Top>15.05083in</Top>
-            <Left>5.72792in</Left>
-            <Height>0.34375in</Height>
+            <Top>14.91318in</Top>
+            <Left>5.61333in</Left>
+            <Height>0.27431in</Height>
             <Width>3.4375in</Width>
             <ZIndex>34</ZIndex>
             <Style>
@@ -3667,27 +3696,71 @@ SCTV và các hệ thống IPTV như MyTV, Viettel, FPT. Do vậy, kênh truyề
                   <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox116</rd:DefaultName>
-            <Top>15.39458in</Top>
-            <Left>5.72792in</Left>
-            <Height>0.26042in</Height>
-            <Width>3.4375in</Width>
-            <ZIndex>35</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="strDirectorName">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
@@ -3702,12 +3775,12 @@ SCTV và các hệ thống IPTV như MyTV, Viettel, FPT. Do vậy, kênh truyề
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>strDirectorName</rd:DefaultName>
-            <Top>17.01958in</Top>
-            <Left>5.72792in</Left>
-            <Height>0.25in</Height>
+            <rd:DefaultName>Textbox116</rd:DefaultName>
+            <Top>15.18749in</Top>
+            <Left>5.61333in</Left>
+            <Height>1.30903in</Height>
             <Width>3.4375in</Width>
-            <ZIndex>36</ZIndex>
+            <ZIndex>35</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3719,7 +3792,7 @@ SCTV và các hệ thống IPTV như MyTV, Viettel, FPT. Do vậy, kênh truyề
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>17.92708in</Height>
+        <Height>16.87499in</Height>
         <Style />
       </Body>
       <Width>10.08333in</Width>

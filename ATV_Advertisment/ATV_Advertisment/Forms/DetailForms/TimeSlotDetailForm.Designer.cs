@@ -242,7 +242,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.cboShowType.FormattingEnabled = true;
             this.cboShowType.Location = new System.Drawing.Point(122, 67);
             this.cboShowType.Name = "cboShowType";
-            this.cboShowType.Size = new System.Drawing.Size(152, 28);
+            this.cboShowType.Size = new System.Drawing.Size(275, 28);
             this.cboShowType.TabIndex = 7;
             // 
             // lblShowType
