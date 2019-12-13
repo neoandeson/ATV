@@ -17,25 +17,22 @@ namespace ATV_Advertisment.Forms.SettingForms
         {
             InitializeComponent();
 
-            rtb.Text = "A. Tổng quan \n" +
+            rtb.Text = "A: Tổng quan \n" +
                 "   A1.Menu Danh mục: cấu hình thông tin sử dụng(khách hàng, loại hình quảng cáo, buổi phát, thời điểm, thời lượng, giảm giá). \n" +
                 "   A2.Menu Nhập liệu: nhập thông tin của hợp đồng quảng cáo. \n" +
                 "   A3.Menu in ấn: xuất ra báo cáo(lịch phát sóng, doanh thu, đối chiếu công nợ, chứng nhận phát sóng, dự trù thời lượng, lịch đăng ký quảng cáo, bảng giá quảng cáo). \n" +
-                "B.Mô tả \n" +
+                "B: Mô tả \n" +
                 "   B1.Một thời điểm phát bao gồm thông tin của buổi phát, thời lượng, loại quảng cáo, giá tiền. \n" +
-                "   B2.Một hợp đồng có thể bao gồm nhiều sản phẩm quảng cáo, mỗi sản phẩm có \n" +
-                "      Flow Contract: Contract << Contract Detail << ProductScheduleShow \n" +
-                "   B2.Description: -Một Contract bao gồm nhiều Contract Detail \n" +
-                "   -Một Contract Detail bao gồm nhiều ProductScheduleShow \n" +
-                "   -Một ProductScheduleShow là thông tin đăng ký phát sóng của một sản phẩm \n" +
-                "   B3.In ấn: \n" +
-                "C.Flow: (Role Staff) \n" +
+                "   B2.Một hợp đồng có thể bao gồm nhiều sản phẩm quảng cáo, mỗi sản phẩm có Lịch Chiếu riêng \n" +
+                "   B3.Lịch chiếu bao gồm thông tin: Sản phẩm, Ngày chiếu, Thời điểm, Số lượng, Thứ tự ưu tiên và Giá tiền. \n" +
+                "   B4.In ấn: Xuất ra báo cáo tương ứng \n" +
+                "C: Luồng chính: (Role Staff) \n" +
                 "   C1.Nhập các thông tin cấu hình cần thiết trong phần Danh Mục \n" +
-                "   C2.Nhập liệu Contract trong phần nhập liệu \n" +
-                "   C3.Thêm mới Contract " +
-                "   C4.Thêm mới Product trong Contract \n" +
-                "   C5.Thêm mới ProductScheduleShow cho Product \n" +
-                "D:  Screen: Chức năng các màn hình \n" +
+                "   C2.Nhập liệu Hợp đồng trong phần nhập liệu(thêm/ cập nhật) \n" +
+                "   C3.Thêm mới Sản Phẩm trong Hợp đồng \n" +
+                "   C4.Thêm mới Lịch Chiếu cho Sản Phẩm \n" +
+                "   C5.Sửa lịch phát(nếu có) \n" +
+                "D: Screen: Chức năng các màn hình \n" +
                 "   D1.Danh mục khách hàng: quản lý thông tin khách hàng \n" +
                 "   D2.Danh mục loại quảng cáo: quản lý thông tin loại hình quảng cáo \n" +
                 "   D3.Danh mục buổi phát: quản lý thông tin buổi phát trong ngày \n" +
@@ -51,7 +48,9 @@ namespace ATV_Advertisment.Forms.SettingForms
                 "   D13.Đăng ký quảng cáo: xuất ra lịch đăng ký quảng cáo của khách hàng theo tháng \n" +
                 "   D14.Bảng giá quảng cáo: xuất ra bảng giá quảng cáo \n" +
                 "   D15.Đổi Password: thay đổi mật khẩu của tài khoản hiện tại \n" +
-                "   D16.Thông tin ứng dụng: hiển thị hướng dẫn";
+                "   D16.Thông tin ứng dụng: hiển thị hướng dẫn\n" +
+                "   D17. Thông tin ứng dụng: hiển thị hướng dẫn. \n" +
+                "   D18.Tạo tài khoản: tạo tài khoản mới.";
         }
     }
 }
