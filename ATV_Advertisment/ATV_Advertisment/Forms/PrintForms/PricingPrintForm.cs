@@ -149,7 +149,8 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "FROM[TimeSlot] ts " +
                             "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                             "INNER JOIN[CostRule] cr on ts.Id = cr.TimeSlotId " +
-                            "WHERE cr.ShowTypeId = 4 ";
+                            "WHERE cr.ShowTypeId = 4 AND ts.StatusId = -1 " +
+                            "ORDER BY ts.Code";
                         var cmdNotification = new SqlCommand(queryNotification, con);
 
                         da = new SqlDataAdapter(cmdNotification);

@@ -38,11 +38,11 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSession = new System.Windows.Forms.Label();
+            this.txtFromHour = new NumberTextBox(24);
+            this.txtFromMinute = new NumberTextBox(60);
             this.lblFrom = new System.Windows.Forms.Label();
             this.cboDuration = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
-            this.txtFromHour = new NumberTextBox(24);
-            this.txtFromMinute = new NumberTextBox(60);
             this.txtPrice = new TControls.MoneyTextBox();
             this.lblLength = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
@@ -102,7 +102,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(78, 80);
-            this.txtName.MaxLength = 50;
+            this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(449, 26);
             this.txtName.TabIndex = 5;

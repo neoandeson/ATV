@@ -79,7 +79,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // cboPosition
             // 
             this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Location = new System.Drawing.Point(517, 76);
+            this.cboPosition.Location = new System.Drawing.Point(521, 128);
             this.cboPosition.Name = "cboPosition";
             this.cboPosition.Size = new System.Drawing.Size(72, 28);
             this.cboPosition.TabIndex = 14;
@@ -87,7 +87,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(397, 81);
+            this.lblPosition.Location = new System.Drawing.Point(423, 134);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(92, 20);
             this.lblPosition.TabIndex = 13;
@@ -129,7 +129,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // lblSecond
             // 
             this.lblSecond.AutoSize = true;
-            this.lblSecond.Location = new System.Drawing.Point(595, 42);
+            this.lblSecond.Location = new System.Drawing.Point(599, 87);
             this.lblSecond.Name = "lblSecond";
             this.lblSecond.Size = new System.Drawing.Size(27, 20);
             this.lblSecond.TabIndex = 0;
@@ -137,7 +137,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // 
             // txtTimeSlotLength
             // 
-            this.txtTimeSlotLength.Location = new System.Drawing.Point(517, 39);
+            this.txtTimeSlotLength.Location = new System.Drawing.Point(521, 84);
             this.txtTimeSlotLength.Name = "txtTimeSlotLength";
             this.txtTimeSlotLength.ReadOnly = true;
             this.txtTimeSlotLength.Size = new System.Drawing.Size(72, 26);
@@ -148,7 +148,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.cboTimeSlot.FormattingEnabled = true;
             this.cboTimeSlot.Location = new System.Drawing.Point(155, 36);
             this.cboTimeSlot.Name = "cboTimeSlot";
-            this.cboTimeSlot.Size = new System.Drawing.Size(238, 28);
+            this.cboTimeSlot.Size = new System.Drawing.Size(438, 28);
             this.cboTimeSlot.TabIndex = 1;
             this.cboTimeSlot.SelectedIndexChanged += new System.EventHandler(this.cboTimeSlot_SelectedIndexChanged);
             // 
@@ -178,7 +178,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(423, 36);
+            this.label5.Location = new System.Drawing.Point(423, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 20);
             this.label5.TabIndex = 4;

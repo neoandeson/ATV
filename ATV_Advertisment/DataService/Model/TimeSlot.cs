@@ -16,7 +16,7 @@ namespace DataService.Model
         public string Code { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         public int FromHour { get; set; }
