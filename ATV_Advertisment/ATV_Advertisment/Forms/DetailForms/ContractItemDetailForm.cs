@@ -440,5 +440,13 @@ namespace ATV_Advertisment.Forms.DetailForms
             var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
             e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
+
+        private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (IsExisted && IsLoadCompleted)
+            {
+                btnSave_Click(sender, e);
+            }
+        }
     }
 }

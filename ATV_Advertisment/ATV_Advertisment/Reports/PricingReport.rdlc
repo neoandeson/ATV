@@ -1254,9 +1254,9 @@ Fields!FromHour.Value \ 100 &amp; "h" &amp; (Fields!FromHour.Value Mod 100))</Va
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox28</rd:DefaultName>
-            <Top>1.69667in</Top>
+            <Top>1.74527in</Top>
             <Left>0.7175in</Left>
-            <Height>0.25348in</Height>
+            <Height>0.25in</Height>
             <Width>3.5in</Width>
             <ZIndex>8</ZIndex>
             <Style>
@@ -1970,7 +1970,7 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Code.Value</Value>
+                                  <Value>="T" &amp; RowNumber(Nothing)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2739,7 +2739,9 @@ sẽ được tính giá quảng cáo ở khung giờ E4 hoặc E5 (Giữa phim 
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!T60.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>

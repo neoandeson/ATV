@@ -69,69 +69,69 @@
             this.gbContractDetail.Controls.Add(this.cboDuration);
             this.gbContractDetail.Controls.Add(this.lblProductName);
             this.gbContractDetail.Controls.Add(this.txtProductName);
-            this.gbContractDetail.Location = new System.Drawing.Point(12, 12);
+            this.gbContractDetail.Location = new System.Drawing.Point(11, 11);
             this.gbContractDetail.Name = "gbContractDetail";
-            this.gbContractDetail.Size = new System.Drawing.Size(1273, 117);
+            this.gbContractDetail.Size = new System.Drawing.Size(1132, 111);
             this.gbContractDetail.TabIndex = 0;
             this.gbContractDetail.TabStop = false;
             this.gbContractDetail.Text = "Thông tin sản phẩm";
             // 
             // txtFileName
             // 
-            this.txtFileName.Location = new System.Drawing.Point(146, 69);
+            this.txtFileName.Location = new System.Drawing.Point(130, 66);
             this.txtFileName.MaxLength = 200;
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(345, 26);
+            this.txtFileName.Size = new System.Drawing.Size(307, 27);
             this.txtFileName.TabIndex = 5;
             // 
             // labelFileName
             // 
             this.labelFileName.AutoSize = true;
-            this.labelFileName.Location = new System.Drawing.Point(20, 72);
+            this.labelFileName.Location = new System.Drawing.Point(18, 68);
             this.labelFileName.Name = "labelFileName";
-            this.labelFileName.Size = new System.Drawing.Size(94, 20);
+            this.labelFileName.Size = new System.Drawing.Size(88, 19);
             this.labelFileName.TabIndex = 4;
             this.labelFileName.Text = "Mô tả Video";
             // 
             // cboShowType
             // 
             this.cboShowType.FormattingEnabled = true;
-            this.cboShowType.Location = new System.Drawing.Point(664, 31);
+            this.cboShowType.Location = new System.Drawing.Point(590, 29);
             this.cboShowType.Name = "cboShowType";
-            this.cboShowType.Size = new System.Drawing.Size(150, 28);
+            this.cboShowType.Size = new System.Drawing.Size(213, 27);
             this.cboShowType.TabIndex = 2;
             this.cboShowType.SelectedIndexChanged += new System.EventHandler(this.cboShowType_SelectedIndexChanged);
             // 
             // lblShowType
             // 
             this.lblShowType.AutoSize = true;
-            this.lblShowType.Location = new System.Drawing.Point(551, 34);
+            this.lblShowType.Location = new System.Drawing.Point(490, 32);
             this.lblShowType.Name = "lblShowType";
-            this.lblShowType.Size = new System.Drawing.Size(75, 20);
+            this.lblShowType.Size = new System.Drawing.Size(69, 19);
             this.lblShowType.TabIndex = 0;
             this.lblShowType.Text = "Loại phát";
             // 
             // txtNumberOfShow
             // 
-            this.txtNumberOfShow.Location = new System.Drawing.Point(1055, 72);
+            this.txtNumberOfShow.Location = new System.Drawing.Point(938, 68);
             this.txtNumberOfShow.Name = "txtNumberOfShow";
             this.txtNumberOfShow.ReadOnly = true;
-            this.txtNumberOfShow.Size = new System.Drawing.Size(46, 26);
+            this.txtNumberOfShow.Size = new System.Drawing.Size(41, 27);
             this.txtNumberOfShow.TabIndex = 0;
             this.txtNumberOfShow.Text = "0";
             // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(929, 75);
+            this.lblQuantity.Location = new System.Drawing.Point(826, 71);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(108, 20);
+            this.lblQuantity.Size = new System.Drawing.Size(100, 19);
             this.lblQuantity.TabIndex = 0;
             this.lblQuantity.Text = "Số lượng phát";
             // 
             // txtTotalCost
             // 
-            this.txtTotalCost.Location = new System.Drawing.Point(1055, 34);
+            this.txtTotalCost.Location = new System.Drawing.Point(938, 32);
             this.txtTotalCost.MoneyValue = new decimal(new int[] {
             0,
             0,
@@ -139,60 +139,61 @@
             0});
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.ReadOnly = true;
-            this.txtTotalCost.Size = new System.Drawing.Size(200, 26);
+            this.txtTotalCost.Size = new System.Drawing.Size(178, 27);
             this.txtTotalCost.TabIndex = 0;
             this.txtTotalCost.Text = "0";
             // 
             // lblTotalCost
             // 
             this.lblTotalCost.AutoSize = true;
-            this.lblTotalCost.Location = new System.Drawing.Point(929, 34);
+            this.lblTotalCost.Location = new System.Drawing.Point(826, 32);
             this.lblTotalCost.Name = "lblTotalCost";
-            this.lblTotalCost.Size = new System.Drawing.Size(75, 20);
+            this.lblTotalCost.Size = new System.Drawing.Size(69, 19);
             this.lblTotalCost.TabIndex = 0;
             this.lblTotalCost.Text = "Tổng tiền";
             // 
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(551, 72);
+            this.lblDuration.Location = new System.Drawing.Point(490, 68);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(96, 20);
+            this.lblDuration.Size = new System.Drawing.Size(90, 19);
             this.lblDuration.TabIndex = 0;
             this.lblDuration.Text = "Độ dài video";
             // 
             // cboDuration
             // 
             this.cboDuration.FormattingEnabled = true;
-            this.cboDuration.Location = new System.Drawing.Point(664, 65);
+            this.cboDuration.Location = new System.Drawing.Point(590, 62);
             this.cboDuration.Name = "cboDuration";
-            this.cboDuration.Size = new System.Drawing.Size(80, 28);
+            this.cboDuration.Size = new System.Drawing.Size(72, 27);
             this.cboDuration.TabIndex = 3;
+            this.cboDuration.SelectedIndexChanged += new System.EventHandler(this.cboDuration_SelectedIndexChanged);
             // 
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(17, 34);
+            this.lblProductName.Location = new System.Drawing.Point(15, 32);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(110, 20);
+            this.lblProductName.Size = new System.Drawing.Size(99, 19);
             this.lblProductName.TabIndex = 0;
             this.lblProductName.Text = "Tên sản phẩm";
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(146, 31);
+            this.txtProductName.Location = new System.Drawing.Point(130, 29);
             this.txtProductName.MaxLength = 80;
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(345, 26);
+            this.txtProductName.Size = new System.Drawing.Size(307, 27);
             this.txtProductName.TabIndex = 1;
             // 
             // gbControl
             // 
             this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnSave);
-            this.gbControl.Location = new System.Drawing.Point(12, 654);
+            this.gbControl.Location = new System.Drawing.Point(11, 621);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(1273, 67);
+            this.gbControl.Size = new System.Drawing.Size(1132, 64);
             this.gbControl.TabIndex = 1;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
@@ -200,9 +201,9 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSave.Location = new System.Drawing.Point(20, 26);
+            this.btnSave.Location = new System.Drawing.Point(18, 25);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 30);
+            this.btnSave.Size = new System.Drawing.Size(98, 28);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -215,18 +216,18 @@
             this.gbRegisterSchedule.Controls.Add(this.btnDeleteSchedule);
             this.gbRegisterSchedule.Controls.Add(this.btnAddSchedule);
             this.gbRegisterSchedule.Controls.Add(this.adgv);
-            this.gbRegisterSchedule.Location = new System.Drawing.Point(13, 135);
+            this.gbRegisterSchedule.Location = new System.Drawing.Point(12, 128);
             this.gbRegisterSchedule.Name = "gbRegisterSchedule";
-            this.gbRegisterSchedule.Size = new System.Drawing.Size(1272, 513);
+            this.gbRegisterSchedule.Size = new System.Drawing.Size(1131, 487);
             this.gbRegisterSchedule.TabIndex = 0;
             this.gbRegisterSchedule.TabStop = false;
             this.gbRegisterSchedule.Text = "Lịch đăng ký";
             // 
             // btnViewDetail
             // 
-            this.btnViewDetail.Location = new System.Drawing.Point(999, 25);
+            this.btnViewDetail.Location = new System.Drawing.Point(888, 24);
             this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(110, 30);
+            this.btnViewDetail.Size = new System.Drawing.Size(98, 28);
             this.btnViewDetail.TabIndex = 4;
             this.btnViewDetail.Text = "Xem";
             this.btnViewDetail.UseVisualStyleBackColor = true;
@@ -234,9 +235,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(847, 25);
+            this.button1.Location = new System.Drawing.Point(753, 24);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 30);
+            this.button1.Size = new System.Drawing.Size(98, 28);
             this.button1.TabIndex = 6;
             this.button1.Text = "Xóa lịch";
             this.button1.UseVisualStyleBackColor = true;
@@ -245,9 +246,9 @@
             // 
             // btnDeleteSchedule
             // 
-            this.btnDeleteSchedule.Location = new System.Drawing.Point(726, 25);
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(645, 24);
             this.btnDeleteSchedule.Name = "btnDeleteSchedule";
-            this.btnDeleteSchedule.Size = new System.Drawing.Size(110, 30);
+            this.btnDeleteSchedule.Size = new System.Drawing.Size(98, 28);
             this.btnDeleteSchedule.TabIndex = 6;
             this.btnDeleteSchedule.Text = "Xóa lịch";
             this.btnDeleteSchedule.UseVisualStyleBackColor = true;
@@ -256,9 +257,9 @@
             // 
             // btnAddSchedule
             // 
-            this.btnAddSchedule.Location = new System.Drawing.Point(1144, 25);
+            this.btnAddSchedule.Location = new System.Drawing.Point(1017, 24);
             this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(110, 30);
+            this.btnAddSchedule.Size = new System.Drawing.Size(98, 28);
             this.btnAddSchedule.TabIndex = 5;
             this.btnAddSchedule.Text = "Thêm lịch";
             this.btnAddSchedule.UseVisualStyleBackColor = true;
@@ -270,11 +271,11 @@
             this.adgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgv.DateWithTime = false;
             this.adgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.adgv.Location = new System.Drawing.Point(20, 61);
+            this.adgv.Location = new System.Drawing.Point(18, 58);
             this.adgv.MultiSelect = false;
             this.adgv.Name = "adgv";
             this.adgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.adgv.Size = new System.Drawing.Size(1234, 446);
+            this.adgv.Size = new System.Drawing.Size(1097, 424);
             this.adgv.TabIndex = 0;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
@@ -285,13 +286,13 @@
             // 
             // ContractItemDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1297, 733);
+            this.ClientSize = new System.Drawing.Size(1153, 696);
             this.Controls.Add(this.gbRegisterSchedule);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbContractDetail);
-            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "ContractItemDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi tiết sản phẩm";
