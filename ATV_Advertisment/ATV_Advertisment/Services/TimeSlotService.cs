@@ -200,7 +200,8 @@ namespace ATV_Advertisment.Services
             var options = new Dictionary<int, string>();
             options.Add(-1, "");
             var timeSlots = _TimeSlotRepository.Get(t => t.StatusId == CommonStatus.ACTIVE
-                                                && costRule.Contains(t.Id));
+                                                && costRule.Contains(t.Id))
+                                                .OrderBy(t => t.FromHour);
             if (timeSlots.Count() > 0)
             {
                 options = new Dictionary<int, string>();
