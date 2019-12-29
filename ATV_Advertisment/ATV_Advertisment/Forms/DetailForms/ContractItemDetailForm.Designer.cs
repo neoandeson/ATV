@@ -82,7 +82,7 @@
             this.txtFileName.MaxLength = 200;
             this.txtFileName.Name = "txtFileName";
             this.txtFileName.Size = new System.Drawing.Size(307, 27);
-            this.txtFileName.TabIndex = 5;
+            this.txtFileName.TabIndex = 3;
             // 
             // labelFileName
             // 
@@ -90,7 +90,7 @@
             this.labelFileName.Location = new System.Drawing.Point(18, 68);
             this.labelFileName.Name = "labelFileName";
             this.labelFileName.Size = new System.Drawing.Size(88, 19);
-            this.labelFileName.TabIndex = 4;
+            this.labelFileName.TabIndex = 0;
             this.labelFileName.Text = "Mô tả Video";
             // 
             // cboShowType
@@ -167,7 +167,7 @@
             this.cboDuration.Location = new System.Drawing.Point(590, 62);
             this.cboDuration.Name = "cboDuration";
             this.cboDuration.Size = new System.Drawing.Size(72, 27);
-            this.cboDuration.TabIndex = 3;
+            this.cboDuration.TabIndex = 4;
             this.cboDuration.SelectedIndexChanged += new System.EventHandler(this.cboDuration_SelectedIndexChanged);
             // 
             // lblProductName
@@ -194,7 +194,7 @@
             this.gbControl.Location = new System.Drawing.Point(11, 621);
             this.gbControl.Name = "gbControl";
             this.gbControl.Size = new System.Drawing.Size(1132, 64);
-            this.gbControl.TabIndex = 1;
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
@@ -228,7 +228,7 @@
             this.btnViewDetail.Location = new System.Drawing.Point(888, 24);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(98, 28);
-            this.btnViewDetail.TabIndex = 4;
+            this.btnViewDetail.TabIndex = 5;
             this.btnViewDetail.Text = "Xem";
             this.btnViewDetail.UseVisualStyleBackColor = true;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
@@ -238,7 +238,7 @@
             this.button1.Location = new System.Drawing.Point(753, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 28);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 0;
             this.button1.Text = "Xóa lịch";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
@@ -249,7 +249,7 @@
             this.btnDeleteSchedule.Location = new System.Drawing.Point(645, 24);
             this.btnDeleteSchedule.Name = "btnDeleteSchedule";
             this.btnDeleteSchedule.Size = new System.Drawing.Size(98, 28);
-            this.btnDeleteSchedule.TabIndex = 6;
+            this.btnDeleteSchedule.TabIndex = 0;
             this.btnDeleteSchedule.Text = "Xóa lịch";
             this.btnDeleteSchedule.UseVisualStyleBackColor = true;
             this.btnDeleteSchedule.Visible = false;
@@ -260,7 +260,7 @@
             this.btnAddSchedule.Location = new System.Drawing.Point(1017, 24);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(98, 28);
-            this.btnAddSchedule.TabIndex = 5;
+            this.btnAddSchedule.TabIndex = 6;
             this.btnAddSchedule.Text = "Thêm lịch";
             this.btnAddSchedule.UseVisualStyleBackColor = true;
             this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);

@@ -38,14 +38,14 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSession = new System.Windows.Forms.Label();
+            this.txtFromHour = new NumberTextBox(24);
+            this.txtFromMinute = new NumberTextBox(60);
             this.lblFrom = new System.Windows.Forms.Label();
             this.cboDuration = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.txtPrice = new TControls.MoneyTextBox();
             this.lblLength = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.txtFromHour = new NumberTextBox(24);
-            this.txtFromMinute = new NumberTextBox(60);
             this.gbCostRule = new System.Windows.Forms.GroupBox();
             this.cboShowType = new System.Windows.Forms.ComboBox();
             this.lblShowType = new System.Windows.Forms.Label();
@@ -234,7 +234,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.gbCostRule.Location = new System.Drawing.Point(12, 139);
             this.gbCostRule.Name = "gbCostRule";
             this.gbCostRule.Size = new System.Drawing.Size(493, 334);
-            this.gbCostRule.TabIndex = 1;
+            this.gbCostRule.TabIndex = 0;
             this.gbCostRule.TabStop = false;
             this.gbCostRule.Text = "Quy định giá tiền";
             // 

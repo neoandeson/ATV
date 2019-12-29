@@ -68,7 +68,7 @@
             this.gbCriteria.Location = new System.Drawing.Point(0, 0);
             this.gbCriteria.Name = "gbCriteria";
             this.gbCriteria.Size = new System.Drawing.Size(861, 154);
-            this.gbCriteria.TabIndex = 2;
+            this.gbCriteria.TabIndex = 0;
             this.gbCriteria.TabStop = false;
             this.gbCriteria.Text = "Điều kiện";
             // 

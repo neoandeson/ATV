@@ -45,74 +45,74 @@
             this.gbInfo.Controls.Add(this.lblDescription);
             this.gbInfo.Controls.Add(this.lblName);
             this.gbInfo.Controls.Add(this.txtType);
-            this.gbInfo.Location = new System.Drawing.Point(13, 13);
+            this.gbInfo.Location = new System.Drawing.Point(12, 12);
             this.gbInfo.Name = "gbInfo";
-            this.gbInfo.Size = new System.Drawing.Size(591, 119);
+            this.gbInfo.Size = new System.Drawing.Size(525, 113);
             this.gbInfo.TabIndex = 0;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(108, 70);
+            this.txtDescription.Location = new System.Drawing.Point(96, 66);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(460, 26);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.Size = new System.Drawing.Size(409, 27);
+            this.txtDescription.TabIndex = 2;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(25, 73);
+            this.lblDescription.Location = new System.Drawing.Point(22, 69);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(49, 20);
+            this.lblDescription.Size = new System.Drawing.Size(47, 19);
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = "Mô tả";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(25, 32);
+            this.lblName.Location = new System.Drawing.Point(22, 30);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(39, 20);
+            this.lblName.Size = new System.Drawing.Size(36, 19);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Loại";
             // 
             // txtType
             // 
-            this.txtType.Location = new System.Drawing.Point(108, 26);
+            this.txtType.Location = new System.Drawing.Point(96, 25);
             this.txtType.MaxLength = 50;
             this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(460, 26);
-            this.txtType.TabIndex = 0;
+            this.txtType.Size = new System.Drawing.Size(409, 27);
+            this.txtType.TabIndex = 1;
             // 
             // gbControl
             // 
             this.gbControl.Controls.Add(this.btnSave);
-            this.gbControl.Location = new System.Drawing.Point(13, 158);
+            this.gbControl.Location = new System.Drawing.Point(12, 150);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(591, 66);
-            this.gbControl.TabIndex = 1;
+            this.gbControl.Size = new System.Drawing.Size(525, 63);
+            this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(21, 26);
+            this.btnSave.Location = new System.Drawing.Point(19, 25);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.Size = new System.Drawing.Size(98, 28);
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ShowTypeDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 236);
+            this.ClientSize = new System.Drawing.Size(549, 224);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbInfo);
-            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "ShowTypeDetailForm";
             this.Text = "Thông tin loại hình quảng cáo";
             this.gbInfo.ResumeLayout(false);

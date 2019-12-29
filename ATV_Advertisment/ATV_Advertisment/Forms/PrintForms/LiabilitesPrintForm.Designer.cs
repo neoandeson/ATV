@@ -61,7 +61,7 @@
             this.btnPrint.Location = new System.Drawing.Point(672, 25);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 25);
-            this.btnPrint.TabIndex = 4;
+            this.btnPrint.TabIndex = 3;
             this.btnPrint.Text = "Xem";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -72,7 +72,7 @@
             this.cboCustomer.Location = new System.Drawing.Point(87, 23);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.Size = new System.Drawing.Size(224, 28);
-            this.cboCustomer.TabIndex = 3;
+            this.cboCustomer.TabIndex = 1;
             // 
             // dtpMonth
             // 
@@ -87,7 +87,7 @@
             this.lblMonth.Location = new System.Drawing.Point(331, 27);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(54, 20);
-            this.lblMonth.TabIndex = 1;
+            this.lblMonth.TabIndex = 0;
             this.lblMonth.Text = "Tháng";
             // 
             // lblCompany

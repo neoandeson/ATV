@@ -69,167 +69,167 @@
             this.gbCustomerInfo.Controls.Add(this.lblPhone1);
             this.gbCustomerInfo.Controls.Add(this.lblAddress);
             this.gbCustomerInfo.Controls.Add(this.lblName);
-            this.gbCustomerInfo.Location = new System.Drawing.Point(13, 14);
+            this.gbCustomerInfo.Location = new System.Drawing.Point(12, 13);
             this.gbCustomerInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbCustomerInfo.Name = "gbCustomerInfo";
             this.gbCustomerInfo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbCustomerInfo.Size = new System.Drawing.Size(744, 289);
+            this.gbCustomerInfo.Size = new System.Drawing.Size(661, 275);
             this.gbCustomerInfo.TabIndex = 0;
             this.gbCustomerInfo.TabStop = false;
             this.gbCustomerInfo.Text = "Thông tin";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(510, 239);
+            this.txtEmail.Location = new System.Drawing.Point(453, 227);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 26);
+            this.txtEmail.Size = new System.Drawing.Size(178, 27);
             this.txtEmail.TabIndex = 8;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(397, 242);
+            this.lblEmail.Location = new System.Drawing.Point(353, 230);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(48, 20);
+            this.lblEmail.Size = new System.Drawing.Size(45, 19);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email";
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(116, 239);
+            this.txtFax.Location = new System.Drawing.Point(103, 227);
             this.txtFax.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFax.MaxLength = 14;
             this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(200, 26);
+            this.txtFax.Size = new System.Drawing.Size(178, 27);
             this.txtFax.TabIndex = 7;
             this.txtFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFax_KeyPress);
             // 
             // txtCode
             // 
             this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCode.Location = new System.Drawing.Point(116, 39);
+            this.txtCode.Location = new System.Drawing.Point(103, 37);
             this.txtCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCode.MaxLength = 20;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(200, 26);
+            this.txtCode.Size = new System.Drawing.Size(178, 27);
             this.txtCode.TabIndex = 1;
             this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // txtPhone2
             // 
-            this.txtPhone2.Location = new System.Drawing.Point(510, 191);
+            this.txtPhone2.Location = new System.Drawing.Point(453, 181);
             this.txtPhone2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPhone2.MaxLength = 14;
             this.txtPhone2.Name = "txtPhone2";
-            this.txtPhone2.Size = new System.Drawing.Size(200, 26);
+            this.txtPhone2.Size = new System.Drawing.Size(178, 27);
             this.txtPhone2.TabIndex = 6;
             this.txtPhone2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone2_KeyPress);
             // 
             // txtTaxCode
             // 
-            this.txtTaxCode.Location = new System.Drawing.Point(510, 39);
+            this.txtTaxCode.Location = new System.Drawing.Point(453, 37);
             this.txtTaxCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTaxCode.MaxLength = 10;
             this.txtTaxCode.Name = "txtTaxCode";
-            this.txtTaxCode.Size = new System.Drawing.Size(163, 26);
+            this.txtTaxCode.Size = new System.Drawing.Size(145, 27);
             this.txtTaxCode.TabIndex = 2;
             this.txtTaxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaxCode_KeyPress);
             // 
             // txtPhone1
             // 
-            this.txtPhone1.Location = new System.Drawing.Point(116, 194);
+            this.txtPhone1.Location = new System.Drawing.Point(103, 184);
             this.txtPhone1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPhone1.MaxLength = 14;
             this.txtPhone1.Name = "txtPhone1";
-            this.txtPhone1.Size = new System.Drawing.Size(200, 26);
+            this.txtPhone1.Size = new System.Drawing.Size(178, 27);
             this.txtPhone1.TabIndex = 5;
             this.txtPhone1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone1_KeyPress);
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(116, 147);
+            this.txtAddress.Location = new System.Drawing.Point(103, 140);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.MaxLength = 200;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(594, 26);
+            this.txtAddress.Size = new System.Drawing.Size(528, 27);
             this.txtAddress.TabIndex = 4;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(116, 104);
+            this.txtName.Location = new System.Drawing.Point(103, 99);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(594, 26);
+            this.txtName.Size = new System.Drawing.Size(528, 27);
             this.txtName.TabIndex = 3;
             // 
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(22, 42);
+            this.lblCode.Location = new System.Drawing.Point(20, 40);
             this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(31, 20);
+            this.lblCode.Size = new System.Drawing.Size(30, 19);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Mã";
             // 
             // lblTaxCode
             // 
             this.lblTaxCode.AutoSize = true;
-            this.lblTaxCode.Location = new System.Drawing.Point(397, 42);
+            this.lblTaxCode.Location = new System.Drawing.Point(353, 40);
             this.lblTaxCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTaxCode.Name = "lblTaxCode";
-            this.lblTaxCode.Size = new System.Drawing.Size(88, 20);
+            this.lblTaxCode.Size = new System.Drawing.Size(82, 19);
             this.lblTaxCode.TabIndex = 0;
             this.lblTaxCode.Text = "Mã số thuế";
             // 
             // lblFax
             // 
             this.lblFax.AutoSize = true;
-            this.lblFax.Location = new System.Drawing.Point(22, 239);
+            this.lblFax.Location = new System.Drawing.Point(20, 227);
             this.lblFax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFax.Name = "lblFax";
-            this.lblFax.Size = new System.Drawing.Size(35, 20);
+            this.lblFax.Size = new System.Drawing.Size(31, 19);
             this.lblFax.TabIndex = 0;
             this.lblFax.Text = "Fax";
             // 
             // lblPhone2
             // 
             this.lblPhone2.AutoSize = true;
-            this.lblPhone2.Location = new System.Drawing.Point(397, 194);
+            this.lblPhone2.Location = new System.Drawing.Point(353, 184);
             this.lblPhone2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone2.Name = "lblPhone2";
-            this.lblPhone2.Size = new System.Drawing.Size(54, 20);
+            this.lblPhone2.Size = new System.Drawing.Size(46, 19);
             this.lblPhone2.TabIndex = 0;
             this.lblPhone2.Text = "SĐT 2";
             // 
             // lblPhone1
             // 
             this.lblPhone1.AutoSize = true;
-            this.lblPhone1.Location = new System.Drawing.Point(22, 197);
+            this.lblPhone1.Location = new System.Drawing.Point(20, 187);
             this.lblPhone1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone1.Name = "lblPhone1";
-            this.lblPhone1.Size = new System.Drawing.Size(54, 20);
+            this.lblPhone1.Size = new System.Drawing.Size(46, 19);
             this.lblPhone1.TabIndex = 0;
             this.lblPhone1.Text = "SĐT 1";
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(22, 150);
+            this.lblAddress.Location = new System.Drawing.Point(20, 142);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(57, 20);
+            this.lblAddress.Size = new System.Drawing.Size(54, 19);
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Địa chỉ";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(22, 104);
+            this.lblName.Location = new System.Drawing.Point(20, 99);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(36, 20);
+            this.lblName.Size = new System.Drawing.Size(32, 19);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Tên";
             // 
@@ -237,9 +237,9 @@
             // 
             this.gbControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbControl.Controls.Add(this.btnSave);
-            this.gbControl.Location = new System.Drawing.Point(13, 311);
+            this.gbControl.Location = new System.Drawing.Point(12, 295);
             this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(750, 63);
+            this.gbControl.Size = new System.Drawing.Size(667, 60);
             this.gbControl.TabIndex = 0;
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
@@ -247,9 +247,9 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSave.Location = new System.Drawing.Point(24, 23);
+            this.btnSave.Location = new System.Drawing.Point(21, 22);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 30);
+            this.btnSave.Size = new System.Drawing.Size(98, 28);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -257,9 +257,9 @@
             // 
             // CustomerDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 385);
+            this.ClientSize = new System.Drawing.Size(686, 366);
             this.Controls.Add(this.gbControl);
             this.Controls.Add(this.gbCustomerInfo);
             this.Name = "CustomerDetailForm";

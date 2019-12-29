@@ -38,10 +38,12 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "CommonForm";
             this.ShowIcon = false;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CommonForm_KeyDown);
             this.ResumeLayout(false);
 
         }

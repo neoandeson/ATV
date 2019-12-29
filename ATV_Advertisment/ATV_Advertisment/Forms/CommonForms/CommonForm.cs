@@ -8,5 +8,13 @@ namespace ATV_Advertisment.Forms.CommonForms
         {
             InitializeComponent();
         }
+
+        public void CommonForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
     }
 }

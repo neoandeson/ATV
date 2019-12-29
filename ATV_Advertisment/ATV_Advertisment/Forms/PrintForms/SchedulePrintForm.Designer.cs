@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.gbControl = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFromPassword = new System.Windows.Forms.TextBox();
+            this.btnSaveEmailInfo = new System.Windows.Forms.Button();
+            this.btnSendEmail = new System.Windows.Forms.Button();
+            this.txtToEmail = new System.Windows.Forms.TextBox();
+            this.txtFromEmail = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblDay = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.btnPrint = new System.Windows.Forms.Button();
             this.gbContent = new System.Windows.Forms.GroupBox();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtFromEmail = new System.Windows.Forms.TextBox();
-            this.txtToEmail = new System.Windows.Forms.TextBox();
-            this.btnSendEmail = new System.Windows.Forms.Button();
-            this.btnSaveEmailInfo = new System.Windows.Forms.Button();
-            this.txtFromPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.gbControl.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
@@ -68,13 +68,85 @@
             this.gbControl.TabStop = false;
             this.gbControl.Text = "Thao tác";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(369, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Password";
+            // 
+            // txtFromPassword
+            // 
+            this.txtFromPassword.Location = new System.Drawing.Point(453, 53);
+            this.txtFromPassword.MaxLength = 100;
+            this.txtFromPassword.Name = "txtFromPassword";
+            this.txtFromPassword.PasswordChar = '*';
+            this.txtFromPassword.Size = new System.Drawing.Size(249, 26);
+            this.txtFromPassword.TabIndex = 3;
+            // 
+            // btnSaveEmailInfo
+            // 
+            this.btnSaveEmailInfo.Location = new System.Drawing.Point(22, 53);
+            this.btnSaveEmailInfo.Name = "btnSaveEmailInfo";
+            this.btnSaveEmailInfo.Size = new System.Drawing.Size(160, 25);
+            this.btnSaveEmailInfo.TabIndex = 6;
+            this.btnSaveEmailInfo.Text = "Lưu thông tin email";
+            this.btnSaveEmailInfo.UseVisualStyleBackColor = true;
+            this.btnSaveEmailInfo.Click += new System.EventHandler(this.btnSaveEmailInfo_Click);
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.Location = new System.Drawing.Point(196, 53);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(100, 25);
+            this.btnSendEmail.TabIndex = 7;
+            this.btnSendEmail.Text = "Gửi Email";
+            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
+            // 
+            // txtToEmail
+            // 
+            this.txtToEmail.Location = new System.Drawing.Point(453, 88);
+            this.txtToEmail.MaxLength = 100;
+            this.txtToEmail.Name = "txtToEmail";
+            this.txtToEmail.Size = new System.Drawing.Size(393, 26);
+            this.txtToEmail.TabIndex = 4;
+            // 
+            // txtFromEmail
+            // 
+            this.txtFromEmail.Location = new System.Drawing.Point(453, 19);
+            this.txtFromEmail.MaxLength = 100;
+            this.txtFromEmail.Name = "txtFromEmail";
+            this.txtFromEmail.Size = new System.Drawing.Size(393, 26);
+            this.txtFromEmail.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(359, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Email nhận";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(374, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Email gửi";
+            // 
             // lblDay
             // 
             this.lblDay.AutoSize = true;
             this.lblDay.Location = new System.Drawing.Point(18, 25);
             this.lblDay.Name = "lblDay";
             this.lblDay.Size = new System.Drawing.Size(45, 20);
-            this.lblDay.TabIndex = 2;
+            this.lblDay.TabIndex = 0;
             this.lblDay.Text = "Ngày";
             // 
             // dtpDate
@@ -90,7 +162,7 @@
             this.btnPrint.Location = new System.Drawing.Point(196, 20);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 25);
-            this.btnPrint.TabIndex = 0;
+            this.btnPrint.TabIndex = 5;
             this.btnPrint.Text = "Xem";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -115,78 +187,6 @@
             this.rptViewer.ServerReport.BearerToken = null;
             this.rptViewer.Size = new System.Drawing.Size(864, 436);
             this.rptViewer.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(374, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Email gửi";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(359, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Email nhận";
-            // 
-            // txtFromEmail
-            // 
-            this.txtFromEmail.Location = new System.Drawing.Point(453, 19);
-            this.txtFromEmail.MaxLength = 100;
-            this.txtFromEmail.Name = "txtFromEmail";
-            this.txtFromEmail.Size = new System.Drawing.Size(393, 26);
-            this.txtFromEmail.TabIndex = 5;
-            // 
-            // txtToEmail
-            // 
-            this.txtToEmail.Location = new System.Drawing.Point(453, 88);
-            this.txtToEmail.MaxLength = 100;
-            this.txtToEmail.Name = "txtToEmail";
-            this.txtToEmail.Size = new System.Drawing.Size(393, 26);
-            this.txtToEmail.TabIndex = 6;
-            // 
-            // btnSendEmail
-            // 
-            this.btnSendEmail.Location = new System.Drawing.Point(196, 53);
-            this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(100, 25);
-            this.btnSendEmail.TabIndex = 7;
-            this.btnSendEmail.Text = "Gửi Email";
-            this.btnSendEmail.UseVisualStyleBackColor = true;
-            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
-            // 
-            // btnSaveEmailInfo
-            // 
-            this.btnSaveEmailInfo.Location = new System.Drawing.Point(22, 53);
-            this.btnSaveEmailInfo.Name = "btnSaveEmailInfo";
-            this.btnSaveEmailInfo.Size = new System.Drawing.Size(160, 25);
-            this.btnSaveEmailInfo.TabIndex = 8;
-            this.btnSaveEmailInfo.Text = "Lưu thông tin email";
-            this.btnSaveEmailInfo.UseVisualStyleBackColor = true;
-            this.btnSaveEmailInfo.Click += new System.EventHandler(this.btnSaveEmailInfo_Click);
-            // 
-            // txtFromPassword
-            // 
-            this.txtFromPassword.Location = new System.Drawing.Point(453, 53);
-            this.txtFromPassword.MaxLength = 100;
-            this.txtFromPassword.Name = "txtFromPassword";
-            this.txtFromPassword.PasswordChar = '*';
-            this.txtFromPassword.Size = new System.Drawing.Size(249, 26);
-            this.txtFromPassword.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(369, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Password";
             // 
             // SchedulePrintForm
             // 

@@ -82,7 +82,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.ckbPosition.Location = new System.Drawing.Point(378, 124);
             this.ckbPosition.Name = "ckbPosition";
             this.ckbPosition.Size = new System.Drawing.Size(110, 23);
-            this.ckbPosition.TabIndex = 2;
+            this.ckbPosition.TabIndex = 3;
             this.ckbPosition.Text = "Vị trí ưu tiên";
             this.ckbPosition.UseVisualStyleBackColor = true;
             this.ckbPosition.CheckedChanged += new System.EventHandler(this.ckbPosition_CheckedChanged);
@@ -94,7 +94,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.cboPosition.Location = new System.Drawing.Point(494, 120);
             this.cboPosition.Name = "cboPosition";
             this.cboPosition.Size = new System.Drawing.Size(64, 27);
-            this.cboPosition.TabIndex = 3;
+            this.cboPosition.TabIndex = 4;
             // 
             // txtSumCost
             // 
@@ -127,7 +127,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.mpShowDate.MaxSelectionCount = 120;
             this.mpShowDate.Name = "mpShowDate";
             this.mpShowDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mpShowDate.TabIndex = 4;
+            this.mpShowDate.TabIndex = 5;
             this.mpShowDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mpShowDate_MouseDown);
             // 
             // lblSecond
@@ -177,7 +177,8 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.txtCost.Name = "txtCost";
             this.txtCost.ReadOnly = true;
             this.txtCost.Size = new System.Drawing.Size(212, 27);
-            this.txtCost.TabIndex = 0;
+            this.txtCost.TabIndex = 2;
+            this.txtCost.TextChanged += new System.EventHandler(this.txtCost_TextChanged);
             // 
             // label5
             // 
@@ -239,7 +240,7 @@ namespace ATV_Advertisment.Forms.DetailForms
             this.btnSave.Location = new System.Drawing.Point(21, 21);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 28);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -284,7 +285,5 @@ namespace ATV_Advertisment.Forms.DetailForms
         private System.Windows.Forms.Label lblTotalCost;
         private System.Windows.Forms.ComboBox cboPosition;
         private System.Windows.Forms.CheckBox ckbPosition;
-
-        //this.txtPosition = new NumberTextBox(4);
     }
 }
