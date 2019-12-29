@@ -849,7 +849,7 @@
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!TimeSlot.Value</Value>
+                          <Value>=Fields!ShowTimeInt.Value</Value>
                         </SortExpression>
                       </SortExpressions>
                       <TablixMembers>

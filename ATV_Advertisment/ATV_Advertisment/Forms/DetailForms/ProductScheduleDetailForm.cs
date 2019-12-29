@@ -322,9 +322,12 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 if (CompleteLoadData == 2)
                 {
-
                     int quantity = Utilities.GetIntFromTextBox(txtQuantity);
                     double cost = CostRulePrice * quantity;
+                    if (ckbPosition.Checked)
+                    {
+                        cost = Utilities.GetDoubleFromTextBox(txtCost) * quantity;
+                    }
 
                     txtSumCost.Text = Utilities.DoubleMoneyToText(cost);
                     txtSumCost.Text = Utilities.DoubleMoneyToText(cost);
@@ -386,11 +389,21 @@ namespace ATV_Advertisment.Forms.DetailForms
             {
                 cboPosition.Enabled = true;
                 txtCost.ReadOnly = false;
+                CalculateCost();
             } else
             {
                 cboPosition.Enabled = false;
                 txtCost.ReadOnly = true;
                 GetCostRule();
+                CalculateCost();
+            }
+        }
+
+        private void txtCost_TextChanged(object sender, EventArgs e)
+        {
+            if (ckbPosition.Checked)
+            {
+                CalculateCost();
             }
         }
     }
