@@ -37,7 +37,7 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                     try
                     {
-                        string query = "SELECT	ShowDate, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
+                        string query = "SELECT	ShowDate, ShowTimeInt, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
                             "FROM ProductScheduleShow " +
                             "WHERE YEAR(ShowDate) = @rptYear " +
                             "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
@@ -52,6 +52,8 @@ namespace ATV_Advertisment.Forms.PrintForms
                         da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
+                        List<ViewModel.ProductScheduleShowRM> reportData = Utilities.ConvertDataTable<ViewModel.ProductScheduleShowRM>(dt);
+                        reportData = reportData.OrderBy(r => r.ShowTime).ToList();
 
                         ReportParameterCollection reportParameters = new ReportParameterCollection();
                         reportParameters.Add(new ReportParameter("strDate", string.Format("NGÀY {0} THÁNG {1} NĂM {2}", this.dtpDate.Value.Day, this.dtpDate.Value.Month, this.dtpDate.Value.Year)));
@@ -59,7 +61,8 @@ namespace ATV_Advertisment.Forms.PrintForms
                         rptViewer.LocalReport.ReportPath = reportPath;
                         rptViewer.LocalReport.DataSources.Clear();
                         rptViewer.LocalReport.SetParameters(reportParameters);
-                        rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsProductSchedule", dt));
+                        //rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsProductSchedule", dt));
+                        rptViewer.LocalReport.DataSources.Add(new ReportDataSource("dsProductSchedule", reportData.AsEnumerable()));
                         rptViewer.RefreshReport();
 
                         Logging.LogBusiness(string.Format("{0} {1} {2}",
@@ -130,7 +133,7 @@ namespace ATV_Advertisment.Forms.PrintForms
             string extension = string.Empty;
             string exeFolder = Application.StartupPath;
             string reportPath = Path.Combine(exeFolder, @"Reports\ProductSchedule.rdlc");
-            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.doc");
+            string outputReportPath = Path.Combine(exeFolder, @"OutputReports\LichQuangCao.xlsx");
 
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString))
             {
@@ -138,12 +141,12 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                 try
                 {
-                    string query = "SELECT	ShowDate, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
-                        "FROM ProductScheduleShow " +
-                        "WHERE YEAR(ShowDate) = @rptYear " +
-                        "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
-                            "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1000)) " +
-                        "ORDER BY ShowTimeInt";
+                    string query = "SELECT	ShowDate, ShowTimeInt, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
+                            "FROM ProductScheduleShow " +
+                            "WHERE YEAR(ShowDate) = @rptYear " +
+                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
+                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1000)) " +
+                            "ORDER BY ShowTimeInt, OrderNumber";
                     var cmd = new SqlCommand(query, con);
                     cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
                     cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpDate.Value.Month));
@@ -164,7 +167,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                     rptViewer.RefreshReport();
 
                     //
-                    byte[] bytes = rptViewer.LocalReport.Render("WORD", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                    byte[] bytes = rptViewer.LocalReport.Render("EXCELOPENXML", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                     if (bytes != null)
                     {
                         BinaryWriter writer = null;

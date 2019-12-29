@@ -170,6 +170,7 @@ namespace ATV_Advertisment.Services
                 .ToDictionary(q => q.Code, q => string.Format("{0} | {1}", q.Code, q.Name));
             return _TimeSlotRepository.Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .OrderBy(c => c.SessionCode)
+                .ThenBy(c => c.FromHour)
                 .Select(ts => new TimeSlotViewModel()
                 {
                     Id = ts.Id,

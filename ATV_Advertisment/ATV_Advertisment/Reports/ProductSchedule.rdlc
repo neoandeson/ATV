@@ -23,11 +23,15 @@
         </Field>
         <Field Name="ShowDate">
           <DataField>ShowDate</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="ShowTime">
           <DataField>ShowTime</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShowTimeInt">
+          <DataField>ShowTimeInt</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="TimeSlot">
           <DataField>TimeSlot</DataField>
@@ -568,7 +572,7 @@
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!TimeSlot.Value</Value>
+                          <Value>=Fields!ShowTimeInt.Value</Value>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
@@ -896,7 +900,6 @@
                                   <PaddingBottom>2pt</PaddingBottom>
                                 </Style>
                               </Textbox>
-                              <rd:Selected>true</rd:Selected>
                             </CellContents>
                           </TablixHeader>
                           <TablixMembers>
