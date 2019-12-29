@@ -40,8 +40,8 @@ namespace ATV_Advertisment.Forms.PrintForms
                         string query = "SELECT	ShowDate, ShowTimeInt, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
                             "FROM ProductScheduleShow " +
                             "WHERE YEAR(ShowDate) = @rptYear " +
-                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
-                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1000)) " +
+                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND ShowTimeInt >= 1100) " +
+                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1030)) " +
                             "ORDER BY ShowTimeInt, OrderNumber";
                         var cmd = new SqlCommand(query, con);
                         cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
@@ -144,8 +144,8 @@ namespace ATV_Advertisment.Forms.PrintForms
                     string query = "SELECT	ShowDate, ShowTimeInt, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
                             "FROM ProductScheduleShow " +
                             "WHERE YEAR(ShowDate) = @rptYear " +
-                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay) " +
-                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1000)) " +
+                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND ShowTimeInt >= 1100) " +
+                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1030)) " +
                             "ORDER BY ShowTimeInt, OrderNumber";
                     var cmd = new SqlCommand(query, con);
                     cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
