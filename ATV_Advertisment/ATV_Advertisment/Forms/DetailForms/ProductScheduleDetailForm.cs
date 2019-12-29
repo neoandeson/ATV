@@ -74,7 +74,8 @@ namespace ATV_Advertisment.Forms.DetailForms
             PositionOptions.Add(6, 6);
             PositionOptions.Add(7, 7);
             Utilities.LoadComboBoxOptions(cboPosition, PositionOptions);
-            cboPosition.SelectedValue = 7;
+            //Giá trị mặc định ở vị trí giữa. Vị trí 123, 567 thì sẽ phải áp dụng mức giá ưu tiên
+            cboPosition.SelectedValue = 4;
         }
 
         public void LoadData()
@@ -98,6 +99,16 @@ namespace ATV_Advertisment.Forms.DetailForms
                             cboPosition.SelectedValue = model.OrderNumber;
                             txtTimeSlotLength.Text = model.TimeSlotLength.ToString();
                             txtQuantity.Text = model.Quantity.ToString();
+
+                            if (model.IsAdvanced)
+                            {
+                                ckbPosition.Checked = true;
+                                txtCost.Text = Utilities.DoubleMoneyToText(model.Cost);
+                            } else
+                            {
+                                ckbPosition.Checked = false;
+                            }
+
                             model.ProductName = ProductName;
 
                             //Load selected dates
@@ -211,6 +222,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                         model.OrderNumber = (int)cboPosition.SelectedValue;
                         model.TimeSlotLength = int.Parse(txtTimeSlotLength.Text);
                         model.Quantity = 1;//TODO: mặc định là 1 //int.Parse(txtQuantity.Text);
+                        model.IsAdvanced = ckbPosition.Checked;
 
                         if (mpShowDate.BoldedDates.Length > 0)
                         {
@@ -341,7 +353,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void ProductScheduleDetailForm_Load(object sender, EventArgs e)
         {
-            GetCostRule();
+            //GetCostRule();
         }
 
         private void ProductScheduleDetailForm_Shown(object sender, EventArgs e)
@@ -365,6 +377,20 @@ namespace ATV_Advertisment.Forms.DetailForms
                     txtQuantity.Text = mpShowDate.BoldedDates.Count().ToString();
                 }
                 mpShowDate.UpdateBoldedDates();
+            }
+        }
+
+        private void ckbPosition_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ckbPosition.Checked)
+            {
+                cboPosition.Enabled = true;
+                txtCost.ReadOnly = false;
+            } else
+            {
+                cboPosition.Enabled = false;
+                txtCost.ReadOnly = true;
+                GetCostRule();
             }
         }
     }

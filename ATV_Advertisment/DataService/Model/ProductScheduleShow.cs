@@ -45,5 +45,7 @@ namespace DataService.Model
         public double TotalCost { get; set; }
 
         public int OrderNumber { get; set; }
+
+        public bool IsAdvanced { get; set; }
     }
 }

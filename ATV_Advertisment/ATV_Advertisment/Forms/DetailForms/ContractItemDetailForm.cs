@@ -257,20 +257,22 @@ namespace ATV_Advertisment.Forms.DetailForms
                             if (result.Id == 0)
                             {
                                 Utilities.ShowMessage(CommonMessage.EXISTED_PRODUCT_IN_CONTRACT);
-                            }
-                            model = result;
-                            gbRegisterSchedule.Visible = true;
-                            productScheduleShow = new ProductScheduleShow()
+                            } else
                             {
-                                ContractDetailId = model.Id,
-                                TimeSlotLength = (int)cboDuration.SelectedValue,
-                                ProductName = txtFileName.Text
-                            };
-                            Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
-                            Logging.LogBusiness(string.Format("{0} {1} {2}",
-                            Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Create, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
-                            Common.Constants.BusinessLogType.Create);
+                                model = result;
+                                gbRegisterSchedule.Visible = true;
+                                productScheduleShow = new ProductScheduleShow()
+                                {
+                                    ContractDetailId = model.Id,
+                                    TimeSlotLength = (int)cboDuration.SelectedValue,
+                                    ProductName = txtFileName.Text
+                                };
+                                Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                                Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Create, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                                Common.Constants.BusinessLogType.Create);
+                            }
                         }
                     }
                     else
