@@ -40,9 +40,9 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                     try
                     {
-                        string query = "SELECT ROW_NUMBER() OVER (ORDER BY mt.TSName) AS Num, mt.*, dd.ShowTime, dd.Duration " +
+                        string query = "SELECT ROW_NUMBER() OVER (ORDER BY mt.FromHour) AS Num, mt.*, dd.ShowTime, dd.Duration " +
                             "FROM " +
-                            "(SELECT ts.Code as TSCode, ts.Name as TSName, ss.Code as SSCode, ss.Name as SSName " +
+                            "(SELECT ts.Code as TSCode, ts.Name as TSName, ts.FromHour, ss.Code as SSCode, ss.Name as SSName " +
                             "FROM    TimeSlot ts " +
                                     "INNER JOIN[Session] ss on ts.SessionCode = ss.Code " +
                                     "WHERE   ts.StatusId = 1) mt " +

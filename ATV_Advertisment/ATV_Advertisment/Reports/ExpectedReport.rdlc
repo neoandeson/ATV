@@ -416,7 +416,7 @@
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!SSName.Value</Value>
+                      <Value>=Fields!ShowTime.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
@@ -452,6 +452,7 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
