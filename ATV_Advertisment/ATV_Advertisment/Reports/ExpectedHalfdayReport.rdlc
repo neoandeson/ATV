@@ -331,7 +331,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -368,7 +367,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -381,7 +379,7 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=IIF(int((sum(Fields!Duration.Value) Mod 3600)/60) = 0, "", right("0" &amp; int((sum(Fields!Duration.Value) Mod 3600)/60),2) &amp; "p")  
-&amp; IIF((sum(Fields!Duration.Value) Mod 3600) Mod 60 = 0, "", right("0" &amp; (sum(Fields!Duration.Value) Mod 3600) Mod 60,2))&amp; "s"</Value>
+&amp; IIF((sum(Fields!Duration.Value) Mod 3600) Mod 60 = 0, "", right("0" &amp; (sum(Fields!Duration.Value) Mod 3600) Mod 60,2) &amp; "s")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -441,7 +439,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
