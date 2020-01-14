@@ -37,17 +37,20 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                     try
                     {
+                        DateTime nextDate = this.dtpDate.Value.AddDays(1);
+
                         string query = "SELECT	ShowDate, ShowTimeInt, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
                             "FROM ProductScheduleShow " +
-                            "WHERE YEAR(ShowDate) = @rptYear " +
-                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND ShowTimeInt >= 1200) " +
-                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1140)) " +
+                            "WHERE ((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND YEAR(ShowDate) = @rptYear AND ShowTimeInt >= 1200) " +
+                                    "OR (MONTH(ShowDate) = @rptNextDayMonth AND DAY(ShowDate) = @rptNextDay AND YEAR(ShowDate) = @rptNextDayYear AND ShowTimeInt < 1156)) " +
                             "ORDER BY ShowTimeInt, OrderNumber";
                         var cmd = new SqlCommand(query, con);
                         cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
                         cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpDate.Value.Month));
                         cmd.Parameters.Add(new SqlParameter("@rptDay", this.dtpDate.Value.Day));
-                        cmd.Parameters.Add(new SqlParameter("@rptNextDay", this.dtpDate.Value.Day + 1));
+                        cmd.Parameters.Add(new SqlParameter("@rptNextDayYear", nextDate.Year));
+                        cmd.Parameters.Add(new SqlParameter("@rptNextDayMonth", nextDate.Month));
+                        cmd.Parameters.Add(new SqlParameter("@rptNextDay", nextDate.Day));
 
                         da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -141,17 +144,20 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                 try
                 {
+                    DateTime nextDate = this.dtpDate.Value.AddDays(1);
+
                     string query = "SELECT	ShowDate, ShowTimeInt, TimeSlot, ShowTime, ProductName, TimeSlotLength " +
-                            "FROM ProductScheduleShow " +
-                            "WHERE YEAR(ShowDate) = @rptYear " +
-                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND ShowTimeInt >= 1200) " +
-                                "OR (MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1140)) " +
-                            "ORDER BY ShowTimeInt, OrderNumber";
+                        "FROM ProductScheduleShow " +
+                        "WHERE ((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND YEAR(ShowDate) = @rptYear AND ShowTimeInt >= 1200) " +
+                                "OR (MONTH(ShowDate) = @rptNextDayMonth AND DAY(ShowDate) = @rptNextDay AND YEAR(ShowDate) = @rptNextDayYear AND ShowTimeInt < 1156)) " +
+                        "ORDER BY ShowTimeInt, OrderNumber";
                     var cmd = new SqlCommand(query, con);
                     cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
                     cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpDate.Value.Month));
                     cmd.Parameters.Add(new SqlParameter("@rptDay", this.dtpDate.Value.Day));
-                    cmd.Parameters.Add(new SqlParameter("@rptNextDay", this.dtpDate.Value.Day + 1));
+                    cmd.Parameters.Add(new SqlParameter("@rptNextDayYear", nextDate.Year));
+                    cmd.Parameters.Add(new SqlParameter("@rptNextDayMonth", nextDate.Month));
+                    cmd.Parameters.Add(new SqlParameter("@rptNextDay", nextDate.Day));
 
                     da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
