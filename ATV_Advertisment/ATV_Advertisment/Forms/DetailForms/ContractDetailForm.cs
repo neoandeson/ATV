@@ -6,6 +6,8 @@ using ATV_Advertisment.ViewModel;
 using DataService.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static ATV_Advertisment.Common.Constants;
@@ -28,9 +30,9 @@ namespace ATV_Advertisment.Forms.DetailForms
             InitializeComponent();
 
             this.model = inputModel;
-            if(model != null)
+            if (model != null)
             {
-                if(model.Code != "0")
+                if (model.Code != "0")
                 {
                     contractDetail = new ContractItem()
                     {
@@ -39,7 +41,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     LoadDGV();
                 }
             }
-            
+
             LoadListCustomerCode();
             LoadData();
         }
@@ -77,7 +79,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                             Utilities.ShowMessage(CommonMessage.CUSTOMER_NOTFOUND);
                         }
                     }
-                } else
+                }
+                else
                 {
                     gbContractDetail.Visible = false;
                 }
@@ -317,7 +320,7 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnAddDetail_Click(object sender, EventArgs e)
         {
-            if(contractDetail != null)
+            if (contractDetail != null)
             {
                 contractDetail.Id = 0;
             }
@@ -328,31 +331,51 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnDeleteDetail_Click(object sender, EventArgs e)
         {
-            try
+
+        }
+
+        private void btnDeleteDetail_Click2(object sender, EventArgs e)
+        {
+            using (var context = new ATVEntities())
             {
-                if (contractDetail != null)
+                using (DbContextTransaction transaction = context.Database.BeginTransaction())
                 {
-                    _contractService = new ContractService();
-                    int result = _contractService.DeleteContract(contractDetail.Id);
-                    if (result == CRUDStatusCode.SUCCESS)
+                    try
                     {
+                        if (contractDetail != null)
+                        {
+                            var ctrDetail = context.ContractItems.FirstOrDefault(c => c.Id == contractDetail.Id);
+
+                            if (ctrDetail != null)
+                            {
+                                ctrDetail.StatusId = Constants.CommonStatus.CANCEL;
+
+                                var producSchedulShowes = context.ProductScheduleShows.Where(p => p.ContractDetailId == ctrDetail.Id);
+                                if(producSchedulShowes.Count() > 0)
+                                {
+                                    context.ProductScheduleShows.RemoveRange(producSchedulShowes);
+                                }
+                                context.SaveChanges();
+                            }
+                        }
+
+                        transaction.Commit();
+
                         UpdateContractCost();
                         LoadDGV();
                         Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+
                         Logging.LogBusiness(string.Format("{0} {1} {2}",
                             Common.Session.GetUserName(),
                             Common.Constants.LogAction.Delete, "hợp đồng mã " + model.Code),
                             Common.Constants.BusinessLogType.Delete);
                     }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                _contractService = null;
             }
         }
 
@@ -360,7 +383,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             if (contractDetail != null)
             {
-                if(contractDetail.Id != 0)
+                if (contractDetail.Id != 0)
                 {
                     ContractItemDetailForm detailForm = new ContractItemDetailForm(contractDetail);
                     detailForm.FormClosed += new FormClosedEventHandler(DetailForm_Closed);
@@ -371,32 +394,49 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnCancel_Click2(object sender, EventArgs e)
+        {
             int result = CRUDStatusCode.ERROR;
 
-            try
+            using (var context = new ATVEntities())
             {
-                _contractService = new ContractService();
-
-                if (model != null)
+                using (DbContextTransaction transaction = context.Database.BeginTransaction())
                 {
-                    //Edit
-                    model.StatusId = CommonStatus.CANCEL;
+                    try
+                    {
+                        var contract = context.Contracts.FirstOrDefault(c => c.Id == model.Id);
+                        if (contract != null)
+                        {
+                            contract.StatusId = Constants.CommonStatus.CANCEL;
+                            context.SaveChanges();
 
-                    result = _contractService.CancelContract(model.Id);
-                    if (result == CRUDStatusCode.SUCCESS)
+                            var contractItems = context.ContractItems.Where(ci => ci.ContractCode == contract.Code);
+                            foreach (var ci in contractItems)
+                            {
+                                ci.StatusId = Constants.CommonStatus.CANCEL;
+                                var producSchedulShowes = context.ProductScheduleShows.Where(p => p.ContractDetailId == ci.Id);
+                                context.ProductScheduleShows.RemoveRange(producSchedulShowes);
+
+                                context.SaveChanges();
+                            }
+                        }
+
+                        transaction.Commit();
+                        result = CRUDStatusCode.SUCCESS;
+                        Utilities.ShowMessage(CommonMessage.CANCEL_SUCESSFULLY);
+                        UpdateContractCost();
+                        gbContractDetail.Visible = false;
+                    }
+                    catch (Exception ex)
                     {
                         gbContractDetail.Visible = true;
-                        Utilities.ShowMessage(CommonMessage.CANCEL_SUCESSFULLY);
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                _contractService = null;
             }
         }
 
@@ -461,7 +501,8 @@ namespace ATV_Advertisment.Forms.DetailForms
                 {
                     throw;
                 }
-            } else
+            }
+            else
             {
                 try
                 {
@@ -472,7 +513,7 @@ namespace ATV_Advertisment.Forms.DetailForms
                     txtTotalCost.Text = Utilities.DoubleMoneyToText(cost);
 
                     _contractService = new ContractService();
-                    _contractService.UpdatContractCostInfo(txtCode.Text, cost, sumCost , discount);
+                    _contractService.UpdatContractCostInfo(txtCode.Text, cost, sumCost, discount);
                     Logging.LogBusiness(string.Format("{0} {1} {2}",
                             Common.Session.GetUserName(),
                             Common.Constants.LogAction.Update, "giá tiền của hợp đồng mã " + model.Code + " do thay đổi nội dung hợp đồng"),

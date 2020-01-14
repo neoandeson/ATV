@@ -69,7 +69,8 @@ namespace ATV_Advertisment.Services
             if (input != null)
             {
                 bool isExisted = _contractItemRepository.Exist(t => t.ContractCode == input.ContractCode &&
-                                                                t.ProductName == input.ProductName);
+                                                                t.ProductName == input.ProductName 
+                                                                && t.StatusId == Constants.CommonStatus.ACTIVE);
                 if (!isExisted)
                 {
                     input.StatusId = CommonStatus.ACTIVE;
@@ -186,7 +187,7 @@ namespace ATV_Advertisment.Services
             Dictionary<int, string> showTypeNames = _showTypeRepository
                 .Get(c => c.StatusId == CommonStatus.ACTIVE)
                 .ToDictionary(q => q.Id, q => string.Format("{0}", q.Type));
-            return _contractItemRepository.Get(c => c.ContractCode == contractCode)
+            return _contractItemRepository.Get(c => c.ContractCode == contractCode && c.StatusId == Constants.CommonStatus.ACTIVE)
                 .Select(ts => new ContractItemViewModel()
                 {
                     Id = ts.Id,

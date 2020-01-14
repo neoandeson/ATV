@@ -190,7 +190,7 @@ namespace ATV_Advertisment.Forms.DetailForms
         {
             int result = CRUDStatusCode.ERROR;
 
-            if((int)cboPosition.SelectedValue != 4)
+            if((int)cboPosition.SelectedValue != 4 && ckbPosition.Checked == true)
             {
                 if (!Utilities.ShowConfirmMessage("Vị trí ưu tiên xuất hiện của những quảng cáo tạo/cập nhật sau sẽ chèn" +
                     " lên trước những quảng cáo được tạo trước đó. Bạn có muốn tiếp tục lưu ?"))
@@ -272,9 +272,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         try
                         {
                             var pssInDB = context.ProductScheduleShows.Where(p => p.ContractDetailId == model.ContractDetailId
-                                                                                && p.ShowTime == model.ShowTime
                                                                                 && p.TimeSlot == model.TimeSlot
-                                                                                && p.TimeSlotLength == model.TimeSlotLength);
+                                                                                && p.TimeSlotCode == model.TimeSlotCode
+                                                                                && p.TimeSlotLength == model.TimeSlotLength)
+                                                                                .ToList();
                             if (pssInDB != null)
                             {
                                 foreach (var item in pssInDB)

@@ -68,7 +68,7 @@ namespace ATV_Advertisment.Forms.PrintForms
                                     "AND MONTH(ShowDate) = @rptMonth " +
                                 "GROUP BY ContractDetailId, TimeSlot, TimeSlotCode, ShowTime, TimeSlotLength, Cost) ps on ci.Id = ps.ContractDetailId " +
                             "INNER JOIN[Contract] ct on ci.ContractCode = ct.Code " +
-                            "WHERE ct.CustomerCode = @rptCustomerCode " +
+                            "WHERE ct.CustomerCode = @rptCustomerCode AND ci.StatusId = " + Constants.CommonStatus.ACTIVE + " " +
                             "GROUP BY ci.ProductName, ps.TimeSlot, ps.TimeSlotCode, ps.ShowTime, ps.TimeSlotLength, ps.Cost, ci.TotalCost, ct.Discount, ct.Cost, ps.Quantity";
                         var cmd = new SqlCommand(query, con);
                         cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpMonth.Value.Year));

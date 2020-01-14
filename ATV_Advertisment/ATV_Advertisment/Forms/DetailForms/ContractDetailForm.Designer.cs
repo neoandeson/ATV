@@ -37,8 +37,8 @@
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
-            this.txtDiscount = new TControls.NumberTextBox(100);
             this.gbContractDetail = new System.Windows.Forms.GroupBox();
+            this.txtDiscount = new TControls.NumberTextBox(100);
             this.btnViewDtail = new System.Windows.Forms.Button();
             this.btnDeleteDetail = new System.Windows.Forms.Button();
             this.btnAddDetail = new System.Windows.Forms.Button();
@@ -114,17 +114,6 @@
             this.lblCustomerCode.TabIndex = 0;
             this.lblCustomerCode.Text = "Mã KH";
             // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(433, 75);
-            this.txtDiscount.MaxLength = 100;
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.NumberValue = 0;
-            this.txtDiscount.Size = new System.Drawing.Size(50, 27);
-            this.txtDiscount.TabIndex = 5;
-            this.txtDiscount.Text = "0";
-            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
-            // 
             // dtpEndDate
             // 
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -159,6 +148,17 @@
             this.lblStartDate.TabIndex = 0;
             this.lblStartDate.Text = "Ngày bắt đầu";
             // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(433, 75);
+            this.txtDiscount.MaxLength = 100;
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.NumberValue = 0;
+            this.txtDiscount.Size = new System.Drawing.Size(50, 27);
+            this.txtDiscount.TabIndex = 5;
+            this.txtDiscount.Text = "0";
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            // 
             // gbContractDetail
             // 
             this.gbContractDetail.Controls.Add(this.btnViewDtail);
@@ -191,7 +191,7 @@
             this.btnDeleteDetail.TabIndex = 11;
             this.btnDeleteDetail.Text = "Xóa";
             this.btnDeleteDetail.UseVisualStyleBackColor = true;
-            this.btnDeleteDetail.Click += new System.EventHandler(this.btnDeleteDetail_Click);
+            this.btnDeleteDetail.Click += new System.EventHandler(this.btnDeleteDetail_Click2);
             // 
             // btnAddDetail
             // 
@@ -365,7 +365,7 @@
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click2);
             // 
             // btnSave
             // 

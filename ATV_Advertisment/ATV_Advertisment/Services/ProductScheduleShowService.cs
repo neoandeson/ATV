@@ -164,7 +164,9 @@ namespace ATV_Advertisment.Services
         {
             return _ProductScheduleShowRepository.Get(p => p.ContractDetailId == contractDetailId && p.TimeSlotCode == timeslotCode)
                 .OrderBy(p => p.ShowDate)
-                .Select(q => q.ShowDate).ToArray();
+                .Select(q => q.ShowDate)
+                .Distinct()
+                .ToArray();
         }
 
         public List<SortProductScheduleViewModel> GetAllVMSearchingList(SearchPSSModel searchModel)
