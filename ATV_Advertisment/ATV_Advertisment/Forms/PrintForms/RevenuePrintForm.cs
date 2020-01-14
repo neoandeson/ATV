@@ -82,9 +82,9 @@ namespace ATV_Advertisment.Forms.PrintForms
 
                             switch (cboPeriod.SelectedValue)
                             {
-                                case 2: query += "1, 2, 3"; break;
-                                case 3: query += "4, 5, 6"; break;
-                                case 1: query += "7, 8, 9"; break;
+                                case 1: query += "1, 2, 3"; break;
+                                case 2: query += "4, 5, 6"; break;
+                                case 3: query += "7, 8, 9"; break;
                                 case 4: query += "10, 11, 12"; break;
                             }
 

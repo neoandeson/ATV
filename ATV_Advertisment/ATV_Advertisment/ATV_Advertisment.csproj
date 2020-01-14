@@ -341,6 +341,7 @@
     <Compile Include="ViewModel\DaysInWeek.cs" />
     <Compile Include="ViewModel\DiscountRM.cs" />
     <Compile Include="ViewModel\DiscountViewModel.cs" />
+    <Compile Include="ViewModel\ExpectedHalfdayRM.cs" />
     <Compile Include="ViewModel\ExpectedRM.cs" />
     <Compile Include="ViewModel\InputScheduleMRM.cs" />
     <Compile Include="ViewModel\InputScheduleRM.cs" />
@@ -461,6 +462,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ExpectedHalfdayReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ExpectedReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -486,6 +490,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DaysInWeek.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DiscountRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ExpectedHalfdayRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ExpectedRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.InputScheduleRM.datasource" />
     <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.LiabilitiesRM.datasource" />

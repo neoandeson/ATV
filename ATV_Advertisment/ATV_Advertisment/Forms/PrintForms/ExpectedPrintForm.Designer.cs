@@ -34,12 +34,14 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.gbContent = new System.Windows.Forms.GroupBox();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ckbHalfday = new System.Windows.Forms.CheckBox();
             this.gbCriteria.SuspendLayout();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbCriteria
             // 
+            this.gbCriteria.Controls.Add(this.ckbHalfday);
             this.gbCriteria.Controls.Add(this.btnPrint);
             this.gbCriteria.Controls.Add(this.lblDate);
             this.gbCriteria.Controls.Add(this.dtpDate);
@@ -99,6 +101,16 @@
             this.rptViewer.Size = new System.Drawing.Size(794, 360);
             this.rptViewer.TabIndex = 0;
             // 
+            // ckbHalfday
+            // 
+            this.ckbHalfday.AutoSize = true;
+            this.ckbHalfday.Location = new System.Drawing.Point(446, 26);
+            this.ckbHalfday.Name = "ckbHalfday";
+            this.ckbHalfday.Size = new System.Drawing.Size(95, 24);
+            this.ckbHalfday.TabIndex = 3;
+            this.ckbHalfday.Text = "Nữa ngày";
+            this.ckbHalfday.UseVisualStyleBackColor = true;
+            // 
             // ExpectedPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private Microsoft.Reporting.WinForms.ReportViewer rptViewer;
+        private System.Windows.Forms.CheckBox ckbHalfday;
     }
 }
