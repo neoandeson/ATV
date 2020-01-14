@@ -136,16 +136,16 @@ namespace ATV_Advertisment.Forms.PrintForms
                             "WHERE   ts.StatusId = 1) mt " +
                             "INNER JOIN ( SELECT  TimeSlotCode, ShowTime, SUM(TimeSlotLength) as Duration, ShowDate " +
                             "FROM    ProductScheduleShow " +
-                            "WHERE   YEAR(ShowDate) = @rptYear " +
-                            "AND((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND ShowTimeInt >= 1200) " +
-                            "OR(MONTH(ShowDate) = @rptNextDayMonth AND DAY(ShowDate) = @rptNextDay AND ShowTimeInt < 1155)) " +
+                            "WHERE   ((MONTH(ShowDate) = @rptMonth AND DAY(ShowDate) = @rptDay AND YEAR(ShowDate) = @rptYear AND ShowTimeInt >= 1200) " +
+                            "OR(MONTH(ShowDate) = @rptNextDayMonth AND DAY(ShowDate) = @rptNextDay AND YEAR(ShowDate) = @rptNextDayYear AND ShowTimeInt < 1156)) " +
                             "GROUP BY TimeSlotCode, ShowTime, ShowDate) dd on mt.TSCode = dd.TimeSlotCode";
                         var cmd = new SqlCommand(query, con);
-                        cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
                         cmd.Parameters.Add(new SqlParameter("@rptDay", this.dtpDate.Value.Day));
                         cmd.Parameters.Add(new SqlParameter("@rptMonth", this.dtpDate.Value.Month));
+                        cmd.Parameters.Add(new SqlParameter("@rptYear", this.dtpDate.Value.Year));
                         cmd.Parameters.Add(new SqlParameter("@rptNextDay", nextDate.Day));
                         cmd.Parameters.Add(new SqlParameter("@rptNextDayMonth", nextDate.Month));
+                        cmd.Parameters.Add(new SqlParameter("@rptNextDayYear", nextDate.Year));
 
                         da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
