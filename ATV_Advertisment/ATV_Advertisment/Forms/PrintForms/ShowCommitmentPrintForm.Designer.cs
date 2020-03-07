@@ -59,7 +59,7 @@
             this.gbCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCriteria.Location = new System.Drawing.Point(0, 0);
             this.gbCriteria.Name = "gbCriteria";
-            this.gbCriteria.Size = new System.Drawing.Size(929, 101);
+            this.gbCriteria.Size = new System.Drawing.Size(889, 101);
             this.gbCriteria.TabIndex = 0;
             this.gbCriteria.TabStop = false;
             this.gbCriteria.Text = "Điều kiện";
@@ -84,7 +84,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(812, 60);
+            this.btnPrint.Location = new System.Drawing.Point(785, 60);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 25);
             this.btnPrint.TabIndex = 5;
@@ -151,7 +151,7 @@
             this.gbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbContent.Location = new System.Drawing.Point(0, 101);
             this.gbContent.Name = "gbContent";
-            this.gbContent.Size = new System.Drawing.Size(929, 356);
+            this.gbContent.Size = new System.Drawing.Size(889, 356);
             this.gbContent.TabIndex = 0;
             this.gbContent.TabStop = false;
             this.gbContent.Text = "Nội dung";
@@ -162,14 +162,14 @@
             this.rptViewer.Location = new System.Drawing.Point(3, 22);
             this.rptViewer.Name = "rptViewer";
             this.rptViewer.ServerReport.BearerToken = null;
-            this.rptViewer.Size = new System.Drawing.Size(923, 331);
+            this.rptViewer.Size = new System.Drawing.Size(883, 331);
             this.rptViewer.TabIndex = 0;
             // 
             // ShowCommitmentPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 457);
+            this.ClientSize = new System.Drawing.Size(889, 457);
             this.Controls.Add(this.gbContent);
             this.Controls.Add(this.gbCriteria);
             this.Name = "ShowCommitmentPrintForm";
