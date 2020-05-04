@@ -336,44 +336,47 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnDeleteDetail_Click2(object sender, EventArgs e)
         {
-            using (var context = new ATVEntities())
+            if (Utilities.ShowConfirmMessage(CommonMessage.CONFIRM_DELETE))
             {
-                using (DbContextTransaction transaction = context.Database.BeginTransaction())
+                using (var context = new ATVEntities())
                 {
-                    try
+                    using (DbContextTransaction transaction = context.Database.BeginTransaction())
                     {
-                        if (contractDetail != null)
+                        try
                         {
-                            var ctrDetail = context.ContractItems.FirstOrDefault(c => c.Id == contractDetail.Id);
-
-                            if (ctrDetail != null)
+                            if (contractDetail != null)
                             {
-                                ctrDetail.StatusId = Constants.CommonStatus.CANCEL;
+                                var ctrDetail = context.ContractItems.FirstOrDefault(c => c.Id == contractDetail.Id);
 
-                                var producSchedulShowes = context.ProductScheduleShows.Where(p => p.ContractDetailId == ctrDetail.Id);
-                                if(producSchedulShowes.Count() > 0)
+                                if (ctrDetail != null)
                                 {
-                                    context.ProductScheduleShows.RemoveRange(producSchedulShowes);
+                                    ctrDetail.StatusId = Constants.CommonStatus.CANCEL;
+
+                                    var producSchedulShowes = context.ProductScheduleShows.Where(p => p.ContractDetailId == ctrDetail.Id);
+                                    if (producSchedulShowes.Count() > 0)
+                                    {
+                                        context.ProductScheduleShows.RemoveRange(producSchedulShowes);
+                                    }
+                                    context.SaveChanges();
                                 }
-                                context.SaveChanges();
                             }
+
+                            transaction.Commit();
+
+                            UpdateContractCost();
+                            LoadDGV();
+                            Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Delete, "hợp đồng mã " + model.Code),
+                                Common.Constants.BusinessLogType.Delete);
                         }
-
-                        transaction.Commit();
-
-                        UpdateContractCost();
-                        LoadDGV();
-                        Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
-
-                        Logging.LogBusiness(string.Format("{0} {1} {2}",
-                            Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Delete, "hợp đồng mã " + model.Code),
-                            Common.Constants.BusinessLogType.Delete);
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        throw ex;
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw ex;
+                        }
                     }
                 }
             }
@@ -399,42 +402,51 @@ namespace ATV_Advertisment.Forms.DetailForms
 
         private void btnCancel_Click2(object sender, EventArgs e)
         {
-            int result = CRUDStatusCode.ERROR;
-
-            using (var context = new ATVEntities())
+            if (Utilities.ShowConfirmMessage(CommonMessage.CONFIRM_CANCLE))
             {
-                using (DbContextTransaction transaction = context.Database.BeginTransaction())
+                int result = CRUDStatusCode.ERROR;
+
+                using (var context = new ATVEntities())
                 {
-                    try
+                    using (DbContextTransaction transaction = context.Database.BeginTransaction())
                     {
-                        var contract = context.Contracts.FirstOrDefault(c => c.Id == model.Id);
-                        if (contract != null)
+                        try
                         {
-                            contract.StatusId = Constants.CommonStatus.CANCEL;
-                            context.SaveChanges();
-
-                            var contractItems = context.ContractItems.Where(ci => ci.ContractCode == contract.Code);
-                            foreach (var ci in contractItems)
+                            var contract = context.Contracts.FirstOrDefault(c => c.Id == model.Id);
+                            if (contract != null)
                             {
-                                ci.StatusId = Constants.CommonStatus.CANCEL;
-                                var producSchedulShowes = context.ProductScheduleShows.Where(p => p.ContractDetailId == ci.Id);
-                                context.ProductScheduleShows.RemoveRange(producSchedulShowes);
-
+                                contract.StatusId = Constants.CommonStatus.CANCEL;
                                 context.SaveChanges();
-                            }
-                        }
 
-                        transaction.Commit();
-                        result = CRUDStatusCode.SUCCESS;
-                        Utilities.ShowMessage(CommonMessage.CANCEL_SUCESSFULLY);
-                        UpdateContractCost();
-                        gbContractDetail.Visible = false;
-                    }
-                    catch (Exception ex)
-                    {
-                        gbContractDetail.Visible = true;
-                        transaction.Rollback();
-                        throw ex;
+                                var contractItems = context.ContractItems.Where(ci => ci.ContractCode == contract.Code);
+                                foreach (var ci in contractItems)
+                                {
+                                    ci.StatusId = Constants.CommonStatus.CANCEL;
+                                    var producSchedulShowes = context.ProductScheduleShows.Where(p => p.ContractDetailId == ci.Id);
+                                    context.ProductScheduleShows.RemoveRange(producSchedulShowes);
+
+                                    context.SaveChanges();
+                                }
+                            }
+
+                            transaction.Commit();
+                            result = CRUDStatusCode.SUCCESS;
+                            Utilities.ShowMessage(CommonMessage.CANCEL_SUCESSFULLY);
+
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Cancle, "hợp đồng mã " + model.Code),
+                                Common.Constants.BusinessLogType.Delete);
+
+                            UpdateContractCost();
+                            gbContractDetail.Visible = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            gbContractDetail.Visible = true;
+                            transaction.Rollback();
+                            throw ex;
+                        }
                     }
                 }
             }

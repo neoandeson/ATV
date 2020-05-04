@@ -74,11 +74,11 @@ namespace ATV_Advertisment.Forms.AdminForms
                 adgv.Columns["Content"].HeaderText = ADGVText.Content;
                 adgv.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 adgv.Columns["ActorId"].HeaderText = ADGVText.ActUser;
-                adgv.Columns["ActorId"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["ActorId"].Width = ControlsAttribute.GV_WIDTH_SMALL;
                 adgv.Columns["TypeId"].HeaderText = ADGVText.ActType;
                 adgv.Columns["TypeId"].Width = ControlsAttribute.GV_WIDTH_SMALL;
                 adgv.Columns["DateAct"].HeaderText = ADGVText.ActDate;
-                adgv.Columns["DateAct"].Width = ControlsAttribute.GV_WIDTH_NORMAL;
+                adgv.Columns["DateAct"].Width = ControlsAttribute.GV_WIDTH_MEDIUM;
             }
             catch (Exception ex)
             {

@@ -125,30 +125,33 @@ namespace ATV_Advertisment.Forms.ListForms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
+            if (Utilities.ShowConfirmMessage(CommonMessage.CONFIRM_DELETE))
             {
-                if (timeslot != null)
+                try
                 {
-                    _timeSlotService = new TimeSlotService();
-                    int result = _timeSlotService.DeleteTimeSlot(timeslot.Id);
-                    if (result == CRUDStatusCode.SUCCESS)
+                    if (timeslot != null)
                     {
-                        LoadDGV();
-                        Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
-                        Logging.LogBusiness(string.Format("{0} {1} {2}",
-                            Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Delete, "thời điểm phát " + timeslot.Code + " " + timeslot.FromHour),
-                            Common.Constants.BusinessLogType.Delete);
+                        _timeSlotService = new TimeSlotService();
+                        int result = _timeSlotService.DeleteTimeSlot(timeslot.Id);
+                        if (result == CRUDStatusCode.SUCCESS)
+                        {
+                            LoadDGV();
+                            Utilities.ShowMessage(CommonMessage.DELETE_SUCESSFULLY);
+                            Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Delete, "thời điểm phát " + timeslot.Code + " " + timeslot.FromHour),
+                                Common.Constants.BusinessLogType.Delete);
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                _timeSlotService = null;
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally
+                {
+                    _timeSlotService = null;
+                }
             }
         }
 

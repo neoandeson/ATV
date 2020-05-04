@@ -82,7 +82,7 @@
             this.adgv.DateWithTime = false;
             this.adgv.Location = new System.Drawing.Point(12, 38);
             this.adgv.Name = "adgv";
-            this.adgv.Size = new System.Drawing.Size(1003, 400);
+            this.adgv.Size = new System.Drawing.Size(1062, 400);
             this.adgv.TabIndex = 5;
             this.adgv.TimeFilter = false;
             this.adgv.SortStringChanged += new System.EventHandler(this.adgv_SortStringChanged);
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 450);
+            this.ClientSize = new System.Drawing.Size(1086, 450);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.adgv);
             this.Controls.Add(this.dtpMonth);

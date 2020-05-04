@@ -34,6 +34,7 @@ namespace ATV_Advertisment.Common
             public static string CANCEL_SUCESSFULLY = "Cập nhật thành công";
 
             public static string CONFIRM_DELETE = "Có phải bạn muốn xóa thông tin này ?";
+            public static string CONFIRM_CANCLE = "Có phải bạn muốn hủy thông tin này ?";
 
             public static string USED_CODE = "Mã đã được sử dụng";
             public static string USED_CODE_LENGTH = "Thời điểm có (Mã, Thời lượng) này đã được tạo";
@@ -103,6 +104,7 @@ namespace ATV_Advertisment.Common
             public static string Create = "Tạo";
             public static string Delete = "Xóa";
             public static string Update = "Sửa";
+            public static string Cancle = "Hủy";
             public static string ExportData = "Xuất file";
         }
 
